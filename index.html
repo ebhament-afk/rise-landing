@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>RISE — Get work. Get paid. Build Trust.</title>
+<link rel="icon" type="image/png" href="rise-logo.png.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
@@ -70,7 +71,20 @@ nav {
   text-decoration: none;
 }
 
-.nav-logo svg { width: 28px; height: 28px; }
+.nav-logo img,
+.footer-logo img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(57,255,20,.25));
+}
+
+@media (max-width: 768px) {
+  .nav-logo img,
+  .footer-logo img {
+    height: 34px;
+  }
+}
 
 .nav-pill {
   display: flex; align-items: center; gap: 6px;
@@ -704,13 +718,8 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
-    <svg viewBox="0 0 28 28" fill="none">
-      <path d="M4 24 L10 4 L18 4 Q24 4 24 10 Q24 16 18 16 L14 16 L20 24" stroke="#39FF14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M18 16 L26 8" stroke="#39FF14" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M22 6 L26 6 L26 10" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    RISE
+  <a href="/" class="nav-logo">
+    <img src="rise-logo.png.png" alt="RISE Logo">
   </a>
   <div class="nav-pill">Coming soon — Lagos & Abuja</div>
   <a href="https://tally.so/r/68py7B" target="_blank" class="nav-cta">Join Waitlist</a>
@@ -827,7 +836,7 @@ footer {
   <h2 class="why-title">85M+ Nigerians work in<br />the informal economy.</h2>
   <div class="why-lines">
     <div class="why-line">Most have no financial history.</div>
-    <div class="why-line">Most have no trusted way to prove reliability.</div>
+    <div class="why-line">Most have no trusted Trust Score system.</div>
     <div class="why-line">Most platforms help people find work.</div>
     <div class="why-line final">RISE helps people build a future.</div>
   </div>
@@ -947,7 +956,7 @@ footer {
     <div class="audience-card" data-emoji="🏢">
       <div class="audience-label">Businesses</div>
       <div class="audience-title">Business Owners</div>
-      <p class="audience-body">Hire verified talent, hold payments securely until work is done, and build trust as a business people actually want to work for.</p>
+      <p class="audience-body">Hire verified talent, hold payments securely until work is done, and build a Trust Score as a business people actually want to work for.</p>
     </div>
     <div class="audience-card" data-emoji="🌍">
       <div class="audience-label">Remote</div>
@@ -993,12 +1002,7 @@ footer {
 <footer>
   <div>
     <div class="footer-logo">
-      <svg viewBox="0 0 28 28" fill="none" style="width:22px;height:22px">
-        <path d="M4 24 L10 4 L18 4 Q24 4 24 10 Q24 16 18 16 L14 16 L20 24" stroke="#39FF14" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M18 16 L26 8" stroke="#39FF14" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M22 6 L26 6 L26 10" stroke="#39FF14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      RISE
+      <img src="rise-logo.png.png" alt="RISE Logo">
     </div>
     <div class="footer-tagline">Make money make sense.</div>
     <div class="footer-tagline" style="margin-top:4px">Starting in Lagos & Abuja. <span style="color:var(--neon)">Building for Africa.</span></div>
