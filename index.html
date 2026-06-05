@@ -6,14 +6,15 @@
 <title>RISE — The Trust Layer for Work</title>
 <link rel="icon" type="image/png" href="rise-logo.png.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
 :root {
   --neon: #39FF14;
   --bg: #000000;
   --fg: #ffffff;
-  --muted: #86868b; /* Apple-standard muted gray */
-  --border: rgba(255, 255, 255, 0.1);
+  --muted: #86868b;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
   --font-head: 'Cabinet Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 }
@@ -28,164 +29,197 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── PREMIUM BACKGROUND ── */
-.radial-glow {
-  position: fixed; top: -40%; left: 50%; transform: translateX(-50%);
-  width: 100vw; height: 100vh;
-  background: radial-gradient(circle, rgba(57, 255, 20, 0.04) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+/* ── INTERACTIVE AMBIENT GLOWS ── */
+.ambient-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.03) 0%, transparent 70%);
+  top: -200px; left: 50%; transform: translateX(-50%);
+  pointer-events: none; z-index: 0;
 }
 
-/* ── NAV ── */
+/* ── NAV WITH GLASS EFFECT ── */
 nav {
-  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
-  padding: 40px;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 24px 40px;
   display: flex; align-items: center; justify-content: space-between;
-  max-width: 1200px; margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.nav-logo img {
-  height: 32px; width: auto;
-}
+.nav-logo img { height: 28px; width: auto; transition: transform 0.3s ease; }
+.nav-logo img:hover { transform: scale(1.03); }
 
 .nav-cta {
-  color: var(--fg);
-  text-decoration: none;
-  font-size: 14px; font-weight: 500;
-  transition: opacity 0.2s;
+  color: var(--fg); text-decoration: none; font-size: 14px; font-weight: 500;
+  padding: 8px 18px; border-radius: 100px; border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05); transition: all 0.3s ease;
 }
-.nav-cta:hover { opacity: 0.7; }
+.nav-cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
 /* ── MAIN LAYOUT ── */
-main {
-  position: relative; z-index: 1;
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 40px;
-}
+main { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
 
-/* ── HERO ── */
+/* ── INTRO / HERO ANIMATION ── */
 .hero {
-  min-height: 90vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding-top: 100px;
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding-top: 100px; position: relative;
 }
 
 .hero-title {
-  font-family: var(--font-head);
-  font-weight: 900;
-  font-size: clamp(56px, 7vw, 105px);
-  line-height: 1.02; letter-spacing: -0.04em;
-  margin-bottom: 32px;
+  font-family: var(--font-head); font-weight: 900;
+  font-size: clamp(54px, 7.5vw, 110px); line-height: 0.98; letter-spacing: -0.04em;
+  margin-bottom: 36px; opacity: 0; transform: translateY(30px);
+  animation: appleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-title span { display: block; }
-.hero-title .highlight { color: var(--neon); }
-
-.hero-sub {
-  font-size: clamp(20px, 2.5vw, 26px);
-  color: var(--muted);
-  max-width: 600px;
-  line-height: 1.4; font-weight: 400;
-  margin-bottom: 48px;
+.hero-title .highlight {
+  color: var(--neon);
+  text-shadow: 0 0 60px rgba(57, 255, 20, 0.15);
 }
 
-/* ── BIG STATS & CONTEXT ── */
-.narrative {
-  padding: 120px 0;
-  border-top: 1px solid var(--border);
+.hero-sub {
+  font-size: clamp(20px, 2.5vw, 26px); color: var(--muted); max-width: 620px;
+  line-height: 1.4; font-weight: 400; opacity: 0; transform: translateY(20px);
+  animation: appleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+/* ── PREMIUM INTERACTIVE SHOWCASE ── */
+.showcase-section { padding: 120px 0; }
+
+.split-layout {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
 }
 
 .statement {
-  font-family: var(--font-head);
-  font-size: clamp(28px, 4vw, 54px);
-  font-weight: 700; line-height: 1.15;
-  letter-spacing: -0.02em; max-width: 900px;
-  color: #f5f5f7; margin-bottom: 80px;
+  font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #f5f5f7;
 }
-
 .statement em { font-style: normal; color: var(--muted); }
 
-/* ── SYSTEM GRID ── */
+/* Premium CSS Native Glass Phone Interface */
+.phone-canvas {
+  position: relative; width: 100%; max-width: 380px; margin: 0 auto;
+  aspect-ratio: 9 / 18.5; border-radius: 48px; background: #08080a;
+  border: 4px solid #1c1c1e; box-shadow: 0 30px 100px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.02);
+  padding: 16px; overflow: hidden;
+}
+
+.phone-screen {
+  width: 100%; height: 100%; background: #000; border-radius: 36px;
+  border: 1px solid rgba(255,255,255,0.05); padding: 32px 20px 20px;
+  display: flex; flex-direction: column; gap: 16px; position: relative;
+}
+
+.phone-island {
+  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 22px; background: #1c1c1e; border-radius: 20px;
+}
+
+/* Simulated Fluid App Interfaces */
+.app-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 16px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0; transform: scale(0.95); animation: appleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+.app-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+
+.app-card .meta { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
+.app-card .value { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.app-card .desc { font-size: 13px; color: var(--muted); }
+
+.score-node { text-align: center; padding: 32px 16px; }
+.score-radial {
+  width: 100px; height: 100px; border-radius: 50%; border: 3px solid rgba(57, 255, 20, 0.1);
+  border-top-color: var(--neon); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-head); font-size: 32px; font-weight: 900; color: var(--neon);
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); animation: spinGlow 4s linear infinite;
+}
+
+/* ── SYSTEM GRID LAYER ── */
 .grid-system {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px; margin-bottom: 120px;
-}
-
-.grid-system.large { grid-template-columns: repeat(2, 1fr); }
-
-.cell {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 100px 0;
   border-top: 1px solid var(--border);
-  padding-top: 24px;
 }
 
-.cell-num {
-  font-size: 13px; font-weight: 500; color: var(--neon);
-  margin-bottom: 16px; display: block;
-}
+.cell { border-top: 1px solid transparent; transition: all 0.4s ease; }
+.cell:hover .cell-title { color: var(--neon); }
 
-.cell-title {
-  font-family: var(--font-head);
-  font-size: 22px; font-weight: 700; margin-bottom: 12px;
-  letter-spacing: -0.01em;
-}
+.cell-num { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 24px; display: block; letter-spacing: 0.05em; }
+.cell-title { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; transition: color 0.3s; }
+.cell-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
-.cell-body {
-  font-size: 15px; color: var(--muted); line-height: 1.6;
+/* ── ECOSYSTEM ARCHITECTURE BENTO ── */
+.bento-section { padding-bottom: 120px; }
+.bento-grid {
+  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
 }
-
-/* ── THE SCORE CALLOUT ── */
-.score-callout {
-  grid-column: span 3;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: 24px; padding: 60px;
-  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+.bento-box {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 32px;
+  padding: 48px; display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 320px; position: relative; overflow: hidden;
+  transition: border-color 0.4s, background 0.4s;
 }
+.bento-box:hover { border-color: rgba(255, 255, 255, 0.15); background: rgba(255,255,255,0.04); }
+.bento-box.full { grid-column: span 2; min-height: 260px; flex-direction: row; align-items: center; gap: 40px; }
 
-.score-text { max-width: 500px; }
-.score-big {
-  font-family: var(--font-head);
-  font-size: 110px; font-weight: 900; color: var(--neon);
-  line-height: 1; letter-spacing: -0.05em;
-}
+.bento-head { max-width: 420px; }
+.bento-title { font-family: var(--font-head); font-size: 28px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+.bento-body { font-size: 15px; color: var(--muted); line-height: 1.6; }
 
-/* ── CLOSING / WAITLIST ── */
+/* Interactive Node Visual Elements inside Bento */
+.bento-visual { position: relative; display: flex; gap: 12px; align-items: center; justify-content: flex-end; width: 100%; height: 100%; }
+.pill-node { background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+.pill-node.active { border-color: var(--neon); color: var(--neon); background: rgba(57,255,20,0.02); }
+
+/* ── PREMIUM REDIRECT CLOSING ── */
 .cta-block {
-  text-align: center;
-  padding: 160px 0 200px;
-  border-top: 1px solid var(--border);
+  text-align: center; padding: 160px 0 24px; border-top: 1px solid var(--border);
+  position: relative;
 }
 
 .btn-premium {
-  display: inline-block;
-  background: var(--fg);
-  color: var(--bg);
-  text-decoration: none;
-  padding: 20px 48px;
-  border-radius: 100px;
-  font-size: 16px; font-weight: 500;
-  transition: transform 0.2s, background 0.2s;
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--fg); color: var(--bg); text-decoration: none;
+  padding: 22px 56px; border-radius: 100px; font-size: 16px; font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-premium:hover {
-  transform: scale(1.02);
-  background: #f5f5f7;
+  transform: scale(1.02); background: #f5f5f7;
+  box-shadow: 0 20px 60px rgba(255,255,255,0.08);
+}
+.btn-premium svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
+.btn-premium:hover svg { transform: translateX(4px); }
+
+/* ── KEYFRAME ANIMATIONS ── */
+@keyframes appleReveal {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 900px) {
-  nav { padding: 30px 24px; }
+/* ── SCROLL TRIGGER FALLBACK CLASS ── */
+.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE COMPRESSION ── */
+@media (max-width: 960px) {
+  nav { padding: 24px; }
   main { padding: 0 24px; }
-  .grid-system, .grid-system.large { grid-template-columns: 1fr; gap: 40px; }
-  .score-callout { grid-column: span 1; flex-direction: column; text-align: center; padding: 40px 24px; }
-  .cta-block { padding: 100px 0 140px; }
+  .split-layout { grid-template-columns: 1fr; gap: 60px; }
+  .grid-system { grid-template-columns: 1fr; gap: 48px; padding: 80px 0; }
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-box.full { grid-column: span 1; flex-direction: column; align-items: flex-start; min-height: 320px; }
+  .bento-visual { justify-content: flex-start; margin-top: 24px; }
 }
 </style>
 </head>
 <body>
-
-<div class="radial-glow"></div>
 
 <nav>
   <a href="/" class="nav-logo">
@@ -195,69 +229,99 @@ main {
 </nav>
 
 <main>
-  <!-- HERO -->
+  <!-- INTRO INTENSITY LAYER -->
   <section class="hero">
+    <div class="ambient-glow"></div>
     <h1 class="hero-title">
       <span>Get work.</span>
       <span>Get paid.</span>
       <span class="highlight">Build Trust.</span>
     </h1>
-    <p class="hero-sub">The trust layer for work in Nigeria. Get hired, secure payments, and build a reputation that travels with you everywhere.</p>
+    <p class="hero-sub">The trust layer for work in Nigeria. Get hired, secure payments safely, and construct a portable reputation that unlocks opportunity.</p>
   </section>
 
-  <!-- THE NARRATIVE STATEMENT -->
-  <section class="narrative">
-    <h2 class="statement">
-      Over 85 million Nigerians operate in the informal economy—<em>generating value every day, yet remaining financially invisible. RISE builds the infrastructure to verify that talent and scale trust.</em>
-    </h2>
+  <!-- SPLIT LAYOUT INTERACTIVE HERO DEMO -->
+  <section class="showcase-section reveal-on-scroll">
+    <div class="split-layout">
+      <h2 class="statement">
+        Over 85 million Nigerians operate in the informal economy—<em>generating massive value daily, yet remaining structurally invisible. RISE changes this metric completely.</em>
+      </h2>
+      
+      <!-- Premium CSS Interactive Interface Engine -->
+      <div class="phone-canvas">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          
+          <div class="app-card score-node">
+            <div class="score-radial">4.8</div>
+            <div class="meta" style="color: var(--neon);">Unified Trust Score</div>
+          </div>
 
-    <!-- HOW IT WORKS MECHANICS -->
-    <div class="grid-system">
-      <div class="cell">
-        <span class="cell-num">// 01</span>
-        <h3 class="cell-title">Market Discovery</h3>
-        <p class="cell-body">Browse and apply for opportunities verified for your exact specialization across Lagos, Abuja, and remote ecosystems.</p>
-      </div>
-      <div class="cell">
-        <span class="cell-num">// 02</span>
-        <h3 class="cell-title">Protected Capital</h3>
-        <p class="cell-body">Eliminate invoice disputes. Contract capital is secured prior to initiation and automatically distributed upon confirmation.</p>
-      </div>
-      <div class="cell">
-        <span class="cell-num">// 03</span>
-        <h3 class="cell-title">Reputation Portability</h3>
-        <p class="cell-body">Every successfully completed project and transaction performance loops directly into your permanent operational profile.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES / ADVANCED CAPABILITIES -->
-  <section class="narrative" style="padding-top: 0;">
-    <div class="grid-system large">
-      <div class="cell">
-        <h3 class="cell-title">Ajo Group Digitization</h3>
-        <p class="cell-body">Traditional community savings models, completely upgraded. Create or join verified, fraud-proof pools with trusted peers within your industry node.</p>
-      </div>
-      <div class="cell">
-        <h3 class="cell-title">Targeted Ecosystem Routing</h3>
-        <p class="cell-body">Engineered for absolute focus. Direct communications are exclusively attached to active milestones—removing noise, platform friction, and unvetted inquiries.</p>
-      </div>
-
-      <!-- THE CORE MOAT ROW -->
-      <div class="score-callout">
-        <div class="score-text">
-          <span class="cell-num" style="margin-bottom:8px;">THE PROTOCOL</span>
-          <h3 class="cell-title" style="font-size:28px;">The Trust Score</h3>
-          <p class="cell-body">A unified rating system aggregating completion velocity, transaction history, and user feedback. It turns your daily work habits into an institutional-grade reputation that eventually unlocks credit, partnerships, and premium tiers.</p>
+          <div class="app-card" style="animation-delay: 0.7s;">
+            <div class="meta">Protected Inflow</div>
+            <div class="value">₦145,000</div>
+            <div class="desc">Milestone held securely via RISE protocol</div>
+          </div>
         </div>
-        <div class="score-big">4.8</div>
       </div>
     </div>
   </section>
 
-  <!-- FINAL CALL TO ACTION (Clean, elegant layout with requested closing metadata) -->
-  <section class="cta-block">
-    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-premium">Request Early Access</a>
+  <!-- REPUTATION MECHANICS ARCHITECTURE -->
+  <section class="grid-system reveal-on-scroll">
+    <div class="cell">
+      <span class="cell-num">01 // DISCOVERY</span>
+      <h3 class="cell-title">Ecosystem Routing</h3>
+      <p class="cell-body">Eliminate traditional job search noise. Instantly align with high-intent contract opportunities across Lagos, Abuja, and verified remote nodes.</p>
+    </div>
+    <div class="cell">
+      <span class="cell-num">02 // ESCROW VETTING</span>
+      <h3 class="cell-title">Protected Capital</h3>
+      <p class="cell-body">Contract assets are automatically verified and locked prior to project kickoff. No bad-faith client delays, no uncompensated work.</p>
+    </div>
+    <div class="cell">
+      <span class="cell-num">03 // PROTOCOL INDEX</span>
+      <h3 class="cell-title">Portable Reputation</h3>
+      <p class="cell-body">Every performance variable loops into an immutable, universally scannable professional ledger. Your track record converts into credit power.</p>
+    </div>
+  </section>
+
+  <!-- BENTO LAYOUT LAYER -->
+  <section class="bento-section reveal-on-scroll">
+    <div class="bento-grid">
+      <div class="bento-box">
+        <div class="bento-head">
+          <h3 class="bento-title">Ajo Group Digitization</h3>
+          <p class="bento-body">Traditional community savings structures, re-engineered. Form or join secure, mathematically sound rotational financial pools with verified sector peers.</p>
+        </div>
+      </div>
+
+      <div class="bento-box">
+        <div class="bento-head">
+          <h3 class="bento-title">Clean Channel Sync</h3>
+          <p class="bento-body">Communication maps exclusively to active milestones and verified agreements. No unvetted outreach, complete workspace control.</p>
+        </div>
+      </div>
+
+      <div class="bento-box full">
+        <div class="bento-head">
+          <h3 class="bento-title">The Trust Score Protocol</h3>
+          <p class="bento-body">A composite matrix detailing performance pace, financial velocity, and community reviews. It transforms daily operational consistency into an institutional-grade profile capable of unlocking global opportunity.</p>
+        </div>
+        <div class="bento-visual">
+          <div class="pill-node">Verification Registry</div>
+          <div class="pill-node active">★ 4.8 Core Tier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING / ABSOLUTE MINIMALIST FORM CALLOUT -->
+  <section class="cta-block reveal-on-scroll">
+    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-premium">
+      Request Early Access
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+    </a>
     
     <p style="margin-top:20px;font-size:13px;color:var(--muted);line-height:1.7;">
       No payment required<br>
@@ -266,5 +330,20 @@ main {
   </section>
 </main>
 
+<script>
+  // Apple Scroll Reveal Engine Interaction Layer
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
+
