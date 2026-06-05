@@ -3,1077 +3,268 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RISE — Get work. Get paid. Build Trust.</title>
+<title>RISE — The Trust Layer for Work</title>
 <link rel="icon" type="image/png" href="rise-logo.png.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 :root {
   --neon: #39FF14;
-  --neon-dim: rgba(57,255,20,0.12);
-  --neon-mid: rgba(57,255,20,0.35);
-  --bg: #080808;
-  --bg2: #0f0f0f;
-  --surface: #141414;
-  --surface2: #1c1c1c;
-  --border: rgba(255,255,255,0.07);
+  --bg: #000000;
   --fg: #ffffff;
-  --muted: #a3a3a3; /* Boosted from #666 for much better UI contrast and crisp text readability */
-  --deep-muted: #525252; /* Used for baseline contrast states */
+  --muted: #86868b; /* Apple-standard muted gray */
+  --border: rgba(255, 255, 255, 0.1);
   --font-head: 'Cabinet Grotesk', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
   overflow-x: hidden;
-  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+/* ── PREMIUM BACKGROUND ── */
+.radial-glow {
+  position: fixed; top: -40%; left: 50%; transform: translateX(-50%);
+  width: 100vw; height: 100vh;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.04) 0%, transparent 70%);
   pointer-events: none;
-  opacity: 0.4;
-}
-
-/* ── GRID BACKGROUND ── */
-.grid-bg {
-  position: fixed; inset: 0; z-index: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(57,255,20,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(57,255,20,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  z-index: 0;
 }
 
 /* ── NAV ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 40px;
+  position: absolute; top: 0; left: 0; right: 0; z-index: 10;
+  padding: 40px;
   display: flex; align-items: center; justify-content: space-between;
-  background: rgba(8,8,8,0.8);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  max-width: 1200px; margin: 0 auto;
 }
 
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-head);
-  font-weight: 900; font-size: 22px; color: var(--fg);
-  text-decoration: none;
-}
-
-.nav-logo img,
-.footer-logo img {
-  height: 42px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(57,255,20,.25));
-}
-
-@media (max-width: 768px) {
-  .nav-logo img,
-  .footer-logo img {
-    height: 34px;
-  }
-}
-
-.nav-pill {
-  display: flex; align-items: center; gap: 6px;
-  background: rgba(57,255,20,0.08);
-  border: 1px solid rgba(57,255,20,0.2);
-  border-radius: 100px;
-  padding: 6px 12px;
-  font-size: 12px; font-weight: 600;
-  color: var(--neon);
-}
-
-.nav-pill::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--neon);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+.nav-logo img {
+  height: 32px; width: auto;
 }
 
 .nav-cta {
-  background: var(--neon);
-  color: #000;
-  border: none; border-radius: 100px;
-  padding: 10px 22px;
-  font-family: var(--font-body);
-  font-weight: 700; font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
+  color: var(--fg);
   text-decoration: none;
+  font-size: 14px; font-weight: 500;
+  transition: opacity 0.2s;
 }
-.nav-cta:hover { filter: brightness(1.1); transform: scale(1.02); }
+.nav-cta:hover { opacity: 0.7; }
+
+/* ── MAIN LAYOUT ── */
+main {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 40px;
+}
 
 /* ── HERO ── */
 .hero {
-  position: relative; z-index: 1;
-  min-height: 100vh;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center;
-  padding: 120px 24px 80px;
-  overflow: hidden;
+  min-height: 90vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-top: 100px;
 }
-
-.hero-glow {
-  position: absolute;
-  top: -200px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 600px;
-  background: radial-gradient(ellipse, rgba(57,255,20,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--neon-dim);
-  border: 1px solid rgba(57,255,20,0.25);
-  border-radius: 100px;
-  padding: 8px 18px;
-  font-size: 13px; font-weight: 600; color: var(--neon);
-  margin-bottom: 32px;
-  animation: fadeUp 0.6s ease both;
-}
-
-.hero-badge span { opacity: 0.7; }
 
 .hero-title {
   font-family: var(--font-head);
   font-weight: 900;
-  font-size: clamp(52px, 8vw, 96px);
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  margin-bottom: 28px;
-  animation: fadeUp 0.6s 0.1s ease both;
-}
-
-.hero-title .line1 { display: block; color: var(--fg); }
-.hero-title .line2 { display: block; color: var(--fg); }
-.hero-title .line3 {
-  display: block;
-  color: var(--neon);
-  text-shadow: 0 0 60px rgba(57,255,20,0.4);
-}
-
-.hero-sub {
-  font-size: clamp(16px, 2vw, 20px);
-  color: var(--muted);
-  max-width: 480px;
-  margin: 0 auto 48px;
-  font-weight: 400;
-  animation: fadeUp 0.6s 0.2s ease both;
-}
-
-.hero-sub strong { color: rgba(255,255,255,0.7); font-weight: 500; }
-
-.hero-highlight {
-  color: var(--neon);
-  font-style: italic;
-}
-.hero-actions {
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
-  margin-bottom: 64px;
-  animation: fadeUp 0.6s 0.3s ease both;
-}
-
-.btn-primary {
-  background: var(--neon);
-  color: #000;
-  border: none; border-radius: 100px;
-  padding: 16px 36px;
-  font-family: var(--font-body);
-  font-size: 16px; font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: 0 0 40px rgba(57,255,20,0.2);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 60px rgba(57,255,20,0.35);
-  filter: brightness(1.05);
-}
-.btn-primary svg { width: 18px; height: 18px; }
-
-.btn-ghost {
-  background: transparent;
-  color: var(--fg);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  padding: 16px 36px;
-  font-family: var(--font-body);
-  font-size: 16px; font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-.btn-ghost:hover {
-  border-color: rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.04);
-}
-
-/* Social proof strip */
-.social-proof {
-  display: flex; align-items: center; gap: 16px;
-  animation: fadeUp 0.6s 0.4s ease both;
-  flex-wrap: wrap; justify-content: center;
-}
-
-.avatars {
-  display: flex;
-}
-.avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  border: 2px solid var(--bg);
-  margin-left: -8px;
-  font-family: var(--font-head);
-  font-weight: 800; font-size: 12px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.avatar:first-child { margin-left: 0; }
-.av1 { background: linear-gradient(135deg, #39FF14, #1a8a00); color: #000; }
-.av2 { background: linear-gradient(135deg, #ff6b35, #ff3535); color: #fff; }
-.av3 { background: linear-gradient(135deg, #6b35ff, #3535ff); color: #fff; }
-.av4 { background: linear-gradient(135deg, #ff35b5, #ff3535); color: #fff; }
-
-.social-text {
-  font-size: 13px; color: var(--muted);
-}
-.social-text strong { color: var(--fg); font-weight: 600; }
-
-.divider-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--surface2); }
-
-/* ── STATS BAR ── */
-.stats-bar {
-  position: relative; z-index: 1;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 0 40px;
-  display: flex; align-items: stretch;
-  overflow: hidden;
-}
-
-.stat-item {
-  flex: 1;
-  padding: 28px 24px;
-  display: flex; flex-direction: column;
-  align-items: center;
-  border-right: 1px solid var(--border);
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
-}
-.stat-item:last-child { border-right: none; }
-.stat-item.visible { opacity: 1; transform: translateY(0); }
-
-.stat-num {
-  font-family: var(--font-head);
-  font-size: 36px; font-weight: 900;
-  color: var(--neon);
-  line-height: 1;
-  text-shadow: 0 0 30px rgba(57,255,20,0.3);
-}
-.stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
-
-/* ── SECTIONS ── */
-section {
-  position: relative; z-index: 1;
-  padding: 100px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-label {
-  font-size: 12px; font-weight: 700;
-  color: var(--neon); letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  display: flex; align-items: center; gap: 8px;
-}
-.section-label::before {
-  content: '';
-  width: 20px; height: 2px;
-  background: var(--neon);
-}
-
-.section-title {
-  font-family: var(--font-head);
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-
-.section-body {
-  font-size: 18px; color: var(--muted);
-  max-width: 560px; font-weight: 400;
-  line-height: 1.7;
-}
-
-/* ── PROBLEM SECTION ── */
-.problem-section {
-  padding: 100px 40px;
-  position: relative; z-index: 1;
-  background: linear-gradient(180deg, transparent, var(--bg2) 30%, var(--bg2) 70%, transparent);
-}
-.problem-inner { max-width: 1200px; margin: 0 auto; }
-
-.problem-lines {
-  margin-top: 48px;
-  display: flex; flex-direction: column; gap: 0;
-}
-.problem-line {
-  font-family: var(--font-head);
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 800;
-  line-height: 1.2;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; gap: 20px;
-  color: rgba(255,255,255,0.45); /* Enhanced contrast baseline */
-  transition: color 0.4s ease;
-  opacity: 1; transform: none; /* Fixed fallback states */
-}
-.problem-line.visible { opacity: 1; transform: translateX(0); color: rgba(255,255,255,0.45); }
-.problem-line.highlight { color: var(--fg) !important; }
-.problem-line.green { color: var(--neon) !important; text-shadow: 0 0 40px rgba(57,255,20,0.3); }
-
-.problem-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 18px;
-}
-
-/* ── HOW IT WORKS ── */
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-  margin-top: 60px;
-  background: var(--border);
-  border-radius: 20px; overflow: hidden;
-}
-
-.step-card {
-  background: var(--bg2);
-  padding: 36px 28px;
-  position: relative;
-  opacity: 1; transform: none;
-}
-.step-card.visible { opacity: 1; transform: translateY(0); }
-.step-card:hover { background: var(--surface); }
-
-.step-num {
-  font-family: var(--font-head);
-  font-size: 48px; font-weight: 900;
-  color: var(--neon);
-  line-height: 1;
-  margin-bottom: 20px;
-  opacity: 0.6;
-}
-
-.step-title {
-  font-family: var(--font-head);
-  font-size: 20px; font-weight: 800;
-  margin-bottom: 12px;
-  color: var(--fg);
-}
-
-.step-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
-
-/* ── FEATURES ── */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 60px;
-}
-
-.feature-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  position: relative; overflow: hidden;
-  opacity: 1; transform: none;
-}
-.feature-card.visible { opacity: 1; transform: translateY(0); }
-.feature-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(57,255,20,0.3), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.feature-card:hover::before { opacity: 1; }
-.feature-card:hover { border-color: rgba(57,255,20,0.15); background: #161616; }
-
-.feature-card.large {
-  grid-column: span 2;
-}
-
-.feature-icon {
-  width: 48px; height: 48px;
-  background: var(--neon-dim);
-  border: 1px solid rgba(57,255,20,0.2);
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 24px;
-  font-size: 22px;
-}
-
-.feature-title {
-  font-family: var(--font-head);
-  font-size: 20px; font-weight: 800;
-  margin-bottom: 10px;
-}
-
-.feature-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
-
-.feature-tag {
-  display: inline-block;
-  background: var(--neon-dim);
-  border: 1px solid rgba(57,255,20,0.2);
-  color: var(--neon);
-  font-size: 11px; font-weight: 700;
-  border-radius: 100px;
-  padding: 4px 10px;
-  margin-top: 16px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-/* Score display */
-.score-display {
-  margin-top: 24px;
-  display: flex; align-items: baseline; gap: 12px;
-}
-.score-num {
-  font-family: var(--font-head);
-  font-size: 56px; font-weight: 900;
-  color: var(--neon);
-  text-shadow: 0 0 40px rgba(57,255,20,0.4);
-  line-height: 1;
-}
-.score-details { display: flex; flex-direction: column; gap: 4px; }
-.score-tier { font-size: 13px; font-weight: 700; color: var(--fg); }
-.score-sub { font-size: 12px; color: var(--muted); }
-
-/* ── WHO IT'S FOR ── */
-.audience-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-top: 60px;
-}
-
-.audience-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px; padding: 36px;
-  position: relative; overflow: hidden;
-  cursor: default;
-  opacity: 1; transform: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.audience-card.visible { opacity: 1; transform: translateY(0); }
-.audience-card:hover { 
-  border-color: rgba(57,255,20,0.4); 
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(57,255,20,0.06);
-}
-
-.audience-card::after {
-  content: attr(data-emoji);
-  position: absolute;
-  right: 28px; bottom: 20px;
-  font-size: 48px; opacity: 0.15;
-  transition: opacity 0.3s, transform 0.3s;
-}
-.audience-card:hover::after { opacity: 0.25; transform: scale(1.1) rotate(-5deg); }
-
-.audience-label {
-  font-size: 11px; font-weight: 700;
-  color: var(--neon); letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 12px;
-}
-.audience-title {
-  font-family: var(--font-head);
-  font-size: 26px; font-weight: 900;
-  margin-bottom: 12px;
-}
-.audience-body { font-size: 15px; color: var(--muted); line-height: 1.6; max-width: 320px; }
-
-/* ── EARLY ACCESS ── */
-.early-section {
-  position: relative; z-index: 1;
-  padding: 0 40px 100px;
-}
-.early-inner {
-  max-width: 1200px; margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid rgba(57,255,20,0.15);
-  border-radius: 28px;
-  padding: 72px;
-  position: relative; overflow: hidden;
-  text-align: center;
-}
-.early-glow {
-  position: absolute;
-  top: -100px; left: 50%; transform: translateX(-50%);
-  width: 600px; height: 400px;
-  background: radial-gradient(ellipse, rgba(57,255,20,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.early-inner .section-label { justify-content: center; }
-
-/* In-line Custom Waitlist Form Styles */
-.early-form-container {
-  max-width: 500px;
-  margin: 0 auto 32px;
-  position: relative;
-  z-index: 2;
-}
-
-.early-form {
-  display: flex;
-  background: #090909;
-  border: 1px solid var(--border);
-  padding: 6px;
-  border-radius: 100px;
-  width: 100%;
-}
-
-.early-form:focus-within {
-  border-color: rgba(57, 255, 20, 0.4);
-  box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
-}
-
-.early-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 0 24px;
-  color: var(--fg);
-  font-family: var(--font-body);
-  font-size: 15px;
-}
-
-.early-input::placeholder {
-  color: #555;
-}
-
-.early-submit {
-  background: var(--neon);
-  color: #000;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.early-submit:hover {
-  filter: brightness(1.1);
-}
-
-.spots-counter {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: rgba(57,255,20,0.08);
-  border: 1px solid rgba(57,255,20,0.2);
-  border-radius: 100px;
-  padding: 10px 20px;
+  font-size: clamp(56px, 7vw, 105px);
+  line-height: 1.02; letter-spacing: -0.04em;
   margin-bottom: 32px;
 }
-.spots-bar {
-  width: 120px; height: 4px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 2px; overflow: hidden;
-}
-.spots-fill {
-  height: 100%; width: 8%;
-  background: var(--neon);
-  border-radius: 2px;
-}
-.spots-text { font-size: 13px; font-weight: 600; color: var(--fg); }
-.spots-num { color: var(--neon); }
 
-.early-title {
-  font-family: var(--font-head);
-  font-size: clamp(36px, 5vw, 64px);
-  font-weight: 900; letter-spacing: -0.02em;
-  line-height: 1.05; margin-bottom: 20px;
-}
-.early-body { font-size: 18px; color: var(--muted); margin-bottom: 40px; }
+.hero-title span { display: block; }
+.hero-title .highlight { color: var(--neon); }
 
-.perks-row {
-  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px;
-  margin-bottom: 40px;
-}
-.perk {
-  display: flex; align-items: center; gap: 6px;
-  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7);
-}
-.perk::before { content: '✓'; color: var(--neon); font-weight: 800; }
-
-/* ── FOOTER ── */
-footer {
-  position: relative; z-index: 1;
-  border-top: 1px solid var(--border);
-  padding: 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 20px;
-}
-
-.footer-logo {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--font-head);
-  font-weight: 900; font-size: 18px; color: var(--fg);
-  text-decoration: none;
-}
-.footer-tagline { font-size: 13px; color: var(--muted); margin-top: 4px; }
-.footer-copy { font-size: 13px; color: var(--muted); }
-
-
-/* ── WHY RISE MATTERS ── */
-.why-matters {
-  position: relative; z-index: 1;
-  max-width: none;
-  background: var(--bg2);
-  padding: 100px 40px;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-.centered-label { justify-content: center; }
-.centered-label::before { display: none; }
-.why-title {
-  font-family: var(--font-head);
-  font-size: clamp(36px, 5vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 900;
+.hero-sub {
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.4; font-weight: 400;
   margin-bottom: 48px;
 }
-.why-lines { max-width: 760px; margin: 0 auto; }
-.why-line {
+
+/* ── BIG STATS & CONTEXT ── */
+.narrative {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.statement {
   font-family: var(--font-head);
-  font-size: clamp(22px, 3vw, 34px);
-  font-weight: 800;
-  color: rgba(255,255,255,0.45); /* Enhanced contrast from dark gray */
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-  opacity: 1; transform: none;
+  font-size: clamp(28px, 4vw, 54px);
+  font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em; max-width: 900px;
+  color: #f5f5f7; margin-bottom: 80px;
 }
-.why-line.visible { opacity: 1; transform: translateY(0); }
-.why-line.final {
-  color: var(--neon);
-  font-size: clamp(34px, 5vw, 56px);
-  text-shadow: 0 0 40px rgba(57,255,20,0.25);
-  border-bottom: none;
-  text-align: left;
-  max-width: 760px;
-  margin: 0 auto;
+
+.statement em { font-style: normal; color: var(--muted); }
+
+/* ── SYSTEM GRID ── */
+.grid-system {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px; margin-bottom: 120px;
 }
-.problem-divider { height: 1px; background: var(--border); margin: 12px 0; }
-.problem-line.negative { color: var(--fg) !important; font-size: clamp(22px, 3vw, 38px); }
-.problem-icon.bad { color: #ff4d7d; background: transparent; border: none; font-size: 34px; }
-.problem-icon.good { color: var(--neon); background: var(--neon-dim); border-color: rgba(57,255,20,0.25); font-size: 24px; }
 
-/* ── APP SHOWCASE ── */
-.app-showcase { text-align: center; max-width: 1200px; padding-top: 80px; }
-.showcase-title { margin-left: auto; margin-right: auto; }
-.showcase-sub { color: var(--muted); font-size: 18px; margin-bottom: 60px; }
-.phone-row { display: flex; align-items: flex-end; justify-content: center; gap: 28px; flex-wrap: wrap; }
-.phone-wrap { width: 170px; opacity: 1; transform: none; }
-.phone-wrap.visible { opacity: 1; transform: translateY(0); }
-.phone-wrap.raised { margin-bottom: 42px; }
-.phone-wrap.raised-small { margin-bottom: 24px; }
-.phone-frame { height: 330px; border-radius: 32px; background: #0b0b0b; border: 1px solid rgba(255,255,255,0.12); padding: 18px 12px 12px; box-shadow: 0 20px 80px rgba(57,255,20,0.08); position: relative; }
-.phone-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 50px; height: 10px; border-radius: 20px; background: #171717; }
-.phone-screen { height: 100%; border-radius: 24px; background: #101010; padding: 28px 10px 10px; text-align: left; overflow: hidden; }
-.phone-screen small { color: var(--muted); font-size: 8px; letter-spacing: .08em; font-weight: 800; }
-.mini-card { background:#1b1b1b; border:1px solid var(--border); border-radius:10px; padding:10px; margin-top:10px; display:flex; flex-direction:column; gap:3px; }
-.mini-card strong { font-size: 10px; color: var(--fg); }
-.mini-card span { font-size: 8px; color: var(--muted); }
-.mini-card b { font-size: 9px; color: var(--neon); }
-.mini-card em { align-self:flex-end; background:var(--neon); color:#000; font-style:normal; font-size:8px; font-weight:800; padding:3px 8px; border-radius:20px; }
-.circle-score { width:64px;height:64px;border:2px solid var(--neon);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--neon);font-weight:900;font-size:22px;margin:10px auto 12px; }
-.trust-mini { text-align:center; }
-.trust-mini strong { display:block; font-size:12px; margin-bottom:4px; }
-.trusted-pill,.protected { display:inline-block;background:var(--neon);color:#000;border-radius:20px;font-size:8px;font-weight:800;padding:3px 8px;margin-bottom:16px; }
-.trust-mini p,.wallet-mini p { color:var(--muted); font-size:8px; display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:7px 0; }
-.trust-mini p b,.wallet-mini p b { color: var(--neon); }
-.wallet-mini h3 { color:var(--fg); font-size:22px; margin:8px 0 2px; }
-.actions { display:flex; gap:4px; margin:12px 0; }
-.actions button,.group-mini button { background:#202020;color:#fff;border:1px solid var(--border);border-radius:8px;padding:5px 7px;font-size:8px;font-weight:700; }
-.group-mini button { width:100%; margin-top:14px; color: var(--neon); border-color: rgba(57,255,20,0.3); }
-.phone-label { color: rgba(255,255,255,0.25); font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-top:16px; }
-@keyframes floaty { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-12px);} }
-.phone-frame { animation: floaty 5.5s ease-in-out infinite; }
+.grid-system.large { grid-template-columns: repeat(2, 1fr); }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+.cell {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+}
+
+.cell-num {
+  font-size: 13px; font-weight: 500; color: var(--neon);
+  margin-bottom: 16px; display: block;
+}
+
+.cell-title {
+  font-family: var(--font-head);
+  font-size: 22px; font-weight: 700; margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.cell-body {
+  font-size: 15px; color: var(--muted); line-height: 1.6;
+}
+
+/* ── THE SCORE CALLOUT ── */
+.score-callout {
+  grid-column: span 3;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 24px; padding: 60px;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+}
+
+.score-text { max-width: 500px; }
+.score-big {
+  font-family: var(--font-head);
+  font-size: 110px; font-weight: 900; color: var(--neon);
+  line-height: 1; letter-spacing: -0.05em;
+}
+
+/* ── CLOSING / WAITLIST ── */
+.cta-block {
+  text-align: center;
+  padding: 160px 0 200px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-premium {
+  display: inline-block;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  padding: 20px 48px;
+  border-radius: 100px;
+  font-size: 16px; font-weight: 500;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-premium:hover {
+  transform: scale(1.02);
+  background: #f5f5f7;
 }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  nav { padding: 16px 20px; }
-  .nav-pill { display: none; }
-  section { padding: 60px 20px; }
-  .problem-section { padding: 60px 20px; }
-  .steps-grid { grid-template-columns: repeat(2, 1fr); }
-  .features-grid { grid-template-columns: 1fr; }
-  .feature-card.large { grid-column: span 1; }
-  .audience-grid { grid-template-columns: 1fr; }
-  .stats-bar { flex-direction: column; }
-  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-  .early-inner { padding: 40px 24px; }
-  .early-section { padding: 0 20px 60px; }
-  footer { padding: 32px 20px; }
-  .early-form { border-radius: 20px; flex-direction: column; gap: 10px; background: transparent; border: none; padding: 0; }
-  .early-input { background: #090909; border: 1px solid var(--border); border-radius: 100px; padding: 16px 24px; }
-  .early-submit { width: 100%; padding: 16px; }
-}
-
-@media (max-width: 600px) {
-  .hero-title { font-size: 44px; }
-  .steps-grid { grid-template-columns: 1fr; }
-  .hero-actions { flex-direction: column; width: 100%; }
-  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  nav { padding: 30px 24px; }
+  main { padding: 0 24px; }
+  .grid-system, .grid-system.large { grid-template-columns: 1fr; gap: 40px; }
+  .score-callout { grid-column: span 1; flex-direction: column; text-align: center; padding: 40px 24px; }
+  .cta-block { padding: 100px 0 140px; }
 }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
+<div class="radial-glow"></div>
 
-<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">
-    <img src="rise-logo.png.png" alt="RISE Logo">
+    <img src="rise-logo.png.png" alt="RISE">
   </a>
-  <div class="nav-pill">Coming soon — Lagos & Abuja</div>
   <a href="https://tally.so/r/68py7B" target="_blank" class="nav-cta">Join Waitlist</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-glow"></div>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">
+      <span>Get work.</span>
+      <span>Get paid.</span>
+      <span class="highlight">Build Trust.</span>
+    </h1>
+    <p class="hero-sub">The trust layer for work in Nigeria. Get hired, secure payments, and build a reputation that travels with you everywhere.</p>
+  </section>
 
-   <h1 class="hero-title">
-    <span class="line1">Get work.</span>
-    <span class="line2">Get paid.</span>
-    <span class="line3">Build Trust.</span>
-  </h1>
+  <!-- THE NARRATIVE STATEMENT -->
+  <section class="narrative">
+    <h2 class="statement">
+      Over 85 million Nigerians operate in the informal economy—<em>generating value every day, yet remaining financially invisible. RISE builds the infrastructure to verify that talent and scale trust.</em>
+    </h2>
 
- <p class="hero-sub">
-  The trust layer for work in Nigeria.
-  Get hired, get paid, and build a reputation
-  that follows you
-  <span class="hero-highlight">everywhere.</span>
-</p> 
-
-  <div class="hero-actions">
-    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary">
-      Join the Waitlist
-      <svg viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-    <a href="#how" class="btn-ghost">See how it works</a>
-  </div>
-
-  <div class="social-proof">
-    <div class="avatars">
-      <div class="avatar av1">T</div>
-      <div class="avatar av2">K</div>
-      <div class="avatar av3">A</div>
-      <div class="avatar av4">F</div>
+    <!-- HOW IT WORKS MECHANICS -->
+    <div class="grid-system">
+      <div class="cell">
+        <span class="cell-num">// 01</span>
+        <h3 class="cell-title">Market Discovery</h3>
+        <p class="cell-body">Browse and apply for opportunities verified for your exact specialization across Lagos, Abuja, and remote ecosystems.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">// 02</span>
+        <h3 class="cell-title">Protected Capital</h3>
+        <p class="cell-body">Eliminate invoice disputes. Contract capital is secured prior to initiation and automatically distributed upon confirmation.</p>
+      </div>
+      <div class="cell">
+        <span class="cell-num">// 03</span>
+        <h3 class="cell-title">Reputation Portability</h3>
+        <p class="cell-body">Every successfully completed project and transaction performance loops directly into your permanent operational profile.</p>
+      </div>
     </div>
-    <p class="social-text"><strong>First 1,000 Risers</strong> get early access</p>
-    <div class="divider-dot"></div>
-    <p class="social-text">Lagos · Abuja · Remote</p>
-  </div>
-</section>
+  </section>
 
-<!-- WHY RISE MATTERS (Moved up contextually to establish high-stakes problem right away) -->
-<section class="why-matters" id="why-matters">
-  <div class="section-label centered-label">Why RISE Matters</div>
-  <h2 class="why-title">85M+ Nigerians work in<br />the informal economy.</h2>
-  <div class="why-lines">
-    <div class="why-line">Most have no financial history.</div>
-    <div class="why-line">Most have no way to prove they can be trusted.</div>
-    <div class="why-line">Most platforms stop at finding work.</div>
-    <div class="why-line final">RISE helps people build a future.</div>
-  </div>
-</section>
+  <!-- FEATURES / ADVANCED CAPABILITIES -->
+  <section class="narrative" style="padding-top: 0;">
+    <div class="grid-system large">
+      <div class="cell">
+        <h3 class="cell-title">Ajo Group Digitization</h3>
+        <p class="cell-body">Traditional community savings models, completely upgraded. Create or join verified, fraud-proof pools with trusted peers within your industry node.</p>
+      </div>
+      <div class="cell">
+        <h3 class="cell-title">Targeted Ecosystem Routing</h3>
+        <p class="cell-body">Engineered for absolute focus. Direct communications are exclusively attached to active milestones—removing noise, platform friction, and unvetted inquiries.</p>
+      </div>
 
-<!-- APP SHOWCASE (Now serves as immediate visual confirmation of the solution) -->
-<section class="app-showcase" id="app">
-  <div class="section-label centered-label">The Platform</div>
-  <h2 class="section-title showcase-title">Everything you need to earn,<br />save, and grow.</h2>
-  <p class="showcase-sub">Built for how Nigerians actually work.</p>
-
-  <div class="phone-row">
-    <div class="phone-wrap float-one">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <small>JOBS FOR YOU</small>
-          <div class="mini-card"><strong>UI Designer</strong><span>TechLagos</span><b>₦85,000</b><em>Apply</em></div>
-          <div class="mini-card"><strong>Event MC</strong><span>EventsNG</span><b>₦140,000</b><em>Apply</em></div>
-          <div class="mini-card"><strong>Copywriter</strong><span>BrandHub</span><b>₦90,000</b><em>Apply</em></div>
+      <!-- THE CORE MOAT ROW -->
+      <div class="score-callout">
+        <div class="score-text">
+          <span class="cell-num" style="margin-bottom:8px;">THE PROTOCOL</span>
+          <h3 class="cell-title" style="font-size:28px;">The Trust Score</h3>
+          <p class="cell-body">A unified rating system aggregating completion velocity, transaction history, and user feedback. It turns your daily work habits into an institutional-grade reputation that eventually unlocks credit, partnerships, and premium tiers.</p>
         </div>
-      </div>
-      <div class="phone-label">FIND JOBS</div>
-    </div>
-
-    <div class="phone-wrap float-two raised">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen trust-mini">
-          <div class="circle-score">4.8</div>
-          <strong>Trust Score</strong>
-          <span class="trusted-pill">Trusted</span>
-          <p>Jobs completed <b>18</b></p>
-          <p>On-time rate <b>100%</b></p>
-          <p>Reviews <b>4.8 ★</b></p>
-        </div>
-      </div>
-      <div class="phone-label">BUILD YOUR TRUST SCORE</div>
-    </div>
-
-    <div class="phone-wrap float-three">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen wallet-mini">
-          <small>Available Balance</small>
-          <h3>₦24,500</h3>
-          <span class="protected">Protected</span>
-          <div class="actions"><button>Add</button><button>Send</button><button>Withdraw</button></div>
-          <p>Job: UI Design <b>+₦85,000</b></p>
-          <p>Savings Goal <b>-₦10,000</b></p>
-          <p>Job: Copywriter <b>+₦90,000</b></p>
-        </div>
-      </div>
-      <div class="phone-label">GET PAID SAFELY</div>
-    </div>
-
-    <div class="phone-wrap float-four raised-small">
-      <div class="phone-frame">
-        <div class="phone-notch"></div>
-        <div class="phone-screen group-mini">
-          <small>AJO GROUPS</small>
-          <div class="mini-card"><strong>Tech Creatives</strong><span>12 members · ₦10,000/mo</span><b>82% funded</b></div>
-          <div class="mini-card"><strong>Lagos Hustlers</strong><span>8 members · ₦15,000/mo</span><b>40% funded</b></div>
-          <button>+ Join a Group</button>
-        </div>
-      </div>
-      <div class="phone-label">AJO / SUSU GROUPS</div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<div class="problem-section" id="problem">
-  <div class="problem-inner">
-    <div class="section-label">Why RISE Exists</div>
-    <div class="problem-lines">
-      <div class="problem-line negative"><div class="problem-icon bad">×</div>Ghost clients never pay.</div>
-      <div class="problem-line negative"><div class="problem-icon bad">×</div>Businesses struggle to find trusted workers.</div>
-      <div class="problem-line negative"><div class="problem-icon bad">×</div>Good workers start from zero every time.</div>
-      <div class="problem-line negative"><div class="problem-icon bad">×</div>Millions have no financial history.</div>
-      <div class="problem-divider"></div>
-      <div class="problem-line">
-        <div class="problem-icon good">✓</div>
-        <span style="color:var(--neon)">RISE</span> &nbsp;helps people earn, save, build trust, and unlock opportunity.
+        <div class="score-big">4.8</div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="section-label">How It Works</div>
-  <h2 class="section-title">Simple on the surface.<br />Powerful underneath.</h2>
-  <p class="section-body">Four steps from invisible to trusted. Every verified action builds your Trust Score.</p>
-
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-title">Find Jobs</div>
-      <p class="step-body">Browse jobs matched to your skill and location. Beauty, events, tech, creative — and remote opportunities across Nigeria.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-title">Get Paid Safely</div>
-      <p class="step-body">Money is held in a protected payment until the job is done. No more ghost clients. No more chasing payments.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-title">Build Your Trust Score</div>
-      <p class="step-body">Every completed job, savings streak, and verified action builds a Trust Score that travels with you.</p>
-    </div>
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div class="step-title">Unlock More</div>
-      <p class="step-body">A high Trust Score unlocks better jobs, lower fees, savings tools, Ajo/Susu groups — and eventually, access to credit.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" style="padding-top: 0;">
-  <div class="section-label">What's Inside</div>
-  <h2 class="section-title">Everything you need.<br />Nothing you don't.</h2>
-
-  <div class="features-grid">
-    <div class="feature-card large">
-      <div class="feature-icon">⭐</div>
-      <div class="feature-title">Your Trust Score</div>
-      <p class="feature-body">One score that tracks everything — completed jobs, reviews, response speed, payment reliability. Not a points game. A real trust layer that compounds over time and eventually unlocks access to credit, rentals, and opportunities banks would never give you.</p>
-      <div class="score-display">
-        <div class="score-num">★ 4.8</div>
-        <div class="score-details">
-          <div class="score-tier">Trusted</div>
-          <div class="score-sub">Built from your habits.</div>
-        </div>
-      </div>
-      <div class="feature-tag">The moat</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🔒</div>
-      <div class="feature-title">Protected Payments</div>
-      <p class="feature-body">Money is held safely in the app until the job is confirmed complete. Businesses can't ghost. Workers always get paid.</p>
-      <div class="feature-tag">Zero ghost clients</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">💼</div>
-      <div class="feature-title">Job Marketplace</div>
-      <p class="feature-body">Browse and apply for jobs in Beauty, Events, Tech, Creative, and Remote. Lagos, Abuja, and beyond.</p>
-      <div class="feature-tag">Live jobs</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">🫱</div>
-      <div class="feature-title">Ajo / Susu Groups</div>
-      <p class="feature-body">The savings tradition you already trust — now digitised, verified, and fraud-proof. Create or join a pool with trusted people.</p>
-      <div class="feature-tag">Culturally rooted</div>
-    </div>
-
-    <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <div class="feature-title">Direct Messaging</div>
-      <p class="feature-body">Message businesses directly about specific jobs. Every conversation tied to a real opportunity — no spam, no noise.</p>
-      <div class="feature-tag">Job-attached only</div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO IT'S FOR -->
-<section id="who">
-  <div class="section-label">Who It's For</div>
-  <h2 class="section-title">Built for Nigerians<br />who <span style="color:var(--neon)">actually hustle.</span></h2>
-
-  <div class="audience-grid">
-    <div class="audience-card" data-emoji="💄">
-      <div class="audience-label">Hustlers</div>
-      <div class="audience-title">Creatives & Freelancers</div>
-      <p class="audience-body">Makeup artists, photographers, designers, stylists, DJs, videographers. Turn your skill into a verified career with a Trust Score that follows your work.</p>
-    </div>
+  <!-- FINAL CALL TO ACTION (Clean, elegant layout with requested closing metadata) -->
+  <section class="cta-block">
+    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-premium">Request Early Access</a>
     
-    <div class="audience-card" data-emoji="🎪">
-      <div class="audience-label">Events & Services</div>
-      <div class="audience-title">Event Professionals</div>
-      <p class="audience-body">MCs, decorators, event staff, caterers. Get discovered by serious businesses. Build a track record that speaks before you even walk in the door.</p>
-    </div>
-
-    <div class="audience-card" data-emoji="🏢">
-      <div class="audience-label">Businesses</div>
-      <div class="audience-title">Business Owners</div>
-      <p class="audience-body">Hire verified talent, hold payments securely until work is done, and build a Trust Score as a business people actually want to work for.</p>
-    </div>
-
-    <div class="audience-card" data-emoji="🌍">
-      <div class="audience-label">Remote</div>
-      <div class="audience-title">Remote Workers</div>
-      <p class="audience-body">Social media managers, VAs, video editors. Work for businesses anywhere in Nigeria — or beyond. Your Trust Score follows your work.</p>
-    </div>
-  </div>
-</section>
-
-<!-- EARLY ACCESS (Converted to ultra-slick context-embedded form) -->
-<section class="early-section">
-  <div class="early-inner">
-    <div class="early-glow"></div>
-    <div class="section-label">Early Access</div>
-    
-    <div class="spots-counter">
-      <div class="spots-bar"><div class="spots-fill"></div></div>
-      <div class="spots-text">Join the first <span class="spots-num">1,000 Risers.</span></div>
-    </div>
-
-    <h2 class="early-title">Join the first<br><span style="color: var(--neon);">1,000 Risers.</span></h2>
-    <p class="early-body">Early birds get discounted onboarding, priority placement, and early access to every new feature. Be part of building something that changes how Nigeria works.</p>
-
-    <!-- Frictionless In-Line Email Input -->
-    <div class="early-form-container">
-      <form class="early-form" action="https://tally.so/r/68py7B" method="GET" target="_blank">
-        <input type="email" name="email" class="early-input" placeholder="Enter your email address" required />
-        <button type="submit" class="early-submit">Get Early Access →</button>
-      </form>
-    </div>
-
-    <div class="perks-row">
-      <div class="perk">Priority job placement</div>
-      <div class="perk">Discounted onboarding</div>
-      <div class="perk">Early feature access</div>
-      <div class="perk">Founding Riser badge</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <a href="/" class="nav-logo footer-logo">
-      <img src="rise-logo.png.png" alt="RISE Logo">
-    </a>
-    <div class="footer-tagline">The trust layer for work in Nigeria.</div>
-  </div>
-  <div class="footer-copy">© 2026 RISE. All rights reserved.</div>
-</footer>
+    <p style="margin-top:20px;font-size:13px;color:var(--muted);line-height:1.7;">
+      No payment required<br>
+      Lagos & Abuja launching first
+    </p>
+  </section>
+</main>
 
 </body>
 </html>
