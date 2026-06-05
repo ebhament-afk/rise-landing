@@ -637,9 +637,12 @@ footer {
 .why-line.visible { opacity: 1; transform: translateY(0); }
 .why-line.final {
   color: var(--neon);
-  font-size: clamp(28px, 4vw, 46px);
+  font-size: clamp(34px, 5vw, 56px);
   text-shadow: 0 0 40px rgba(57,255,20,0.25);
   border-bottom: none;
+  text-align: left;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .problem-divider { height: 1px; background: var(--border); margin: 12px 0; }
 .problem-line.negative { color: var(--fg) !important; font-size: clamp(22px, 3vw, 38px); }
@@ -735,10 +738,16 @@ footer {
     <span class="line3">Build Trust.</span>
   </h1>
 
-  <p class="hero-sub">
-    Find jobs. Get paid safely. Build a Trust Score that opens more opportunities.
-  </p>
-
+ <p class="hero-sub">
+  The trust layer for work in Nigeria.
+  Get hired, get paid, and build a reputation
+  that follows you
+  <span class="hero-highlight">everywhere.</span>
+</p> 
+.hero-highlight {
+  color: var(--neon);
+  font-style: italic;
+}
   <div class="hero-actions">
     <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary">
       Join the Waitlist
@@ -832,7 +841,7 @@ footer {
   <h2 class="why-title">85M+ Nigerians work in<br />the informal economy.</h2>
   <div class="why-lines">
     <div class="why-line">Most have no financial history.</div>
-    <div class="why-line">Most have no trusted Trust Score system.</div>
+   <div class="why-line">Most have no way to prove they can be trusted.</div>
     <div class="why-line">Most platforms help people find work.</div>
     <div class="why-line final">RISE helps people build a future.</div>
   </div>
@@ -968,12 +977,15 @@ footer {
     <div class="early-glow"></div>
     <div class="section-label">Early Access</div>
 
-    <div class="spots-counter">
-      <div class="spots-bar"><div class="spots-fill"></div></div>
-      <span class="spots-text"><span class="spots-num">First 1,000</span> spots available</span>
-    </div>
+<p style="font-size:13px;color:var(--muted);margin-bottom:32px;">
+  Lagos & Abuja launching first · No payment required
+</p>
 
-    <h2 class="early-title">Join the first<br /><span style="color:var(--neon)">1,000 Risers.</span></h2>
+    <h2 class="early-title">
+  Build your reputation.<br />
+  <span style="color:var(--neon)">Before everyone else does.</span>
+</h2>
+    
     <p class="early-body">Early birds get discounted onboarding, priority placement, and early access to every new feature. Be part of building something that changes how Nigeria works.</p>
 
     <div class="perks-row">
