@@ -6,17 +6,17 @@
 <title>RISE — The Trust Layer for Work</title>
 <link rel="icon" type="image/png" href="rise-logo.png.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root {
   --neon: #39FF14;
-  --bg: #000000;
-  --fg: #ffffff;
+  --bg: #0A0A0C;
+  --fg: #FFFFFF;
   --muted: #86868b;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --border: rgba(255, 255, 255, 0.06);
   --font-head: 'Cabinet Grotesk', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,197 +29,186 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── INTERACTIVE AMBIENT GLOWS ── */
-.ambient-glow {
-  position: absolute; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(57, 255, 20, 0.03) 0%, transparent 70%);
-  top: -200px; left: 50%; transform: translateX(-50%);
-  pointer-events: none; z-index: 0;
+/* ── KINETIC AMBIENT BACKGROUND ── */
+.bg-glows {
+  position: fixed; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;
+}
+.glow-1 {
+  position: absolute; top: -10%; left: 30%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.04) 0%, transparent 70%);
+  animation: pulseGlow 8s ease-in-out infinite alternate;
+}
+.glow-2 {
+  position: absolute; bottom: 10%; right: -10%; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.02) 0%, transparent 60%);
 }
 
-/* ── NAV WITH GLASS EFFECT ── */
+/* ── PREMIUM NAVIGATION ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 24px 40px;
-  display: flex; align-items: center; justify-content: space-between;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10, 10, 12, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
 }
-
-.nav-logo img { height: 28px; width: auto; transition: transform 0.3s ease; }
-.nav-logo img:hover { transform: scale(1.03); }
-
+.nav-logo img { height: 28px; width: auto; }
 .nav-cta {
-  color: var(--fg); text-decoration: none; font-size: 14px; font-weight: 500;
-  padding: 8px 18px; border-radius: 100px; border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.05); transition: all 0.3s ease;
+  color: var(--bg); text-decoration: none; font-size: 14px; font-weight: 600;
+  padding: 12px 24px; border-radius: 100px; background: var(--fg);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.nav-cta:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.nav-cta:hover { transform: translateY(-2px); background: var(--neon); box-shadow: 0 8px 24px rgba(57, 255, 20, 0.25); }
 
-/* ── MAIN LAYOUT ── */
+/* ── LAYOUT CONTAINER ── */
 main { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
 
-/* ── INTRO / HERO ANIMATION ── */
+/* ── HERO LAYER ── */
 .hero {
-  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-  padding-top: 100px; position: relative;
+  min-height: 95vh; display: flex; flex-direction: column; justify-content: center;
+  padding-top: 80px;
 }
+.hero-badge {
+  align-self: flex-start; display: flex; align-items: center; gap: 8px;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
+  padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
+  color: var(--neon); margin-bottom: 32px;
+  opacity: 0; transform: translateY(20px); animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-badge span { display: inline-block; width: 6px; height: 6px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 8px var(--neon); }
 
 .hero-title {
   font-family: var(--font-head); font-weight: 900;
-  font-size: clamp(54px, 7.5vw, 110px); line-height: 0.98; letter-spacing: -0.04em;
+  font-size: clamp(52px, 8vw, 115px); line-height: 0.95; letter-spacing: -0.04em;
   margin-bottom: 36px; opacity: 0; transform: translateY(30px);
-  animation: appleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
-
 .hero-title span { display: block; }
-.hero-title .highlight {
-  color: var(--neon);
-  text-shadow: 0 0 60px rgba(57, 255, 20, 0.15);
-}
+.hero-title .highlight { color: var(--neon); text-shadow: 0 0 80px rgba(57, 255, 20, 0.15); }
 
 .hero-sub {
-  font-size: clamp(20px, 2.5vw, 26px); color: var(--muted); max-width: 620px;
-  line-height: 1.4; font-weight: 400; opacity: 0; transform: translateY(20px);
-  animation: appleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  font-size: clamp(18px, 2.2vw, 24px); color: var(--muted); max-width: 650px;
+  line-height: 1.45; font-weight: 400; opacity: 0; transform: translateY(20px);
+  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
 }
 
-/* ── PREMIUM INTERACTIVE SHOWCASE ── */
-.showcase-section { padding: 120px 0; }
-
-.split-layout {
-  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
-}
-
+/* ── MACRO STATEMENT LAYER ── */
+.narrative { padding: 140px 0 100px; border-top: 1px solid var(--border); }
 .statement {
-  font-family: var(--font-head); font-size: clamp(28px, 3.5vw, 48px);
-  font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #f5f5f7;
+  font-family: var(--font-head); font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #F5F5F7;
 }
 .statement em { font-style: normal; color: var(--muted); }
 
-/* Premium CSS Native Glass Phone Interface */
-.phone-canvas {
-  position: relative; width: 100%; max-width: 380px; margin: 0 auto;
-  aspect-ratio: 9 / 18.5; border-radius: 48px; background: #08080a;
-  border: 4px solid #1c1c1e; box-shadow: 0 30px 100px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.02);
-  padding: 16px; overflow: hidden;
-}
-
-.phone-screen {
-  width: 100%; height: 100%; background: #000; border-radius: 36px;
-  border: 1px solid rgba(255,255,255,0.05); padding: 32px 20px 20px;
-  display: flex; flex-direction: column; gap: 16px; position: relative;
-}
-
-.phone-island {
-  position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-  width: 90px; height: 22px; background: #1c1c1e; border-radius: 20px;
-}
-
-/* Simulated Fluid App Interfaces */
-.app-card {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 16px; padding: 16px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0; transform: scale(0.95); animation: appleReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-}
-.app-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-
-.app-card .meta { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 8px; }
-.app-card .value { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 4px; }
-.app-card .desc { font-size: 13px; color: var(--muted); }
-
-.score-node { text-align: center; padding: 32px 16px; }
-.score-radial {
-  width: 100px; height: 100px; border-radius: 50%; border: 3px solid rgba(57, 255, 20, 0.1);
-  border-top-color: var(--neon); margin: 0 auto 16px; display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-head); font-size: 32px; font-weight: 900; color: var(--neon);
-  box-shadow: 0 0 30px rgba(57, 255, 20, 0.1); animation: spinGlow 4s linear infinite;
-}
-
-/* ── SYSTEM GRID LAYER ── */
-.grid-system {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 100px 0;
-  border-top: 1px solid var(--border);
-}
-
-.cell { border-top: 1px solid transparent; transition: all 0.4s ease; }
-.cell:hover .cell-title { color: var(--neon); }
-
-.cell-num { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 24px; display: block; letter-spacing: 0.05em; }
-.cell-title { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; transition: color 0.3s; }
-.cell-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
-
-/* ── ECOSYSTEM ARCHITECTURE BENTO ── */
-.bento-section { padding-bottom: 120px; }
+/* ── HIGH ENGAGEMENT KINETIC BENTO GRID ── */
 .bento-grid {
-  display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 120px;
 }
 .bento-box {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 32px;
-  padding: 48px; display: flex; flex-direction: column; justify-content: space-between;
-  min-height: 320px; position: relative; overflow: hidden;
-  transition: border-color 0.4s, background 0.4s;
+  grid-column: span 6; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 32px; padding: 48px; display: flex; flex-direction: column;
+  justify-content: space-between; min-height: 420px; overflow: hidden; position: relative;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s;
 }
-.bento-box:hover { border-color: rgba(255, 255, 255, 0.15); background: rgba(255,255,255,0.04); }
-.bento-box.full { grid-column: span 2; min-height: 260px; flex-direction: row; align-items: center; gap: 40px; }
+.bento-box:hover {
+  border-color: rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+}
+.bento-box.wide { grid-column: span 12; min-height: 360px; flex-direction: row; align-items: center; gap: 40px; }
 
-.bento-head { max-width: 420px; }
-.bento-title { font-family: var(--font-head); font-size: 28px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
-.bento-body { font-size: 15px; color: var(--muted); line-height: 1.6; }
+.bento-meta { font-size: 11px; font-weight: 700; color: var(--neon); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.bento-title { font-family: var(--font-head); font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+.bento-body { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 440px; }
 
-/* Interactive Node Visual Elements inside Bento */
-.bento-visual { position: relative; display: flex; gap: 12px; align-items: center; justify-content: flex-end; width: 100%; height: 100%; }
-.pill-node { background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 500; white-space: nowrap; }
-.pill-node.active { border-color: var(--neon); color: var(--neon); background: rgba(57,255,20,0.02); }
+/* ── LIVE INTERACTIVE UI WIDGETS (THE ENGAGEMENT LAYER) ── */
+.widget-area { position: relative; width: 100%; height: 180px; margin-top: 32px; display: flex; align-items: center; justify-content: center; }
 
-/* ── PREMIUM REDIRECT CLOSING ── */
+/* Widget 1: Escrow Protection Tracker */
+.escrow-widget {
+  background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 20px; padding: 20px; width: 100%; max-width: 320px;
+}
+.escrow-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.escrow-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+.escrow-fill { width: 75%; height: 100%; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
+
+/* Widget 2: Animated Digital Ajo Ring */
+.ajo-circle {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 4px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+  position: relative; animation: rotateAjo 20s linear infinite;
+}
+.ajo-node {
+  position: absolute; width: 32px; height: 32px; background: #1C1C1E; border: 1px solid var(--border);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
+}
+.ajo-node.active { border-color: var(--neon); color: var(--neon); background: rgba(57,255,20,0.1); }
+.ajo-center { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: #FFF; animation: counterRotate 20s linear infinite; }
+
+/* Widget 3: Live Trust Score Interface */
+.score-container { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+.score-value { font-family: var(--font-head); font-size: 100px; font-weight: 900; color: var(--neon); line-height: 1; letter-spacing: -0.04em; margin-bottom: 8px; }
+.score-line { width: 200px; height: 4px; background: linear-gradient(to right, rgba(255,255,255,0.05), var(--neon), rgba(255,255,255,0.05)); border-radius: 2px; }
+
+/* ── THREE-COLUMN PIPELINE SECTION ── */
+.pipeline {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+.pipe-card { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; }
+.pipe-num { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 24px; display: block; }
+.pipe-title { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+.pipe-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+/* ── PREMIUM ACTION ZONE ── */
 .cta-block {
-  text-align: center; padding: 160px 0 24px; border-top: 1px solid var(--border);
-  position: relative;
+  text-align: center; padding: 160px 0 60px; border-top: 1px solid var(--border); position: relative;
 }
-
 .btn-premium {
   display: inline-flex; align-items: center; gap: 12px;
   background: var(--fg); color: var(--bg); text-decoration: none;
-  padding: 22px 56px; border-radius: 100px; font-size: 16px; font-weight: 700;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px 64px; border-radius: 100px; font-size: 16px; font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-premium:hover {
-  transform: scale(1.02); background: #f5f5f7;
-  box-shadow: 0 20px 60px rgba(255,255,255,0.08);
+  transform: translateY(-4px) scale(1.01); background: var(--neon);
+  box-shadow: 0 20px 50px rgba(57, 255, 20, 0.3);
 }
-.btn-premium svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
-.btn-premium:hover svg { transform: translateX(4px); }
+.btn-premium svg { width: 16px; height: 16px; transition: transform 0.3s ease; fill: currentColor; }
+.btn-premium:hover svg { transform: translateX(6px); }
 
-/* ── KEYFRAME ANIMATIONS ── */
-@keyframes appleReveal {
+/* ── KINETIC ANIMATION KEYS ── */
+@keyframes revealUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes spinGlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes pulseGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-5%, 5%) scale(1.1); }
 }
+@keyframes rotateAjo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes counterRotate { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
 
-/* ── SCROLL TRIGGER FALLBACK CLASS ── */
-.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+/* SCROLL REVEAL ENGINE SYSTEM */
+.reveal-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
 
-/* ── RESPONSIVE COMPRESSION ── */
-@media (max-width: 960px) {
-  nav { padding: 24px; }
+/* ── MOBILE OPTIMIZATION ── */
+@media (max-width: 900px) {
+  nav { padding: 20px; }
   main { padding: 0 24px; }
-  .split-layout { grid-template-columns: 1fr; gap: 60px; }
-  .grid-system { grid-template-columns: 1fr; gap: 48px; padding: 80px 0; }
   .bento-grid { grid-template-columns: 1fr; }
-  .bento-box.full { grid-column: span 1; flex-direction: column; align-items: flex-start; min-height: 320px; }
-  .bento-visual { justify-content: flex-start; margin-top: 24px; }
+  .bento-box { grid-column: span 12; min-height: 380px; padding: 32px; }
+  .bento-box.wide { flex-direction: column; align-items: flex-start; min-height: auto; }
+  .pipeline { grid-template-columns: 1fr; gap: 48px; }
+  .widget-area { margin-top: 40px; }
 }
 </style>
 </head>
 <body>
+
+<div class="bg-glows">
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+</div>
 
 <nav>
   <a href="/" class="nav-logo">
@@ -229,101 +218,103 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z
 </nav>
 
 <main>
-  <!-- INTRO INTENSITY LAYER -->
   <section class="hero">
-    <div class="ambient-glow"></div>
+    <div class="hero-badge"><span></span> Built for the next generation of African work</div>
     <h1 class="hero-title">
       <span>Get work.</span>
       <span>Get paid.</span>
       <span class="highlight">Build Trust.</span>
     </h1>
-    <p class="hero-sub">The trust layer for work in Nigeria. Get hired, secure payments safely, and construct a portable reputation that unlocks opportunity.</p>
+    <p class="hero-sub">The trust layer for work in Nigeria. Secure upfront milestone assets, eliminate platform noise, and scale a bulletproof operational profile.</p>
   </section>
 
-  <!-- SPLIT LAYOUT INTERACTIVE HERO DEMO -->
-  <section class="showcase-section reveal-on-scroll">
-    <div class="split-layout">
-      <h2 class="statement">
-        Over 85 million Nigerians operate in the informal economy—<em>generating massive value daily, yet remaining structurally invisible. RISE changes this metric completely.</em>
-      </h2>
-      
-      <!-- Premium CSS Interactive Interface Engine -->
-      <div class="phone-canvas">
-        <div class="phone-screen">
-          <div class="phone-island"></div>
-          
-          <div class="app-card score-node">
-            <div class="score-radial">4.8</div>
-            <div class="meta" style="color: var(--neon);">Unified Trust Score</div>
+  <section class="narrative reveal-on-scroll">
+    <h2 class="statement">
+      Over 85 million Nigerians operate in the informal economy—<em>generating immense value daily, yet remaining structurally invisible. RISE builds the infrastructure to verify talent, settle capital instantly, and anchor undeniable scale.</em>
+    </h2>
+  </section>
+
+  <section class="bento-grid reveal-on-scroll">
+    
+    <div class="bento-box">
+      <div>
+        <span class="bento-meta">Capital Security</span>
+        <h3 class="bento-title">Protected Inflow</h3>
+        <p class="bento-body">Eliminate collection anxiety. Contract capital is validated, securely locked prior to kickoff, and released instantly on execution parameters.</p>
+      </div>
+      <div class="widget-area">
+        <div class="escrow-widget">
+          <div class="escrow-row">
+            <span style="font-size:12px; font-weight:600; color:var(--muted)">Active Escrow Vault</span>
+            <span style="font-size:12px; font-weight:700; color:var(--neon)">₦250,000</span>
           </div>
-
-          <div class="app-card" style="animation-delay: 0.7s;">
-            <div class="meta">Protected Inflow</div>
-            <div class="value">₦145,000</div>
-            <div class="desc">Milestone held securely via RISE protocol</div>
+          <div class="escrow-bar"><div class="escrow-fill"></div></div>
+          <div class="escrow-row" style="margin-top:12px; margin-bottom:0;">
+            <span style="font-size:11px; color:var(--muted)">Milestone 02/03 Secured</span>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- REPUTATION MECHANICS ARCHITECTURE -->
-  <section class="grid-system reveal-on-scroll">
-    <div class="cell">
-      <span class="cell-num">01 // DISCOVERY</span>
-      <h3 class="cell-title">Ecosystem Routing</h3>
-      <p class="cell-body">Eliminate traditional job search noise. Instantly align with high-intent contract opportunities across Lagos, Abuja, and verified remote nodes.</p>
-    </div>
-    <div class="cell">
-      <span class="cell-num">02 // ESCROW VETTING</span>
-      <h3 class="cell-title">Protected Capital</h3>
-      <p class="cell-body">Contract assets are automatically verified and locked prior to project kickoff. No bad-faith client delays, no uncompensated work.</p>
-    </div>
-    <div class="cell">
-      <span class="cell-num">03 // PROTOCOL INDEX</span>
-      <h3 class="cell-title">Portable Reputation</h3>
-      <p class="cell-body">Every performance variable loops into an immutable, universally scannable professional ledger. Your track record converts into credit power.</p>
-    </div>
-  </section>
-
-  <!-- BENTO LAYOUT LAYER -->
-  <section class="bento-section reveal-on-scroll">
-    <div class="bento-grid">
-      <div class="bento-box">
-        <div class="bento-head">
-          <h3 class="bento-title">Ajo Group Digitization</h3>
-          <p class="bento-body">Traditional community savings structures, re-engineered. Form or join secure, mathematically sound rotational financial pools with verified sector peers.</p>
-        </div>
+    <div class="bento-box">
+      <div>
+        <span class="bento-meta">Community Capital</span>
+        <h3 class="bento-title">Ajo Groups, Upgraded</h3>
+        <p class="bento-body">Traditional trust networks, completely digitized. Launch or enter secure, rule-governed contribution pools built with verified professional nodes.</p>
       </div>
-
-      <div class="bento-box">
-        <div class="bento-head">
-          <h3 class="bento-title">Clean Channel Sync</h3>
-          <p class="bento-body">Communication maps exclusively to active milestones and verified agreements. No unvetted outreach, complete workspace control.</p>
-        </div>
-      </div>
-
-      <div class="bento-box full">
-        <div class="bento-head">
-          <h3 class="bento-title">The Trust Score Protocol</h3>
-          <p class="bento-body">A composite matrix detailing performance pace, financial velocity, and community reviews. It transforms daily operational consistency into an institutional-grade profile capable of unlocking global opportunity.</p>
-        </div>
-        <div class="bento-visual">
-          <div class="pill-node">Verification Registry</div>
-          <div class="pill-node active">★ 4.8 Core Tier</div>
+      <div class="widget-area">
+        <div class="ajo-circle">
+          <div class="ajo-center">Ajo Pool</div>
+          <div class="ajo-node active" style="top: -16px; left: 44px;">01</div>
+          <div class="ajo-node" style="top: 44px; right: -16px;">02</div>
+          <div class="ajo-node" style="bottom: -16px; left: 44px;">03</div>
+          <div class="ajo-node" style="top: 44px; left: -16px;">04</div>
         </div>
       </div>
     </div>
+
+    <div class="bento-box wide">
+      <div>
+        <span class="bento-meta">Ecosystem Protocol</span>
+        <h3 class="bento-title">The Unified Trust Score</h3>
+        <p class="bento-body">An institutional performance rating aggregating project completion speed, transaction volume, and stakeholder feedback. It turns your daily work habits into structural validation that unlocks tier access, credit backing, and international partnerships.</p>
+      </div>
+      <div class="widget-area" style="height:auto; min-width:240px;">
+        <div class="score-container">
+          <div class="score-value">4.8</div>
+          <div class="score-line"></div>
+          <span style="font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; margin-top:12px; letter-spacing:0.1em;">Verified Profile Matrix</span>
+        </div>
+      </div>
+    </div>
+
   </section>
 
-  <!-- CLOSING / ABSOLUTE MINIMALIST FORM CALLOUT -->
+  <section class="pipeline reveal-on-scroll">
+    <div class="pipe-card">
+      <span class="pipe-num">// SYSTEM NODE 01</span>
+      <h3 class="pipe-title">Targeted Ecosystem Routing</h3>
+      <p class="pipe-body">Zero noise. Direct match pipelines cleanly sync you with high-intent corporate contracts across Lagos, Abuja, and verified remote hubs.</p>
+    </div>
+    <div class="pipe-card">
+      <span class="pipe-num">// SYSTEM NODE 02</span>
+      <h3 class="pipe-title">Clean Channel Sync</h3>
+      <p class="pipe-body">Communication layers attach exclusively to active agreements and milestones. No unvetted outreach, zero messaging spam.</p>
+    </div>
+    <div class="pipe-card">
+      <span class="pipe-num">// SYSTEM NODE 03</span>
+      <h3 class="pipe-title">Portable Ledgers</h3>
+      <p class="pipe-body">Your professional track record updates autonomously onto an unalterable operational profile that travels everywhere you go.</p>
+    </div>
+  </section>
+
   <section class="cta-block reveal-on-scroll">
     <a href="https://tally.so/r/68py7B" target="_blank" class="btn-premium">
       Request Early Access
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+      <svg viewBox="0 0 16 16"><path d="M8.636 3.636l4.5 4.5-4.5 4.5M12.5 8.136H3.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
     
-    <p style="margin-top:20px;font-size:13px;color:var(--muted);line-height:1.7;">
+    <p style="margin-top:32px; font-size:13px; color:var(--muted); line-height:1.7; font-weight:500;">
       No payment required<br>
       Lagos & Abuja launching first
     </p>
@@ -331,17 +322,16 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z
 </main>
 
 <script>
-  // Apple Scroll Reveal Engine Interaction Layer
-  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
-  const observer = new IntersectionObserver((entries) => {
+  // High-Performance Intersection Observer for Scroll Reveals
+  const scrollTracker = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
       }
     });
-  }, observerOptions);
+  }, { root: null, rootMargin: '0px', threshold: 0.1 });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal-on-scroll').forEach(block => scrollTracker.observe(block));
 </script>
 
 </body>
