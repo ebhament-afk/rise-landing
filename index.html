@@ -1,338 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>RISE — The Trust Layer for Work</title>
-<link rel="icon" type="image/png" href="rise-logo.png.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RISE — Get work. Get paid. Build Trust.</title>
+<meta name="description" content="The trusted job marketplace and reputation platform built for Nigerian creatives and hustlers. Starting in Lagos & Abuja."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Cabinet+Grotesk:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --neon: #39FF14;
-  --bg: #0A0A0C;
-  --fg: #FFFFFF;
-  --muted: #86868b;
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --border: rgba(255, 255, 255, 0.06);
-  --font-head: 'Cabinet Grotesk', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+:root{
+  --neon:#39FF14;
+  --neon-violet:#A855F7;
+  --neon-dim:rgba(57,255,20,0.08);
+  --neon-mid:rgba(57,255,20,0.2);
+  --bg:#0A0D10;
+  --bg2:#11161B;
+  --surface:#151B22;
+  --surface2:#1F2731;
+  --border:rgba(57,255,20,0.15);
+  --border-light:rgba(255,255,255,0.05);
+  --fg:#ffffff;
+  --muted:#6B7C8E;
+  --muted2:#A3B3C2;
+  --head:'Syne',sans-serif;
+  --body:'Plus Jakarta Sans',sans-serif;
+  --alt:'Cabinet Grotesk',sans-serif;
 }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* GRID BACKGROUND ARCHITECTURE */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(57,255,20,0.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,255,20,0.015) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 100% 70% at 50% 0%,black 40%,transparent 100%)}
 
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+/* AMBIENT CHROMATIC SYSTEMS */
+.glow-1{position:fixed;top:-15%;left:25%;width:800px;height:800px;
+  background:radial-gradient(circle,rgba(57,255,20,0.08) 0%,transparent 70%);
+  pointer-events:none;z-index:0;animation:driftA 10s ease-in-out infinite alternate}
+.glow-2{position:fixed;bottom:-10%;right:-5%;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(168,85,247,0.05) 0%,transparent 65%);
+  pointer-events:none;z-index:0}
+@keyframes driftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-5%,5%) scale(1.05)}}
 
-/* ── KINETIC AMBIENT BACKGROUND ── */
-.bg-glows {
-  position: fixed; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;
-}
-.glow-1 {
-  position: absolute; top: -10%; left: 30%; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(57, 255, 20, 0.04) 0%, transparent 70%);
-  animation: pulseGlow 8s ease-in-out infinite alternate;
-}
-.glow-2 {
-  position: absolute; bottom: 10%; right: -10%; width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(57, 255, 20, 0.02) 0%, transparent 60%);
-}
+/* NAVIGATION LAYER */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:20px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(10,13,16,0.75);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border-light);transition:all .3s}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:32px;width:auto}
+.nav-logo-text{font-family:var(--head);font-weight:800;font-size:22px;color:var(--fg);letter-spacing:-0.03em}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-pill{display:flex;align-items:center;gap:8px;padding:6px 16px;
+  background:var(--neon-dim);border:1px solid var(--border);
+  border-radius:100px;font-size:12px;font-weight:700;color:var(--neon);letter-spacing:0.02em}
+.nav-pill::before{content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--neon);animation:blink 1.5s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.8)}}
+.nav-cta{padding:12px 26px;border-radius:14px;background:var(--neon);
+  color:#000;font-weight:800;font-size:14px;text-decoration:none;
+  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.nav-cta:hover{transform:scale(1.03) rotate(-0.5deg);
+  box-shadow:0 0 30px rgba(57,255,20,0.5)}
 
-/* ── PREMIUM NAVIGATION ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
-  background: rgba(10, 10, 12, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo img { height: 28px; width: auto; }
-.nav-cta {
-  color: var(--bg); text-decoration: none; font-size: 14px; font-weight: 600;
-  padding: 12px 24px; border-radius: 100px; background: var(--fg);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.nav-cta:hover { transform: translateY(-2px); background: var(--neon); box-shadow: 0 8px 24px rgba(57, 255, 20, 0.25); }
+/* HERO HUB */
+.hero{position:relative;z-index:1;min-height:95vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:140px 40px 80px;max-width:1200px;margin:0 auto}
+.hero-greeting{font-size:16px;color:var(--neon-violet);font-weight:700;
+  font-family:var(--body);margin-bottom:12px;letter-spacing:0.05em;text-transform:uppercase;
+  opacity:0;animation:fadeUp .7s .05s ease both}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:100px;
+  background:var(--neon-dim);border:1px solid var(--border);
+  font-size:13px;font-weight:700;color:var(--neon);
+  margin-bottom:32px;align-self:flex-start;
+  opacity:0;animation:fadeUp .7s .1s ease both}
+.hero-title{font-family:var(--head);font-weight:800;
+  font-size:clamp(58px,9.5vw,125px);line-height:.92;letter-spacing:-0.04em;
+  margin-bottom:36px;opacity:0;animation:fadeUp .8s .15s ease both}
+.hero-title .line{display:block}
+.hero-title .neon{color:var(--neon);text-shadow:0 0 60px rgba(57,255,20,0.35)}
+.hero-sub{font-size:clamp(18px,2.2vw,24px);color:var(--muted2);max-width:640px;
+  line-height:1.5;margin-bottom:48px;opacity:0;animation:fadeUp .8s .25s ease both}
+.hero-sub em{color:var(--neon);font-style:italic}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;
+  opacity:0;animation:fadeUp .8s .35s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;
+  padding:18px 40px;border-radius:16px;background:var(--neon);
+  color:#000;font-weight:800;font-size:16px;text-decoration:none;
+  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);box-shadow:0 10px 35px rgba(57,255,20,0.25)}
+.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 45px rgba(57,255,20,0.45)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;
+  padding:18px 40px;border-radius:16px;background:transparent;
+  border:1px solid rgba(255,255,255,0.15);color:var(--fg);
+  font-weight:700;font-size:16px;text-decoration:none;transition:all .25s}
+.btn-ghost:hover{border-color:var(--neon);background:rgba(57,255,20,0.04);color:#FFF}
+.social-proof{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s .45s ease both}
+.avatars{display:flex}
+.av{width:38px;height:38px;border-radius:50%;border:3px solid var(--bg);
+  margin-left:-10px;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:13px;font-family:var(--alt)}
+.av:first-child{margin-left:0}
+.av1{background:linear-gradient(135deg,#39FF14,#1a7a00);color:#000}
+.av2{background:linear-gradient(135deg,#ff6b35,#c43d00);color:#fff}
+.av3{background:linear-gradient(135deg,#a855f7,#6d28d9);color:#fff}
+.av4{background:linear-gradient(135deg,#ec4899,#be123c);color:#fff}
+.sp-text{font-size:14px;color:var(--muted2)}
+.sp-text strong{color:var(--fg);font-weight:700}
+.sp-sep{width:6px;height:6px;border-radius:50%;background:var(--surface2)}
 
-/* ── LAYOUT CONTAINER ── */
-main { max-width: 1200px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 1; }
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HERO LAYER ── */
-.hero {
-  min-height: 95vh; display: flex; flex-direction: column; justify-content: center;
-  padding-top: 80px;
-}
-.hero-badge {
-  align-self: flex-start; display: flex; align-items: center; gap: 8px;
-  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border);
-  padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
-  color: var(--neon); margin-bottom: 32px;
-  opacity: 0; transform: translateY(20px); animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.hero-badge span { display: inline-block; width: 6px; height: 6px; background: var(--neon); border-radius: 50%; box-shadow: 0 0 8px var(--neon); }
+/* KINETIC MARQUEE TICKER */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);
+  background:var(--bg2);padding:18px 0;position:relative;z-index:1}
+.ticker{display:flex;white-space:nowrap;animation:tickerRun 25s linear infinite}
+.ticker-item{display:inline-flex;align-items:center;gap:12px;
+  padding:0 32px;font-size:14px;font-weight:700;color:var(--muted2);letter-spacing:0.02em}
+.ticker-item span{color:var(--neon)}
+.ticker-item::after{content:'·';margin-left:32px;color:rgba(255,255,255,0.1)}
+@keyframes tickerRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.hero-title {
-  font-family: var(--font-head); font-weight: 900;
-  font-size: clamp(52px, 8vw, 115px); line-height: 0.95; letter-spacing: -0.04em;
-  margin-bottom: 36px; opacity: 0; transform: translateY(30px);
-  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-}
-.hero-title span { display: block; }
-.hero-title .highlight { color: var(--neon); text-shadow: 0 0 80px rgba(57, 255, 20, 0.15); }
+/* CORE STATEMENT PANELS */
+.statement-section{position:relative;z-index:1;
+  padding:140px 40px;max-width:1200px;margin:0 auto;
+  border-top:1px solid var(--border-light)}
+.statement-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:28px;
+  display:flex;align-items:center;gap:10px}
+.statement-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.statement-text{font-family:var(--head);
+  font-size:clamp(34px,4.8vw,68px);font-weight:800;
+  line-height:1.1;letter-spacing:-0.03em;max-width:980px}
+.statement-text .dim{color:rgba(255,255,255,0.2)}
+.statement-text .bright{color:var(--fg)}
+.statement-text .pop{color:var(--neon);text-shadow:0 0 40px rgba(57,255,20,0.2)}
 
-.hero-sub {
-  font-size: clamp(18px, 2.2vw, 24px); color: var(--muted); max-width: 650px;
-  line-height: 1.45; font-weight: 400; opacity: 0; transform: translateY(20px);
-  animation: revealUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-}
+/* CRISIS & RESOLUTION SUITE */
+.problem-section{position:relative;z-index:1;
+  padding:0 40px 140px;max-width:1200px;margin:0 auto}
+.problem-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:44px;
+  display:flex;align-items:center;gap:10px}
+.problem-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.problem-lines{display:flex;flex-direction:column}
+.p-line{display:flex;align-items:center;gap:24px;
+  padding:26px 0;border-bottom:1px solid var(--border-light);
+  font-family:var(--alt);font-size:clamp(20px,2.6vw,34px);
+  font-weight:800;opacity:0;transform:translateX(-30px);
+  transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+.p-line.in{opacity:1;transform:translateX(0)}
+.p-line.bad{color:rgba(255,255,255,0.25)}
+.p-line.good{color:var(--neon);border-bottom:none;font-size:clamp(24px,3.2vw,44px);margin-top:16px;text-shadow:0 0 30px rgba(57,255,20,0.15)}
+.p-icon{width:46px;height:46px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  background:var(--surface);border:1px solid var(--border-light)}
+.p-line.good .p-icon{background:var(--neon-dim);border-color:var(--neon)}
 
-/* ── MACRO STATEMENT LAYER ── */
-.narrative { padding: 140px 0 100px; border-top: 1px solid var(--border); }
-.statement {
-  font-family: var(--font-head); font-size: clamp(28px, 3.8vw, 52px);
-  font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: #F5F5F7;
-}
-.statement em { font-style: normal; color: var(--muted); }
+/* INTERACTIVE BENTO ECOSYSTEM */
+.bento-section{position:relative;z-index:1;
+  padding:0 40px 140px;max-width:1200px;margin:0 auto}
+.bento-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px}
+.bento-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.bento-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:56px;line-height:1.05}
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
 
-/* ── HIGH ENGAGEMENT KINETIC BENTO GRID ── */
-.bento-grid {
-  display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 120px;
-}
-.bento-box {
-  grid-column: span 6; background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 32px; padding: 48px; display: flex; flex-direction: column;
-  justify-content: space-between; min-height: 420px; overflow: hidden; position: relative;
-  transition: border-color 0.4s, background 0.4s, transform 0.4s;
-}
-.bento-box:hover {
-  border-color: rgba(255, 255, 255, 0.15); background: rgba(255, 255, 255, 0.04);
-  transform: translateY(-4px);
-}
-.bento-box.wide { grid-column: span 12; min-height: 360px; flex-direction: row; align-items: center; gap: 40px; }
+.bento{grid-column:span 6;background:var(--surface);border:1px solid var(--border-light);
+  border-radius:32px;padding:44px;min-height:460px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;position:relative;
+  transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity:0;transform:translateY(30px)}
+.bento.in{opacity:1;transform:translateY(0)}
+.bento:hover{border-color:var(--neon);background:#1A232C;transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
+.bento::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(57,255,20,0.4),transparent);
+  opacity:0;transition:opacity .35s}
+.bento:hover::before{opacity:1}
+.bento.wide{grid-column:span 12;min-height:380px;flex-direction:row;align-items:center;gap:48px}
 
-.bento-meta { font-size: 11px; font-weight: 700; color: var(--neon); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; display: block; }
-.bento-title { font-family: var(--font-head); font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
-.bento-body { font-size: 16px; color: var(--muted); line-height: 1.6; max-width: 440px; }
+.bento-tag{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;display:block}
+.bento-title{font-family:var(--head);font-size:clamp(24px,2.6vw,32px);
+  font-weight:800;margin-bottom:16px;letter-spacing:-0.02em;line-height:1.1}
+.bento-body{font-size:16px;color:var(--muted2);line-height:1.6;max-width:460px}
+.bento-chip{display:inline-block;margin-top:24px;padding:6px 16px;
+  border-radius:100px;background:var(--neon-dim);
+  border:1px solid var(--border);font-size:11px;font-weight:800;color:var(--neon);text-transform:uppercase;letter-spacing:.06em}
 
-/* ── LIVE INTERACTIVE UI WIDGETS (THE ENGAGEMENT LAYER) ── */
-.widget-area { position: relative; width: 100%; height: 180px; margin-top: 32px; display: flex; align-items: center; justify-content: center; }
+/* INTERFACE INTERACTION LAYERS */
+.widget{margin-top:32px;position:relative}
 
-/* Widget 1: Escrow Protection Tracker */
-.escrow-widget {
-  background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 20px; padding: 20px; width: 100%; max-width: 320px;
-}
-.escrow-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.escrow-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
-.escrow-fill { width: 75%; height: 100%; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
+/* Escrow Container Panel */
+.pf-widget{background:rgba(10,13,16,0.6);border:2px solid var(--border-light);
+  border-radius:20px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);position:relative}
+.pf-widget::after{content:'';position:absolute;inset:0;border-radius:20px;border:1px solid transparent;transition:all 0.3s}
+.bento:hover .pf-widget{border-color:var(--neon);box-shadow:0 0 25px rgba(57,255,20,0.15)}
+.pf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.pf-label{font-size:12px;color:var(--muted2);font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.pf-amount{font-size:26px;font-weight:900;color:#FFF;font-family:var(--alt);animation:pulseText 2s ease-in-out infinite alternate}
+@keyframes pulseText{from{transform:scale(1)}to{transform:scale(1.02);color:var(--neon)}}
+.pf-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.pf-fill{height:100%;width:0%;background:var(--neon);
+  box-shadow:0 0 15px var(--neon);border-radius:10px;
+  transition:width 1.8s cubic-bezier(.16,1,.3,1)}
+.pf-status{font-size:12px;color:var(--muted2);display:flex;align-items:center;gap:8px;font-weight:500}
+.pf-status::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:blink 1s infinite}
 
-/* Widget 2: Animated Digital Ajo Ring */
-.ajo-circle {
-  width: 120px; height: 120px; border-radius: 50%;
-  border: 4px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
-  position: relative; animation: rotateAjo 20s linear infinite;
-}
-.ajo-node {
-  position: absolute; width: 32px; height: 32px; background: #1C1C1E; border: 1px solid var(--border);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
-}
-.ajo-node.active { border-color: var(--neon); color: var(--neon); background: rgba(57,255,20,0.1); }
-.ajo-center { font-family: var(--font-head); font-size: 18px; font-weight: 700; color: #FFF; animation: counterRotate 20s linear infinite; }
+/* Live Dynamic Score Engine */
+.score-widget{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-big{font-family:var(--head);font-size:100px;font-weight:900;
+  color:var(--neon);line-height:0.9;letter-spacing:-0.04em;
+  text-shadow:0 0 50px rgba(57,255,20,0.45)}
+.score-tier{font-size:13px;font-weight:800;color:#000;background:var(--neon);padding:4px 14px;border-radius:100px;text-transform:uppercase;letter-spacing:0.05em;margin-top:10px}
+.score-facts{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.score-fact{font-size:12px;color:var(--muted2);font-weight:500}
+.score-fact strong{color:var(--fg);display:block;font-size:18px;font-weight:800;font-family:var(--alt);margin-top:2px}
 
-/* Widget 3: Live Trust Score Interface */
-.score-container { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
-.score-value { font-family: var(--font-head); font-size: 100px; font-weight: 900; color: var(--neon); line-height: 1; letter-spacing: -0.04em; margin-bottom: 8px; }
-.score-line { width: 200px; height: 4px; background: linear-gradient(to right, rgba(255,255,255,0.05), var(--neon), rgba(255,255,255,0.05)); border-radius: 2px; }
+/* Interactive Ajo Hub Loop */
+.pool-widget{display:flex;flex-direction:column;gap:12px}
+.pool-card-mini{background:rgba(10,13,16,0.6);border:1px solid var(--border-light);
+  border-radius:16px;padding:18px 20px;transition:all 0.3s}
+.bento:hover .pool-card-mini{border-color:rgba(57,255,20,0.25)}
+.pool-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pool-name{font-size:14px;font-weight:700}
+.pool-pct{font-size:14px;font-weight:800;color:var(--neon)}
+.pool-meta{font-size:12px;color:var(--muted2);margin-bottom:10px}
+.pool-bar{height:6px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden}
+.pool-fill{height:100%;background:var(--neon);border-radius:4px;box-shadow:0 0 10px var(--neon)}
 
-/* ── THREE-COLUMN PIPELINE SECTION ── */
-.pipeline {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 120px 0;
-  border-top: 1px solid var(--border);
-}
-.pipe-card { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; }
-.pipe-num { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 24px; display: block; }
-.pipe-title { font-family: var(--font-head); font-size: 24px; font-weight: 700; margin-bottom: 16px; }
-.pipe-body { font-size: 16px; color: var(--muted); line-height: 1.6; }
+/* Actionable Marketplace Nodes */
+.jobs-widget{display:flex;flex-direction:column;gap:10px}
+.job-pill{background:rgba(10,13,16,0.6);border:1px solid var(--border-light);
+  border-radius:16px;padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;transition:all 0.3s}
+.job-pill:hover{background:var(--surface2);border-color:rgba(255,255,255,0.1)}
+.job-pill-left .job-title{font-size:14px;font-weight:700}
+.job-pill-left .job-loc{font-size:12px;color:var(--muted2);margin-top:4px;font-weight:500}
+.job-pill-right{display:flex;align-items:center;gap:12px}
+.job-pay{font-size:14px;font-weight:800;color:var(--neon);font-family:var(--alt)}
+.job-apply{padding:8px 18px;border-radius:10px;background:var(--neon);
+  color:#000;font-size:12px;font-weight:800;border:none;cursor:pointer;transition:all 0.2s}
+.job-apply:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(57,255,20,0.3)}
 
-/* ── PREMIUM ACTION ZONE ── */
-.cta-block {
-  text-align: center; padding: 160px 0 60px; border-top: 1px solid var(--border); position: relative;
-}
-.btn-premium {
-  display: inline-flex; align-items: center; gap: 12px;
-  background: var(--fg); color: var(--bg); text-decoration: none;
-  padding: 24px 64px; border-radius: 100px; font-size: 16px; font-weight: 700;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-premium:hover {
-  transform: translateY(-4px) scale(1.01); background: var(--neon);
-  box-shadow: 0 20px 50px rgba(57, 255, 20, 0.3);
-}
-.btn-premium svg { width: 16px; height: 16px; transition: transform 0.3s ease; fill: currentColor; }
-.btn-premium:hover svg { transform: translateX(6px); }
+/* HIGH-VELOCITY STEPS SETUP */
+.how-section{position:relative;z-index:1;
+  padding:0 40px 140px;max-width:1200px;margin:0 auto}
+.how-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px}
+.how-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.how-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.05}
+.how-sub{font-size:18px;color:var(--muted2);margin-bottom:64px;max-width:520px;line-height:1.5}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.step{padding:40px 24px;border:1px solid var(--border-light);background:rgba(255,255,255,0.01);
+  border-radius:24px;opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+.step.in{opacity:1;transform:translateY(0)}
+.step:hover{border-color:var(--border);background:var(--surface)}
+.step-num{font-family:var(--head);font-size:56px;font-weight:800;
+  color:var(--neon);opacity:.4;line-height:1;margin-bottom:24px}
+.step-title{font-family:var(--alt);font-size:20px;font-weight:800;
+  margin-bottom:12px;letter-spacing:-0.01em}
+.step-body{font-size:15px;color:var(--muted2);line-height:1.6}
 
-/* ── KINETIC ANIMATION KEYS ── */
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes pulseGlow {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-5%, 5%) scale(1.1); }
-}
-@keyframes rotateAjo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@keyframes counterRotate { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+/* STRATEGIC CAPABILITY TARGETS */
+.who-section{position:relative;z-index:1;
+  padding:0 40px 140px;max-width:1200px;margin:0 auto}
+.who-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px}
+.who-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.who-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;line-height:1.05}
+.who-headline .pop{color:var(--neon)}
+.who-sub{font-size:18px;color:var(--muted2);margin-bottom:56px}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.who-card{background:var(--surface);border:1px solid var(--border-light);
+  border-radius:28px;padding:44px;position:relative;overflow:hidden;
+  cursor:default;opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+.who-card.in{opacity:1;transform:translateY(0)}
+.who-card:hover{border-color:var(--neon);background:#1A232C}
+.who-card::after{content:attr(data-emoji);position:absolute;
+  right:32px;bottom:24px;font-size:64px;opacity:.08;
+  transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.who-card:hover::after{opacity:.2;transform:scale(1.15) rotate(-8deg)}
+.who-tag{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:block}
+.who-title{font-family:var(--head);font-size:24px;font-weight:800;
+  margin-bottom:12px;letter-spacing:-0.02em}
+.who-body{font-size:15px;color:var(--muted2);line-height:1.65;max-width:340px}
 
-/* SCROLL REVEAL ENGINE SYSTEM */
-.reveal-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+/* ROADMAP PIPELINE NETWORK */
+.road-section{position:relative;z-index:1;
+  background:var(--bg2);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);
+  padding:120px 40px}
+.road-inner{max-width:1200px;margin:0 auto}
+.road-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px}
+.road-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.road-headline{font-family:var(--head);font-size:clamp(32px,3.8vw,54px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:64px;line-height:1.1}
+.road-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.road-col-label{font-size:11px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.12em;margin-bottom:28px;padding:6px 16px;
+  border-radius:100px;display:inline-block}
+.road-col-label.now{background:var(--neon);color:#000}
+.road-col-label.next{background:rgba(255,255,255,0.08);color:var(--fg)}
+.road-col-label.future{background:rgba(255,255,255,0.04);color:var(--muted)}
+.road-items{display:flex;flex-direction:column;gap:16px}
+.road-item{display:flex;align-items:center;gap:12px;
+  font-size:16px;font-weight:600}
+.road-item::before{content:'';width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.road-item.now::before{background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.road-item.next::before{background:rgba(255,255,255,0.3)}
+.road-item.future::before{background:rgba(255,255,255,0.1)}
+.road-item.now{color:var(--fg)}
+.road-item.next{color:var(--muted2)}
+.road-item.future{color:var(--muted)}
 
-/* ── MOBILE OPTIMIZATION ── */
-@media (max-width: 900px) {
-  nav { padding: 20px; }
-  main { padding: 0 24px; }
-  .bento-grid { grid-template-columns: 1fr; }
-  .bento-box { grid-column: span 12; min-height: 380px; padding: 32px; }
-  .bento-box.wide { flex-direction: column; align-items: flex-start; min-height: auto; }
-  .pipeline { grid-template-columns: 1fr; gap: 48px; }
-  .widget-area { margin-top: 40px; }
+/* METADATA USE STORY NODES */
+.story-section{position:relative;z-index:1;
+  padding:120px 40px;max-width:1200px;margin:0 auto}
+.story-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px}
+.story-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.story-headline{font-family:var(--head);font-size:clamp(32px,3.8vw,54px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:56px}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.story-card{background:var(--surface);border:1px solid var(--border-light);
+  border-radius:28px;padding:36px;
+  opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+.story-card.in{opacity:1;transform:translateY(0)}
+.story-card:hover{border-color:var(--border)}
+.story-emoji{font-size:36px;margin-bottom:24px;display:block}
+.story-name{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.story-role{font-family:var(--alt);font-size:22px;font-weight:800;
+  margin-bottom:16px;letter-spacing:-0.01em}
+.story-text{font-size:15px;color:var(--muted2);line-height:1.65}
+
+/* HIGH-ENGAGEMENT RETENTION ENGINE */
+.waitlist-section{position:relative;z-index:1;padding:0 40px 100px}
+.waitlist-inner{max-width:1200px;margin:0 auto;
+  background:var(--surface);border:2px solid var(--border);
+  border-radius:40px;padding:90px 40px;text-align:center;position:relative;overflow:hidden}
+.waitlist-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);
+  width:700px;height:450px;
+  background:radial-gradient(ellipse,rgba(57,255,20,0.1) 0%,transparent 75%);
+  pointer-events:none}
+.waitlist-label{font-size:11px;font-weight:800;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.15em;margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;gap:12px}
+.waitlist-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+.waitlist-label::after{content:'';width:24px;height:2px;background:var(--neon)}
+.waitlist-headline{font-family:var(--head);
+  font-size:clamp(40px,5.5vw,80px);font-weight:800;
+  letter-spacing:-0.03em;line-height:1.0;margin-bottom:24px}
+.waitlist-headline .pop{color:var(--neon);text-shadow:0 0 50px rgba(57,255,20,0.3)}
+.waitlist-body{font-size:19px;color:var(--muted2);max-width:540px;
+  margin:0 auto 40px;line-height:1.55}
+.waitlist-perks{display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:24px;margin-bottom:48px}
+.perk{display:flex;align-items:center;gap:8px;
+  font-size:15px;font-weight:600;color:rgba(255,255,255,0.85)}
+.perk::before{content:'✓';color:var(--neon);font-weight:900;font-size:16px}
+.waitlist-fine{margin-top:24px;font-size:13px;color:var(--muted)}
+.naija-note{display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;border-radius:100px;
+  background:var(--neon-dim);border:1px solid var(--border);
+  font-size:13px;font-weight:700;color:#FFF;margin-bottom:36px}
+
+/* FOOTER ARCHITECTURE */
+footer{position:relative;z-index:1;
+  border-top:1px solid var(--border-light);
+  padding:48px 40px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:24px}
+.footer-logo-row{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:12px}
+.footer-logo-row img{height:24px}
+.footer-logo-row span{font-family:var(--head);font-weight:800;font-size:20px;color:var(--fg)}
+.footer-tagline{font-size:14px;color:var(--muted);margin-bottom:6px}
+.footer-location{font-size:14px;color:var(--muted)}
+.footer-location span{color:var(--neon);font-weight:600}
+.footer-copy{font-size:14px;color:var(--muted)}
+
+/* RESPONSIVE LAYOUT ENGINE */
+@media(max-width:900px){
+  nav{padding:18px 24px}
+  .nav-pill{display:none}
+  .hero{padding:120px 24px 60px}
+  .statement-section,.problem-section,.bento-section,
+  .how-section,.who-section,.story-section{padding-left:24px;padding-right:24px}
+  .bento-grid{grid-template-columns:1fr;gap:20px}
+  .bento,.bento.wide{grid-column:span 1;min-height:auto;flex-direction:column;align-items:flex-start;padding:36px 28px}
+  .steps{grid-template-columns:1fr;gap:20px}
+  .step{padding:32px 24px}
+  .who-grid{grid-template-columns:1fr;gap:20px}
+  .story-grid{grid-template-columns:1fr;gap:20px}
+  .road-cols{grid-template-columns:1fr;gap:36px}
+  .waitlist-inner{padding:60px 24px}
+  .road-section{padding:80px 24px}
+  footer{padding:40px 24px}
+  .hero-actions{flex-direction:column;gap:12px}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
 }
 </style>
 </head>
 <body>
 
-<div class="bg-glows">
-  <div class="glow-1"></div>
-  <div class="glow-2"></div>
-</div>
+<div class="grid-bg"></div>
+<div class="glow-1"></div>
+<div class="glow-2"></div>
 
+<!-- STICKY HEADER NODE -->
 <nav>
   <a href="/" class="nav-logo">
-    <img src="rise-logo.png.png" alt="RISE">
+    <img src="rise-logo.png" alt="RISE" onerror="this.style.display='none'"/>
+    <span class="nav-logo-text">RISE</span>
   </a>
-  <a href="https://tally.so/r/68py7B" target="_blank" class="nav-cta">Join Waitlist</a>
+  <div class="nav-right">
+    <div class="nav-pill">Lagos & Abuja Active</div>
+    <a href="https://tally.so/r/68py7B" target="_blank" class="nav-cta">Claim Node</a>
+  </div>
 </nav>
 
-<main>
-  <section class="hero">
-    <div class="hero-badge"><span></span> Built for the next generation of African work</div>
-    <h1 class="hero-title">
-      <span>Get work.</span>
-      <span>Get paid.</span>
-      <span class="highlight">Build Trust.</span>
-    </h1>
-    <p class="hero-sub">The trust layer for work in Nigeria. Secure upfront milestone assets, eliminate platform noise, and scale a bulletproof operational profile.</p>
-  </section>
-
-  <section class="narrative reveal-on-scroll">
-    <h2 class="statement">
-      Over 85 million Nigerians operate in the informal economy—<em>generating immense value daily, yet remaining structurally invisible. RISE builds the infrastructure to verify talent, settle capital instantly, and anchor undeniable scale.</em>
-    </h2>
-  </section>
-
-  <section class="bento-grid reveal-on-scroll">
-    
-    <div class="bento-box">
-      <div>
-        <span class="bento-meta">Capital Security</span>
-        <h3 class="bento-title">Protected Inflow</h3>
-        <p class="bento-body">Eliminate collection anxiety. Contract capital is validated, securely locked prior to kickoff, and released instantly on execution parameters.</p>
-      </div>
-      <div class="widget-area">
-        <div class="escrow-widget">
-          <div class="escrow-row">
-            <span style="font-size:12px; font-weight:600; color:var(--muted)">Active Escrow Vault</span>
-            <span style="font-size:12px; font-weight:700; color:var(--neon)">₦250,000</span>
-          </div>
-          <div class="escrow-bar"><div class="escrow-fill"></div></div>
-          <div class="escrow-row" style="margin-top:12px; margin-bottom:0;">
-            <span style="font-size:11px; color:var(--muted)">Milestone 02/03 Secured</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bento-box">
-      <div>
-        <span class="bento-meta">Community Capital</span>
-        <h3 class="bento-title">Ajo Groups, Upgraded</h3>
-        <p class="bento-body">Traditional trust networks, completely digitized. Launch or enter secure, rule-governed contribution pools built with verified professional nodes.</p>
-      </div>
-      <div class="widget-area">
-        <div class="ajo-circle">
-          <div class="ajo-center">Ajo Pool</div>
-          <div class="ajo-node active" style="top: -16px; left: 44px;">01</div>
-          <div class="ajo-node" style="top: 44px; right: -16px;">02</div>
-          <div class="ajo-node" style="bottom: -16px; left: 44px;">03</div>
-          <div class="ajo-node" style="top: 44px; left: -16px;">04</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bento-box wide">
-      <div>
-        <span class="bento-meta">Ecosystem Protocol</span>
-        <h3 class="bento-title">The Unified Trust Score</h3>
-        <p class="bento-body">An institutional performance rating aggregating project completion speed, transaction volume, and stakeholder feedback. It turns your daily work habits into structural validation that unlocks tier access, credit backing, and international partnerships.</p>
-      </div>
-      <div class="widget-area" style="height:auto; min-width:240px;">
-        <div class="score-container">
-          <div class="score-value">4.8</div>
-          <div class="score-line"></div>
-          <span style="font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; margin-top:12px; letter-spacing:0.1em;">Verified Profile Matrix</span>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <section class="pipeline reveal-on-scroll">
-    <div class="pipe-card">
-      <span class="pipe-num">// SYSTEM NODE 01</span>
-      <h3 class="pipe-title">Targeted Ecosystem Routing</h3>
-      <p class="pipe-body">Zero noise. Direct match pipelines cleanly sync you with high-intent corporate contracts across Lagos, Abuja, and verified remote hubs.</p>
-    </div>
-    <div class="pipe-card">
-      <span class="pipe-num">// SYSTEM NODE 02</span>
-      <h3 class="pipe-title">Clean Channel Sync</h3>
-      <p class="pipe-body">Communication layers attach exclusively to active agreements and milestones. No unvetted outreach, zero messaging spam.</p>
-    </div>
-    <div class="pipe-card">
-      <span class="pipe-num">// SYSTEM NODE 03</span>
-      <h3 class="pipe-title">Portable Ledgers</h3>
-      <p class="pipe-body">Your professional track record updates autonomously onto an unalterable operational profile that travels everywhere you go.</p>
-    </div>
-  </section>
-
-  <section class="cta-block reveal-on-scroll">
-    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-premium">
-      Request Early Access
-      <svg viewBox="0 0 16 16"><path d="M8.636 3.636l4.5 4.5-4.5 4.5M12.5 8.136H3.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- KINETIC HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🇳🇬 Launching Early Access Nodes</div>
+  <p class="hero-greeting">No Client Drama. Just Your Income.</p>
+  <h1 class="hero-title">
+    <span class="line">Get work.</span>
+    <span class="line">Get paid.</span>
+    <span class="line neon">Build Trust.</span>
+  </h1>
+  <p class="hero-sub">
+    The high-energy marketplace built for Nigerian independent operators. Secure your funds beforehand, protect your milestones completely, and build an unassailable track record that travels with you <em>everywhere.</em>
+  </p>
+  <div class="hero-actions">
+    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary">
+      Join the Waitlist →
     </a>
-    
-    <p style="margin-top:32px; font-size:13px; color:var(--muted); line-height:1.7; font-weight:500;">
-      No payment required<br>
-      Lagos & Abuja launching first
-    </p>
-  </section>
-</main>
+    <a href="#how" class="btn-ghost">See How It Works</a>
+  </div>
+  <div class="social-proof">
+    <div class="avatars">
+      <div class="av av1">M</div>
+      <div class="av av2">O</div>
+      <div class="av av3">A</div>
+      <div class="av av4">N</div>
+    </div>
+    <p class="sp-text"><strong>First 1,000 Risers</strong> secure early fee exemptions</p>
+    <div class="sp-sep"></div>
+    <p class="sp-text">Lagos · Abuja · Remote</p>
+  </div>
+</section>
+
+<!-- RUNNING SPEED TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Find Jobs <span>→</span></span>
+    <span class="ticker-item">Get Paid Safely <span>→</span></span>
+    <span class="ticker-item">Build Your Trust Score <span>→</span></span>
+    <span class="ticker-item">Save With Susu Groups <span>→</span></span>
+    <span class="ticker-item">Lagos & Abuja <span>🇳🇬</span></span>
+    <span class="ticker-item">Naija no dey carry last <span>⚡</span></span>
+    <span class="ticker-item">Find Jobs <span>→</span></span>
+    <span class="ticker-item">Get Paid Safely <span>→</span></span>
+    <span class="ticker-item">Build Your Trust Score <span>→</span></span>
+    <span class="ticker-item">Save With Susu Groups <span>→</span></span>
+    <span class="ticker-item">Lagos & Abuja <span>🇳🇬</span></span>
+    <span class="ticker-item">Naija no dey carry last <span>⚡</span></span>
+  </div>
+</div>
+
+<!-- MISSION MANIFESTO -->
+<section class="statement-section reveal">
+  <div class="statement-label">The Blueprint</div>
+  <h2 class="statement-text">
+    <span class="dim">Over 85 million Nigerians build raw value every single day.</span>
+    <br/><span class="bright">Most remain structurally invisible on paper.</span>
+    <br/><span class="pop">RISE builds the framework to prove it.</span>
+  </h2>
+</section>
+
+<!-- PAIN NODE ENGINE -->
+<section class="problem-section">
+  <div class="problem-label">The Resolution Channel</div>
+  <div class="problem-lines">
+    <div class="p-line bad">
+      <div class="p-icon">❌</div>
+      Ghost clients disappear post-delivery.
+    </div>
+    <div class="p-line bad">
+      <div class="p-icon">❌</div>
+      Exceptional execution profiles start from scratch every gig.
+    </div>
+    <div class="p-line bad">
+      <div class="p-icon">❌</div>
+      Top-tier enterprises struggle to verify outside talent.
+    </div>
+    <div class="p-line bad">
+      <div class="p-icon">❌</div>
+      Millions of builders hold no portable performance data.
+    </div>
+    <div class="p-line good">
+      <div class="p-icon">✅</div>
+      RISE protects inflow, builds capital loops, and secures identity.
+    </div>
+  </div>
+</section>
+
+<!-- LIVE BENTO ECOSYSTEM -->
+<section class="bento-section">
+  <div class="bento-label">Ecosystem Core</div>
+  <h2 class="bento-headline">Engineered for velocity.<br/>Stripped of noise.</h2>
+  <div class="bento-grid">
+
+    <!-- Card 1: Trust Score Engine -->
+    <div class="bento wide">
+      <div>
+        <span class="bento-tag">The Moat Core</span>
+        <h3 class="bento-title">The Trust Score Protocol</h3>
+        <p class="bento-body">Your independent execution record, converted automatically into a high-visibility metric. Every milestone completed on time and every review received updates your core profile—unlocking premium contract tiers and architectural financial leverage.</p>
+        <span class="bento-chip">Permanent Profile Asset</span>
+        <div class="score-facts">
+          <div class="score-fact"><strong>4.8</strong>Global Rating</div>
+          <div class="score-fact"><strong>100%</strong>Fulfillment Node</div>
+          <div class="score-fact"><strong>13</strong>Contracts Completed</div>
+          <div class="score-fact"><strong>Verified Elite</strong>Status</div>
+        </div>
+      </div>
+      <div class="widget" style="min-width:240px;">
+        <div class="score-widget">
+          <div class="score-big">4.8</div>
+          <span class="score-tier">Elite Node Active ✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Escrow Capital Safeguard -->
+    <div class="bento">
+      <div>
+        <span class="bento-tag">Capital Integrity</span>
+        <h3 class="bento-title">Protected Milestone Funds</h3>
+        <p class="bento-body">Complete asset protection before deployment. Contract capitals are deposited directly on-platform before you begin building, releasing instantly into your balance at validation nodes.</p>
+        <span class="bento-chip">Zero Collection Lag</span>
+      </div>
+      <div class="widget">
+        <div class="pf-widget">
+          <div class="pf-row">
+            <span class="pf-label">Escrow Lockout</span>
+            <span class="pf-amount">₦250,000</span>
+          </div>
+          <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
+          <div class="pf-status">Protected Node: Awaiting Ingestion</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Targeted Matching Pipelines -->
+    <div class="bento">
+      <div>
+        <span class="bento-tag">Distribution Hub</span>
+        <h3 class="bento-title">Real Gigs. Real Capital.</h3>
+        <p class="bento-body">Bypass noisy bidding platforms entirely. Route directly into verified contract pathways customized to your exact operational domain. Lagos and Abuja prioritized first.</p>
+        <span class="bento-chip">Live Channels</span>
+      </div>
+      <div class="widget">
+        <div class="jobs-widget">
+          <div class="job-pill">
+            <div class="job-pill-left">
+              <div class="job-title">Bridal Makeup Profile</div>
+              <div class="job-loc">Lekki · Beauty Node</div>
+            </div>
+            <div class="job-pill-right">
+              <span class="job-pay">₦60,000</span>
+              <button class="job-apply">Apply</button>
+            </div>
+          </div>
+          <div class="job-pill">
+            <div class="job-pill-left">
+              <div class="job-title">Event Photographer Node</div>
+              <div class="job-loc">Lagos Island · Media</div>
+            </div>
+            <div class="job-pill-right">
+              <span class="job-pay">₦120,000</span>
+              <button class="job-apply">Apply</button>
+            </div>
+          </div>
+          <div class="job-pill">
+            <div class="job-pill-left">
+              <div class="job-title">Social Content Director</div>
+              <div class="job-loc">Remote Channel</div>
+            </div>
+            <div class="job-pill-right">
+              <span class="job-pay">₦45,000</span>
+              <button class="job-apply">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Digitized Rotational Susu -->
+    <div class="bento">
+      <div>
+        <span class="bento-tag">Rotational Capital</span>
+        <h3 class="bento-title">Susu Pools, Re-Engineered</h3>
+        <p class="bento-body">Communal saving groups, optimized cleanly for digital tracking loops. Initiate secure capital rotation groups with validated sector networks to accelerate collective scaling.</p>
+        <span class="bento-chip">Fraud-Proof Ledger</span>
+      </div>
+      <div class="widget">
+        <div class="pool-widget">
+          <div class="pool-card-mini">
+            <div class="pool-row">
+              <span class="pool-name">Lagos Creator Network Pool</span>
+              <span class="pool-pct">68% Active</span>
+            </div>
+            <div class="pool-meta">12 Nodes · ₦5,000/Cycle</div>
+            <div class="pool-bar"><div class="pool-fill" style="width:68%"></div></div>
+          </div>
+          <div class="pool-card-mini">
+            <div class="pool-row">
+              <span class="pool-name">Abuja Core Hustlers Group</span>
+              <span class="pool-pct">42% Active</span>
+            </div>
+            <div class="pool-meta">8 Nodes · ₦10,000/Cycle</div>
+            <div class="pool-bar"><div class="pool-fill" style="width:42%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PIPELINE PIPES SYSTEM -->
+<section class="how-section" id="how">
+  <div class="how-label">Operational Blueprint</div>
+  <h2 class="how-headline">Clean Architecture.<br/>Uncompromising Performance.</h2>
+  <p class="how-sub">Four functional nodes. Every interaction expands your profile value weight.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Isolate Targets</div>
+      <p class="step-body">Access high-value contracts algorithmically calibrated to your area, operational node type, and performance history metric.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Lock Capital</div>
+      <p class="step-body">Contract assets bypass secondary negotiation paths and secure directly on-platform prior to baseline creation. Zero risk.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Update Ledger</div>
+      <p class="step-body">Every closed node automatically updates your ecosystem metrics, feeding data layers directly into your universal score matrix.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Leverage Scale</div>
+      <p class="step-body">A high-velocity ranking status triggers priority listings, reduced protocol commissions, and access to dynamic capital pools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR DESIGNATION -->
+<section class="who-section">
+  <div class="who-label">Target Segments</div>
+  <h2 class="who-headline">Built for operators<br/>who <span class="pop">drive real velocity.</span></h2>
+  <p class="who-sub">If you scale independent value fields, this channel is open.</p>
+  <div class="who-grid">
+    <div class="who-card" data-emoji="⚡">
+      <span class="who-tag">Independent Networks</span>
+      <div class="who-title">Creatives & Independent Operators</div>
+      <p class="who-body">Media architects, brand leads, builders, and developers. Convert raw production output into an immutable, portable profile engine.</p>
+    </div>
+    <div class="who-card" data-emoji="🚀">
+      <span class="who-tag">Service Networks</span>
+      <div class="who-title">Production Professionals</div>
+      <p class="who-body">Operations leads, design leads, event architects, and directors. Establish clear verification profiles before walking in the room.</p>
+    </div>
+    <div class="who-card" data-emoji="💼">
+      <span class="who-tag">Enterprises</span>
+      <div class="who-title">Ecosystem Partners</div>
+      <p class="who-body">Ingest verified operators immediately. Secure task pipelines via programmatic escrow gates and build high-quality reputation nodes.</p>
+    </div>
+    <div class="who-card" data-emoji="🌐">
+      <span class="who-tag">Distributed Node</span>
+      <div class="who-title">Distributed Teams</div>
+      <p class="who-body">Platform leads, media runners, and distribution engineers. Your reputation record processes smoothly wherever you move your operations next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY INFRASTRUCTURE CASE NODES -->
+<section class="story-section">
+  <div class="story-label">Operational Case Profiles</div>
+  <h2 class="story-headline">Real Execution Profiles Across the Network.</h2>
+  <div class="story-grid">
+    <div class="story-card">
+      <span class="story-emoji">💎</span>
+      <div class="story-name">Temi · Lagos Unit</div>
+      <div class="story-role">Creative Architect</div>
+      <p class="story-text">Integrates directly into verified task vectors. Removes transactional noise entirely. Her trust index elevates with every successful node closure.</p>
+    </div>
+    <div class="story-card">
+      <span class="story-emoji">🔥</span>
+      <div class="story-name">Emeka · Abuja Unit</div>
+      <div class="story-role">Distributed Developer</div>
+      <p class="story-text">Launches a digital Susu rotation stack with verified development peers. Builds an institutional liquidity asset base dynamically.</p>
+    </div>
+    <div class="story-card">
+      <span class="story-emoji">✨</span>
+      <div class="story-name">Adaeze · Corporate Hub</div>
+      <div class="story-role">Enterprise Operator</div>
+      <p class="story-text">Deploys target pipelines swiftly. Capital funds sit secured via escrow structures until verification conditions clear completely.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE SYSTEM CHANNELS -->
+<div class="road-section">
+  <div class="road-inner">
+    <div class="road-label">Development Matrix</div>
+    <h2 class="road-headline">Assembling Africa's universal trust framework,<br/>one node at a time.</h2>
+    <div class="road-cols">
+      <div>
+        <div class="road-col-label now">Ingestion</div>
+        <div class="road-items">
+          <div class="road-item now">Marketplace Channels</div>
+          <div class="road-item now">Trust Metric Protocols</div>
+          <div class="road-item now">Escrow Settlement Ports</div>
+          <div class="road-item now">Enterprise Sourcing Interfaces</div>
+          <div class="road-item now">Digital Susu Networks</div>
+        </div>
+      </div>
+      <div>
+        <div class="road-col-label next">Expansion</div>
+        <div class="road-items">
+          <div class="road-item next">Automated Savings Routing</div>
+          <div class="road-item next">Performance Analytics Dashboards</div>
+          <div class="road-item next">Biometric ID Sync</div>
+          <div class="road-item next">Network Boost Engines</div>
+          <div class="road-item next">Peer Communication Bridges</div>
+        </div>
+      </div>
+      <div>
+        <div class="road-col-label future">Scale</div>
+        <div class="road-items">
+          <div class="road-item future">Credit Access Protocols</div>
+          <div class="road-item future">Asset Financing Liquidity</div>
+          <div class="road-item future">Verification Data Export Ports</div>
+          <div class="road-item future">Employer Validation Gates</div>
+          <div class="road-item future">Continental Cross-Routing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAPTURE PORTAL END CONTEXT -->
+<section class="waitlist-section" id="waitlist" style="padding-top:80px">
+  <div class="waitlist-inner">
+    <div class="waitlist-glow"></div>
+    <div class="naija-note">⚡ Kinetic Velocity Assured.</div>
+    <div class="waitlist-label">Node Access Allocation</div>
+    <h2 class="waitlist-headline">
+      Join the first<br/><span class="pop">1,000 Risers.</span>
+    </h2>
+    <p class="waitlist-body">Lagos and Abuja operations spinning up. Secure your entry slot early, shape initial ledger definitions, and stack your score index from block one.</p>
+    <div class="waitlist-perks">
+      <div class="perk">Priority Routing Queue</div>
+      <div class="perk">Exempted Protocol Fees</div>
+      <div class="perk">Beta Module Ingestion</div>
+      <div class="perk">Founding Riser Metadata Badge</div>
+    </div>
+    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary" style="font-size:18px;padding:22px 64px">
+      Secure Access Node →
+    </a>
+    <p class="waitlist-fine">Zero deployment charges · Lagos & Abuja nodes active first</p>
+  </div>
+</section>
+
+<!-- FOOTER LOGISTICS MATRIX -->
+<footer>
+  <div>
+    <a href="/" class="footer-logo-row">
+      <img src="rise-logo.png" alt="RISE" height="24" onerror="this.style.display='none'"/>
+      <span>RISE</span>
+    </a>
+    <div class="footer-tagline">Make execution measurable.</div>
+    <div class="footer-location">Starting inside Lagos & Abuja. <span>Scaling for Africa.</span></div>
+  </div>
+  <div class="footer-copy">© 2026 RISE Network Technologies. All rights reserved.</div>
+</footer>
 
 <script>
-  // High-Performance Intersection Observer for Scroll Reveals
-  const scrollTracker = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { root: null, rootMargin: '0px', threshold: 0.1 });
+// STREAMLINED HIGH-PERFORMANCE REVEAL HOOKS
+const layoutTracker = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in')
+      const children = e.target.querySelectorAll('.bento,.step,.who-card,.story-card,.p-line')
+      children.forEach((c,i)=>{
+        setTimeout(()=>c.classList.add('in'), i * 60)
+      })
+    }
+  })
+},{threshold:0.06, rootMargin:'0px 0px -20px 0px'})
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(block => scrollTracker.observe(block));
+document.querySelectorAll('.bento-section,.how-section,.who-section,.story-section,.reveal').forEach(el=>layoutTracker.observe(el))
+
+// Trigger sequential pipeline animations for problem lines
+const lineTracker = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const lines = document.querySelectorAll('.p-line')
+      lines.forEach((l,i)=>setTimeout(()=>l.classList.add('in'), i * 100))
+      lineTracker.disconnect()
+    }
+  })
+},{threshold:0.15})
+const ps = document.querySelector('.problem-section')
+if(ps) lineTracker.observe(ps)
+
+// Active escrow bar progression node
+const barTracker = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const fill = document.getElementById('pfFill')
+      if(fill) setTimeout(()=>fill.style.width='82%', 150)
+      barTracker.disconnect()
+    }
+  })
+},{threshold:0.25})
+const pfEl = document.querySelector('.pf-widget')
+if(pfEl) barTracker.observe(pfEl)
+
+// Seamless scrolling calculation parameters
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault()
+    const targetNode = document.querySelector(a.getAttribute('href'))
+    if(targetNode) targetNode.scrollIntoView({behavior:'smooth',block:'start'})
+  })
+})
+
+// Scroll threshold monitoring for structural shifts
+window.addEventListener('scroll',()=>{
+  const navElement = document.querySelector('nav')
+  navElement.style.background = window.scrollY > 40
+    ? 'rgba(10,13,16,0.9)' : 'rgba(10,13,16,0.75)'
+},{ passive:true })
+
+// Active matching interaction elements (Demo states)
+document.querySelectorAll('.job-apply').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    this.textContent = 'Allocated ✓'
+    this.style.background = 'rgba(57,255,20,0.15)'
+    this.style.color = '#39FF14'
+    this.style.borderColor = '#39FF14'
+  })
+})
 </script>
-
 </body>
 </html>
