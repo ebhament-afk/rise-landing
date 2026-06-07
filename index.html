@@ -6,414 +6,427 @@
 <title>RISE — Get work. Get paid. Build Trust.</title>
 <meta name="description" content="The trusted job marketplace and reputation platform built for Nigerian creatives and hustlers. Starting in Lagos & Abuja."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Cabinet+Grotesk:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --neon:#39FF14;
-  --neon-violet:#A855F7;
-  --neon-dim:rgba(57,255,20,0.08);
-  --neon-mid:rgba(57,255,20,0.2);
-  --bg:#0A0D10;
-  --bg2:#11161B;
-  --surface:#151B22;
-  --surface2:#1F2731;
-  --border:rgba(57,255,20,0.15);
-  --border-light:rgba(255,255,255,0.05);
+  --neon-dim:rgba(57,255,20,0.1);
+  --neon-mid:rgba(57,255,20,0.25);
+  --bg:#080808;
+  --bg2:#0d0d0d;
+  --surface:#141414;
+  --surface2:#1c1c1c;
+  --border:rgba(255,255,255,0.06);
   --fg:#ffffff;
-  --muted:#6B7C8E;
-  --muted2:#A3B3C2;
+  --muted:#666;
+  --muted2:#999;
   --head:'Syne',sans-serif;
-  --body:'Plus Jakarta Sans',sans-serif;
+  --body:'DM Sans',sans-serif;
   --alt:'Cabinet Grotesk',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* GRID BACKGROUND ARCHITECTURE */
+/* GRID BG */
 .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(57,255,20,0.015) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(57,255,20,0.015) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 100% 70% at 50% 0%,black 40%,transparent 100%)}
+  background-image:linear-gradient(rgba(57,255,20,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(57,255,20,0.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black 30%,transparent 100%)}
 
-/* AMBIENT CHROMATIC SYSTEMS */
-.glow-1{position:fixed;top:-15%;left:25%;width:800px;height:800px;
-  background:radial-gradient(circle,rgba(57,255,20,0.08) 0%,transparent 70%);
-  pointer-events:none;z-index:0;animation:driftA 10s ease-in-out infinite alternate}
-.glow-2{position:fixed;bottom:-10%;right:-5%;width:600px;height:600px;
-  background:radial-gradient(circle,rgba(168,85,247,0.05) 0%,transparent 65%);
+/* AMBIENT GLOWS */
+.glow-1{position:fixed;top:-20%;left:20%;width:700px;height:700px;
+  background:radial-gradient(circle,rgba(57,255,20,0.055) 0%,transparent 65%);
+  pointer-events:none;z-index:0;animation:driftA 12s ease-in-out infinite alternate}
+.glow-2{position:fixed;bottom:-10%;right:-5%;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(57,255,20,0.03) 0%,transparent 60%);
   pointer-events:none;z-index:0}
-@keyframes driftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-5%,5%) scale(1.05)}}
+@keyframes driftA{from{transform:translate(0,0) scale(1)}to{transform:translate(-4%,6%) scale(1.08)}}
 
-/* NAVIGATION LAYER */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;
-  padding:20px 40px;display:flex;align-items:center;justify-content:space-between;
-  background:rgba(10,13,16,0.75);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border-light);transition:all .3s}
-.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo img{height:32px;width:auto}
-.nav-logo-text{font-family:var(--head);font-weight:800;font-size:22px;color:var(--fg);letter-spacing:-0.03em}
-.nav-right{display:flex;align-items:center;gap:16px}
-.nav-pill{display:flex;align-items:center;gap:8px;padding:6px 16px;
-  background:var(--neon-dim);border:1px solid var(--border);
-  border-radius:100px;font-size:12px;font-weight:700;color:var(--neon);letter-spacing:0.02em}
+  padding:18px 40px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,0.75);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);transition:border-color .3s}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:28px;width:auto}
+.nav-logo-text{font-family:var(--head);font-weight:800;font-size:20px;color:var(--fg);letter-spacing:-0.02em}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-pill{display:flex;align-items:center;gap:6px;padding:6px 14px;
+  background:var(--neon-dim);border:1px solid rgba(57,255,20,0.2);
+  border-radius:100px;font-size:12px;font-weight:600;color:var(--neon)}
 .nav-pill::before{content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--neon);animation:blink 1.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.8)}}
-.nav-cta{padding:12px 26px;border-radius:14px;background:var(--neon);
-  color:#000;font-weight:800;font-size:14px;text-decoration:none;
-  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
-.nav-cta:hover{transform:scale(1.03) rotate(-0.5deg);
-  box-shadow:0 0 30px rgba(57,255,20,0.5)}
+  background:var(--neon);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-cta{padding:10px 22px;border-radius:100px;background:var(--neon);
+  color:#000;font-weight:700;font-size:14px;text-decoration:none;
+  transition:all .25s;font-family:var(--body)}
+.nav-cta:hover{filter:brightness(1.1);transform:translateY(-1px);
+  box-shadow:0 6px 24px rgba(57,255,20,0.3)}
 
-/* HERO HUB */
-.hero{position:relative;z-index:1;min-height:95vh;
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;
   display:flex;flex-direction:column;justify-content:center;
-  padding:140px 40px 80px;max-width:1200px;margin:0 auto}
-.hero-greeting{font-size:16px;color:var(--neon-violet);font-weight:700;
-  font-family:var(--body);margin-bottom:12px;letter-spacing:0.05em;text-transform:uppercase;
-  opacity:0;animation:fadeUp .7s .05s ease both}
+  padding:120px 40px 80px;max-width:1200px;margin:0 auto}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;
-  padding:8px 18px;border-radius:100px;
-  background:var(--neon-dim);border:1px solid var(--border);
-  font-size:13px;font-weight:700;color:var(--neon);
-  margin-bottom:32px;align-self:flex-start;
+  padding:7px 16px;border-radius:100px;
+  background:var(--neon-dim);border:1px solid rgba(57,255,20,0.2);
+  font-size:13px;font-weight:600;color:var(--neon);
+  margin-bottom:36px;align-self:flex-start;
   opacity:0;animation:fadeUp .7s .1s ease both}
+.hero-greeting{font-size:15px;color:rgba(255,255,255,0.4);
+  font-style:italic;font-family:var(--body);
+  margin-bottom:16px;
+  opacity:0;animation:fadeUp .7s .05s ease both}
 .hero-title{font-family:var(--head);font-weight:800;
-  font-size:clamp(58px,9.5vw,125px);line-height:.92;letter-spacing:-0.04em;
-  margin-bottom:36px;opacity:0;animation:fadeUp .8s .15s ease both}
+  font-size:clamp(56px,9vw,120px);line-height:.95;letter-spacing:-0.04em;
+  margin-bottom:32px;
+  opacity:0;animation:fadeUp .8s .15s ease both}
 .hero-title .line{display:block}
-.hero-title .neon{color:var(--neon);text-shadow:0 0 60px rgba(57,255,20,0.35)}
-.hero-sub{font-size:clamp(18px,2.2vw,24px);color:var(--muted2);max-width:640px;
-  line-height:1.5;margin-bottom:48px;opacity:0;animation:fadeUp .8s .25s ease both}
+.hero-title .neon{color:var(--neon);text-shadow:0 0 80px rgba(57,255,20,0.2)}
+.hero-sub{font-size:clamp(17px,2vw,22px);color:var(--muted2);max-width:580px;
+  line-height:1.55;margin-bottom:48px;
+  opacity:0;animation:fadeUp .8s .25s ease both}
+.hero-sub strong{color:rgba(255,255,255,0.75);font-weight:500}
 .hero-sub em{color:var(--neon);font-style:italic}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px;
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:60px;
   opacity:0;animation:fadeUp .8s .35s ease both}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;
-  padding:18px 40px;border-radius:16px;background:var(--neon);
-  color:#000;font-weight:800;font-size:16px;text-decoration:none;
-  transition:all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);box-shadow:0 10px 35px rgba(57,255,20,0.25)}
-.btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 45px rgba(57,255,20,0.45)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;
+  padding:16px 36px;border-radius:100px;background:var(--neon);
+  color:#000;font-weight:700;font-size:16px;text-decoration:none;
+  transition:all .25s;box-shadow:0 0 40px rgba(57,255,20,0.15);
+  font-family:var(--body)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(57,255,20,0.3);filter:brightness(1.05)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;
-  padding:18px 40px;border-radius:16px;background:transparent;
-  border:1px solid rgba(255,255,255,0.15);color:var(--fg);
-  font-weight:700;font-size:16px;text-decoration:none;transition:all .25s}
-.btn-ghost:hover{border-color:var(--neon);background:rgba(57,255,20,0.04);color:#FFF}
-.social-proof{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding:16px 36px;border-radius:100px;background:transparent;
+  border:1px solid rgba(255,255,255,0.12);color:var(--fg);
+  font-weight:600;font-size:16px;text-decoration:none;
+  transition:all .25s;font-family:var(--body)}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.04)}
+.social-proof{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
   opacity:0;animation:fadeUp .8s .45s ease both}
 .avatars{display:flex}
-.av{width:38px;height:38px;border-radius:50%;border:3px solid var(--bg);
-  margin-left:-10px;display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:13px;font-family:var(--alt)}
+.av{width:34px;height:34px;border-radius:50%;border:2px solid var(--bg);
+  margin-left:-8px;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:12px;font-family:var(--alt)}
 .av:first-child{margin-left:0}
 .av1{background:linear-gradient(135deg,#39FF14,#1a7a00);color:#000}
 .av2{background:linear-gradient(135deg,#ff6b35,#c43d00);color:#fff}
 .av3{background:linear-gradient(135deg,#a855f7,#6d28d9);color:#fff}
 .av4{background:linear-gradient(135deg,#ec4899,#be123c);color:#fff}
-.sp-text{font-size:14px;color:var(--muted2)}
-.sp-text strong{color:var(--fg);font-weight:700}
-.sp-sep{width:6px;height:6px;border-radius:50%;background:var(--surface2)}
+.sp-text{font-size:13px;color:var(--muted2)}
+.sp-text strong{color:var(--fg);font-weight:600}
+.sp-sep{width:4px;height:4px;border-radius:50%;background:var(--surface2)}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 
-/* KINETIC MARQUEE TICKER */
-.ticker-wrap{overflow:hidden;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);
-  background:var(--bg2);padding:18px 0;position:relative;z-index:1}
-.ticker{display:flex;white-space:nowrap;animation:tickerRun 25s linear infinite}
-.ticker-item{display:inline-flex;align-items:center;gap:12px;
-  padding:0 32px;font-size:14px;font-weight:700;color:var(--muted2);letter-spacing:0.02em}
+/* ── TICKER ── */
+.ticker-wrap{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  background:var(--bg2);padding:14px 0;position:relative;z-index:1}
+.ticker{display:flex;white-space:nowrap;width:max-content;animation:tickerRun 30s linear infinite}
+.ticker:hover{animation-play-state:paused}
+.ticker-item{display:inline-flex;align-items:center;gap:10px;
+  padding:0 28px;font-size:13px;font-weight:600;color:var(--muted2)}
 .ticker-item span{color:var(--neon)}
-.ticker-item::after{content:'·';margin-left:32px;color:rgba(255,255,255,0.1)}
+.ticker-item::after{content:'·';margin-left:28px;color:var(--border)}
 @keyframes tickerRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* CORE STATEMENT PANELS */
+/* ── STATEMENT SECTION ── */
 .statement-section{position:relative;z-index:1;
-  padding:140px 40px;max-width:1200px;margin:0 auto;
-  border-top:1px solid var(--border-light)}
-.statement-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:28px;
-  display:flex;align-items:center;gap:10px}
-.statement-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+  padding:120px 40px;max-width:1200px;margin:0 auto;
+  border-top:1px solid var(--border)}
+.statement-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:24px;
+  display:flex;align-items:center;gap:8px}
+.statement-label::before{content:'';width:20px;height:2px;background:var(--neon)}
 .statement-text{font-family:var(--head);
-  font-size:clamp(34px,4.8vw,68px);font-weight:800;
-  line-height:1.1;letter-spacing:-0.03em;max-width:980px}
-.statement-text .dim{color:rgba(255,255,255,0.2)}
+  font-size:clamp(32px,4.5vw,64px);font-weight:800;
+  line-height:1.08;letter-spacing:-0.03em;max-width:900px}
+.statement-text .dim{color:rgba(255,255,255,0.25)}
 .statement-text .bright{color:var(--fg)}
-.statement-text .pop{color:var(--neon);text-shadow:0 0 40px rgba(57,255,20,0.2)}
+.statement-text .pop{color:var(--neon)}
 
-/* CRISIS & RESOLUTION SUITE */
+/* ── PROBLEM LINES ── */
 .problem-section{position:relative;z-index:1;
-  padding:0 40px 140px;max-width:1200px;margin:0 auto}
-.problem-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:44px;
-  display:flex;align-items:center;gap:10px}
-.problem-label::before{content:'';width:24px;height:2px;background:var(--neon)}
+  padding:0 40px 120px;max-width:1200px;margin:0 auto}
+.problem-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:40px;
+  display:flex;align-items:center;gap:8px}
+.problem-label::before{content:'';width:20px;height:2px;background:var(--neon)}
 .problem-lines{display:flex;flex-direction:column}
-.p-line{display:flex;align-items:center;gap:24px;
-  padding:26px 0;border-bottom:1px solid var(--border-light);
-  font-family:var(--alt);font-size:clamp(20px,2.6vw,34px);
-  font-weight:800;opacity:0;transform:translateX(-30px);
-  transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+.p-line{display:flex;align-items:center;gap:20px;
+  padding:22px 0;border-bottom:1px solid var(--border);
+  font-family:var(--alt);font-size:clamp(18px,2.5vw,32px);
+  font-weight:700;opacity:0;transform:translateX(-20px);
+  transition:all .6s ease}
 .p-line.in{opacity:1;transform:translateX(0)}
-.p-line.bad{color:rgba(255,255,255,0.25)}
-.p-line.good{color:var(--neon);border-bottom:none;font-size:clamp(24px,3.2vw,44px);margin-top:16px;text-shadow:0 0 30px rgba(57,255,20,0.15)}
-.p-icon{width:46px;height:46px;border-radius:14px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-  background:var(--surface);border:1px solid var(--border-light)}
-.p-line.good .p-icon{background:var(--neon-dim);border-color:var(--neon)}
+.p-line.bad{color:rgba(255,255,255,0.3)}
+.p-line.good{color:var(--neon);border-bottom:none;font-size:clamp(22px,3vw,40px);margin-top:8px}
+.p-icon{width:40px;height:40px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+  background:var(--surface);border:1px solid var(--border)}
+.p-line.good .p-icon{background:var(--neon-dim);border-color:rgba(57,255,20,0.25)}
 
-/* INTERACTIVE BENTO ECOSYSTEM */
+/* ── BENTO FEATURES ── */
 .bento-section{position:relative;z-index:1;
-  padding:0 40px 140px;max-width:1200px;margin:0 auto}
-.bento-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
-  display:flex;align-items:center;gap:10px}
-.bento-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.bento-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
-  font-weight:800;letter-spacing:-0.03em;margin-bottom:56px;line-height:1.05}
-.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+  padding:0 40px 120px;max-width:1200px;margin:0 auto}
+.bento-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px}
+.bento-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.bento-headline{font-family:var(--head);font-size:clamp(32px,4vw,56px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:48px;line-height:1.05}
+.bento-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
 
-.bento{grid-column:span 6;background:var(--surface);border:1px solid var(--border-light);
-  border-radius:32px;padding:44px;min-height:460px;
+.bento{grid-column:span 6;background:var(--surface);border:1px solid var(--border);
+  border-radius:28px;padding:40px;min-height:400px;
   display:flex;flex-direction:column;justify-content:space-between;
   overflow:hidden;position:relative;
-  transition:all .4s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity:0;transform:translateY(30px)}
+  transition:border-color .35s,background .35s,transform .35s;
+  opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease,border-color .35s,background .35s}
 .bento.in{opacity:1;transform:translateY(0)}
-.bento:hover{border-color:var(--neon);background:#1A232C;transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
-.bento::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,rgba(57,255,20,0.4),transparent);
-  opacity:0;transition:opacity .35s}
+.bento:hover{border-color:rgba(57,255,20,0.18);background:#161616;transform:translateY(-3px)}
 .bento:hover::before{opacity:1}
-.bento.wide{grid-column:span 12;min-height:380px;flex-direction:row;align-items:center;gap:48px}
+.bento::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(57,255,20,0.35),transparent);
+  opacity:0;transition:opacity .35s}
+.bento.wide{grid-column:span 12;min-height:320px;flex-direction:row;align-items:center;gap:48px}
+.bento.tall{grid-column:span 4;min-height:460px}
 
-.bento-tag{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:18px;display:block}
-.bento-title{font-family:var(--head);font-size:clamp(24px,2.6vw,32px);
-  font-weight:800;margin-bottom:16px;letter-spacing:-0.02em;line-height:1.1}
-.bento-body{font-size:16px;color:var(--muted2);line-height:1.6;max-width:460px}
-.bento-chip{display:inline-block;margin-top:24px;padding:6px 16px;
+.bento-tag{font-size:10px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;display:block}
+.bento-title{font-family:var(--head);font-size:clamp(22px,2.5vw,30px);
+  font-weight:800;margin-bottom:14px;letter-spacing:-0.02em;line-height:1.1}
+.bento-body{font-size:15px;color:var(--muted2);line-height:1.65;max-width:420px}
+.bento-chip{display:inline-block;margin-top:20px;padding:6px 14px;
   border-radius:100px;background:var(--neon-dim);
-  border:1px solid var(--border);font-size:11px;font-weight:800;color:var(--neon);text-transform:uppercase;letter-spacing:.06em}
+  border:1px solid rgba(57,255,20,0.2);
+  font-size:11px;font-weight:700;color:var(--neon);text-transform:uppercase;letter-spacing:.06em}
 
-/* INTERFACE INTERACTION LAYERS */
-.widget{margin-top:32px;position:relative}
+/* BENTO WIDGETS */
+.widget{margin-top:28px}
 
-/* Escrow Container Panel */
-.pf-widget{background:rgba(10,13,16,0.6);border:2px solid var(--border-light);
-  border-radius:20px;padding:24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);position:relative}
-.pf-widget::after{content:'';position:absolute;inset:0;border-radius:20px;border:1px solid transparent;transition:all 0.3s}
-.bento:hover .pf-widget{border-color:var(--neon);box-shadow:0 0 25px rgba(57,255,20,0.15)}
-.pf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.pf-label{font-size:12px;color:var(--muted2);font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
-.pf-amount{font-size:26px;font-weight:900;color:#FFF;font-family:var(--alt);animation:pulseText 2s ease-in-out infinite alternate}
-@keyframes pulseText{from{transform:scale(1)}to{transform:scale(1.02);color:var(--neon)}}
-.pf-bar{height:8px;background:rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;margin-bottom:14px}
+/* Protected funds widget */
+.pf-widget{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);
+  border-radius:18px;padding:20px}
+.pf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pf-label{font-size:12px;color:var(--muted);font-weight:500}
+.pf-amount{font-size:14px;font-weight:700;color:var(--neon);font-family:var(--alt)}
+.pf-bar{height:5px;background:rgba(255,255,255,0.07);border-radius:10px;overflow:hidden;margin-bottom:10px}
 .pf-fill{height:100%;width:0%;background:var(--neon);
-  box-shadow:0 0 15px var(--neon);border-radius:10px;
-  transition:width 1.8s cubic-bezier(.16,1,.3,1)}
-.pf-status{font-size:12px;color:var(--muted2);display:flex;align-items:center;gap:8px;font-weight:500}
-.pf-status::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon);animation:blink 1s infinite}
+  box-shadow:0 0 10px var(--neon);border-radius:10px;
+  transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.pf-status{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.pf-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--neon);box-shadow:0 0 6px var(--neon)}
 
-/* Live Dynamic Score Engine */
-.score-widget{display:flex;flex-direction:column;align-items:center;justify-content:center}
-.score-big{font-family:var(--head);font-size:100px;font-weight:900;
-  color:var(--neon);line-height:0.9;letter-spacing:-0.04em;
-  text-shadow:0 0 50px rgba(57,255,20,0.45)}
-.score-tier{font-size:13px;font-weight:800;color:#000;background:var(--neon);padding:4px 14px;border-radius:100px;text-transform:uppercase;letter-spacing:0.05em;margin-top:10px}
-.score-facts{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
-.score-fact{font-size:12px;color:var(--muted2);font-weight:500}
-.score-fact strong{color:var(--fg);display:block;font-size:18px;font-weight:800;font-family:var(--alt);margin-top:2px}
+/* Trust score widget */
+.score-widget{display:flex;align-items:baseline;gap:12px}
+.score-big{font-family:var(--head);font-size:80px;font-weight:800;
+  color:var(--neon);line-height:1;letter-spacing:-0.04em;
+  text-shadow:0 0 60px rgba(57,255,20,0.25)}
+.score-side{display:flex;flex-direction:column;gap:4px}
+.score-tier{font-size:14px;font-weight:700;color:var(--fg)}
+.score-sub{font-size:12px;color:var(--muted)}
+.score-bar{width:100%;height:3px;background:rgba(255,255,255,0.07);
+  border-radius:2px;overflow:hidden;margin-top:20px}
+.score-fill{height:100%;width:92%;background:linear-gradient(90deg,rgba(57,255,20,0.5),var(--neon));border-radius:2px}
+.score-facts{display:flex;gap:20px;margin-top:16px;flex-wrap:wrap}
+.score-fact{font-size:12px;color:var(--muted)}
+.score-fact strong{color:var(--fg);display:block;font-size:16px;font-weight:700}
 
-/* Interactive Ajo Hub Loop */
-.pool-widget{display:flex;flex-direction:column;gap:12px}
-.pool-card-mini{background:rgba(10,13,16,0.6);border:1px solid var(--border-light);
-  border-radius:16px;padding:18px 20px;transition:all 0.3s}
-.bento:hover .pool-card-mini{border-color:rgba(57,255,20,0.25)}
-.pool-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.pool-name{font-size:14px;font-weight:700}
-.pool-pct{font-size:14px;font-weight:800;color:var(--neon)}
-.pool-meta{font-size:12px;color:var(--muted2);margin-bottom:10px}
-.pool-bar{height:6px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden}
-.pool-fill{height:100%;background:var(--neon);border-radius:4px;box-shadow:0 0 10px var(--neon)}
+/* Susu pool widget */
+.pool-widget{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.pool-card-mini{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;padding:14px 16px}
+.pool-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pool-name{font-size:13px;font-weight:600}
+.pool-pct{font-size:13px;font-weight:700;color:var(--neon)}
+.pool-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.pool-bar{height:4px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden}
+.pool-fill{height:100%;background:var(--neon);border-radius:4px}
 
-/* Actionable Marketplace Nodes */
-.jobs-widget{display:flex;flex-direction:column;gap:10px}
-.job-pill{background:rgba(10,13,16,0.6);border:1px solid var(--border-light);
-  border-radius:16px;padding:16px 20px;
-  display:flex;align-items:center;justify-content:space-between;transition:all 0.3s}
-.job-pill:hover{background:var(--surface2);border-color:rgba(255,255,255,0.1)}
-.job-pill-left .job-title{font-size:14px;font-weight:700}
-.job-pill-left .job-loc{font-size:12px;color:var(--muted2);margin-top:4px;font-weight:500}
-.job-pill-right{display:flex;align-items:center;gap:12px}
-.job-pay{font-size:14px;font-weight:800;color:var(--neon);font-family:var(--alt)}
-.job-apply{padding:8px 18px;border-radius:10px;background:var(--neon);
-  color:#000;font-size:12px;font-weight:800;border:none;cursor:pointer;transition:all 0.2s}
-.job-apply:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(57,255,20,0.3)}
+/* Jobs mini widget */
+.jobs-widget{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.job-pill{background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.06);
+  border-radius:14px;padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between}
+.job-pill-left .job-title{font-size:13px;font-weight:600}
+.job-pill-left .job-loc{font-size:11px;color:var(--muted);margin-top:2px}
+.job-pill-right{display:flex;align-items:center;gap:8px}
+.job-pay{font-size:13px;font-weight:700;color:var(--neon)}
+.job-apply{padding:5px 12px;border-radius:100px;background:var(--neon);
+  color:#000;font-size:11px;font-weight:700;border:none;cursor:pointer}
 
-/* HIGH-VELOCITY STEPS SETUP */
+/* ── HOW IT WORKS ── */
 .how-section{position:relative;z-index:1;
-  padding:0 40px 140px;max-width:1200px;margin:0 auto}
-.how-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
-  display:flex;align-items:center;gap:10px}
-.how-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.how-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
-  font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;line-height:1.05}
-.how-sub{font-size:18px;color:var(--muted2);margin-bottom:64px;max-width:520px;line-height:1.5}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.step{padding:40px 24px;border:1px solid var(--border-light);background:rgba(255,255,255,0.01);
-  border-radius:24px;opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
-.step.in{opacity:1;transform:translateY(0)}
-.step:hover{border-color:var(--border);background:var(--surface)}
-.step-num{font-family:var(--head);font-size:56px;font-weight:800;
-  color:var(--neon);opacity:.4;line-height:1;margin-bottom:24px}
-.step-title{font-family:var(--alt);font-size:20px;font-weight:800;
-  margin-bottom:12px;letter-spacing:-0.01em}
-.step-body{font-size:15px;color:var(--muted2);line-height:1.6}
-
-/* STRATEGIC CAPABILITY TARGETS */
-.who-section{position:relative;z-index:1;
-  padding:0 40px 140px;max-width:1200px;margin:0 auto}
-.who-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
-  display:flex;align-items:center;gap:10px}
-.who-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.who-headline{font-family:var(--head);font-size:clamp(36px,4.2vw,60px);
+  padding:0 40px 120px;max-width:1200px;margin:0 auto}
+.how-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px}
+.how-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.how-headline{font-family:var(--head);font-size:clamp(32px,4vw,56px);
   font-weight:800;letter-spacing:-0.03em;margin-bottom:8px;line-height:1.05}
-.who-headline .pop{color:var(--neon)}
-.who-sub{font-size:18px;color:var(--muted2);margin-bottom:56px}
-.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.who-card{background:var(--surface);border:1px solid var(--border-light);
-  border-radius:28px;padding:44px;position:relative;overflow:hidden;
-  cursor:default;opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
-.who-card.in{opacity:1;transform:translateY(0)}
-.who-card:hover{border-color:var(--neon);background:#1A232C}
-.who-card::after{content:attr(data-emoji);position:absolute;
-  right:32px;bottom:24px;font-size:64px;opacity:.08;
-  transition:all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
-.who-card:hover::after{opacity:.2;transform:scale(1.15) rotate(-8deg)}
-.who-tag{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:block}
-.who-title{font-family:var(--head);font-size:24px;font-weight:800;
-  margin-bottom:12px;letter-spacing:-0.02em}
-.who-body{font-size:15px;color:var(--muted2);line-height:1.65;max-width:340px}
+.how-sub{font-size:17px;color:var(--muted2);margin-bottom:56px;max-width:480px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.step{padding:36px 28px 36px 0;border-right:1px solid var(--border);
+  opacity:0;transform:translateY(20px);transition:all .6s ease}
+.step:last-child{border-right:none;padding-right:0}
+.step.in{opacity:1;transform:translateY(0)}
+.step-num{font-family:var(--head);font-size:52px;font-weight:800;
+  color:var(--neon);opacity:.5;line-height:1;margin-bottom:20px}
+.step-title{font-family:var(--alt);font-size:18px;font-weight:700;
+  margin-bottom:10px;letter-spacing:-0.01em}
+.step-body{font-size:14px;color:var(--muted2);line-height:1.65}
 
-/* ROADMAP PIPELINE NETWORK */
+/* ── WHO IT'S FOR ── */
+.who-section{position:relative;z-index:1;
+  padding:0 40px 120px;max-width:1200px;margin:0 auto}
+.who-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px}
+.who-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.who-headline{font-family:var(--head);font-size:clamp(32px,4vw,56px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;line-height:1.05}
+.who-headline .pop{color:var(--neon)}
+.who-sub{font-size:17px;color:var(--muted2);margin-bottom:48px}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.who-card{background:var(--surface);border:1px solid var(--border);
+  border-radius:24px;padding:36px;position:relative;overflow:hidden;
+  cursor:default;opacity:0;transform:translateY(20px);transition:all .6s ease}
+.who-card.in{opacity:1;transform:translateY(0)}
+.who-card:hover{border-color:rgba(57,255,20,0.18)}
+.who-card::after{content:attr(data-emoji);position:absolute;
+  right:24px;bottom:16px;font-size:52px;opacity:.12;
+  transition:opacity .3s,transform .3s}
+.who-card:hover::after{opacity:.22;transform:scale(1.1) rotate(-5deg)}
+.who-tag{font-size:10px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:block}
+.who-title{font-family:var(--head);font-size:22px;font-weight:800;
+  margin-bottom:10px;letter-spacing:-0.02em}
+.who-body{font-size:14px;color:var(--muted2);line-height:1.65;max-width:300px}
+
+/* ── ROADMAP ── */
 .road-section{position:relative;z-index:1;
-  background:var(--bg2);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);
-  padding:120px 40px}
+  background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:100px 40px}
 .road-inner{max-width:1200px;margin:0 auto}
-.road-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
-  display:flex;align-items:center;gap:10px}
-.road-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.road-headline{font-family:var(--head);font-size:clamp(32px,3.8vw,54px);
-  font-weight:800;letter-spacing:-0.03em;margin-bottom:64px;line-height:1.1}
-.road-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.road-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px}
+.road-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.road-headline{font-family:var(--head);font-size:clamp(28px,3.5vw,48px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:56px}
+.road-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
 .road-col-label{font-size:11px;font-weight:800;text-transform:uppercase;
-  letter-spacing:.12em;margin-bottom:28px;padding:6px 16px;
+  letter-spacing:.1em;margin-bottom:24px;padding:6px 14px;
   border-radius:100px;display:inline-block}
 .road-col-label.now{background:var(--neon);color:#000}
 .road-col-label.next{background:rgba(255,255,255,0.08);color:var(--fg)}
-.road-col-label.future{background:rgba(255,255,255,0.04);color:var(--muted)}
-.road-items{display:flex;flex-direction:column;gap:16px}
-.road-item{display:flex;align-items:center;gap:12px;
-  font-size:16px;font-weight:600}
-.road-item::before{content:'';width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.road-item.now::before{background:var(--neon);box-shadow:0 0 10px var(--neon)}
+.road-col-label.future{background:rgba(255,255,255,0.04);color:var(--muted2)}
+.road-items{display:flex;flex-direction:column;gap:12px}
+.road-item{display:flex;align-items:center;gap:10px;
+  font-size:15px;font-weight:500}
+.road-item::before{content:'';width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.road-item.now::before{background:var(--neon);box-shadow:0 0 8px var(--neon)}
 .road-item.next::before{background:rgba(255,255,255,0.3)}
 .road-item.future::before{background:rgba(255,255,255,0.1)}
 .road-item.now{color:var(--fg)}
 .road-item.next{color:var(--muted2)}
 .road-item.future{color:var(--muted)}
 
-/* METADATA USE STORY NODES */
+/* ── STORIES ── */
 .story-section{position:relative;z-index:1;
-  padding:120px 40px;max-width:1200px;margin:0 auto}
-.story-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;
-  display:flex;align-items:center;gap:10px}
-.story-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.story-headline{font-family:var(--head);font-size:clamp(32px,3.8vw,54px);
-  font-weight:800;letter-spacing:-0.03em;margin-bottom:56px}
-.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.story-card{background:var(--surface);border:1px solid var(--border-light);
-  border-radius:28px;padding:36px;
-  opacity:0;transform:translateY(30px);transition:all .6s cubic-bezier(0.16, 1, 0.3, 1)}
+  padding:100px 40px;max-width:1200px;margin:0 auto}
+.story-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
+  display:flex;align-items:center;gap:8px}
+.story-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.story-headline{font-family:var(--head);font-size:clamp(28px,3.5vw,48px);
+  font-weight:800;letter-spacing:-0.03em;margin-bottom:48px}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.story-card{background:var(--surface);border:1px solid var(--border);
+  border-radius:24px;padding:32px;
+  opacity:0;transform:translateY(20px);transition:all .6s ease}
 .story-card.in{opacity:1;transform:translateY(0)}
-.story-card:hover{border-color:var(--border)}
-.story-emoji{font-size:36px;margin-bottom:24px;display:block}
-.story-name{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.story-role{font-family:var(--alt);font-size:22px;font-weight:800;
+.story-card:hover{border-color:rgba(57,255,20,0.15)}
+.story-emoji{font-size:32px;margin-bottom:20px;display:block}
+.story-name{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.story-role{font-family:var(--alt);font-size:20px;font-weight:700;
   margin-bottom:16px;letter-spacing:-0.01em}
-.story-text{font-size:15px;color:var(--muted2);line-height:1.65}
+.story-text{font-size:14px;color:var(--muted2);line-height:1.7}
 
-/* HIGH-ENGAGEMENT RETENTION ENGINE */
-.waitlist-section{position:relative;z-index:1;padding:0 40px 100px}
+/* ── WAITLIST ── */
+.waitlist-section{position:relative;z-index:1;padding:0 40px 80px}
 .waitlist-inner{max-width:1200px;margin:0 auto;
-  background:var(--surface);border:2px solid var(--border);
-  border-radius:40px;padding:90px 40px;text-align:center;position:relative;overflow:hidden}
+  background:var(--surface);border:1px solid rgba(57,255,20,0.12);
+  border-radius:32px;padding:80px;text-align:center;position:relative;overflow:hidden}
 .waitlist-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);
-  width:700px;height:450px;
-  background:radial-gradient(ellipse,rgba(57,255,20,0.1) 0%,transparent 75%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(57,255,20,0.06) 0%,transparent 70%);
   pointer-events:none}
-.waitlist-label{font-size:11px;font-weight:800;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.15em;margin-bottom:28px;
-  display:flex;align-items:center;justify-content:center;gap:12px}
-.waitlist-label::before{content:'';width:24px;height:2px;background:var(--neon)}
-.waitlist-label::after{content:'';width:24px;height:2px;background:var(--neon)}
+.waitlist-label{font-size:11px;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;gap:8px}
+.waitlist-label::before{content:'';width:20px;height:2px;background:var(--neon)}
+.waitlist-label::after{content:'';width:20px;height:2px;background:var(--neon)}
 .waitlist-headline{font-family:var(--head);
-  font-size:clamp(40px,5.5vw,80px);font-weight:800;
-  letter-spacing:-0.03em;line-height:1.0;margin-bottom:24px}
-.waitlist-headline .pop{color:var(--neon);text-shadow:0 0 50px rgba(57,255,20,0.3)}
-.waitlist-body{font-size:19px;color:var(--muted2);max-width:540px;
-  margin:0 auto 40px;line-height:1.55}
+  font-size:clamp(36px,5vw,72px);font-weight:800;
+  letter-spacing:-0.03em;line-height:1.0;margin-bottom:20px}
+.waitlist-headline .pop{color:var(--neon)}
+.waitlist-body{font-size:18px;color:var(--muted2);max-width:480px;
+  margin:0 auto 36px;line-height:1.6}
 .waitlist-perks{display:flex;align-items:center;justify-content:center;
-  flex-wrap:wrap;gap:24px;margin-bottom:48px}
-.perk{display:flex;align-items:center;gap:8px;
-  font-size:15px;font-weight:600;color:rgba(255,255,255,0.85)}
-.perk::before{content:'✓';color:var(--neon);font-weight:900;font-size:16px}
-.waitlist-fine{margin-top:24px;font-size:13px;color:var(--muted)}
+  flex-wrap:wrap;gap:20px;margin-bottom:40px}
+.perk{display:flex;align-items:center;gap:7px;
+  font-size:14px;font-weight:500;color:rgba(255,255,255,0.65)}
+.perk::before{content:'✓';color:var(--neon);font-weight:800;font-size:15px}
+.waitlist-fine{margin-top:20px;font-size:13px;color:var(--muted)}
 .naija-note{display:inline-flex;align-items:center;gap:8px;
-  padding:8px 20px;border-radius:100px;
-  background:var(--neon-dim);border:1px solid var(--border);
-  font-size:13px;font-weight:700;color:#FFF;margin-bottom:36px}
+  padding:8px 18px;border-radius:100px;
+  background:var(--neon-dim);border:1px solid rgba(57,255,20,0.15);
+  font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:32px}
 
-/* FOOTER ARCHITECTURE */
+/* ── FOOTER ── */
 footer{position:relative;z-index:1;
-  border-top:1px solid var(--border-light);
-  padding:48px 40px;display:flex;align-items:center;
-  justify-content:space-between;flex-wrap:wrap;gap:24px}
-.footer-logo-row{display:flex;align-items:center;gap:12px;text-decoration:none;margin-bottom:12px}
-.footer-logo-row img{height:24px}
-.footer-logo-row span{font-family:var(--head);font-weight:800;font-size:20px;color:var(--fg)}
-.footer-tagline{font-size:14px;color:var(--muted);margin-bottom:6px}
-.footer-location{font-size:14px;color:var(--muted)}
-.footer-location span{color:var(--neon);font-weight:600}
-.footer-copy{font-size:14px;color:var(--muted)}
+  border-top:1px solid var(--border);
+  padding:40px;display:flex;align-items:center;
+  justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-left{}
+.footer-logo-row{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px}
+.footer-logo-row img{height:22px}
+.footer-logo-row span{font-family:var(--head);font-weight:800;font-size:18px;color:var(--fg)}
+.footer-tagline{font-size:13px;color:var(--muted);margin-bottom:4px}
+.footer-copy{font-size:13px;color:var(--muted)}
 
-/* RESPONSIVE LAYOUT ENGINE */
+/* ── MOBILE ── */
 @media(max-width:900px){
-  nav{padding:18px 24px}
+  nav{padding:16px 20px}
   .nav-pill{display:none}
-  .hero{padding:120px 24px 60px}
+  .hero{padding:100px 20px 60px}
   .statement-section,.problem-section,.bento-section,
-  .how-section,.who-section,.story-section{padding-left:24px;padding-right:24px}
-  .bento-grid{grid-template-columns:1fr;gap:20px}
-  .bento,.bento.wide{grid-column:span 1;min-height:auto;flex-direction:column;align-items:flex-start;padding:36px 28px}
-  .steps{grid-template-columns:1fr;gap:20px}
-  .step{padding:32px 24px}
-  .who-grid{grid-template-columns:1fr;gap:20px}
-  .story-grid{grid-template-columns:1fr;gap:20px}
-  .road-cols{grid-template-columns:1fr;gap:36px}
-  .waitlist-inner{padding:60px 24px}
-  .road-section{padding:80px 24px}
-  footer{padding:40px 24px}
-  .hero-actions{flex-direction:column;gap:12px}
+  .how-section,.who-section,.story-section{padding-left:20px;padding-right:20px}
+  .bento-grid{grid-template-columns:1fr}
+  .bento,.bento.wide,.bento.tall{grid-column:span 1;min-height:auto;flex-direction:column;align-items:flex-start}
+  .steps{grid-template-columns:1fr 1fr;gap:32px}
+  .step{border-right:none;padding-right:0;border-bottom:1px solid var(--border);padding-bottom:32px}
+  .step:nth-child(odd){padding-right:16px}
+  .step:last-child,.step:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .who-grid{grid-template-columns:1fr}
+  .story-grid{grid-template-columns:1fr}
+  .road-cols{grid-template-columns:1fr}
+  .waitlist-inner{padding:40px 24px}
+  .road-section{padding:60px 20px}
+  footer{padding:32px 20px}
+  .hero-actions{flex-direction:column}
   .btn-primary,.btn-ghost{width:100%;justify-content:center}
+}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr}
+  .step{border-right:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -426,51 +439,50 @@ footer{position:relative;z-index:1;
 <div class="glow-1"></div>
 <div class="glow-2"></div>
 
-<!-- STICKY HEADER NODE -->
 <nav>
-  <a href="/" class="nav-logo">
-    <img src="rise-logo.png" alt="RISE" onerror="this.style.display='none'"/>
+  <a href="/" class="nav-logo" aria-label="RISE Home">
+    <img src="rise-logo.png" alt="RISE Logo" onerror="this.style.display='none'"/>
     <span class="nav-logo-text">RISE</span>
   </a>
   <div class="nav-right">
-    <div class="nav-pill">Lagos & Abuja Active</div>
-    <a href="https://tally.so/r/68py7B" target="_blank" class="nav-cta">Claim Node</a>
+    <div class="nav-pill">Coming soon — Lagos & Abuja</div>
+    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
-<!-- KINETIC HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">🇳🇬 Launching Early Access Nodes</div>
-  <p class="hero-greeting">No Client Drama. Just Your Income.</p>
+  <p class="hero-greeting">How you dey, Nigeria? 👋</p>
+  <div class="hero-eyebrow">🇳🇬 Starting in Lagos & Abuja · Building for Africa</div>
   <h1 class="hero-title">
     <span class="line">Get work.</span>
     <span class="line">Get paid.</span>
     <span class="line neon">Build Trust.</span>
   </h1>
   <p class="hero-sub">
-    The high-energy marketplace built for Nigerian independent operators. Secure your funds beforehand, protect your milestones completely, and build an unassailable track record that travels with you <em>everywhere.</em>
+    The platform where Nigerian creatives and hustlers find real jobs,
+    get paid without the stress, and build a reputation that follows them
+    <em>everywhere.</em>
   </p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary">
+    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="btn-primary">
       Join the Waitlist →
     </a>
-    <a href="#how" class="btn-ghost">See How It Works</a>
+    <a href="#how" class="btn-ghost">See how it works</a>
   </div>
   <div class="social-proof">
-    <div class="avatars">
-      <div class="av av1">M</div>
-      <div class="av av2">O</div>
+    <div class="avatars" aria-hidden="true">
+      <div class="av av1">T</div>
+      <div class="av av2">K</div>
       <div class="av av3">A</div>
-      <div class="av av4">N</div>
+      <div class="av av4">F</div>
     </div>
-    <p class="sp-text"><strong>First 1,000 Risers</strong> secure early fee exemptions</p>
-    <div class="sp-sep"></div>
+    <p class="sp-text"><strong>First 1,000 Risers</strong> get early access</p>
+    <div class="sp-sep" aria-hidden="true"></div>
     <p class="sp-text">Lagos · Abuja · Remote</p>
   </div>
 </section>
 
-<!-- RUNNING SPEED TICKER -->
-<div class="ticker-wrap">
+<div class="ticker-wrap" aria-hidden="true">
   <div class="ticker">
     <span class="ticker-item">Find Jobs <span>→</span></span>
     <span class="ticker-item">Get Paid Safely <span>→</span></span>
@@ -487,105 +499,101 @@ footer{position:relative;z-index:1;
   </div>
 </div>
 
-<!-- MISSION MANIFESTO -->
 <section class="statement-section reveal">
-  <div class="statement-label">The Blueprint</div>
+  <div class="statement-label">Why RISE Matters</div>
   <h2 class="statement-text">
-    <span class="dim">Over 85 million Nigerians build raw value every single day.</span>
-    <br/><span class="bright">Most remain structurally invisible on paper.</span>
-    <br/><span class="pop">RISE builds the framework to prove it.</span>
+    <span class="dim">Over 85 million Nigerians hustle hard every single day.</span>
+    <br/><span class="bright">Most have no way to prove it.</span>
+    <br/><span class="pop">RISE changes that.</span>
   </h2>
 </section>
 
-<!-- PAIN NODE ENGINE -->
 <section class="problem-section">
-  <div class="problem-label">The Resolution Channel</div>
+  <div class="problem-label">Why RISE Exists</div>
   <div class="problem-lines">
     <div class="p-line bad">
-      <div class="p-icon">❌</div>
-      Ghost clients disappear post-delivery.
+      <div class="p-icon" aria-hidden="true">❌</div>
+      Ghost clients never pay.
     </div>
     <div class="p-line bad">
-      <div class="p-icon">❌</div>
-      Exceptional execution profiles start from scratch every gig.
+      <div class="p-icon" aria-hidden="true">❌</div>
+      Good workers start from zero every time.
     </div>
     <div class="p-line bad">
-      <div class="p-icon">❌</div>
-      Top-tier enterprises struggle to verify outside talent.
+      <div class="p-icon" aria-hidden="true">❌</div>
+      Businesses can't find workers they can actually trust.
     </div>
     <div class="p-line bad">
-      <div class="p-icon">❌</div>
-      Millions of builders hold no portable performance data.
+      <div class="p-icon" aria-hidden="true">❌</div>
+      Millions of hustlers have no financial track record.
     </div>
     <div class="p-line good">
-      <div class="p-icon">✅</div>
-      RISE protects inflow, builds capital loops, and secures identity.
+      <div class="p-icon" aria-hidden="true">✅</div>
+      RISE helps people earn, save, build trust, and unlock opportunity.
     </div>
   </div>
 </section>
 
-<!-- LIVE BENTO ECOSYSTEM -->
 <section class="bento-section">
-  <div class="bento-label">Ecosystem Core</div>
-  <h2 class="bento-headline">Engineered for velocity.<br/>Stripped of noise.</h2>
+  <div class="bento-label">What's Inside</div>
+  <h2 class="bento-headline">Everything you need.<br/>Nothing you don't.</h2>
   <div class="bento-grid">
 
-    <!-- Card 1: Trust Score Engine -->
     <div class="bento wide">
       <div>
-        <span class="bento-tag">The Moat Core</span>
-        <h3 class="bento-title">The Trust Score Protocol</h3>
-        <p class="bento-body">Your independent execution record, converted automatically into a high-visibility metric. Every milestone completed on time and every review received updates your core profile—unlocking premium contract tiers and architectural financial leverage.</p>
-        <span class="bento-chip">Permanent Profile Asset</span>
+        <span class="bento-tag">Your Trust Score</span>
+        <h3 class="bento-title">Your reputation, made visible.</h3>
+        <p class="bento-body">Every job you complete, every great review, every payment you make on time — it all builds your Trust Score. One number that follows you everywhere and eventually unlocks jobs, lower fees, and opportunities banks would never give you.</p>
+        <span class="bento-chip">The Moat</span>
         <div class="score-facts">
-          <div class="score-fact"><strong>4.8</strong>Global Rating</div>
-          <div class="score-fact"><strong>100%</strong>Fulfillment Node</div>
-          <div class="score-fact"><strong>13</strong>Contracts Completed</div>
-          <div class="score-fact"><strong>Verified Elite</strong>Status</div>
+          <div class="score-fact"><strong>4.8</strong>Trust Score</div>
+          <div class="score-fact"><strong>100%</strong>On-time rate</div>
+          <div class="score-fact"><strong>13</strong>Jobs done</div>
+          <div class="score-fact"><strong>Trusted</strong>Status</div>
         </div>
       </div>
-      <div class="widget" style="min-width:240px;">
-        <div class="score-widget">
-          <div class="score-big">4.8</div>
-          <span class="score-tier">Elite Node Active ✓</span>
+      <div class="widget" style="min-width:200px;text-align:center">
+        <div class="score-big">4.8</div>
+        <div class="score-side">
+          <span class="score-tier">Trusted ✓</span>
+          <span class="score-sub">Built from your habits.</span>
         </div>
+        <div class="score-bar"><div class="score-fill" aria-label="92% Trust Fill Status"></div></div>
       </div>
     </div>
 
-    <!-- Card 2: Escrow Capital Safeguard -->
     <div class="bento">
       <div>
-        <span class="bento-tag">Capital Integrity</span>
-        <h3 class="bento-title">Protected Milestone Funds</h3>
-        <p class="bento-body">Complete asset protection before deployment. Contract capitals are deposited directly on-platform before you begin building, releasing instantly into your balance at validation nodes.</p>
-        <span class="bento-chip">Zero Collection Lag</span>
+        <span class="bento-tag">Protected Funds</span>
+        <h3 class="bento-title">Money held safe until the job is done.</h3>
+        <p class="bento-body">Your payment sits safely in the app the moment the job is agreed. No ghosting. No chasing. When the work is done, the money moves. Simple.</p>
+        <span class="bento-chip">Zero ghost clients</span>
       </div>
       <div class="widget">
         <div class="pf-widget">
           <div class="pf-row">
-            <span class="pf-label">Escrow Lockout</span>
-            <span class="pf-amount">₦250,000</span>
+            <span class="pf-label">Funds protected</span>
+            <span class="pf-amount">₦120,000</span>
           </div>
-          <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
-          <div class="pf-status">Protected Node: Awaiting Ingestion</div>
+          <div class="pf-bar"><div class="pf-fill" id="pfFill" aria-label="Protected Funds Animation Bar"></div></div>
+          <div class="pf-status">Payment releases when job is confirmed done</div>
         </div>
       </div>
     </div>
 
-    <!-- Card 3: Targeted Matching Pipelines -->
     <div class="bento">
       <div>
-        <span class="bento-tag">Distribution Hub</span>
-        <h3 class="bento-title">Real Gigs. Real Capital.</h3>
-        <p class="bento-body">Bypass noisy bidding platforms entirely. Route directly into verified contract pathways customized to your exact operational domain. Lagos and Abuja prioritized first.</p>
-        <span class="bento-chip">Live Channels</span>
+        <span class="bento-tag">Job Marketplace</span>
+        <h3 class="bento-title">Real jobs. Real pay. Right now.</h3>
+        <p class="bento-body">Browse jobs that actually match your skills and your area — Beauty, Events, Creative, Tech, and Remote. Lagos and Abuja first.</p>
+        <span class="bento-chip">Live jobs</span>
       </div>
       <div class="widget">
         <div class="jobs-widget">
           <div class="job-pill">
             <div class="job-pill-left">
-              <div class="job-title">Bridal Makeup Profile</div>
-              <div class="job-loc">Lekki · Beauty Node</div>
+              <div class="job-title">Bridal makeup</div>
+              <div class="job-loc">Lekki · Beauty</div>
             </div>
             <div class="job-pill-right">
               <span class="job-pay">₦60,000</span>
@@ -594,8 +602,8 @@ footer{position:relative;z-index:1;
           </div>
           <div class="job-pill">
             <div class="job-pill-left">
-              <div class="job-title">Event Photographer Node</div>
-              <div class="job-loc">Lagos Island · Media</div>
+              <div class="job-title">Event photographer</div>
+              <div class="job-loc">Lagos Island · Events</div>
             </div>
             <div class="job-pill-right">
               <span class="job-pay">₦120,000</span>
@@ -604,8 +612,8 @@ footer{position:relative;z-index:1;
           </div>
           <div class="job-pill">
             <div class="job-pill-left">
-              <div class="job-title">Social Content Director</div>
-              <div class="job-loc">Remote Channel</div>
+              <div class="job-title">Social media manager</div>
+              <div class="job-loc">Remote</div>
             </div>
             <div class="job-pill-right">
               <span class="job-pay">₦45,000</span>
@@ -616,30 +624,29 @@ footer{position:relative;z-index:1;
       </div>
     </div>
 
-    <!-- Card 4: Digitized Rotational Susu -->
     <div class="bento">
       <div>
-        <span class="bento-tag">Rotational Capital</span>
-        <h3 class="bento-title">Susu Pools, Re-Engineered</h3>
-        <p class="bento-body">Communal saving groups, optimized cleanly for digital tracking loops. Initiate secure capital rotation groups with validated sector networks to accelerate collective scaling.</p>
-        <span class="bento-chip">Fraud-Proof Ledger</span>
+        <span class="bento-tag">Susu Groups</span>
+        <h3 class="bento-title">Save together the way you always have — just safer.</h3>
+        <p class="bento-body">The savings culture you already know and trust, now digital and fraud-proof. Create or join a pool with people you trust and grow together.</p>
+        <span class="bento-chip">Culturally rooted</span>
       </div>
       <div class="widget">
         <div class="pool-widget">
           <div class="pool-card-mini">
             <div class="pool-row">
-              <span class="pool-name">Lagos Creator Network Pool</span>
-              <span class="pool-pct">68% Active</span>
+              <span class="pool-name">Lagos Creatives Pool</span>
+              <span class="pool-pct">68%</span>
             </div>
-            <div class="pool-meta">12 Nodes · ₦5,000/Cycle</div>
+            <div class="pool-meta">12 members · ₦5,000/cycle</div>
             <div class="pool-bar"><div class="pool-fill" style="width:68%"></div></div>
           </div>
           <div class="pool-card-mini">
             <div class="pool-row">
-              <span class="pool-name">Abuja Core Hustlers Group</span>
-              <span class="pool-pct">42% Active</span>
+              <span class="pool-name">Abuja Side Hustlers</span>
+              <span class="pool-pct">42%</span>
             </div>
-            <div class="pool-meta">8 Nodes · ₦10,000/Cycle</div>
+            <div class="pool-meta">8 members · ₦10,000/cycle</div>
             <div class="pool-bar"><div class="pool-fill" style="width:42%"></div></div>
           </div>
         </div>
@@ -649,233 +656,232 @@ footer{position:relative;z-index:1;
   </div>
 </section>
 
-<!-- PIPELINE PIPES SYSTEM -->
 <section class="how-section" id="how">
-  <div class="how-label">Operational Blueprint</div>
-  <h2 class="how-headline">Clean Architecture.<br/>Uncompromising Performance.</h2>
-  <p class="how-sub">Four functional nodes. Every interaction expands your profile value weight.</p>
+  <div class="how-label">How It Works</div>
+  <h2 class="how-headline">Simple on the surface.<br/>Powerful underneath.</h2>
+  <p class="how-sub">Four steps. Every action builds your Trust Score.</p>
   <div class="steps">
     <div class="step">
       <div class="step-num">01</div>
-      <div class="step-title">Isolate Targets</div>
-      <p class="step-body">Access high-value contracts algorithmically calibrated to your area, operational node type, and performance history metric.</p>
+      <div class="step-title">Find Jobs</div>
+      <p class="step-body">Browse jobs matched to your skill and location. Beauty, events, tech, creative, and remote — Lagos and Abuja first.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <div class="step-title">Lock Capital</div>
-      <p class="step-body">Contract assets bypass secondary negotiation paths and secure directly on-platform prior to baseline creation. Zero risk.</p>
+      <div class="step-title">Get Paid Safely</div>
+      <p class="step-body">Money is held safe in the app until the job is done. No ghost clients. No chasing. Ever.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <div class="step-title">Update Ledger</div>
-      <p class="step-body">Every closed node automatically updates your ecosystem metrics, feeding data layers directly into your universal score matrix.</p>
+      <div class="step-title">Build Your Trust Score</div>
+      <p class="step-body">Every completed job and great review builds your Trust Score — a reputation that travels with you everywhere you work.</p>
     </div>
     <div class="step">
       <div class="step-num">04</div>
-      <div class="step-title">Leverage Scale</div>
-      <p class="step-body">A high-velocity ranking status triggers priority listings, reduced protocol commissions, and access to dynamic capital pools.</p>
+      <div class="step-title">Unlock More</div>
+      <p class="step-body">A high Trust Score unlocks better jobs, lower fees, Susu groups, and eventually — access to credit no bank would offer.</p>
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR DESIGNATION -->
 <section class="who-section">
-  <div class="who-label">Target Segments</div>
-  <h2 class="who-headline">Built for operators<br/>who <span class="pop">drive real velocity.</span></h2>
-  <p class="who-sub">If you scale independent value fields, this channel is open.</p>
+  <div class="who-label">Who It's For</div>
+  <h2 class="who-headline">Built for Nigerians<br/>who <span class="pop">actually hustle.</span></h2>
+  <p class="who-sub">If you work for yourself, this is for you.</p>
   <div class="who-grid">
-    <div class="who-card" data-emoji="⚡">
-      <span class="who-tag">Independent Networks</span>
-      <div class="who-title">Creatives & Independent Operators</div>
-      <p class="who-body">Media architects, brand leads, builders, and developers. Convert raw production output into an immutable, portable profile engine.</p>
+    <div class="who-card" data-emoji="💄">
+      <span class="who-tag">Hustlers</span>
+      <div class="who-title">Creatives & Freelancers</div>
+      <p class="who-body">Makeup artists, photographers, designers, stylists, DJs, videographers. Turn your skill into a verified career with a Trust Score that follows you.</p>
     </div>
-    <div class="who-card" data-emoji="🚀">
-      <span class="who-tag">Service Networks</span>
-      <div class="who-title">Production Professionals</div>
-      <p class="who-body">Operations leads, design leads, event architects, and directors. Establish clear verification profiles before walking in the room.</p>
+    <div class="who-card" data-emoji="🎪">
+      <span class="who-tag">Events & Services</span>
+      <div class="who-title">Event Professionals</div>
+      <p class="who-body">MCs, decorators, event staff, caterers. Get discovered by serious businesses. Build a track record that speaks before you walk in the door.</p>
     </div>
-    <div class="who-card" data-emoji="💼">
-      <span class="who-tag">Enterprises</span>
-      <div class="who-title">Ecosystem Partners</div>
-      <p class="who-body">Ingest verified operators immediately. Secure task pipelines via programmatic escrow gates and build high-quality reputation nodes.</p>
+    <div class="who-card" data-emoji="🏢">
+      <span class="who-tag">Businesses</span>
+      <div class="who-title">Business Owners</div>
+      <p class="who-body">Hire verified talent, hold funds safely until work is done, and build a reputation as a business people actually want to work with.</p>
     </div>
-    <div class="who-card" data-emoji="🌐">
-      <span class="who-tag">Distributed Node</span>
-      <div class="who-title">Distributed Teams</div>
-      <p class="who-body">Platform leads, media runners, and distribution engineers. Your reputation record processes smoothly wherever you move your operations next.</p>
+    <div class="who-card" data-emoji="🌍">
+      <span class="who-tag">Remote</span>
+      <div class="who-title">Remote Workers</div>
+      <p class="who-body">Social media managers, VAs, video editors. Work from anywhere in Nigeria. Your Trust Score travels wherever you go.</p>
     </div>
   </div>
 </section>
 
-<!-- STORY INFRASTRUCTURE CASE NODES -->
 <section class="story-section">
-  <div class="story-label">Operational Case Profiles</div>
-  <h2 class="story-headline">Real Execution Profiles Across the Network.</h2>
+  <div class="story-label">Real Use Cases</div>
+  <h2 class="story-headline">This is who RISE is built for.</h2>
   <div class="story-grid">
     <div class="story-card">
-      <span class="story-emoji">💎</span>
-      <div class="story-name">Temi · Lagos Unit</div>
-      <div class="story-role">Creative Architect</div>
-      <p class="story-text">Integrates directly into verified task vectors. Removes transactional noise entirely. Her trust index elevates with every successful node closure.</p>
+      <span class="story-emoji" aria-hidden="true">💄</span>
+      <div class="story-name">Temi · Lagos</div>
+      <div class="story-role">Makeup Artist</div>
+      <p class="story-text">Posts her portfolio. Gets hired by verified businesses. Gets paid without chasing. Her Trust Score grows with every job — opening doors banks never would.</p>
     </div>
     <div class="story-card">
-      <span class="story-emoji">🔥</span>
-      <div class="story-name">Emeka · Abuja Unit</div>
-      <div class="story-role">Distributed Developer</div>
-      <p class="story-text">Launches a digital Susu rotation stack with verified development peers. Builds an institutional liquidity asset base dynamically.</p>
+      <span class="story-emoji" aria-hidden="true">🎓</span>
+      <div class="story-name">Emeka · Abuja</div>
+      <div class="story-role">Student & Side Hustler</div>
+      <p class="story-text">Joins a Susu savings group with classmates. Builds financial consistency. Creates a real financial track record before he even graduates.</p>
     </div>
     <div class="story-card">
-      <span class="story-emoji">✨</span>
-      <div class="story-name">Adaeze · Corporate Hub</div>
-      <div class="story-role">Enterprise Operator</div>
-      <p class="story-text">Deploys target pipelines swiftly. Capital funds sit secured via escrow structures until verification conditions clear completely.</p>
+      <span class="story-emoji" aria-hidden="true">🏢</span>
+      <div class="story-name">Adaeze · Lagos</div>
+      <div class="story-role">Business Owner</div>
+      <p class="story-text">Finds verified, trusted workers fast. Funds are protected until jobs are done. Builds a reputation as a business people actually want to work for.</p>
     </div>
   </div>
 </section>
 
-<!-- PIPELINE SYSTEM CHANNELS -->
 <div class="road-section">
   <div class="road-inner">
-    <div class="road-label">Development Matrix</div>
-    <h2 class="road-headline">Assembling Africa's universal trust framework,<br/>one node at a time.</h2>
+    <div class="road-label">What's Coming</div>
+    <h2 class="road-headline">Building Africa's trust layer,<br/>one feature at a time.</h2>
     <div class="road-cols">
       <div>
-        <div class="road-col-label now">Ingestion</div>
+        <div class="road-col-label now">Now</div>
         <div class="road-items">
-          <div class="road-item now">Marketplace Channels</div>
-          <div class="road-item now">Trust Metric Protocols</div>
-          <div class="road-item now">Escrow Settlement Ports</div>
-          <div class="road-item now">Enterprise Sourcing Interfaces</div>
-          <div class="road-item now">Digital Susu Networks</div>
+          <div class="road-item now">Job Marketplace</div>
+          <div class="road-item now">Trust Score</div>
+          <div class="road-item now">Protected Funds</div>
+          <div class="road-item now">Business Hiring</div>
+          <div class="road-item now">Susu Groups</div>
         </div>
       </div>
       <div>
-        <div class="road-col-label next">Expansion</div>
+        <div class="road-col-label next">Next</div>
         <div class="road-items">
-          <div class="road-item next">Automated Savings Routing</div>
-          <div class="road-item next">Performance Analytics Dashboards</div>
-          <div class="road-item next">Biometric ID Sync</div>
-          <div class="road-item next">Network Boost Engines</div>
-          <div class="road-item next">Peer Communication Bridges</div>
+          <div class="road-item next">Savings Goals</div>
+          <div class="road-item next">Financial Analytics</div>
+          <div class="road-item next">ID Verification</div>
+          <div class="road-item next">Profile Boosts</div>
+          <div class="road-item next">Community Features</div>
         </div>
       </div>
       <div>
-        <div class="road-col-label future">Scale</div>
+        <div class="road-col-label future">Future</div>
         <div class="road-items">
-          <div class="road-item future">Credit Access Protocols</div>
-          <div class="road-item future">Asset Financing Liquidity</div>
-          <div class="road-item future">Verification Data Export Ports</div>
-          <div class="road-item future">Employer Validation Gates</div>
-          <div class="road-item future">Continental Cross-Routing</div>
+          <div class="road-item future">Credit Access</div>
+          <div class="road-item future">Business Financing</div>
+          <div class="road-item future">Rental Verification</div>
+          <div class="road-item future">Employer Screening</div>
+          <div class="road-item future">Africa Expansion</div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CAPTURE PORTAL END CONTEXT -->
 <section class="waitlist-section" id="waitlist" style="padding-top:80px">
   <div class="waitlist-inner">
     <div class="waitlist-glow"></div>
-    <div class="naija-note">⚡ Kinetic Velocity Assured.</div>
-    <div class="waitlist-label">Node Access Allocation</div>
+    <div class="naija-note">🇳🇬 Naija no dey carry last.</div>
+    <div class="waitlist-label">Early Access</div>
     <h2 class="waitlist-headline">
       Join the first<br/><span class="pop">1,000 Risers.</span>
     </h2>
-    <p class="waitlist-body">Lagos and Abuja operations spinning up. Secure your entry slot early, shape initial ledger definitions, and stack your score index from block one.</p>
+    <p class="waitlist-body">We're launching in Lagos and Abuja first. Get in early, shape the platform, and start building your Trust Score from day one.</p>
     <div class="waitlist-perks">
-      <div class="perk">Priority Routing Queue</div>
-      <div class="perk">Exempted Protocol Fees</div>
-      <div class="perk">Beta Module Ingestion</div>
-      <div class="perk">Founding Riser Metadata Badge</div>
+      <div class="perk">Priority job placement</div>
+      <div class="perk">Discounted platform fees</div>
+      <div class="perk">Early feature access</div>
+      <div class="perk">Founding Riser badge</div>
     </div>
-    <a href="https://tally.so/r/68py7B" target="_blank" class="btn-primary" style="font-size:18px;padding:22px 64px">
-      Secure Access Node →
+    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="btn-primary" style="font-size:18px;padding:20px 52px">
+      Join the Waitlist →
     </a>
-    <p class="waitlist-fine">Zero deployment charges · Lagos & Abuja nodes active first</p>
+    <p class="waitlist-fine">No payment required · Lagos & Abuja launching first</p>
   </div>
 </section>
 
-<!-- FOOTER LOGISTICS MATRIX -->
 <footer>
-  <div>
-    <a href="/" class="footer-logo-row">
-      <img src="rise-logo.png" alt="RISE" height="24" onerror="this.style.display='none'"/>
+  <div class="footer-left">
+    <a href="/" class="footer-logo-row" aria-label="RISE Home">
+      <img src="rise-logo.png" alt="RISE Logo" height="22" onerror="this.style.display='none'"/>
       <span>RISE</span>
     </a>
-    <div class="footer-tagline">Make execution measurable.</div>
-    <div class="footer-location">Starting inside Lagos & Abuja. <span>Scaling for Africa.</span></div>
+    <div class="footer-tagline">Make money make sense.</div>
+    <div class="footer-location">Starting in Lagos & Abuja. <span>Building for Africa.</span></div>
   </div>
-  <div class="footer-copy">© 2026 RISE Network Technologies. All rights reserved.</div>
+  <div class="footer-copy">© 2026 RISE. All rights reserved.</div>
 </footer>
 
 <script>
-// STREAMLINED HIGH-PERFORMANCE REVEAL HOOKS
-const layoutTracker = new IntersectionObserver((entries)=>{
+// SCROLL REVEAL WITH STAGGER CORRECTION
+const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      e.target.classList.add('in')
-      const children = e.target.querySelectorAll('.bento,.step,.who-card,.story-card,.p-line')
+      e.target.classList.add('in');
+      const children = e.target.querySelectorAll('.bento,.step,.who-card,.story-card,.p-line');
       children.forEach((c,i)=>{
-        setTimeout(()=>c.classList.add('in'), i * 60)
-      })
+        setTimeout(()=>c.classList.add('in'), i*80);
+      });
     }
-  })
-},{threshold:0.06, rootMargin:'0px 0px -20px 0px'})
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 
-document.querySelectorAll('.bento-section,.how-section,.who-section,.story-section,.reveal').forEach(el=>layoutTracker.observe(el))
+document.querySelectorAll('.bento-section,.how-section,.who-section,.story-section,.reveal').forEach(el=>io.observe(el));
 
-// Trigger sequential pipeline animations for problem lines
-const lineTracker = new IntersectionObserver((entries)=>{
+// Problem lines individual reveal
+const lineIO = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      const lines = document.querySelectorAll('.p-line')
-      lines.forEach((l,i)=>setTimeout(()=>l.classList.add('in'), i * 100))
-      lineTracker.disconnect()
+      const lines = document.querySelectorAll('.p-line');
+      lines.forEach((l,i)=>setTimeout(()=>l.classList.add('in'),i*120));
+      lineIO.disconnect();
     }
-  })
-},{threshold:0.15})
-const ps = document.querySelector('.problem-section')
-if(ps) lineTracker.observe(ps)
+  });
+},{threshold:0.2});
 
-// Active escrow bar progression node
-const barTracker = new IntersectionObserver((entries)=>{
+const ps = document.querySelector('.problem-section');
+if(ps) lineIO.observe(ps);
+
+// Protected funds bar animation
+const pfIO = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      const fill = document.getElementById('pfFill')
-      if(fill) setTimeout(()=>fill.style.width='82%', 150)
-      barTracker.disconnect()
+      const fill = document.getElementById('pfFill');
+      if(fill) setTimeout(()=>fill.style.width='75%',200);
+      pfIO.disconnect();
     }
-  })
-},{threshold:0.25})
-const pfEl = document.querySelector('.pf-widget')
-if(pfEl) barTracker.observe(pfEl)
+  });
+},{threshold:0.3});
 
-// Seamless scrolling calculation parameters
+const pfEl = document.querySelector('.pf-widget');
+if(pfEl) pfIO.observe(pfEl);
+
+// Smooth scroll implementation
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
-    e.preventDefault()
-    const targetNode = document.querySelector(a.getAttribute('href'))
-    if(targetNode) targetNode.scrollIntoView({behavior:'smooth',block:'start'})
-  })
-})
+    e.preventDefault();
+    const targetAttr = a.getAttribute('href');
+    if(targetAttr === '#') return;
+    const t = document.querySelector(targetAttr);
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
 
-// Scroll threshold monitoring for structural shifts
+// Nav scroll state border toggler
 window.addEventListener('scroll',()=>{
-  const navElement = document.querySelector('nav')
-  navElement.style.background = window.scrollY > 40
-    ? 'rgba(10,13,16,0.9)' : 'rgba(10,13,16,0.75)'
-},{ passive:true })
+  const nav = document.querySelector('nav');
+  if(nav) {
+    nav.style.borderBottomColor = window.scrollY > 60
+      ? 'rgba(57,255,20,0.08)' : 'rgba(255,255,255,0.06)';
+  }
+},{ passive:true });
 
-// Active matching interaction elements (Demo states)
+// Job apply buttons text mutation handler
 document.querySelectorAll('.job-apply').forEach(btn=>{
   btn.addEventListener('click',function(){
-    this.textContent = 'Allocated ✓'
-    this.style.background = 'rgba(57,255,20,0.15)'
-    this.style.color = '#39FF14'
-    this.style.borderColor = '#39FF14'
-  })
-})
+    this.textContent = '✓';
+    this.style.background = 'rgba(57,255,20,0.15)';
+    this.style.color = '#39FF14';
+  });
+});
 </script>
 </body>
 </html>
