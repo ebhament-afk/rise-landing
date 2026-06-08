@@ -236,7 +236,64 @@ h2{font-family:var(--head);font-size:clamp(30px,4vw,54px);
 .smeta{font-size:11px;color:var(--mid);margin-bottom:8px}
 .sbar{height:4px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden}
 .sfill{height:100%;background:var(--green);border-radius:4px}
+.score-note{
+  font-size:12px;
+  color:#8f8f8f;
+  margin-top:10px;
+}
 
+.floating-alert{
+  position:absolute;
+  background:#111;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:14px 18px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  animation:float 4s ease-in-out infinite;
+  z-index:5;
+}
+
+.alert-money{
+  top:40px;
+  right:30px;
+}
+
+.alert-trust{
+  bottom:40px;
+  left:30px;
+  animation-delay:2s;
+}
+
+.alert-label{
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--green);
+  font-weight:700;
+}
+
+.alert-title{
+  font-size:15px;
+  font-weight:700;
+  color:white;
+  margin-top:4px;
+}
+
+.alert-sub{
+  font-size:12px;
+  color:#8f8f8f;
+  margin-top:3px;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-8px);
+  }
+}
 /* HOW IT WORKS */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .step{padding:32px 24px 32px 0;border-right:1px solid var(--line);
@@ -281,7 +338,20 @@ h2{font-family:var(--head);font-size:clamp(30px,4vw,54px);
 .sr{font-family:var(--head);font-size:18px;font-weight:700;
   margin-bottom:12px;letter-spacing:-0.01em}
 .st{font-size:13px;color:var(--mid);line-height:1.65}
-
+  
+.temi-photo{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:rgba(57,255,20,.12);
+  color:var(--green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  font-size:26px;
+  margin-bottom:18px;
+}
 /* ROADMAP */
 .road{background:var(--bg2);border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);padding:80px 0;position:relative;z-index:1}
@@ -475,12 +545,26 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);
           <div class="sf"><b>13</b>Jobs done</div>
           <div class="sf"><b>Trusted</b>Status</div>
         </div>
+        <div class="floating-alert alert-money">
+  <div class="alert-label">ALERT</div>
+  <div class="alert-title">₦120,000 received</div>
+  <div class="alert-sub">Lagos Weddings Ltd</div>
+</div>
+
+<div class="floating-alert alert-trust">
+  <div class="alert-label">TRUST SCORE</div>
+  <div class="alert-title">4.7 → 4.8</div>
+  <div class="alert-sub">Reputation increased</div>
+</div>
       </div>
       <div class="wid" style="min-width:200px;text-align:center">
         <div class="score-row">
           <div class="score-big">4.8</div>
           <span class="score-badge">Trusted ✓</span>
         </div>
+        <p class="score-note">
+  This is what makes RISE different.
+</p>
         <p style="font-size:12px;color:var(--mid);margin-top:8px">Built from your work habits.</p>
       </div>
     </div>
@@ -652,12 +736,27 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);
   <h2>What trust unlocks.</h2>
   <div class="sgrid">
     <div class="scc">
-      <span class="semoji">💄</span>
-      <div class="sn">Temi · Lagos</div>
-      <div class="sr">Makeup Artist</div>
-      <p class="st">Posts her work. Gets hired by real businesses. Gets paid without chasing anyone. Her Trust Score grows with every job — opening doors she never expected.</p>
-    </div>
-    <div class="scc">
+
+  <div class="temi-photo">
+    T
+  </div>
+
+  <div class="sn">
+    Temi · Lagos
+  </div>
+
+  <div class="sr">
+    Makeup Artist
+  </div>
+
+  <p class="st">
+    Started with no portfolio.
+    Completed 13 jobs.
+    Built a 4.8 Trust Score.
+    Now gets repeat bookings from businesses across Lagos.
+  </p>
+
+</div>
       <span class="semoji">🎓</span>
       <div class="sn">Emeka · Abuja</div>
       <div class="sr">Student & Side Hustler</div>
