@@ -9,6 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Cabinet+Grotesk:wght@400;500;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
+  .temi-avatar{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(70,244,37,.25);
+  box-shadow:0 0 40px rgba(70,244,37,.15);
+}
 :root{
   --neon:#39FF14;
   --neon-dim:rgba(57,255,20,0.1);
@@ -281,33 +289,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
   margin-bottom:10px;letter-spacing:-0.01em}
 .step-body{font-size:14px;color:var(--muted2);line-height:1.65}
 
-/* ── WHO IT'S FOR ── */
-.who-section{position:relative;z-index:1;
-  padding:0 40px 120px;max-width:1200px;margin:0 auto}
-.who-label{font-size:11px;font-weight:700;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px;
-  display:flex;align-items:center;gap:8px}
-.who-label::before{content:'';width:20px;height:2px;background:var(--neon)}
-.who-headline{font-family:var(--head);font-size:clamp(32px,4vw,56px);
-  font-weight:800;letter-spacing:-0.03em;margin-bottom:4px;line-height:1.05}
-.who-headline .pop{color:var(--neon)}
-.who-sub{font-size:17px;color:var(--muted2);margin-bottom:48px}
-.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.who-card{background:var(--surface);border:1px solid var(--border);
-  border-radius:24px;padding:36px;position:relative;overflow:hidden;
-  cursor:default;opacity:0;transform:translateY(20px);transition:all .6s ease}
-.who-card.in{opacity:1;transform:translateY(0)}
-.who-card:hover{border-color:rgba(57,255,20,0.18)}
-.who-card::after{content:attr(data-emoji);position:absolute;
-  right:24px;bottom:16px;font-size:52px;opacity:.12;
-  transition:opacity .3s,transform .3s}
-.who-card:hover::after{opacity:.22;transform:scale(1.1) rotate(-5deg)}
-.who-tag{font-size:10px;font-weight:700;color:var(--neon);
-  text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;display:block}
-.who-title{font-family:var(--head);font-size:22px;font-weight:800;
-  margin-bottom:10px;letter-spacing:-0.02em}
-.who-body{font-size:14px;color:var(--muted2);line-height:1.65;max-width:300px}
-
 /* ── ROADMAP ── */
 .road-section{position:relative;z-index:1;
   background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
@@ -384,7 +365,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;
 .perk{display:flex;align-items:center;gap:7px;
   font-size:14px;font-weight:500;color:rgba(255,255,255,0.65)}
 .perk::before{content:'✓';color:var(--neon);font-weight:800;font-size:15px}
-.waitlist-fine{margin-top:20px;font-size:13px;color:var(--muted)}
+.waitlist-fine{margin-top:20px;font-size:13px;color:var(--muted);line-height:1.5}
 .naija-note{display:inline-flex;align-items:center;gap:8px;
   padding:8px 18px;border-radius:100px;
   background:var(--neon-dim);border:1px solid rgba(57,255,20,0.15);
@@ -398,38 +379,25 @@ footer{position:relative;z-index:1;
 .footer-left{}
 .footer-logo-row{display:flex;align-items:center;gap:10px;text-decoration:none;margin-bottom:8px}
 .footer-logo-row img{height:22px}
-.footer-logo-row span{font-family:var(--head);font-weight:800;font-size:18px;color:var(--fg)}
-.footer-tagline{font-size:13px;color:var(--muted);margin-bottom:4px}
-.footer-copy{font-size:13px;color:var(--muted)}
+.footer-logo-row span{font-family:var(--head);font-weight:800;font-size:16px;color:var(--fg)}
+.footer-copy{font-size:12px;color:var(--muted)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:var(--muted2);font-size:13px;text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--neon)}
 
-/* ── MOBILE ── */
-@media(max-width:900px){
-  nav{padding:16px 20px}
-  .nav-pill{display:none}
-  .hero{padding:100px 20px 60px}
-  .statement-section,.problem-section,.bento-section,
-  .how-section,.who-section,.story-section{padding-left:20px;padding-right:20px}
-  .bento-grid{grid-template-columns:1fr}
-  .bento,.bento.wide,.bento.tall{grid-column:span 1;min-height:auto;flex-direction:column;align-items:flex-start}
-  .steps{grid-template-columns:1fr 1fr;gap:32px}
-  .step{border-right:none;padding-right:0;border-bottom:1px solid var(--border);padding-bottom:32px}
-  .step:nth-child(odd){padding-right:16px}
-  .step:last-child,.step:nth-last-child(2):nth-child(odd){border-bottom:none}
-  .who-grid{grid-template-columns:1fr}
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  .hero{padding:100px 24px 60px}
+  .statement-section, .problem-section, .bento-section, .how-section, .road-section, .story-section, .waitlist-section, footer{padding-left:24px;padding-right:24px}
+  .bento{grid-column:span 12}
+  .bento.wide{flex-direction:column;align-items:flex-start;gap:32px}
+  .bento.tall{grid-column:span 12;min-height:400px}
+  .steps{grid-template-columns:1fr;gap:32px}
+  .step{border-right:none;border-bottom:1px solid var(--border);padding:0 0 32px 0}
+  .step:last-child{border-bottom:none;padding-bottom:0}
+  .road-cols{grid-template-columns:1fr;gap:40px}
   .story-grid{grid-template-columns:1fr}
-  .road-cols{grid-template-columns:1fr}
-  .waitlist-inner{padding:40px 24px}
-  .road-section{padding:60px 20px}
-  footer{padding:32px 20px}
-  .hero-actions{flex-direction:column}
-  .btn-primary,.btn-ghost{width:100%;justify-content:center}
-}
-@media(max-width:600px){
-  .steps{grid-template-columns:1fr}
-  .step{border-right:none}
-}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important}
+  .waitlist-inner{padding:48px 24px}
 }
 </style>
 </head>
@@ -440,393 +408,259 @@ footer{position:relative;z-index:1;
 <div class="glow-2"></div>
 
 <nav>
-  <a href="/" class="nav-logo" aria-label="RISE Home">
-    <img src="rise-logo.png" alt="RISE Logo" onerror="this.style.display='none'"/>
+  <a href="#" class="nav-logo">
     <span class="nav-logo-text">RISE</span>
   </a>
   <div class="nav-right">
-    <div class="nav-pill">Coming soon — Lagos & Abuja</div>
-    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="nav-cta">Join Waitlist</a>
+    <div class="nav-pill">Lagos Chapter</div>
+    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
   </div>
 </nav>
 
 <section class="hero">
-  <p class="hero-greeting">How you dey, Nigeria? 👋</p>
-  <div class="hero-eyebrow">🇳🇬 Starting in Lagos & Abuja · Building for Africa</div>
+  <div class="hero-eyebrow">The Reputation Economy Is Here</div>
   <h1 class="hero-title">
     <span class="line">Get work.</span>
     <span class="line">Get paid.</span>
     <span class="line neon">Build Trust.</span>
   </h1>
   <p class="hero-sub">
-    The platform where Nigerian creatives and hustlers find real jobs,
-    get paid without the stress, and build a reputation that follows them
-    <em>everywhere.</em>
+    The trusted job marketplace and verified identity platform built for Nigerian creatives and freelancers. <strong>Protect your funds</strong>, collect verified reviews, and secure your financial future.
   </p>
   <div class="hero-actions">
-    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="btn-primary">
-      Join the Waitlist →
-    </a>
-    <a href="#how" class="btn-ghost">See how it works</a>
+    <a href="#waitlist" class="btn-primary">Secure Early Access</a>
+    <a href="#features" class="btn-ghost">See How It Works</a>
   </div>
   <div class="social-proof">
-    <div class="avatars" aria-hidden="true">
-      <div class="av av1">T</div>
-      <div class="av av2">K</div>
-      <div class="av av3">A</div>
+    <div class="avatars">
+      <div class="av av1">O</div>
+      <div class="av av2">A</div>
+      <div class="av av3">C</div>
       <div class="av av4">F</div>
     </div>
-    <p class="sp-text"><strong>First 1,000 Risers</strong> get early access</p>
-    <div class="sp-sep" aria-hidden="true"></div>
-    <p class="sp-text">Lagos · Abuja · Remote</p>
+    <p class="sp-text">Joined by over <strong>1,400+ creatives</strong> this week <span class="sp-sep"></span> Lagos & Abuja</p>
   </div>
 </section>
 
-<div class="ticker-wrap" aria-hidden="true">
+<div class="ticker-wrap">
   <div class="ticker">
-    <span class="ticker-item">Find Jobs <span>→</span></span>
-    <span class="ticker-item">Get Paid Safely <span>→</span></span>
-    <span class="ticker-item">Build Your Trust Score <span>→</span></span>
-    <span class="ticker-item">Save With Susu Groups <span>→</span></span>
-    <span class="ticker-item">Lagos & Abuja <span>🇳🇬</span></span>
-    <span class="ticker-item">Naija no dey carry last <span>⚡</span></span>
-    <span class="ticker-item">Find Jobs <span>→</span></span>
-    <span class="ticker-item">Get Paid Safely <span>→</span></span>
-    <span class="ticker-item">Build Your Trust Score <span>→</span></span>
-    <span class="ticker-item">Save With Susu Groups <span>→</span></span>
-    <span class="ticker-item">Lagos & Abuja <span>🇳🇬</span></span>
-    <span class="ticker-item">Naija no dey carry last <span>⚡</span></span>
+    <div class="ticker-item"><span>DESIGNERS</span> IN LAGOS</div>
+    <div class="ticker-item"><span>DEVELOPERS</span> IN ABUJA</div>
+    <div class="ticker-item"><span>COPYWRITERS</span> IN LEKKI</div>
+    <div class="ticker-item"><span>EDITORS</span> IN IKEJA</div>
+    <div class="ticker-item"><span>DESIGNERS</span> IN LAGOS</div>
+    <div class="ticker-item"><span>DEVELOPERS</span> IN ABUJA</div>
   </div>
 </div>
 
-<section class="statement-section reveal">
-  <div class="statement-label">Why RISE Matters</div>
+<section class="statement-section">
+  <div class="statement-label">The Shift</div>
   <h2 class="statement-text">
     <span class="dim">Over 85 million Nigerians hustle hard every single day.</span>
-    <br/><span class="bright">Most have no way to prove it.</span>
-    <br/><span class="pop">RISE changes that.</span>
+    <br><span class="bright">Most have no way to prove it.</span>
+    <br><span class="pop">RISE changes that.</span>
   </h2>
+  
+  <p style="margin-top:24px; font-size:22px; line-height:1.5; color:rgba(255,255,255,.75); max-width:700px; font-weight:500;">
+    Trust should be something you own.<br>
+    Not something you start over every time.
+  </p>
 </section>
 
 <section class="problem-section">
-  <div class="problem-label">Why RISE Exists</div>
+  <div class="problem-label">The Reality vs The Future</div>
   <div class="problem-lines">
     <div class="p-line bad">
-      <div class="p-icon" aria-hidden="true">❌</div>
-      Ghost clients never pay.
+      <div class="p-icon">✕</div>
+      "Send 50% upfront or I won't start"
     </div>
     <div class="p-line bad">
-      <div class="p-icon" aria-hidden="true">❌</div>
-      Good workers start from zero every time.
+      <div class="p-icon">✕</div>
+      "I finished the work but they blocked me"
     </div>
     <div class="p-line bad">
-      <div class="p-icon" aria-hidden="true">❌</div>
-      Businesses can't find workers they can actually trust.
-    </div>
-    <div class="p-line bad">
-      <div class="p-icon" aria-hidden="true">❌</div>
-      Millions of hustlers have no financial track record.
+      <div class="p-icon">✕</div>
+      "No history means zero global leverage"
     </div>
     <div class="p-line good">
-      <div class="p-icon" aria-hidden="true">✅</div>
-      RISE helps people earn, save, build trust, and unlock opportunity.
+      <div class="p-icon">✓</div>
+      Protected milestones, verified portfolios, portable trust.
     </div>
   </div>
 </section>
 
-<section class="bento-section">
+<section class="bento-section" id="features">
   <div class="bento-label">What's Inside</div>
-  <h2 class="bento-headline">Everything you need.<br/>Nothing you don't.</h2>
+  <h2 class="bento-headline">Four things.<br>That's all you need.</h2>
+  
   <div class="bento-grid">
-
-    <div class="bento wide">
-      <div>
-        <span class="bento-tag">Your Trust Score</span>
-        <h3 class="bento-title">Your reputation, made visible.</h3>
-        <p class="bento-body">Every job you complete, every great review, every payment you make on time — it all builds your Trust Score. One number that follows you everywhere and eventually unlocks jobs, lower fees, and opportunities banks would never give you.</p>
-        <span class="bento-chip">The Moat</span>
-        <div class="score-facts">
-          <div class="score-fact"><strong>4.8</strong>Trust Score</div>
-          <div class="score-fact"><strong>100%</strong>On-time rate</div>
-          <div class="score-fact"><strong>13</strong>Jobs done</div>
-          <div class="score-fact"><strong>Trusted</strong>Status</div>
-        </div>
-      </div>
-      <div class="widget" style="min-width:200px;text-align:center">
-        <div class="score-big">4.8</div>
-        <div class="score-side">
-          <span class="score-tier">Trusted ✓</span>
-          <span class="score-sub">Built from your habits.</span>
-        </div>
-        <div class="score-bar"><div class="score-fill" aria-label="92% Trust Fill Status"></div></div>
-      </div>
-    </div>
-
     <div class="bento">
       <div>
-        <span class="bento-tag">Protected Funds</span>
-        <h3 class="bento-title">Money held safe until the job is done.</h3>
-        <p class="bento-body">Your payment sits safely in the app the moment the job is agreed. No ghosting. No chasing. When the work is done, the money moves. Simple.</p>
-        <span class="bento-chip">Zero ghost clients</span>
+        <span class="bento-tag">01 / ESCROW MATTERS</span>
+        <h3 class="bento-title">Protected Funds</h3>
+        <p class="bento-body">Milestones are funded before you type a line of code or sketch a wireframe. Work confidently knowing payment is locked.</p>
       </div>
       <div class="widget">
         <div class="pf-widget">
           <div class="pf-row">
-            <span class="pf-label">Funds protected</span>
-            <span class="pf-amount">₦120,000</span>
+            <span class="pf-label">Milestone 1 Balance</span>
+            <span class="pf-amount">₦450,000</span>
           </div>
-          <div class="pf-bar"><div class="pf-fill" id="pfFill" aria-label="Protected Funds Animation Bar"></div></div>
-          <div class="pf-status">Payment releases when job is confirmed done</div>
+          <div class="pf-bar">
+            <div class="pf-fill" id="pfFill"></div>
+          </div>
+          <div class="pf-status">Secured in RISE Escrow</div>
         </div>
       </div>
     </div>
 
     <div class="bento">
       <div>
-        <span class="bento-tag">Job Marketplace</span>
-        <h3 class="bento-title">Real jobs. Real pay. Right now.</h3>
-        <p class="bento-body">Browse jobs that actually match your skills and your area — Beauty, Events, Creative, Tech, and Remote. Lagos and Abuja first.</p>
-        <span class="bento-chip">Live jobs</span>
+        <span class="bento-tag">02 / PORTABLE ID</span>
+        <h3 class="bento-title">The Trust Score</h3>
+        <p class="bento-body">A verified dynamic metric that compounds with every job completed, review collected, and deadline met. Own your reputation data.</p>
       </div>
       <div class="widget">
-        <div class="jobs-widget">
-          <div class="job-pill">
-            <div class="job-pill-left">
-              <div class="job-title">Bridal makeup</div>
-              <div class="job-loc">Lekki · Beauty</div>
-            </div>
-            <div class="job-pill-right">
-              <span class="job-pay">₦60,000</span>
-              <button class="job-apply">Apply</button>
-            </div>
+        <div class="score-widget">
+          <div class="score-big">0.0</div>
+          <div class="score-side">
+            <span class="score-tier">Top Rated</span>
+            <span class="score-sub">99% Success Rate</span>
           </div>
-          <div class="job-pill">
-            <div class="job-pill-left">
-              <div class="job-title">Event photographer</div>
-              <div class="job-loc">Lagos Island · Events</div>
-            </div>
-            <div class="job-pill-right">
-              <span class="job-pay">₦120,000</span>
-              <button class="job-apply">Apply</button>
-            </div>
-          </div>
-          <div class="job-pill">
-            <div class="job-pill-left">
-              <div class="job-title">Social media manager</div>
-              <div class="job-loc">Remote</div>
-            </div>
-            <div class="job-pill-right">
-              <span class="job-pay">₦45,000</span>
-              <button class="job-apply">Apply</button>
-            </div>
-          </div>
+        </div>
+        <div class="score-bar"><div class="score-fill"></div></div>
+        <div class="score-facts">
+          <div class="score-fact">Jobs <strong>48</strong></div>
+          <div class="score-fact">Disputes <strong>0</strong></div>
         </div>
       </div>
     </div>
 
-    <div class="bento">
-      <div>
-        <span class="bento-tag">Susu Groups</span>
-        <h3 class="bento-title">Save together the way you always have — just safer.</h3>
-        <p class="bento-body">The savings culture you already know and trust, now digital and fraud-proof. Create or join a pool with people you trust and grow together.</p>
-        <span class="bento-chip">Culturally rooted</span>
+    <div class="bento wide">
+      <div style="flex:1; min-width:280px">
+        <span class="bento-tag">03 / COLLABORATION</span>
+        <h3 class="bento-title">Susu Pool Infrastructure</h3>
+        <p class="bento-body">Co-sign on financial milestones with trusted creative circles, save as a team, pool resources, and build community lines of credit.</p>
+        <span class="bento-chip">Launching in Alpha</span>
       </div>
-      <div class="widget">
+      <div style="flex:1; min-width:280px; width:100%">
         <div class="pool-widget">
           <div class="pool-card-mini">
-            <div class="pool-row">
-              <span class="pool-name">Lagos Creatives Pool</span>
-              <span class="pool-pct">68%</span>
-            </div>
-            <div class="pool-meta">12 members · ₦5,000/cycle</div>
-            <div class="pool-bar"><div class="pool-fill" style="width:68%"></div></div>
-          </div>
-          <div class="pool-card-mini">
-            <div class="pool-row">
-              <span class="pool-name">Abuja Side Hustlers</span>
-              <span class="pool-pct">42%</span>
-            </div>
-            <div class="pool-meta">8 members · ₦10,000/cycle</div>
-            <div class="pool-bar"><div class="pool-fill" style="width:42%"></div></div>
+            <div class="pool-row"><span class="pool-name">Yaba Tech Circle</span><span class="pool-pct">84%</span></div>
+            <div class="pool-meta">Goal: Buy High-Spec Laptops</div>
+            <div class="pool-bar"><div class="pool-fill" style="width:84%"></div></div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<section class="how-section" id="how">
-  <div class="how-label">How It Works</div>
-  <h2 class="how-headline">Simple on the surface.<br/>Powerful underneath.</h2>
-  <p class="how-sub">Four steps. Every action builds your Trust Score.</p>
+<section class="how-section">
+  <div class="how-label">The Workflow</div>
+  <h2 class="how-headline">How RISE works.</h2>
+  <p class="how-sub">No complex setups. Just straightforward transactional trust.</p>
+  
   <div class="steps">
     <div class="step">
       <div class="step-num">01</div>
-      <div class="step-title">Find Jobs</div>
-      <p class="step-body">Browse jobs matched to your skill and location. Beauty, events, tech, creative, and remote — Lagos and Abuja first.</p>
+      <h3 class="step-title">Claim Passport</h3>
+      <p class="step-body">Build a verified cryptographic profile tied directly to your portfolio works and past payment records.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <div class="step-title">Get Paid Safely</div>
-      <p class="step-body">Money is held safe in the app until the job is done. No ghost clients. No chasing. Ever.</p>
+      <h3 class="step-title">Secure Milestone</h3>
+      <p class="step-body">Clients fund specific contract targets before you deliver. No more endless chasing or ghosting after handoffs.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <div class="step-title">Build Your Trust Score</div>
-      <p class="step-body">Every completed job and great review builds your Trust Score — a reputation that travels with you everywhere you work.</p>
+      <h3 class="step-title">Instant Cashout</h3>
+      <p class="step-body">Payout triggers automatically when goals are approved. Transfer instantly into local accounts or digital stablecoins.</p>
     </div>
     <div class="step">
       <div class="step-num">04</div>
-      <div class="step-title">Unlock More</div>
-      <p class="step-body">A high Trust Score unlocks better jobs, lower fees, Susu groups, and eventually — access to credit no bank would offer.</p>
-    </div>
-  </div>
-</section>
-
-<section class="who-section">
-  <div class="who-label">Who It's For</div>
-  <h2 class="who-headline">Built for Nigerians<br/>who <span class="pop">actually hustle.</span></h2>
-  <p class="who-sub">If you work for yourself, this is for you.</p>
-  <div class="who-grid">
-    <div class="who-card" data-emoji="💄">
-      <span class="who-tag">Hustlers</span>
-      <div class="who-title">Creatives & Freelancers</div>
-      <p class="who-body">Makeup artists, photographers, designers, stylists, DJs, videographers. Turn your skill into a verified career with a Trust Score that follows you.</p>
-    </div>
-    <div class="who-card" data-emoji="🎪">
-      <span class="who-tag">Events & Services</span>
-      <div class="who-title">Event Professionals</div>
-      <p class="who-body">MCs, decorators, event staff, caterers. Get discovered by serious businesses. Build a track record that speaks before you walk in the door.</p>
-    </div>
-    <div class="who-card" data-emoji="🏢">
-      <span class="who-tag">Businesses</span>
-      <div class="who-title">Business Owners</div>
-      <p class="who-body">Hire verified talent, hold funds safely until work is done, and build a reputation as a business people actually want to work with.</p>
-    </div>
-    <div class="who-card" data-emoji="🌍">
-      <span class="who-tag">Remote</span>
-      <div class="who-title">Remote Workers</div>
-      <p class="who-body">Social media managers, VAs, video editors. Work from anywhere in Nigeria. Your Trust Score travels wherever you go.</p>
+      <h3 class="step-title">Grow Score</h3>
+      <p class="step-body">Every transaction adds on points toward your public rating, opening paths to better contracts and micro-loans.</p>
     </div>
   </div>
 </section>
 
 <section class="story-section">
-  <div class="story-label">Real Use Cases</div>
-  <h2 class="story-headline">This is who RISE is built for.</h2>
+  <div class="story-label">Case Studies</div>
+  <h2 class="story-headline">Meet a few future Risers.</h2>
+  
   <div class="story-grid">
     <div class="story-card">
-      <span class="story-emoji" aria-hidden="true">💄</span>
-      <div class="story-name">Temi · Lagos</div>
-      <div class="story-role">Makeup Artist</div>
-      <p class="story-text">Posts her portfolio. Gets hired by verified businesses. Gets paid without chasing. Her Trust Score grows with every job — opening doors banks never would.</p>
+      <span class="story-emoji">🎨</span>
+      <div class="story-name">Temi · Brand Identity Designer</div>
+      <div class="story-role">"My rating is my signature."</div>
+      <p class="story-text">Clients see Temi’s verified 4.9 score, active escrow history, and on-time statistics before they ever meet her.</p>
     </div>
     <div class="story-card">
-      <span class="story-emoji" aria-hidden="true">🎓</span>
-      <div class="story-name">Emeka · Abuja</div>
-      <div class="story-role">Student & Side Hustler</div>
-      <p class="story-text">Joins a Susu savings group with classmates. Builds financial consistency. Creates a real financial track record before he even graduates.</p>
+      <span class="story-emoji">💻</span>
+      <div class="story-name">Chuka · Fullstack Developer</div>
+      <div class="story-role">"No more endless arguments."</div>
+      <p class="story-text">Using automated smart escrow agreements ensures Chuka gets paid for completed API modules with zero corporate delay tactics.</p>
     </div>
     <div class="story-card">
-      <span class="story-emoji" aria-hidden="true">🏢</span>
-      <div class="story-name">Adaeze · Lagos</div>
-      <div class="story-role">Business Owner</div>
-      <p class="story-text">Finds verified, trusted workers fast. Funds are protected until jobs are done. Builds a reputation as a business people actually want to work for.</p>
+      <span class="story-emoji">✍️</span>
+      <div class="story-name">Fola · Technical Writer</div>
+      <div class="story-role">"Global leverage from Abuja."</div>
+      <p class="story-text">Fola proves her reliability metrics on-chain, securing high-paying contract retainers with international remote clients.</p>
     </div>
   </div>
 </section>
 
-<div class="road-section">
-  <div class="road-inner">
-    <div class="road-label">What's Coming</div>
-    <h2 class="road-headline">Building Africa's trust layer,<br/>one feature at a time.</h2>
-    <div class="road-cols">
-      <div>
-        <div class="road-col-label now">Now</div>
-        <div class="road-items">
-          <div class="road-item now">Job Marketplace</div>
-          <div class="road-item now">Trust Score</div>
-          <div class="road-item now">Protected Funds</div>
-          <div class="road-item now">Business Hiring</div>
-          <div class="road-item now">Susu Groups</div>
-        </div>
-      </div>
-      <div>
-        <div class="road-col-label next">Next</div>
-        <div class="road-items">
-          <div class="road-item next">Savings Goals</div>
-          <div class="road-item next">Financial Analytics</div>
-          <div class="road-item next">ID Verification</div>
-          <div class="road-item next">Profile Boosts</div>
-          <div class="road-item next">Community Features</div>
-        </div>
-      </div>
-      <div>
-        <div class="road-col-label future">Future</div>
-        <div class="road-items">
-          <div class="road-item future">Credit Access</div>
-          <div class="road-item future">Business Financing</div>
-          <div class="road-item future">Rental Verification</div>
-          <div class="road-item future">Employer Screening</div>
-          <div class="road-item future">Africa Expansion</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="waitlist-section" id="waitlist" style="padding-top:80px">
+<section class="waitlist-section" id="waitlist">
   <div class="waitlist-inner">
     <div class="waitlist-glow"></div>
-    <div class="naija-note">🇳🇬 Naija no dey carry last.</div>
-    <div class="waitlist-label">Early Access</div>
-    <h2 class="waitlist-headline">
-      Join the first<br/><span class="pop">1,000 Risers.</span>
-    </h2>
-    <p class="waitlist-body">We're launching in Lagos and Abuja first. Get in early, shape the platform, and start building your Trust Score from day one.</p>
+    <div class="waitlist-label">Limited Early Intake</div>
+    <h2 class="waitlist-headline">Secure your position on the <span class="pop">RISE Network.</span></h2>
+    <p class="waitlist-body">The infrastructure for autonomous Nigerian creatives. Skip the broken networks. Own your work.</p>
+    
     <div class="waitlist-perks">
-      <div class="perk">Priority job placement</div>
-      <div class="perk">Discounted platform fees</div>
-      <div class="perk">Early feature access</div>
-      <div class="perk">Founding Riser badge</div>
+      <div class="perk">Genesis Badge Profile Icon</div>
+      <div class="perk">0% Escrow Fees First 3 Months</div>
+      <div class="perk">Direct Beta Access</div>
     </div>
-    <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener" class="btn-primary" style="font-size:18px;padding:20px 52px">
-      Join the Waitlist →
-    </a>
-    <p class="waitlist-fine">No payment required · Lagos & Abuja launching first</p>
+
+    <div class="naija-note">🇳🇬 Starting in Lagos & Abuja · Launching Q3</div>
+
+    <p class="waitlist-fine">
+      No payment required<br>
+      Lagos & Abuja launching first
+    </p>
   </div>
 </section>
 
 <footer>
   <div class="footer-left">
-    <a href="/" class="footer-logo-row" aria-label="RISE Home">
-      <img src="rise-logo.png" alt="RISE Logo" height="22" onerror="this.style.display='none'"/>
+    <a href="#" class="footer-logo-row">
       <span>RISE</span>
     </a>
-    <div class="footer-tagline">Make money make sense.</div>
-    <div class="footer-location">Starting in Lagos & Abuja. <span>Building for Africa.</span></div>
+    <p class="footer-copy">&copy; 2026 RISE Network. Built for the modern builder.</p>
   </div>
-  <div class="footer-copy">© 2026 RISE. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">Twitter</a>
+    <a href="#">Discord</a>
+    <a href="#">Privacy</a>
+  </div>
 </footer>
 
 <script>
-// SCROLL REVEAL WITH STAGGER CORRECTION
+// Scroll animations with IntersectionObserver
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       e.target.classList.add('in');
-      const children = e.target.querySelectorAll('.bento,.step,.who-card,.story-card,.p-line');
-      children.forEach((c,i)=>{
-        setTimeout(()=>c.classList.add('in'), i*80);
-      });
+      io.unobserve(e.target);
     }
   });
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+},{threshold:0.1});
 
-document.querySelectorAll('.bento-section,.how-section,.who-section,.story-section,.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.bento, .step, .story-card').forEach(el=>io.observe(el));
 
-// Problem lines individual reveal
+// Problem section animation lines
 const lineIO = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -854,34 +688,30 @@ const pfIO = new IntersectionObserver((entries)=>{
 const pfEl = document.querySelector('.pf-widget');
 if(pfEl) pfIO.observe(pfEl);
 
+// Live dynamic counter score animation
+const score = document.querySelector('.score-big');
+if(score) {
+  let current = 0;
+  const target = 4.8;
+
+  const timer = setInterval(()=>{
+    current += 0.1;
+
+    if(current >= target){
+      current = target;
+      clearInterval(timer);
+    }
+
+    score.textContent = current.toFixed(1);
+  },40);
+}
+
 // Smooth scroll implementation
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const targetAttr = a.getAttribute('href');
-    if(targetAttr === '#') return;
-    const t = document.querySelector(targetAttr);
-    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
-  });
-});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{\n  a.addEventListener('click',e=>{\n    e.preventDefault();\n    const targetAttr = a.getAttribute('href');\n    if(targetAttr === '#') return;\n    const t = document.querySelector(targetAttr);\n    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});\n  });\n});
 
 // Nav scroll state border toggler
-window.addEventListener('scroll',()=>{
-  const nav = document.querySelector('nav');
-  if(nav) {
-    nav.style.borderBottomColor = window.scrollY > 60
-      ? 'rgba(57,255,20,0.08)' : 'rgba(255,255,255,0.06)';
-  }
-},{ passive:true });
-
-// Job apply buttons text mutation handler
-document.querySelectorAll('.job-apply').forEach(btn=>{
-  btn.addEventListener('click',function(){
-    this.textContent = '✓';
-    this.style.background = 'rgba(57,255,20,0.15)';
-    this.style.color = '#39FF14';
-  });
-});
+window.addEventListener('scroll',()=>{\n  const nav = document.querySelector('nav');\n  if(nav) {\n    nav.style.borderBottomColor = window.scrollY > 60\n      ? 'rgba(57,255,20,0.08)' : 'rgba(255,255,255,0.06)';\n  }\n},{ passive: true });
 </script>
+
 </body>
 </html>
