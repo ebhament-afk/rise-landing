@@ -286,7 +286,9 @@
     }
     .hero-main-img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
       filter: grayscale(10%) brightness(0.9);
       mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
@@ -309,12 +311,12 @@
       width: 170px;
     }
     .gc-1 {
-      bottom: 110px;
+      bottom: 20px;
       left: -35px;
       animation: smoothFloatA 6s ease-in-out infinite;
     }
     .gc-2 {
-      bottom: 40px;
+      bottom: -15px;
       right: -35px;
       animation: smoothFloatB 6s ease-in-out 1.5s infinite;
     }
@@ -663,7 +665,7 @@
     }
     .scc-body { padding: 24px 26px 28px; background: var(--card); }
     .sn { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
-    .sr font-family: var(--head); font-size: 19px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
+    .sr { font-family: var(--head); font-size: 19px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
     .st { font-size: 14px; color: var(--mid); line-height: 1.65; }
     
     /* ── ONE STEP STRATEGY PREPLACEMENT ── */
@@ -717,10 +719,15 @@
       }
       .hero-left { width: 100%; max-width: 100%; }
       .hero-right { width: 100%; margin-top: 16px; display: flex; justify-content: center; }
-      .hero-image-wrapper { max-width: 270px; margin: 0 auto; }
       
-      .gc-1 { bottom: 85px; left: -25px; }
-      .gc-2 { bottom: 25px; right: -25px; }
+      .hero-image-wrapper {
+        max-width: 420px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      
+      .gc-1 { bottom: 20px; left: -15px; }
+      .gc-2 { bottom: -15px; right: -15px; }
       
       .btns { flex-direction: column; width: 100%; }
       .btn-g, .btn-o { width: 100%; justify-content: center; }
@@ -797,7 +804,7 @@
 
     <div class="hero-right">
       <div class="hero-image-wrapper">
-        <img src="temi2.png" class="hero-main-img" alt="RISE"/>
+        <img src="2.png" class="hero-main-img" alt="RISE user" loading="eager"/>
         
         <div class="glass-card gc-1">
           <div class="gc-stars">★★★★★</div>
