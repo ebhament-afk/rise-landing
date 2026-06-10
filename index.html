@@ -6,6 +6,8 @@
   <title>RISE — Get work. Get paid. Build Trust.</title>
   
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <meta name="description" content="The platform where Nigerian creatives find real jobs, get paid without stress, and build a reputation that follows them everywhere."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -186,7 +188,6 @@
     .hero {
       position: relative;
       z-index: 1;
-      min-height: 100vh;
       max-width: 1100px;
       margin: 0 auto;
       padding: 100px 40px 80px;
@@ -316,6 +317,8 @@
       border-radius: 24px;
       background: linear-gradient(180deg, rgba(8,8,8,0) 30%, rgba(8,8,8,0.8) 100%), linear-gradient(270deg, transparent 55%, rgba(8,8,8,0.25) 100%);
     }
+    
+    /* Glass phone (Desktop Config - Lowered slightly) */
     .glass-phone {
       position: absolute;
       bottom: 20px;
@@ -329,6 +332,7 @@
       -webkit-backdrop-filter: blur(24px);
       padding: 11px 10px;
       box-shadow: 0 24px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(57,255,20,0.06);
+      transform: translateY(40px);
     }
     .gp-status {
       font-size: 7px;
@@ -912,17 +916,20 @@
         margin: 0 auto;
         transform: translateY(30px);
       }
-      .glass-phone { 
-        right: -8px; 
-        bottom: 10px; 
-        width: 100px;
-        transform: translateY(30px);
+      
+      /* Mobile optimization: Remove phone completely to prevent space eating */
+      .glass-phone,
+      .wallet-mockup,
+      .hero-phone,
+      .phone-ui { 
+        display: none !important;
       }
+      
       .ac1 { left: -30px; }
       .ac2 { right: -30px; left: auto; }
       .ac3 { left: -20px; }
       
-      /* Mobile target override for custom alerts & specific naming matches */
+      /* Mobile layout configuration for alerts */
       .alert-money {
         right: -20px;
         top: 32%;
