@@ -188,7 +188,7 @@
       margin: 0 auto;
       padding: 180px 48px 140px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 64px;
       align-items: center;
     }
@@ -272,72 +272,73 @@
       background: rgba(255,255,255,0.15);
     }
 
-    /* ── HERO IMAGE & GLASS CARDS ── */
+    /* ── HERO IMAGE & GLASS CARDS FIX ── */
     .hero-right {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .hero-image-wrapper {
+    .hero-image {
       position: relative;
-      width: 100%;
-      max-width: 340px;
+      width: 420px;
+      max-width: 100%;
     }
-    .hero-main-img {
+    .hero-person {
       width: 100%;
       height: auto;
       display: block;
-      filter: grayscale(10%) brightness(0.9);
-      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      border-radius: 28px;
+      object-fit: cover;
+      filter: brightness(.82);
     }
-    
-    .glass-card {
+    .hero-card {
       position: absolute;
-      background: rgba(20, 20, 20, 0.6);
+      background: rgba(18, 18, 18, 0.88);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 16px;
       padding: 16px 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
       z-index: 10;
       pointer-events: none;
       font-family: var(--head);
-      transition: border-color 0.3s;
     }
-    .gc-1 {
-      top: 25%;
-      left: -40px;
+    .card-trust {
+      left: -45px;
+      top: 42%;
       animation: smoothFloatA 6s ease-in-out infinite;
     }
-    .gc-2 {
-      bottom: 20%;
-      right: -30px;
+    .card-money {
+      right: -35px;
+      top: 35%;
       animation: smoothFloatB 6s ease-in-out 1.5s infinite;
     }
-    .gc-stars {
+    .stars {
       color: var(--green);
       font-size: 12px;
       margin-bottom: 4px;
     }
-    .gc-label {
+    .card-label {
       font-size: 11px;
       color: var(--mid);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .gc-val {
+    .card-score {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(57,255,20,0.3);
+      margin-top: 2px;
+    }
+    .card-money-text {
       font-size: 22px;
       font-weight: 800;
       color: var(--w);
       margin-top: 2px;
-    }
-    .gc-val.green-text {
-      color: var(--green);
-      text-shadow: 0 0 15px rgba(57,255,20,0.3);
     }
     @keyframes smoothFloatA {
       0%, 100% { transform: translateY(0); }
@@ -392,7 +393,7 @@
       max-width: 520px;
     }
     
-    /* ── BRAND SHIELD INTEGRATION (WHY RISE MATTERS) ── */
+    /* ── BRAND SHIELD INTEGRATION FIX ── */
     .manifesto-layout {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -412,25 +413,17 @@
     
     .manifesto-shield-zone {
       display: flex;
-      justify-content: center;
       align-items: center;
-      position: relative;
+      justify-content: center;
     }
     .supporting-shield {
-      width: 160px;
-      height: 185px;
-      filter: drop-shadow(0 10px 30px rgba(57,255,20,0.08));
-      opacity: 0.85;
+      width: 180px;
+      height: auto !important;
+      aspect-ratio: auto;
+      object-fit: contain;
+      opacity: .88;
+      filter: drop-shadow(0 0 22px rgba(57,255,20,.18));
       animation: shieldFloat 4s ease-in-out infinite alternate;
-    }
-    .s-shield-bg {
-      fill: #0c0c0c;
-      stroke: rgba(57,255,20,0.25);
-      stroke-width: 1.5;
-    }
-    .s-shield-icon {
-      fill: var(--green);
-      opacity: 0.9;
     }
     @keyframes shieldFloat {
       from { transform: translateY(0) rotate(0deg); opacity: 0.75; }
@@ -724,9 +717,9 @@
       }
       .hero-left { width: 100%; max-width: 100%; }
       .hero-right { width: 100%; margin-top: 16px; }
-      .hero-image-wrapper { max-width: 270px; margin: 0 auto; }
-      .gc-1 { left: -20px; }
-      .gc-2 { right: -15px; }
+      .hero-image { width: 270px; margin: 0 auto; }
+      .card-trust { left: -20px; }
+      .card-money { right: -15px; }
       
       .btns { flex-direction: column; width: 100%; }
       .btn-g, .btn-o { width: 100%; justify-content: center; }
@@ -735,7 +728,7 @@
       .sec { padding: 95px 0; }
       
       .manifesto-layout { grid-template-columns: 1fr; gap: 36px; }
-      .manifesto-shield-zone { justify-content: flex-start; padding-left: 10px; }
+      .manifesto-shield-zone { justify-content: center; padding-left: 0; }
       
       .grid { grid-template-columns: 1fr; gap: 16px; }
       .box { grid-column: span 1 !important; padding: 36px 24px; }
@@ -750,7 +743,7 @@
       .step:last-child { border-bottom: none; }
       
       .wgrid { grid-template-columns: 1fr !important; gap: 14px !important; }
-      .wcard { padding: 28px 24px !important; }
+      .wcard padding: 28px 24px !important; }
       
       .sgrid { grid-template-columns: 1fr; gap: 20px; }
       .premium-split { grid-template-columns: 1fr !important; gap: 36px !important; }
@@ -802,18 +795,18 @@
     </div>
 
     <div class="hero-right">
-      <div class="hero-image-wrapper">
-        <img src="temi2.jpeg" class="hero-main-img" alt="RISE"/>
-        
-        <div class="glass-card gc-1">
-          <div class="gc-stars">★★★★★</div>
-          <div class="gc-label">Trust Increased</div>
-          <div class="gc-val green-text">4.8</div>
+      <div class="hero-image">
+        <img src="temi2.png" alt="Temi using RISE" class="hero-person">
+
+        <div class="hero-card card-trust">
+          <div class="stars">★★★★★</div>
+          <div class="card-label">Trust Increased</div>
+          <div class="card-score">4.8</div>
         </div>
-        
-        <div class="glass-card gc-2">
-          <div class="gc-label">Received</div>
-          <div class="gc-val">₦120,000</div>
+
+        <div class="hero-card card-money">
+          <div class="card-label">Received</div>
+          <div class="card-money-text">₦120,000</div>
         </div>
       </div>
     </div>
@@ -828,9 +821,9 @@
           <br/><span class="b">Most have no way to prove it.</span>
           <br/><span class="g">RISE makes reputation inevitable.</span>
         </p>
-       <div class="manifesto-shield-zone">
-  <img src="riseshield.png" class="supporting-shield" alt="RISE Shield">
-</div>
+        <div class="manifesto-shield-zone">
+          <img src="riseshield.png" class="supporting-shield" alt="RISE Shield">
+        </div>
       </div>
     </section>
   </div>
@@ -975,7 +968,7 @@
       <div class="sgrid">
         <div class="scc">
           <div class="story-img">
-            <img src="temi.jpeg" alt="Temi · Lagos"/>
+            <img src="temi2.png" alt="Temi · Lagos"/>
           </div>
           <div class="scc-body">
             <div class="sn">Temi · Lagos</div>
