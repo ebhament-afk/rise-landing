@@ -91,13 +91,21 @@
     .logo {
       display: flex;
       align-items: center;
+      gap: 10px;
       text-decoration: none;
     }
     .logo img {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       display: block;
       object-fit: contain;
+    }
+    .logo-word {
+      font-family: var(--head);
+      font-weight: 800;
+      font-size: 24px;
+      letter-spacing: .02em;
+      color: #fff;
     }
     .nr {
       display: flex;
@@ -278,11 +286,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
     }
     .hero-image-wrapper {
       position: relative;
       width: 100%;
-      max-width: 340px;
+      max-width: 420px;
+      height: 480px;
     }
     .hero-main-img {
       width: 100%;
@@ -311,13 +321,13 @@
       width: 170px;
     }
     .gc-1 {
-      bottom: 20px;
-      left: -35px;
+      bottom: 35px;
+      left: 40px;
       animation: smoothFloatA 6s ease-in-out infinite;
     }
     .gc-2 {
-      bottom: -15px;
-      right: -35px;
+      bottom: 35px;
+      right: 40px;
       animation: smoothFloatB 6s ease-in-out 1.5s infinite;
     }
     .gc-stars {
@@ -708,6 +718,7 @@
     @media(max-width:900px) {
       nav { padding: 0 24px; }
       .live { display: none; }
+      .logo-word { font-size: 20px; }
       
       .hero {
         display: flex;
@@ -723,11 +734,19 @@
       .hero-image-wrapper {
         max-width: 420px;
         width: 100%;
+        height: auto;
+        aspect-ratio: 4/5;
         margin: 0 auto;
       }
       
-      .gc-1 { bottom: 20px; left: -15px; }
-      .gc-2 { bottom: -15px; right: -15px; }
+      .glass-card {
+        padding: 10px 12px;
+        width: 145px;
+      }
+      .gc-1 { bottom: 18px; left: 16px; }
+      .gc-2 { bottom: 18px; right: 16px; }
+      .gc-val { font-size: 16px; }
+      .gc-label { font-size: 10px; }
       
       .btns { flex-direction: column; width: 100%; }
       .btn-g, .btn-o { width: 100%; justify-content: center; }
@@ -770,7 +789,8 @@
 
   <nav>
     <a href="/" class="logo">
-      <img src="rise-icon.png" alt="RISE"/>
+      <img src="rise-icon.png" alt="RISE logo"/>
+      <span class="logo-word">RISE</span>
     </a>
     <div class="nr">
       <div class="live"><i></i>Lagos & Abuja</div>
@@ -804,7 +824,7 @@
 
     <div class="hero-right">
       <div class="hero-image-wrapper">
-        <img src="2.png" class="hero-main-img" alt="RISE user" loading="eager"/>
+        <img src="temi2.png" class="hero-main-img" alt="RISE user" loading="eager"/>
         
         <div class="glass-card gc-1">
           <div class="gc-stars">★★★★★</div>
