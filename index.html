@@ -959,10 +959,18 @@
       .wide-right { width: 100%; min-width: 0; }
       
       /* Completely hide the floating alerts inside the Trust Score card on mobile layout */
-      .alert-stage {
-        display: none !important;
-      }
-    @media(prefers-reduced-motion:reduce){ * { animation: none!important; transition: none!important; } }
+.alert-stage {
+  display: none !important;
+}
+
+} /* <-- closes @media(max-width:900px) */
+
+@media(prefers-reduced-motion:reduce){
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -1218,16 +1226,16 @@
 
   <div class="wrap">
     <section style="padding:0 0 100px" class="story-sec">
-   <div class="lbl">POSSIBILITIES</div>
+ <div class="lbl">WHAT TRUST CAN UNLOCK</div>
 
 <h2>
   Imagine what's possible.
 </h2>
 
 <p class="sub">
-  These examples show how trust,
-  reputation, and financial history
-  can help everyday Nigerians move forward.
+  Examples of how RISE can help freelancers,
+  students, and business owners earn more,
+  save smarter, and build trust over time.
 </p>
       <div class="sgrid">
         <div class="scc">
