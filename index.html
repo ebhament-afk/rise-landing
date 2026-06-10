@@ -958,38 +958,10 @@
      .wide-inner { flex-direction: column; gap: 24px; }
       .wide-right { width: 100%; min-width: 0; }
       
-      /* Fix overlapping alert widgets inside Trust Score card on mobile */
+      /* Completely hide the floating alerts inside the Trust Score card on mobile layout */
       .alert-stage {
-        height: auto !important; 
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        align-items: center !important;
-        margin-top: 24px;
-        width: 100%;
+        display: none !important;
       }
-      .floating-alert {
-        position: relative !important;
-        top: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-        right: auto !important;
-        width: 100% !important;
-        max-width: 280px;
-        transform: none !important;
-        animation: none !important;
-      }
-      .steps { grid-template-columns: 1fr; }
-      .step { border-right: none; border-bottom: 1px solid var(--line); padding: 22px 0; }
-      .step:not(:first-child) { padding-left: 0; }
-      .step:last-child { border-bottom: none; }
-      .wgrid, .sgrid, .rcols { grid-template-columns: 1fr; }
-      .road { padding: 60px 0; }
-      .wl-outer { padding: 0 20px 60px; }
-      .wl { padding: 44px 22px; }
-      footer { padding: 28px 20px; }
-      .fine p { white-space: normal; }
-    }
     @media(prefers-reduced-motion:reduce){ * { animation: none!important; transition: none!important; } }
   </style>
 </head>
