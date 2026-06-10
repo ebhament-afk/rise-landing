@@ -405,6 +405,69 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);
   .btns{flex-direction:column}
   .btn-g,.btn-o{width:100%;justify-content:center}
   .road{padding:60px 0}
+}/* HERO PHONE MOCKUP */
+
+.hero-phone{
+  width:320px;
+  height:640px;
+  border-radius:36px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.04),
+    rgba(255,255,255,.01)
+  );
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  padding:28px;
+  position:relative;
+  box-shadow:
+    0 0 60px rgba(57,255,20,.08),
+    inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.phone-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+  color:#fff;
+}
+
+.phone-header strong{
+  color:var(--green);
+  font-size:28px;
+}
+
+.phone-balance{
+  margin-bottom:40px;
+}
+
+.phone-balance span{
+  color:var(--mid);
+  font-size:13px;
+}
+
+.phone-balance h3{
+  font-size:42px;
+  margin-top:8px;
+}
+
+.phone-actions{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.action-pill{
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.card-4{
+  bottom:8%;
+  right:-70px;
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
@@ -451,14 +514,39 @@ h1{font-weight:700 !important;}
 @keyframes fc3{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 
 /* ── STORY CARD IMAGES ── */
-.story-img{width:100%;height:200px;border-radius:16px;overflow:hidden;
-  margin-bottom:20px;position:relative;}
-.story-img img{width:100%;height:100%;object-fit:cover;object-position:center top;
-  filter:grayscale(30%);transition:filter .4s ease;}
-.scc:hover .story-img img{filter:grayscale(0%);}
-.story-img::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 40%,rgba(8,8,8,0.7) 100%);
-  border-radius:16px;}
+.story-img{
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:20px;
+  position:relative;
+}
+
+.story-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:grayscale(30%);
+  transition:filter .4s ease;
+}
+
+.scc:hover .story-img img{
+  filter:grayscale(0%);
+}
+
+.story-img::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(8,8,8,0.35) 100%
+  );
+  border-radius:16px;
+}
 
 /* ── TRUST SCORE COUNT-UP ── */
 .score-count{font-family:var(--head);font-size:80px;font-weight:800;
@@ -503,82 +591,49 @@ body::before{opacity:0.6;}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero-right">
 
-  <div class="hero-left">
+  <div class="hero-phone">
 
-    <div class="hero-badge">
-      Starting in Lagos & Abuja · Building for Africa
+    <div class="phone-header">
+      <span>RISE Score</span>
+      <strong>4.8</strong>
     </div>
 
-    <h1>
-      <span>Get work.</span>
-      <span>Get paid.</span>
-      <span class="g">Build Trust.</span>
-    </h1>
-
-    <p class="hero-p">
-      The trust layer for work in Nigeria.
-      Get hired, get paid, and build a reputation that follows you everywhere.
-    </p>
-
-    <div class="btns">
-      <a href="https://tally.so/r/68py7B" target="_blank" class="btn-g">
-        Join the Waitlist →
-      </a>
-
-      <a href="#how" class="btn-o">
-        See how it works
-      </a>
+    <div class="phone-balance">
+      <span>Total Earnings</span>
+      <h3>₦120,000</h3>
     </div>
 
-    <div class="proof">
-      <div class="avs">
-        <div class="av a1">T</div>
-        <div class="av a2">K</div>
-        <div class="av a3">A</div>
-        <div class="av a4">F</div>
-      </div>
-
-      <p class="proof-txt">
-        <b>First 1,000 Risers</b> get early access
-      </p>
-
-      <div class="dot"></div>
-
-      <p class="proof-txt">
-        Lagos · Abuja · Remote
-      </p>
+    <div class="phone-actions">
+      <div class="action-pill">Protected Funds</div>
+      <div class="action-pill">Susu Active</div>
+      <div class="action-pill">Trusted Worker</div>
     </div>
 
   </div>
 
-  <div class="hero-right">
-
-<div class="hero-image">
-  <img
-    src="temi.jpeg"
-    alt="Temi Makeup Artist"
-      >
-
-      <div class="hero-card card-1">
-        <strong>₦120,000 Received</strong>
-        <span>Recent Payment</span>
-      </div>
-
-      <div class="hero-card card-2">
-        <strong>Trust Score 4.7 → 4.8</strong>
-        <span>Reputation Growing</span>
-      </div>
-
-      <div class="hero-card card-3">
-        <strong>New Job Available</strong>
-        <span>Apply Now</span>
-      </div>
-
-    </div>
-
+  <div class="hero-card card-1">
+    <strong>₦120,000 Received</strong>
+    <span>Recent Payment</span>
   </div>
+
+  <div class="hero-card card-2">
+    <strong>Trust Score 4.7 → 4.8</strong>
+    <span>Reputation Growing</span>
+  </div>
+
+  <div class="hero-card card-3">
+    <strong>New Job Available</strong>
+    <span>Apply Now</span>
+  </div>
+
+  <div class="hero-card card-4">
+    <strong>Susu Pool Active</strong>
+    <span>12 Members Saving</span>
+  </div>
+
+</div>
 
 </section>
 
