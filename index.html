@@ -188,7 +188,7 @@
       margin: 0 auto;
       padding: 180px 48px 140px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 64px;
       align-items: center;
     }
@@ -272,73 +272,73 @@
       background: rgba(255,255,255,0.15);
     }
 
-    /* ── HERO IMAGE & GLASS CARDS FIX ── */
+    /* ── HERO IMAGE & GLASS CARDS ── */
     .hero-right {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
-    .hero-image {
+    .hero-image-wrapper {
       position: relative;
-      width: 420px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 340px;
     }
-    .hero-person {
+    .hero-main-img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 28px;
-      object-fit: cover;
-      filter: brightness(.82);
+      filter: grayscale(10%) brightness(0.9);
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     }
-    .hero-card {
+    
+    .glass-card {
       position: absolute;
-      background: rgba(18, 18, 18, 0.88);
+      background: rgba(20, 20, 20, 0.75);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
-      padding: 16px 20px;
-      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+      padding: 14px 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
       z-index: 10;
       pointer-events: none;
       font-family: var(--head);
+      transition: border-color 0.3s;
+      width: 170px;
     }
-    .card-trust {
-      left: -45px;
-      top: 42%;
+    .gc-1 {
+      bottom: 110px;
+      left: -35px;
       animation: smoothFloatA 6s ease-in-out infinite;
     }
-    .card-money {
+    .gc-2 {
+      bottom: 40px;
       right: -35px;
-      top: 35%;
       animation: smoothFloatB 6s ease-in-out 1.5s infinite;
     }
-    .stars {
+    .gc-stars {
       color: var(--green);
       font-size: 12px;
       margin-bottom: 4px;
     }
-    .card-label {
+    .gc-label {
       font-size: 11px;
       color: var(--mid);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .card-score {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--green);
-      text-shadow: 0 0 15px rgba(57,255,20,0.3);
-      margin-top: 2px;
-    }
-    .card-money-text {
-      font-size: 22px;
+    .gc-val {
+      font-size: 20px;
       font-weight: 800;
       color: var(--w);
       margin-top: 2px;
+    }
+    .gc-val.green-text {
+      color: var(--green);
+      text-shadow: 0 0 15px rgba(57,255,20,0.3);
     }
     @keyframes smoothFloatA {
       0%, 100% { transform: translateY(0); }
@@ -393,7 +393,7 @@
       max-width: 520px;
     }
     
-    /* ── BRAND SHIELD INTEGRATION FIX ── */
+    /* ── BRAND SHIELD INTEGRATION (WHY RISE MATTERS) ── */
     .manifesto-layout {
       display: grid;
       grid-template-columns: 1.3fr 0.7fr;
@@ -413,16 +413,16 @@
     
     .manifesto-shield-zone {
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      position: relative;
     }
     .supporting-shield {
       width: 180px;
-      height: auto !important;
-      aspect-ratio: auto;
+      height: auto;
       object-fit: contain;
-      opacity: .88;
-      filter: drop-shadow(0 0 22px rgba(57,255,20,.18));
+      filter: drop-shadow(0 10px 30px rgba(57,255,20,0.08));
+      opacity: 0.85;
       animation: shieldFloat 4s ease-in-out infinite alternate;
     }
     @keyframes shieldFloat {
@@ -663,7 +663,7 @@
     }
     .scc-body { padding: 24px 26px 28px; background: var(--card); }
     .sn { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
-    .sr { font-family: var(--head); font-size: 19px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
+    .sr font-family: var(--head); font-size: 19px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
     .st { font-size: 14px; color: var(--mid); line-height: 1.65; }
     
     /* ── ONE STEP STRATEGY PREPLACEMENT ── */
@@ -716,10 +716,11 @@
         padding: 130px 24px 80px;
       }
       .hero-left { width: 100%; max-width: 100%; }
-      .hero-right { width: 100%; margin-top: 16px; }
-      .hero-image { width: 270px; margin: 0 auto; }
-      .card-trust { left: -20px; }
-      .card-money { right: -15px; }
+      .hero-right { width: 100%; margin-top: 16px; display: flex; justify-content: center; }
+      .hero-image-wrapper { max-width: 270px; margin: 0 auto; }
+      
+      .gc-1 { bottom: 85px; left: -25px; }
+      .gc-2 { bottom: 25px; right: -25px; }
       
       .btns { flex-direction: column; width: 100%; }
       .btn-g, .btn-o { width: 100%; justify-content: center; }
@@ -728,7 +729,7 @@
       .sec { padding: 95px 0; }
       
       .manifesto-layout { grid-template-columns: 1fr; gap: 36px; }
-      .manifesto-shield-zone { justify-content: center; padding-left: 0; }
+      .manifesto-shield-zone { justify-content: flex-start; padding-left: 10px; }
       
       .grid { grid-template-columns: 1fr; gap: 16px; }
       .box { grid-column: span 1 !important; padding: 36px 24px; }
@@ -743,7 +744,7 @@
       .step:last-child { border-bottom: none; }
       
       .wgrid { grid-template-columns: 1fr !important; gap: 14px !important; }
-      .wcard padding: 28px 24px !important; }
+      .wcard { padding: 28px 24px !important; }
       
       .sgrid { grid-template-columns: 1fr; gap: 20px; }
       .premium-split { grid-template-columns: 1fr !important; gap: 36px !important; }
@@ -795,18 +796,18 @@
     </div>
 
     <div class="hero-right">
-      <div class="hero-image">
-        <img src="temi2.png" alt="Temi using RISE" class="hero-person">
-
-        <div class="hero-card card-trust">
-          <div class="stars">★★★★★</div>
-          <div class="card-label">Trust Increased</div>
-          <div class="card-score">4.8</div>
+      <div class="hero-image-wrapper">
+        <img src="temi2.jpeg" class="hero-main-img" alt="RISE"/>
+        
+        <div class="glass-card gc-1">
+          <div class="gc-stars">★★★★★</div>
+          <div class="gc-label">Trust Increased</div>
+          <div class="gc-val green-text">4.8</div>
         </div>
-
-        <div class="hero-card card-money">
-          <div class="card-label">Received</div>
-          <div class="card-money-text">₦120,000</div>
+        
+        <div class="glass-card gc-2">
+          <div class="gc-label">Received</div>
+          <div class="gc-val">₦120,000</div>
         </div>
       </div>
     </div>
@@ -817,7 +818,7 @@
       <div class="lbl">Why RISE Matters</div>
       <div class="manifesto-layout">
         <p class="manifesto">
-          <span class="d">Over 85 million Nigerians hustle hard every single day.</span>
+          <span class="d">Over 85 million Nigerians hustle hard every day.</span>
           <br/><span class="b">Most have no way to prove it.</span>
           <br/><span class="g">RISE makes reputation inevitable.</span>
         </p>
@@ -849,7 +850,7 @@
           <div class="wide-inner">
             <div class="wide-left">
               <span class="btag">Identity</span>
-              <h3 class="btitle">Complete work. Earn trust.</h3>
+              <h3 class="btitle">Complete work. Build Trust.</h3>
               <p class="bbody">Unlock more opportunities with a verified track record that belongs to you.</p>
               <span class="chip">Reputation that moves with you</span>
             </div>
@@ -863,9 +864,9 @@
         <div class="box">
           <div>
             <span class="btag">Transactions</span>
-            <h3 class="btitle">Secure Payments</h3>
-            <p class="bbody">Money protected while work gets done.</p>
-            <span class="chip">Protected by design</span>
+            <h3 class="btitle">Protected Payments</h3>
+            <p class="bbody">Your money stays protected until the work is complete.</p>
+            <span class="chip">Built for peace of mind</span>
           </div>
           <div class="wid">
             <div class="pf">
@@ -968,7 +969,7 @@
       <div class="sgrid">
         <div class="scc">
           <div class="story-img">
-            <img src="temi2.png" alt="Temi · Lagos"/>
+            <img src="temi.jpeg" alt="Temi · Lagos"/>
           </div>
           <div class="scc-body">
             <div class="sn">Temi · Lagos</div>
@@ -1037,7 +1038,7 @@
       <div class="naija">Naija no dey carry last.</div>
       <div class="wl-tag">Early Access</div>
       <h2>Become a <br/><span class="g">Founding Riser.</span></h2>
-      <p class="wl-p">Join the first 1,000 Nigerians building their reputation on RISE. Get in early, help shape the platform, and start building your reputation from day one.</p>
+      <p class="wl-p">Become one of the first Nigerians building a reputation that moves with you. Get in early, help shape the platform, and start building your reputation from day one.</p>
       <div class="perks">
         <div class="pk">Priority opportunity allocation</div>
         <div class="pk">Optimized workspace access</div>
