@@ -9,7 +9,7 @@
   <link rel="icon" sizes="32x32" href="favicon.png?v=2">
   <link rel="apple-touch-icon" href="favicon.png?v=2">
 
-  <meta name="description" content="The platform where Nigerian creatives find real jobs, get paid without stress, and build a reputation that follows them everywhere."/>
+  <meta name="description" content="The platform where Nigerian creatives find real jobs, get paid safely, and build a reputation that follows them everywhere."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
   <style>
@@ -190,10 +190,10 @@
       z-index: 1;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 100px 40px 80px;
+      padding: 140px 40px 100px;
       display: grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 40px;
+      gap: 50px;
       align-items: center;
     }
     .hero-badge {
@@ -230,10 +230,6 @@
       max-width: 480px;
       line-height: 1.65;
       margin-bottom: 36px;
-    }
-    .hero-p em {
-      color: var(--green);
-      font-style: italic;
     }
     .btns {
       display: flex;
@@ -274,7 +270,7 @@
       font-size: 13px;
       color: var(--mid);
     }
-    .proof-txt b b {
+    .proof-txt b {
       color: var(--w);
     }
     .pdot {
@@ -284,160 +280,102 @@
       background: rgba(255,255,255,0.2);
     }
     
-    /* ── HERO RIGHT ── */
+    /* ── PREMIUM HERO SHIELD VISUAL ── */
     .hero-right {
       position: relative;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    .shield-container {
+      position: relative;
+      width: 260px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
-    .hero-image {
-      position: relative;
-      width: 100%;
-      max-width: 280px;
-      height: 500px;
-    }
-    .temi-wrap {
+    .shield-glow {
       position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(57,255,20,0.15) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      animation: shieldPulse 4s ease-in-out infinite alternate;
     }
-    .temi-wrap img {
+    .shield-svg-wrap {
+      position: relative;
+      z-index: 2;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
+      filter: drop-shadow(0 15px 35px rgba(0,0,0,0.8));
     }
-    .temi-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(8,8,8,0) 30%, rgba(8,8,8,0.8) 100%), linear-gradient(270deg, transparent 55%, rgba(8,8,8,0.25) 100%);
+    .shield-svg {
+      width: 100%;
+      height: 100%;
     }
-    
-    /* Glass phone (Desktop Config - Lowered slightly) */
-    .glass-phone {
-      position: absolute;
-      bottom: 20px;
-      right: -20px;
-      z-index: 10;
-      width: 114px;
-      border-radius: 20px;
-      background: rgba(15,15,15,0.88);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      padding: 11px 10px;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08), 0 0 0 1px rgba(57,255,20,0.06);
-      transform: translateY(40px);
+    .shield-bg {
+      fill: #111111;
+      stroke: var(--green);
+      stroke-width: 2;
     }
-    .gp-status {
-      font-size: 7px;
-      color: #555;
-      text-align: center;
-      margin-bottom: 8px;
-      font-weight: 600;
-      letter-spacing: .04em;
-    }
-    .gp-score {
-      background: rgba(57,255,20,0.08);
-      border: 1px solid rgba(57,255,20,0.18);
-      border-radius: 10px;
-      padding: 9px;
-      text-align: center;
-      margin-bottom: 7px;
-    }
-    .gp-num {
+    .shield-text {
       font-family: var(--head);
-      font-size: 26px;
       font-weight: 800;
-      color: var(--green);
-      line-height: 1;
-      text-shadow: 0 0 15px rgba(57,255,20,0.4);
+      font-size: 38px;
+      fill: var(--w);
+      letter-spacing: 0.05em;
     }
-    .gp-lbl {
-      font-size: 7px;
-      color: #777;
-      margin-top: 2px;
-    }
-    .gp-badge {
-      font-size: 7px;
-      background: var(--green);
-      color: #000;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 100px;
-      display: inline-block;
-      margin-top: 3px;
-      text-transform: uppercase;
-    }
-    .gp-job {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 8px;
-      padding: 7px 8px;
-      margin-bottom: 5px;
-    }
-    .gp-job:last-child {
-      margin-bottom: 0;
-    }
-    .gp-jtit {
-      font-size: 8px;
-      font-weight: 600;
-      color: var(--w);
-    }
-    .gp-jloc {
-      font-size: 6px;
-      color: #555;
-      margin-top: 1px;
-    }
-    .gp-jpay {
-      font-size: 9px;
-      font-weight: 800;
-      color: var(--green);
-      margin-top: 3px;
-    }
-    .ac {
-      position: absolute;
-      z-index: 20;
-      background: rgba(16,16,16,0.94);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 14px;
-      padding: 11px 14px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
-      min-width: 158px;
-    }
-    .ac .act {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 4px;
-    }
-    .ac .acm {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--w);
-      line-height: 1.2;
-    }
-    .ac .acs {
-      font-size: 10px;
-      color: #666;
-      margin-top: 3px;
-    }
-    .ac1 { top: 80px; left: -30px; animation: fa 5s ease-in-out infinite; }
-    .ac2 { top: 44%; left: -30px; transform: translateY(-50%); animation: fb 5s ease-in-out 1.8s infinite; }
-    .ac3 { bottom: 90px; left: -30px; animation: fc 5s ease-in-out 0.9s infinite; }
     
-    @keyframes fa { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    @keyframes fb { 0%, 100% { transform: translateY(-50%); } 50% { transform: translateY(calc(-50% - 6px)); } }
-    @keyframes fc { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    /* Shield Tags */
+    .shield-tag {
+      position: absolute;
+      z-index: 3;
+      background: rgba(20,20,20,0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.3s;
+    }
+    .shield-tag::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+    }
+    .shield-tag:hover {
+      border-color: rgba(57,255,20,0.4);
+    }
+    .st-verified { top: 20%; left: -30px; animation: tagFloatA 5s ease-in-out infinite; }
+    .st-protected { top: 55%; right: -40px; animation: tagFloatB 5s ease-in-out 1.2s infinite; }
+    .st-trusted { bottom: 10%; left: -10px; animation: tagFloatA 5s ease-in-out 2.4s infinite; }
+    
+    @keyframes shieldPulse {
+      0% { transform: scale(0.96); opacity: 0.8; }
+      100% { transform: scale(1.04); opacity: 1; }
+    }
+    @keyframes tagFloatA {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes tagFloatB {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
     
     /* ── TICKER ── */
     .tw {
@@ -489,7 +427,7 @@
       padding: 0 40px;
     }
     .sec {
-      padding: 100px 0;
+      padding: 115px 0;
     }
     .lbl {
       font-size: 11px;
@@ -510,7 +448,7 @@
     }
     h2 {
       font-family: var(--head);
-      font-size: clamp(30px, 4vw, 52px);
+      font-size: clamp(32px, 4vw, 52px);
       font-weight: 800;
       letter-spacing: -.03em;
       line-height: 1.06;
@@ -593,14 +531,14 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      gap: 16px;
     }
     .box {
       grid-column: span 6;
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 24px;
-      padding: 34px;
+      padding: 38px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -641,7 +579,6 @@
       align-items: center;
       gap: 48px;
       width: 100%;
-      flex-wrap: wrap;
     }
     .wide-left {
       flex: 1;
@@ -675,11 +612,11 @@
       font-size: 14px;
       color: var(--mid);
       line-height: 1.65;
-      max-width: 400px;
+      max-width: 420px;
     }
     .chip {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 5px 12px;
       border-radius: 100px;
       background: var(--gd);
@@ -722,42 +659,6 @@
       margin-top: 8px;
       text-align: center;
     }
-    .moat-line {
-      font-size: 11px;
-      color: rgba(255,255,255,0.18);
-      font-style: italic;
-      margin-top: 6px;
-      text-align: center;
-    }
-    .alert-stage {
-      position: relative;
-      width: 200px;
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 16px;
-    }
-    .floating-alert {
-      position: absolute;
-      background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 12px 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-      min-width: 170px;
-      z-index: 5;
-    }
-    .alert-money { top: 0; right: -20px; animation: floatA 4s ease-in-out infinite; }
-    .alert-trust { bottom: 0; left: -20px; animation: floatB 4s ease-in-out 1.5s infinite; }
-    
-    @keyframes floatA { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-8px) rotate(0deg); } }
-    @keyframes floatB { 0%, 100% { transform: translateY(0) rotate(1deg); } 50% { transform: translateY(-8px) rotate(0deg); } }
-    
-    .alert-label { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 4px; }
-    .alert-title { font-size: 15px; font-weight: 700; color: var(--w); }
-    .alert-sub { font-size: 11px; color: var(--mid); margin-top: 3px; }
     
     .wid { margin-top: 22px; }
     .pf { background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 18px; }
@@ -809,158 +710,53 @@
     .wbody { font-size: 13px; color: var(--mid); line-height: 1.65; max-width: 280px; }
     
     /* ── STORY CARDS ── */
-
-.sgrid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-
-/* Tablet */
-@media (max-width:900px){
-  .sgrid{
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-  }
-}
-
-/* Phone */
-@media (max-width:768px){
-  .sgrid{
-    grid-template-columns:1fr;
-    gap:20px;
-  }
-
-  .story-img{
-    height:420px;
-  }
-
-  .scc-body{
-    padding:22px;
-  }
-
-  .sr{
-    font-size:26px;
-    line-height:1.15;
-  }
-
-  .st{
-    font-size:15px;
-    line-height:1.7;
-  }
-}
-
-.scc{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-  opacity:0;
-  transform:translateY(18px);
-  transition:all .55s ease;
-}
-
-.scc.in{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.scc:hover{
-  border-color:rgba(57,255,20,0.18);
-}
-
-.story-img{
-  width:100%;
-  position:relative;
-  background:#0d0d0d;
-  overflow:hidden;
-}
-
-.story-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center top;
-  filter:brightness(.82) saturate(.8);
-  transform:scale(1);
-  transition:filter .45s ease, transform .45s ease;
-}
-
-.scc:hover .story-img img{
-  filter:brightness(1.08) saturate(1.25);
-  transform:scale(1.04);
-}
-
-.story-img::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    180deg,
-    rgba(0,0,0,.15) 0%,
-    rgba(0,0,0,.45) 100%
-  );
-  transition:opacity .45s ease;
-  pointer-events:none;
-}
-
-.scc:hover .story-img::after{
-  opacity:.2;
-}
-
-.scc-body{
-  padding:20px 22px 24px;
-  position:relative;
-  z-index:2;
-  background:var(--card);
-}
-
-.sn{
-  font-size:10px;
-  font-weight:700;
-  color:var(--green);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  margin-bottom:5px;
-}
-
-.sr{
-  font-family:var(--head);
-  font-size:18px;
-  font-weight:700;
-  margin-bottom:10px;
-  letter-spacing:-.01em;
-}
-
-.st{
-  font-size:13px;
-  color:var(--mid);
-  line-height:1.65;
-}
+    .sgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .scc { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 0; display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(18px); transition: all .55s ease; }
+    .scc.in { opacity: 1; transform: translateY(0); }
+    .scc:hover { border-color: rgba(57,255,20,0.18); }
+    .story-img { width: 100%; position: relative; background: #0d0d0d; overflow: hidden; }
+    .story-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(.82) saturate(.8);
+      transform: scale(1);
+      transition: filter .45s ease, transform .45s ease;
+    }
+    .scc:hover .story-img img {
+      filter: brightness(1.08) saturate(1.25);
+      transform: scale(1.04);
+    }
+    .story-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.45) 100%);
+      transition: opacity .45s ease;
+      pointer-events: none;
+    }
+    .scc:hover .story-img::after { opacity: .2; }
     
-    /* ── ROADMAP ── */
-    .road { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 80px 0; position: relative; z-index: 1; }
-    .rcols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-    .rcol-lbl { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 20px; padding: 5px 14px; border-radius: 100px; display: inline-block; }
-    .rcol-lbl.now { background: var(--green); color: #000; }
-    .rcol-lbl.next { background: rgba(255,255,255,0.07); color: var(--w); }
-    .rcol-lbl.fut { background: rgba(255,255,255,0.03); color: var(--mid); }
-    .ritems { display: flex; flex-direction: column; gap: 12px; }
-    .ri { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; }
-    .ri::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .ri.now::before { background: var(--green); box-shadow: 0 0 7px var(--green); }
-    .ri.now { color: var(--w); }
-    .ri.next::before { background: rgba(255,255,255,0.25); }
-    .ri.next { color: var(--mid); }
-    .ri.fut::before { background: rgba(255,255,255,0.1); }
-    .ri.fut { color: var(--dim); }
+    .scc-body { padding: 20px 22px 24px; position: relative; z-index: 2; background: var(--card); }
+    .sn { font-size: 10px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+    .sr { font-family: var(--head); font-size: 18px; font-weight: 700; margin-bottom: 10px; letter-spacing: -.01em; }
+    .st { font-size: 13px; color: var(--mid); line-height: 1.65; }
+    
+    /* ── NEW PREMIUM SIMPLE ONE STEP SECTION ── */
+    .road { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 95px 0; position: relative; z-index: 1; }
+    .premium-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 40px; align-items: flex-start; }
+    .premium-left .p-body { font-size: 16px; color: var(--mid); line-height: 1.7; max-width: 440px; margin-bottom: 24px; }
+    .premium-left .p-final { font-size: 15px; font-weight: 700; color: var(--green); font-style: italic; }
+    .premium-right { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .premium-bullet { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; display: flex; align-items: center; gap: 14px; transition: border-color 0.3s; }
+    .premium-bullet:hover { border-color: rgba(57,255,20,0.15); }
+    .premium-bullet-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 8px var(--green); flex-shrink: 0; }
+    .premium-bullet-text { font-size: 15px; font-weight: 600; color: var(--w); }
     
     /* ── WAITLIST ── */
-    .wl-outer { position: relative; z-index: 1; padding: 0 32px 80px; }
-    .wl { max-width: 1100px; margin: 0 auto; background: var(--card); border: 1px solid rgba(57,255,20,0.12); border-radius: 28px; padding: 72px 40px; text-align: center; position: relative; overflow: hidden; }
+    .wl-outer { position: relative; z-index: 1; padding: 0 32px 95px; }
+    .wl { max-width: 1100px; margin: 0 auto; background: var(--card); border: 1px solid rgba(57,255,20,0.12); border-radius: 28px; padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
     .wl-glow { position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(57,255,20,0.07) 0%, transparent 70%); pointer-events: none; }
     .wl-tag { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .wl-tag::before, .wl-tag::after { content: ''; width: 18px; height: 2px; background: var(--green); }
@@ -979,10 +775,11 @@
     .fl-logo { display: flex; align-items: center; text-decoration: none; margin-bottom: 7px; }
     .fl-logo img { width: 48px; height: 48px; display: block; object-fit: contain; }
     .fl-tag { font-size: 12px; color: var(--dim); margin-bottom: 3px; }
-    .fl-loc { font-size: 12px; color: var(--dim); span { color: var(--green); } }
+    .fl-loc { font-size: 12px; color: var(--dim); }
+    .fl-loc span { color: var(--green); }
     .fcopy { font-size: 12px; color: var(--dim); }
     
-  /* ── MOBILE OVERRIDES ONLY (<= 900px Media) ── */
+    /* ── MOBILE OVERRIDES ONLY (<= 900px Media) ── */
     @media(max-width:900px){
       nav { padding: 0 20px; }
       .live { display: none; }
@@ -990,11 +787,10 @@
       .hero {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         text-align: left;
         gap: 40px;
         padding: 110px 24px 60px;
-        overflow: hidden;
       }
       .hero-left {
         width: 100%;
@@ -1002,104 +798,51 @@
       }
       .hero-right {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
+        min-height: auto;
+        margin-top: 10px;
       }
-      .hero-image {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-        transform: translateY(30px);
+      .shield-container {
+        width: 220px;
+        height: 254px;
       }
-      
-      /* Mobile optimization: Remove phone completely to prevent space eating */
-      .glass-phone,
-      .wallet-mockup,
-      .hero-phone,
-      .phone-ui { 
-        display: none !important;
-      }
-      
-      .ac1 { left: -30px; }
-      .ac2 { right: -30px; left: auto; }
-      .ac3 { left: -20px; }
-      
-      /* Mobile layout configuration for alerts */
-      .alert-money {
-        right: -20px;
-        top: 32%;
-      }
-      .phone-mockup,
-      .wallet-mockup,
-      .hero-wallet {
-        transform: translateY(30px);
-      }
-      
-      .ac1, .ac2, .ac3 {
-        transform: scale(.9);
-        min-width: auto;
-        max-width: 160px;
-      }
-      .ac2 {
-        transform: translateY(-50%) scale(.9);
-      }
-      .ac .acm { font-size: 12px; }
+      .st-verified { left: -20px; }
+      .st-protected { right: -30px; }
+      .st-trusted { bottom: 5%; left: -5px; }
       
       .btns { flex-direction: column; width: 100%; }
       .btn-g, .btn-o { width: 100%; justify-content: center; }
-      .wrap { padding: 0 20px; }
       
-      /* Bento Section Fixes */
+      /* Bento Grid Layout Configuration - Staggering Fixes */
+      .wrap { padding: 0 20px; }
       .grid { grid-template-columns: 1fr; gap: 12px; }
-      .box { grid-column: span 1 !important; padding: 24px; }
+      .box { grid-column: span 1 !important; padding: 28px 24px; }
+      
+      /* Target specific bento properties to eliminate horizontal squeezing */
       .wide-inner { flex-direction: column !important; gap: 24px !important; }
       .wide-left { width: 100% !important; min-width: 0 !important; }
       .wide-right { width: 100% !important; min-width: 0 !important; }
       
-      /* Completely hide the floating alerts inside the Trust Score card on mobile layout */
-      .alert-stage {
-        display: none !important;
-      }
-
-      /* How It Works Section Fix — Prevent 4-column squeeze */
-      .steps { 
-        grid-template-columns: 1fr !important; 
-      }
-      .step { 
-        border-right: none !important; 
-        border-bottom: 1px solid var(--line); 
-        padding: 22px 0 !important; 
-      }
-      .step:not(:first-child) { 
-        padding-left: 0 !important; 
-      }
-      .step:last-child { 
-        border-bottom: none; 
-      }
-
-      /* Who It's For Section Fix — Prevent 2-column squeeze */
-      .wgrid { 
-        grid-template-columns: 1fr !important; 
-        gap: 12px !important;
-      }
-      .wcard {
-        padding: 24px !important;
-      }
-
-      /* What's Coming Roadmap Section Fix — Prevent 3-column squeeze */
-      .rcols { 
-        grid-template-columns: 1fr !important; 
-        gap: 32px !important; 
-      }
-    } /* <-- closes @media(max-width:900px) */
-
-@media(prefers-reduced-motion:reduce){
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
+      /* How It Works Layout Configuration - Staggering Fixes */
+      .steps { grid-template-columns: 1fr !important; }
+      .step { border-right: none !important; border-bottom: 1px solid var(--line); padding: 22px 0 !important; }
+      .step:not(:first-child) { padding-left: 0 !important; }
+      .step:last-child { border-bottom: none; }
+      
+      /* Who It's For Layout Configuration - Staggering Fixes */
+      .wgrid { grid-template-columns: 1fr !important; gap: 12px !important; }
+      .wcard { padding: 24px !important; }
+      
+      /* Built One Step At a Time Section Layout Configuration - Staggering Fixes */
+      .premium-split { grid-template-columns: 1fr !important; gap: 32px !important; }
+      
+      .sgrid { grid-template-columns: 1fr; }
+      .road { padding: 70px 0; }
+      .wl-outer { padding: 0 20px 60px; }
+      .wl { padding: 44px 22px; }
+      footer { padding: 28px 20px; }
+      .fine p { white-space: normal; }
+    }
+    @media(prefers-reduced-motion:reduce){ * { animation: none!important; transition: none!important; } }
   </style>
 </head>
 <body>
@@ -1117,13 +860,13 @@
 
   <section class="hero">
     <div class="hero-left">
-      <div class="hero-badge">Starting in Lagos & Abuja · Building for Africa</div>
+      <div class="hero-badge">Starting in Lagos & Abuja · Built for Africa</div>
       <h1>
         <span>Get work.</span>
         <span>Get paid.</span>
         <span class="g">Build Trust.</span>
       </h1>
-      <p class="hero-p">The trust layer for work in Nigeria. Get hired, get paid, and build a reputation that follows you <em>everywhere.</em></p>
+      <p class="hero-p">RISE helps Nigerians find opportunities, get paid securely, save together, and build a reputation that opens doors.</p>
       <div class="btns">
         <a href="https://tally.so/r/68py7B" target="_blank" class="btn-g">Join the Waitlist →</a>
         <a href="#how" class="btn-o">See how it works</a>
@@ -1140,45 +883,17 @@
     </div>
 
     <div class="hero-right">
-      <div class="hero-image">
-        <div class="temi-wrap">
-          <img src="temi2.png" alt="Temi, Lagos — RISE user"/>
+      <div class="shield-container">
+        <div class="shield-glow"></div>
+        <div class="shield-svg-wrap">
+          <svg class="shield-svg" viewBox="0 0 100 115" preserveAspectRatio="xMidYMid meet">
+            <path class="shield-bg" d="M50,5 L90,25 L90,65 C90,90 50,110 50,110 C50,110 10,90 10,65 L10,25 Z" />
+            <text class="shield-text" x="50%" y="60%" dominant-baseline="middle" text-anchor="middle">R</text>
+          </svg>
         </div>
-
-        <div class="glass-phone">
-          <div class="gp-status">9:41 · RISE</div>
-          <div class="gp-score">
-            <div class="gp-num" id="heroScore">4.8</div>
-            <div class="gp-lbl">Trust Score</div>
-            <div class="gp-badge">Trusted ✓</div>
-          </div>
-          <div class="gp-job">
-            <div class="gp-jtit">Bridal makeup</div>
-            <div class="gp-jloc">Lekki · Beauty</div>
-            <div class="gp-jpay">₦60,000</div>
-          </div>
-          <div class="gp-job">
-            <div class="gp-jtit">Event shoot</div>
-            <div class="gp-jloc">Lagos Island</div>
-            <div class="gp-jpay">₦120,000</div>
-          </div>
-        </div>
-
-        <div class="ac ac1">
-          <div class="act">Trust Score ⭐</div>
-          <div class="acm">4.7 → 4.8 ↑</div>
-          <div class="acs">You're rising</div>
-        </div>
-        <div class="ac ac2">
-          <div class="act">● Alert</div>
-          <div class="acm">₦120,000<br/>received</div>
-          <div class="acs">from Lokkis Designs</div>
-        </div>
-        <div class="ac ac3">
-          <div class="act">New Job</div>
-          <div class="acm">Bridal Shoot</div>
-          <div class="acs">₦60,000 available</div>
-        </div>
+        <div class="shield-tag st-verified">Verified</div>
+        <div class="shield-tag st-protected">Protected</div>
+        <div class="shield-tag st-trusted">Trusted</div>
       </div>
     </div>
   </section>
@@ -1212,74 +927,61 @@
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 100px">
+    <section style="padding:0 0 115px">
       <div class="lbl">Why RISE Exists</div>
       <div class="plines">
         <div class="pl bad"><div class="pi">❌</div>Ghost clients never pay.</div>
         <div class="pl bad"><div class="pi">❌</div>Good workers start from zero every time.</div>
         <div class="pl bad"><div class="pi">❌</div>Businesses can't find workers they can actually trust.</div>
-        <div class="pl bad"><div class="pi">❌</div>Millions of people have no financial track record.</div>
+        <div class="pl bad"><div class="pi">❌</div>Millions of hard-working individuals lack a verified reputation.</div>
         <div class="pl good"><div class="pi">✅</div>RISE helps you earn, save, build trust, and unlock more.</div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 100px" class="bento-sec">
+    <section style="padding:0 0 115px" class="bento-sec">
       <div class="lbl">What's Inside</div>
-      <h2>Four things.<br/>That's all you need.</h2>
+      <h2>Everything starts with trust.</h2>
       <div class="grid">
         <div class="box wide">
           <div class="wide-inner">
             <div class="wide-left">
-              <span class="btag">Your Trust Score</span>
-              <h3 class="btitle">Your name, backed by proof.</h3>
-              <p class="bbody">Every job you finish, every five-star review, every payment made on time — it all builds your Trust Score. One number that travels with you everywhere and eventually opens doors banks never would.</p>
-              <span class="chip">Your reputation follows you</span>
+              <span class="btag">Your Trust Profile</span>
+              <h3 class="btitle">Build Trust</h3>
+              <p class="bbody">Complete work. Earn reviews. Grow a reputation that follows you everywhere and helps people trust your work instantly.</p>
+              <span class="chip">Reputation that opens doors</span>
             </div>
             <div class="wide-right">
               <div class="score-count" id="trustCount">0.0</div>
               <div class="score-badge">Trusted ✓</div>
-              <p class="score-note">Built from completed jobs, reviews, and reliability.</p>
-              <p class="moat-line">One number that follows you everywhere.<br/>This is our moat.</p>
-              <div class="alert-stage">
-                <div class="floating-alert alert-money">
-                  <div class="alert-label">RISE Alert</div>
-                  <div class="alert-title">₦120,000 received</div>
-                  <div class="alert-sub">Lagos Weddings Ltd</div>
-                </div>
-                <div class="floating-alert alert-trust">
-                  <div class="alert-label">Trust Score</div>
-                  <div class="alert-title">4.7 → 4.8 ↑</div>
-                  <div class="alert-sub">Reputation increased</div>
-                </div>
-              </div>
+              <p class="score-note">Built from completed experiences and real reliability.</p>
             </div>
           </div>
         </div>
 
         <div class="box">
           <div>
-            <span class="btag">Protected Funds</span>
-            <h3 class="btitle">Your money sits safe until the job is done.</h3>
-            <p class="bbody">The moment a job is agreed, the money is locked safe in the app. No ghosting. No chasing. When you finish, the money moves straight to you.</p>
-            <span class="chip">Zero ghost clients</span>
+            <span class="btag">Protected Transactions</span>
+            <h3 class="btitle">Secure Payments</h3>
+            <p class="bbody">Get paid with confidence while work is in progress. Funds sit locked and safe until the requirements are met, completely eliminating transaction stress.</p>
+            <span class="chip">Protected by design</span>
           </div>
           <div class="wid">
             <div class="pf">
               <div class="pf-top"><span class="pf-lbl">Funds held safely</span><span class="pf-amt">₦120,000</span></div>
               <div class="pf-bar"><div class="pf-fill" id="pfFill"></div></div>
-              <div class="pf-note">Releases to you when job is confirmed done</div>
+              <div class="pf-note">Releases when milestones are confirmed done</div>
             </div>
           </div>
         </div>
 
         <div class="box">
           <div>
-            <span class="btag">Job Marketplace</span>
-            <h3 class="btitle">Real jobs. Real pay. Right now.</h3>
-            <p class="bbody">Browse jobs that match your skills and area. Beauty, events, creative, tech, and remote. Lagos and Abuja first — then everywhere.</p>
-            <span class="chip">Live jobs</span>
+            <span class="btag">Discovery Hub</span>
+            <h3 class="btitle">Find Work</h3>
+            <p class="bbody">Discover opportunities that match your specific skills, location, and professional goals. Built to match vetted talent with clean projects seamlessly.</p>
+            <span class="chip">Built for real hustlers</span>
           </div>
           <div class="wid">
             <div class="jlist">
@@ -1302,9 +1004,9 @@
         <div class="box">
           <div>
             <span class="btag">Susu Groups</span>
-            <h3 class="btitle">Save together the way you already do — just safer.</h3>
-            <p class="bbody">The savings tradition you already know and trust, now digital and protected from fraud. Start or join a group with people you trust.</p>
-            <span class="chip">Culturally yours</span>
+            <h3 class="btitle">Save Together</h3>
+            <p class="bbody">Join trusted groups and save with people you know. The financial traditions you already look to, brought into a safe, digital architecture.</p>
+            <span class="chip">Culture, made digital</span>
           </div>
           <div class="wid">
             <div class="slist">
@@ -1329,43 +1031,51 @@
     <section class="sec how-sec" id="how">
       <div class="lbl">How It Works</div>
       <h2>Simple on the surface.<br/>Powerful underneath.</h2>
-      <p class="sub">Four steps. Every action builds your Trust Score.</p>
+      <p class="sub">Four steps. Every action builds your professional standing.</p>
       <div class="steps">
-        <div class="step"><div class="snum">01</div><div class="stitle">Find a Job</div><p class="sbody">Browse jobs matched to your skill and area. Beauty, events, tech, creative, and remote work across Lagos and Abuja.</p></div>
-        <div class="step"><div class="snum">02</div><div class="stitle">Get Paid Safely</div><p class="sbody">Money is held safe until the job is done. No ghosting. No chasing. Your payment is protected from the start.</p></div>
-        <div class="step"><div class="snum">03</div><div class="stitle">Build Your Trust Score</div><p class="sbody">Every completed job and great review builds your Trust Score — a reputation that travels with you everywhere.</p></div>
-        <div class="step"><div class="snum">04</div><div class="stitle">Unlock More</div><p class="sbody">A strong Trust Score opens better jobs, lower fees, Susu groups, and eventually — access to credit no bank would give you.</p></div>
+        <div class="step">
+          <div class="snum">01</div>
+          <div class="stitle">Find Work</div>
+          <p class="sbody">Discover jobs and opportunities that match your skills. Filter by location or choose remote work across Lagos and Abuja.</p>
+        </div>
+        <div class="step">
+          <div class="snum">02</div>
+          <div class="stitle">Get Paid</div>
+          <p class="sbody">Use RISE to help protect payment while work is in progress. No ghosting or chasing down what you earned.</p>
+        </div>
+        <div class="step">
+          <div class="snum">03</div>
+          <div class="stitle">Build Trust</div>
+          <p class="sbody">Every completed experience helps strengthen your reputation, compiling verifiable proof of your work quality.</p>
+        </div>
+        <div class="step">
+          <div class="snum">04</div>
+          <div class="stitle">Unlock More</div>
+          <p class="sbody">The more trust you build, the more opportunities can open, allowing your verified track record to do the talking.</p>
+        </div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 100px" class="who-sec">
+    <section style="padding:0 0 115px" class="who-sec">
       <div class="lbl">Who It's For</div>
       <h2>Built for the people<br/><span style="color:var(--green)">moving Nigeria forward.</span></h2>
       <p class="sub">Find work. Get paid. Build trust. Whether you're earning, hiring, saving, or growing — RISE helps you move forward.</p>
       <div class="wgrid">
-        <div class="wcard" data-e="💄"><span class="wtag">Hustlers</span><div class="wtitle">Creatives & Freelancers</div><p class="wbody">Makeup artists, photographers, designers, stylists, DJs, videographers. Build a verified career with a Trust Score that follows you.</p></div>
+        <div class="wcard" data-e="💄"><span class="wtag">Hustlers</span><div class="wtitle">Creatives & Freelancers</div><p class="wbody">Makeup artists, photographers, designers, stylists, DJs, videographers. Build a verified career with a reputation that follows you.</p></div>
         <div class="wcard" data-e="🎪"><span class="wtag">Events & Services</span><div class="wtitle">Event Professionals</div><p class="wbody">MCs, decorators, event staff, caterers. Get discovered by serious businesses and build a track record that speaks for itself.</p></div>
         <div class="wcard" data-e="🏢"><span class="wtag">Businesses</span><div class="wtitle">Business Owners</div><p class="wbody">Hire verified people faster. Money stays protected until the work is completed. Build a reputation people trust.</p></div>
-        <div class="wcard" data-e="🌍"><span class="wtag">Remote</span><div class="wtitle">Remote Workers</div><p class="wbody">Social media managers, virtual assistants, video editors. Work from anywhere in Nigeria while your Trust Score travels with you.</p></div>
+        <div class="wcard" data-e="🌍"><span class="wtag">Remote</span><div class="wtitle">Remote Workers</div><p class="wbody">Social media managers, virtual assistants, video editors. Work from anywhere in Nigeria while your verified profile grows.</p></div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 100px" class="story-sec">
- <div class="lbl">WHAT TRUST CAN UNLOCK</div>
-
-<h2>
-  Imagine what's possible.
-</h2>
-
-<p class="sub">
-  Examples of how RISE can help freelancers,
-  students, and business owners earn more,
-  save smarter, and build trust over time.
-</p>
+    <section style="padding:0 0 115px" class="story-sec">
+      <div class="lbl">Who RISE Is Built For</div>
+      <h2>Meet the first Risers.</h2>
+      <p class="sub">Building their future every day.</p>
       <div class="sgrid">
         <div class="scc">
           <div class="story-img">
@@ -1374,7 +1084,7 @@
           <div class="scc-body">
             <div class="sn">Temi · Lagos</div>
             <div class="sr">Makeup Artist</div>
-            <p class="st">Started with no portfolio. Completed 13 jobs. Built a 4.8 Trust Score. Now gets repeat bookings from businesses across Lagos.</p>
+            <p class="st">Started with no portfolio. Completed 13 jobs. Built an incredible verified rating. Now gets repeat bookings from businesses across Lagos.</p>
           </div>
         </div>
         <div class="scc">
@@ -1384,7 +1094,7 @@
           <div class="scc-body">
             <div class="sn">Emeka · Enugu</div>
             <div class="sr">Student & Side Hustler</div>
-            <p class="st">Joins a Susu savings group with friends from uni. Builds real financial habits. Creates a track record before he even graduates.</p>
+            <p class="st">Joins a Susu savings group with friends from uni. Builds real financial habits and safe collaborative records before he even graduates.</p>
           </div>
         </div>
         <div class="scc">
@@ -1394,7 +1104,7 @@
           <div class="scc-body">
             <div class="sn">Adaeze · Abuja</div>
             <div class="sr">Business Owner</div>
-            <p class="st">Finds trusted workers quickly. Money is held safely until the job is done. Builds a reputation as a business people are happy to work with.</p>
+            <p class="st">Finds trusted workers quickly. Money is held safely until the job is done. Builds a reputation as a clean business people love working with.</p>
           </div>
         </div>
       </div>
@@ -1403,44 +1113,36 @@
 
   <div class="road">
     <div class="wrap">
-      <div class="lbl">What's Coming</div>
-      <h2>Building Nigeria's trust layer,<br/>one step at a time.</h2>
-      <div class="rcols">
-        <div>
-          <div class="rcol-lbl now">Now</div>
-          <div class="ritems">
-            <div class="ri now">Job Marketplace</div>
-            <div class="ri now">Trust Score</div>
-            <div class="ri now">Protected Funds</div>
-            <div class="ri now">Business Hiring</div>
-            <div class="ri now">Susu Groups</div>
-          </div>
+      <div class="lbl">Built One Step At A Time</div>
+      <div class="premium-split">
+        <div class="premium-left">
+          <h2>Trust changes everything.</h2>
+          <p class="p-body">RISE starts with work, payments, savings, and reputation — the everyday tools people need to move forward.</p>
+          <p class="p-final">We’re starting in Lagos and Abuja. Africa comes next.</p>
         </div>
-        <div>
-          <div class="rcol-lbl next">Next</div>
-          <div class="ritems">
-            <div class="ri next">Savings Goals</div>
-            <div class="ri next">Financial Analytics</div>
-            <div class="ri next">ID Verification</div>
-            <div class="ri next">Profile Boosts</div>
-            <div class="ri next">Community Features</div>
+        <div class="premium-right">
+          <div class="premium-bullet">
+            <div class="premium-bullet-dot"></div>
+            <div class="premium-bullet-text">Find real opportunities</div>
           </div>
-        </div>
-        <div>
-          <div class="rcol-lbl fut">Future</div>
-          <div class="ritems">
-            <div class="ri fut">Credit Access</div>
-            <div class="ri fut">Business Financing</div>
-            <div class="ri fut">Rental Verification</div>
-            <div class="ri fut">Employer Screening</div>
-            <div class="ri fut">Expansion Across Africa</div>
+          <div class="premium-bullet">
+            <div class="premium-bullet-dot"></div>
+            <div class="premium-bullet-text">Get paid with confidence</div>
+          </div>
+          <div class="premium-bullet">
+            <div class="premium-bullet-dot"></div>
+            <div class="premium-bullet-text">Save with people you trust</div>
+          </div>
+          <div class="premium-bullet">
+            <div class="premium-bullet-dot"></div>
+            <div class="premium-bullet-text">Build a reputation that opens doors</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="wl-outer" style="padding-top:80px">
+  <div class="wl-outer" style="padding-top:95px">
     <div class="wl">
       <div class="wl-glow"></div>
       <div class="naija">Naija no dey carry last.</div>
@@ -1449,8 +1151,8 @@
       <p class="wl-p">Lagos and Abuja first. Get in early, help shape the platform, and start building your reputation from day one.</p>
       <div class="perks">
         <div class="pk">Priority job placement</div>
-        <div class="pk">Lower platform fees</div>
-        <div class="pk">Early feature access</div>
+        <div class="pk">Optimized platform features</div>
+        <div class="pk">Early dashboard access</div>
         <div class="pk">Founding Riser badge</div>
       </div>
       <a href="https://tally.so/r/68py7B" target="_blank" class="btn-g" style="font-size:16px;padding:17px 44px">
@@ -1469,7 +1171,7 @@
         <img src="rise-icon.png" alt="RISE"/>
       </a>
       <div class="fl-tag">Make money make sense.</div>
-      <div class="fl-loc">Starting in Lagos & Abuja. </br> <span>Building for Africa.</span></div>
+      <div class="fl-loc">Starting in Lagos & Abuja. <span>Building for Africa.</span></div>
     </div>
     <div class="fcopy">© 2026 RISE. All rights reserved.</div>
   </footer>
