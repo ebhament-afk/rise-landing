@@ -955,8 +955,30 @@
       .wrap { padding: 0 20px; }
       .grid { grid-template-columns: 1fr; gap: 12px; }
       .box { grid-column: span 1 !important; padding: 24px; }
-      .wide-inner { flex-direction: column; gap: 24px; }
+     .wide-inner { flex-direction: column; gap: 24px; }
       .wide-right { width: 100%; min-width: 0; }
+      
+      /* Fix overlapping alert widgets inside Trust Score card on mobile */
+      .alert-stage {
+        height: auto !important; 
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        align-items: center !important;
+        margin-top: 24px;
+        width: 100%;
+      }
+      .floating-alert {
+        position: relative !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 280px;
+        transform: none !important;
+        animation: none !important;
+      }
       .steps { grid-template-columns: 1fr; }
       .step { border-right: none; border-bottom: 1px solid var(--line); padding: 22px 0; }
       .step:not(:first-child) { padding-left: 0; }
