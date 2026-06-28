@@ -10,7 +10,7 @@
 
   <meta name="description" content="Find work. Get paid with confidence. Save together. Build a reputation that moves with you."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=500;600;700;800&family=DM+Sans:wght=400;500;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --green: #39FF14;
@@ -61,7 +61,7 @@
       transform: translateX(-50%);
       width: 1000px;
       height: 800px;
-      background: radial-gradient(ellipse, rgba(57,255,20,0.04) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(57,255,20,.08), transparent 72%);
       pointer-events: none;
       z-index: 0;
       animation: breathe 10s ease-in-out infinite alternate;
@@ -181,7 +181,7 @@
       box-shadow: 0 0 30px rgba(57,255,20,0.25);
     }
     .btn-g:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.02);
       box-shadow: 0 0 45px rgba(57,255,20,0.45);
     }
     .btn-o {
@@ -298,7 +298,7 @@
       font-size: 13px;
       color: var(--mid);
     }
-    .proof-txt b { color: var(--w); }
+    .proof-txt b b { color: var(--w); }
     .pdot {
       width: 4px;
       height: 4px;
@@ -326,20 +326,20 @@
       object-fit: cover;
       object-position: center top;
       display: block;
-      filter: grayscale(10%) brightness(0.9);
+      filter: grayscale(4%) brightness(1.05) contrast(1.08) saturate(1.03);
       mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     }
     
     .glass-card {
       position: absolute;
-      background: rgba(20, 20, 20, 0.75);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 18, 18, 0.58);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       padding: 14px 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.55);
       z-index: 10;
       pointer-events: none;
       font-family: var(--head);
@@ -396,7 +396,7 @@
       padding: 0 48px;
     }
     .sec {
-      padding: 135px 0;
+      padding: 115px 0;
     }
     .lbl {
       font-size: 11px;
@@ -491,7 +491,7 @@
       transform: translateX(0);
     }
     .pl.bad {
-      color: rgba(255,255,255,0.2);
+      color: #BEBEBE;
     }
     .pl.good {
       color: var(--green);
@@ -508,8 +508,8 @@
       align-items: center;
       justify-content: center;
       font-size: 14px;
-      background: var(--card);
-      border: 1px solid var(--line);
+      background: #171717;
+      border: 1px solid rgba(255,255,255,.12);
     }
     .pl.good .pi {
       background: var(--gd);
@@ -562,6 +562,21 @@
       flex-direction: column;
       align-items: center;
       flex-shrink: 0;
+      text-align: center;
+    }
+    .wide-right .stars {
+      color: var(--green);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .wide-right .rep-lbl {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      font-weight: 700;
+      margin-top: 4px;
     }
     .btag {
       font-size: 11px;
@@ -669,8 +684,8 @@
     .wcard { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 36px; position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); transition: all .6s cubic-bezier(.16,1,.3,1); }
     .wcard.in { opacity: 1; transform: translateY(0); }
     .wcard:hover { border-color: rgba(57,255,20,0.15); }
-    .wcard::after { content: attr(data-e); position: absolute; right: 24px; bottom: 20px; font-size: 52px; opacity: .06; transition: all .3s; }
-    .wcard:hover::after { opacity: .12; transform: scale(1.05) rotate(-4deg); }
+    .wcard .wcard-icon { position: absolute; right: 24px; bottom: 20px; width: 52px; height: 52px; color: #fff; opacity: .18; transition: all .3s; }
+    .wcard:hover .wcard-icon { opacity: .30; transform: scale(1.05) rotate(-4deg); color: var(--green); }
     .wtag { font-size: 10px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 12px; display: block; }
     .wtitle { font-family: var(--head); font-size: 21px; font-weight: 800; margin-bottom: 10px; letter-spacing: -.02em; }
     .wbody { font-size: 14px; color: var(--mid); line-height: 1.65; max-width: 300px; }
@@ -680,25 +695,62 @@
     .scc { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 0; display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: translateY(20px); transition: all .6s cubic-bezier(.16,1,.3,1); }
     .scc.in { opacity: 1; transform: translateY(0); }
     .scc:hover { border-color: rgba(57,255,20,0.15); }
-    .story-img { width: 100%; position: relative; background: #0b0b0b; overflow: hidden; }
+    .story-img { width: 100%; position: relative; background: #0b0b0b; overflow: hidden; height: 320px; }
     .story-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: brightness(.8) saturate(.85);
+      filter: brightness(1.03) contrast(1.08) saturate(1.05);
       transition: filter .4s ease, transform .4s ease;
     }
     .scc:hover .story-img img {
-      filter: brightness(1.02) saturate(1.15);
+      filter: brightness(1.05) contrast(1.1) saturate(1.12);
       transform: scale(1.02);
     }
     .story-img::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.4) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,.18) 100%);
     }
+    
+    /* Floating Overlays for First Risers */
+    .story-badge-container {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 12;
+      pointer-events: none;
+    }
+    .sb-row {
+      display: flex;
+      gap: 6px;
+    }
+    .s-pill {
+      background: rgba(18, 18, 18, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .s-pill.green-accent {
+      color: var(--green);
+      border-color: rgba(57, 255, 20, 0.2);
+      background: rgba(57, 255, 20, 0.06);
+    }
+    
     .scc-body { padding: 24px 26px 28px; background: var(--card); }
     .sn { font-size: 11px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
     .sr { font-family: var(--head); font-size: 19px; font-weight: 700; margin-bottom: 12px; letter-spacing: -.01em; }
@@ -728,8 +780,21 @@
     .perks { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 24px; margin-bottom: 44px; }
     .pk { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); }
     .pk::before { content: '✓'; color: var(--green); font-weight: 800; margin-right: 2px; }
+    
     .fine { margin-top: 40px; }
-    .fine p { font-size: 12px; color: #333333; line-height: 2; white-space: nowrap; }
+    .fine p { font-size: 12px; color: #C9FFB9; font-weight: 600; letter-spacing: .02em; line-height: 2; white-space: nowrap; margin-bottom: 12px; }
+    
+    .launch-pill {
+      display: inline-flex;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(57,255,20,.08);
+      border: 1px solid rgba(57,255,20,.2);
+      color: #39FF14;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 18px;
+    }
     
     /* ── FOOTER ── */
     footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
@@ -774,7 +839,7 @@
       .btn-g, .btn-o { width: 100%; justify-content: center; }
       
       .wrap { padding: 0 24px; }
-      .sec { padding: 95px 0; }
+      .sec { padding: 115px 0; }
       
       .manifesto-layout { grid-template-columns: 1fr; gap: 36px; }
       .manifesto-shield-zone { justify-content: flex-start; padding-left: 10px; }
@@ -834,8 +899,7 @@
         <a href="#how" class="btn-o">See how it works</a>
       </div>
       
-   
-       <div class="proof">
+      <div class="proof">
         <div class="avs">
           <div class="av"><img src="Girl1.jpg" alt="Temi · Lagos"/></div>
           <div class="av"><img src="Girl2.png" alt="Adaeze · Abuja"/></div>
@@ -883,7 +947,7 @@
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 135px">
+    <section style="padding:0 0 115px">
       <div class="lbl">Why RISE Exists</div>
       <div class="plines">
         <div class="pl bad"><div class="pi">❌</div>Ghost clients never pay.</div>
@@ -895,7 +959,7 @@
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 135px" class="bento-sec">
+    <section style="padding:0 0 115px" class="bento-sec">
       <div class="lbl">What's Inside</div>
       <h2>Everything starts with trust.</h2>
       <div class="grid">
@@ -908,8 +972,9 @@
               <span class="chip">Reputation that moves with you</span>
             </div>
             <div class="wide-right">
+              <div class="stars">★★★★☆</div>
               <div class="score-count" id="trustCount">0.0</div>
-              <div class="score-badge">Verified ✓</div>
+              <div class="rep-lbl">Verified Reputation</div>
             </div>
           </div>
         </div>
@@ -1001,21 +1066,21 @@
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 135px" class="who-sec">
+    <section style="padding:0 0 115px" class="who-sec">
       <div class="lbl">Who It's For</div>
       <h2>Built for the people<br/><span style="color:var(--green)">moving Nigeria forward.</span></h2>
       <p class="sub">Whether you're earning, hiring, saving, or growing — RISE helps you move forward smoothly.</p>
       <div class="wgrid">
-        <div class="wcard" data-e="💄"><span class="wtag">Hustlers</span><div class="wtitle">Creatives & Freelancers</div><p class="wbody">Makeup artists, photographers, designers, and creators building a reputation that moves with them.</p></div>
-        <div class="wcard" data-e="🎪"><span class="wtag">Events</span><div class="wtitle">Event Professionals</div><p class="wbody">MCs, caterers, and decorators looking to unlock more premium opportunities over time.</p></div>
-        <div class="wcard" data-e="🏢"><span class="wtag">Scale</span><div class="wtitle">Business Owners</div><p class="wbody">Hire trusted professionals faster while keeping transactions safe and protected.</p></div>
-        <div class="wcard" data-e="🌍"><span class="wtag">Remote</span><div class="wtitle">Remote Workers</div><p class="wbody">Social media managers and virtual assistants building verified proof of their consistency.</p></div>
+        <div class="wcard"><span class="wtag">Hustlers</span><div class="wtitle">Creatives & Freelancers</div><p class="wbody">Makeup artists, photographers, designers, and creators building a reputation that moves with them.</p><i data-lucide="sparkles" class="wcard-icon"></i></div>
+        <div class="wcard"><span class="wtag">Events</span><div class="wtitle">Event Professionals</div><p class="wbody">MCs, caterers, and decorators looking to unlock more premium opportunities over time.</p><i data-lucide="camera" class="wcard-icon"></i></div>
+        <div class="wcard"><span class="wtag">Scale</span><div class="wtitle">Business Owners</div><p class="wbody">Hire trusted professionals faster while keeping transactions safe and protected.</p><i data-lucide="building-2" class="wcard-icon"></i></div>
+        <div class="wcard"><span class="wtag">Remote</span><div class="wtitle">Remote Workers</div><p class="wbody">Social media managers and virtual assistants building verified proof of their consistency.</p><i data-lucide="laptop" class="wcard-icon"></i></div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section style="padding:0 0 135px" class="story-sec">
+    <section style="padding:0 0 115px" class="story-sec">
       <div class="lbl">First Risers</div>
       <h2>Meet the first Risers.</h2>
       <p class="sub">Building their future every single day.</p>
@@ -1023,6 +1088,16 @@
         <div class="scc">
           <div class="story-img">
             <img src="temi.jpeg" alt="Temi · Lagos"/>
+            <div class="story-badge-container">
+              <div class="sb-row">
+                <span class="s-pill green-accent">★★★★★ 4.9</span>
+                <span class="s-pill">Verified</span>
+              </div>
+              <div class="sb-row">
+                <span class="s-pill">13 Jobs</span>
+                <span class="s-pill">₦620k Earned</span>
+              </div>
+            </div>
           </div>
           <div class="scc-body">
             <div class="sn">Temi · Lagos</div>
@@ -1033,6 +1108,15 @@
         <div class="scc">
           <div class="story-img">
             <img src="emeka.png" alt="Emeka · Enugu"/>
+            <div class="story-badge-container">
+              <div class="sb-row">
+                <span class="s-pill green-accent">Trust 4.7</span>
+              </div>
+              <div class="sb-row">
+                <span class="s-pill">Savings Pool Leader</span>
+                <span class="s-pill">Student</span>
+              </div>
+            </div>
           </div>
           <div class="scc-body">
             <div class="sn">Emeka · Enugu</div>
@@ -1043,6 +1127,15 @@
         <div class="scc">
           <div class="story-img">
             <img src="adaeze.png" alt="Adaeze · Abuja"/>
+            <div class="story-badge-container">
+              <div class="sb-row">
+                <span class="s-pill green-accent">92 Hires</span>
+              </div>
+              <div class="sb-row">
+                <span class="s-pill">98% Payout Success</span>
+                <span class="s-pill">Verified Business</span>
+              </div>
+            </div>
           </div>
           <div class="scc-body">
             <div class="sn">Adaeze · Abuja</div>
@@ -1085,7 +1178,7 @@
     </div>
   </div>
 
-  <div class="wl-outer" style="padding-top:135px">
+  <div class="wl-outer" style="padding-top:115px">
     <div class="wl">
       <div class="wl-glow"></div>
       <div class="naija">Naija no dey carry last.</div>
@@ -1102,6 +1195,9 @@
       </a>
       <div class="fine">
         <p>Lagos & Abuja launching first</p>
+        <div class="launch-pill">
+          🇳🇬 Launching first in Lagos & Abuja
+        </div>
       </div>
     </div>
   </div>
@@ -1118,7 +1214,12 @@
     <div class="fcopy">© 2026 RISE. All rights reserved.</div>
   </footer>
 
+  <!-- Lucide Script Pack for Crisp Icons Vector Rendering -->
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
+    // Initialize crisp Lucide vector icons
+    lucide.createIcons();
+
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if(!e.isIntersecting) return
