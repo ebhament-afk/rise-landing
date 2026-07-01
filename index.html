@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet"/>
   
+  <!-- Lucide Icons Developer Package for Production-Ready Rendering -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -94,7 +95,7 @@
       overflow: hidden;
     }
 
-    /* Ultra Faint Matrix Grid (-30% Opacity refinement) */
+    /* Ultra Faint Matrix Grid */
     .infrastructure-grid {
       position: absolute;
       inset: 0;
@@ -128,7 +129,7 @@
       transform: translateX(-50%);
       width: 1200px;
       height: 1200px;
-      opacity: .06; /* Whispering presence with custom visibility */
+      opacity: .06; 
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B6A6FF' stroke-width='0.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 .76-.97l7-2a1 1 0 0 1 .48 0l7 2A1 1 0 0 1 20 6z'/%3E%3C/svg%3E");
       background-size: contain;
@@ -140,12 +141,15 @@
     /* Geographic Connection Infrastructure Nodes & Paths */
     .geo-network-svg {
       position: absolute;
-      top: 15%;
+      top: 10%;
       left: 50%;
       transform: translateX(-50%);
-      width: 1200px;
-      height: 700px;
-      opacity: 0.25;
+      width: 1300px;
+      height: 800px;
+      opacity: 0.35;
+    }
+    .africa-continent-dots {
+      fill: rgba(181, 170, 255, 0.04);
     }
     .node-point {
       fill: #ffffff;
@@ -154,7 +158,8 @@
     }
     .node-point.active-hub {
       fill: var(--green);
-      opacity: 0.6;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.6));
     }
     .network-line {
       stroke: rgba(181, 170, 255, .09);
@@ -166,29 +171,24 @@
       stroke-width: 1.2;
     }
     .node-text {
-      fill: rgba(255, 255, 255, 0.25);
+      fill: rgba(255, 255, 255, 0.5);
       font-family: var(--head);
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
     /* Trust Pulse Animation Engine */
     .trust-pulse-particle {
       fill: var(--green);
       filter: drop-shadow(0 0 4px var(--green));
-      offset-path: path('M 550 180 L 650 320 M 650 320 L 450 440 L 720 520');
-      animation: travelPulse 16s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+      offset-path: path('M 610 330 L 635 440');
+      animation: travelPulse 6s linear infinite;
     }
     @keyframes travelPulse {
       0% { offset-distance: 0%; opacity: 0; }
-      3% { opacity: 1; }
-      12% { offset-distance: 35%; opacity: 1; }
-      15% { opacity: 0; }
-      40% { offset-distance: 35%; opacity: 0; }
-      43% { opacity: 0.8; }
-      58% { offset-distance: 70%; opacity: 0.8; }
-      62% { opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
       100% { offset-distance: 100%; opacity: 0; }
     }
 
@@ -382,12 +382,12 @@
     .hero {
       position: relative;
       z-index: 10;
-      max-width: 1140px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 180px 48px 140px;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 64px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
       align-items: center;
     }
     .hero-badge {
@@ -473,19 +473,21 @@
       background: rgba(255,255,255,0.15);
     }
 
-    /* ── HERO IMAGE & UPGRADED GLASS CARDS ── */
+    /* ── HERO VISUAL LAYER MANAGEMENT ── */
     .hero-right {
       position: relative;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       width: 100%;
+      height: 520px;
     }
     .hero-image-wrapper {
       position: relative;
       width: 100%;
-      max-width: 420px;
-      height: 480px;
+      max-width: 340px;
+      height: 460px;
+      z-index: 10;
     }
     .hero-main-img {
       width: 100%;
@@ -497,7 +499,136 @@
       mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     }
-    
+
+    /* ── HIGH-END EVOLUTION: INTEGRATED ANGLED PLATFORM PHONE ── */
+    .hero-device-mockup {
+      position: absolute;
+      right: -20px;
+      top: 10px;
+      width: 250px;
+      height: 500px;
+      z-index: 5;
+      background: #090a0c;
+      border-radius: 36px;
+      padding: 10px;
+      /* Soft premium purple chassis border structure */
+      border: 1.5px solid rgba(147, 122, 255, 0.22);
+      /* Balanced organic deep ambient shadowing */
+      box-shadow: 
+        -10px 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(116, 92, 255, 0.08);
+      transform: perspective(1000px) rotateY(-18deg) rotateX(8deg) rotateZ(-2deg);
+      transform-style: preserve-3d;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+      animation: hardwareFloat 7s ease-in-out infinite alternate;
+    }
+    @keyframes hardwareFloat {
+      from { transform: perspective(1000px) rotateY(-18deg) rotateX(8deg) rotateZ(-2deg) translateY(0); }
+      to { transform: perspective(1000px) rotateY(-16deg) rotateX(7deg) rotateZ(-1deg) translateY(-8px); }
+    }
+    .device-screen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 8px 0;
+    }
+    .device-notch {
+      width: 90px;
+      height: 16px;
+      background: #000;
+      border-radius: 100px;
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .device-app-brand {
+      font-family: var(--head);
+      font-weight: 800;
+      color: var(--green);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .device-profile-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .device-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #222;
+    }
+    .device-welcome-meta {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+    }
+    .device-welcome-meta b {
+      color: #fff;
+    }
+    .device-metric-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .dm-title {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+    }
+    .dm-value {
+      font-family: var(--head);
+      font-size: 18px;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+    .dm-chart-placeholder {
+      margin-top: 8px;
+      height: 3px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .dm-chart-fill {
+      height: 100%;
+      width: 82%;
+      background: var(--green);
+    }
+    .device-activity-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .device-activity-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 10px;
+    }
+    .dai-label {
+      font-weight: 500;
+    }
+    .dai-sub {
+      font-size: 8px;
+      color: rgba(255,255,255,0.35);
+    }
+    .dai-amount {
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    /* ── EXISTING FLOATING INTERACTION GLASS CARDS ── */
     .glass-card {
       position: absolute;
       background: linear-gradient(180deg, rgba(30,30,36,.72), rgba(18,18,22,.60));
@@ -507,19 +638,19 @@
       border-radius: 16px;
       padding: 14px 18px;
       box-shadow: 0 18px 60px rgba(0,0,0,.45), 0 0 80px rgba(116,92,255,.03);
-      z-index: 10;
+      z-index: 12;
       pointer-events: none;
       font-family: var(--head);
-      width: 170px;
+      width: 165px;
     }
     .gc-1 {
-      bottom: 35px;
-      left: 40px;
+      bottom: 25px;
+      left: -20px;
       animation: smoothFloatA 6s ease-in-out infinite;
     }
     .gc-2 {
-      bottom: 35px;
-      right: 40px;
+      bottom: 85px;
+      right: 170px;
       animation: smoothFloatB 6s ease-in-out 1.5s infinite;
     }
     .gc-stars {
@@ -624,7 +755,7 @@
       width: 180px;
       height: auto;
       object-fit: contain;
-      opacity: 0.25; /* Dialed back completely into structural architecture */
+      opacity: 0.25; 
       animation: shieldFloat 4s ease-in-out infinite alternate;
     }
     @keyframes shieldFloat {
@@ -729,7 +860,7 @@
         transparent,
         rgba(255, 255, 255, 0.04) 30%,
         rgba(255, 255, 255, 0.07) 50%,
-        rgba(255, 255, 255, 0.04) 70.,
+        rgba(255, 255, 255, 0.04) 70%,
         transparent
       );
       transform: skewX(-25deg);
@@ -1025,7 +1156,7 @@
       nav { padding: 0 24px; }
       .live { display: none; }
       .logo-word { font-size: 20px; }
-      .geo-network-svg, .ghost-shield-blueprint { display: none; } /* Clear structural backgrounds for pure high-speed mobile performance */
+      .geo-network-svg, .ghost-shield-blueprint { display: none; } 
       
       .hero {
         display: flex;
@@ -1036,22 +1167,25 @@
         padding: 130px 24px 80px;
       }
       .hero-left { width: 100%; max-width: 100%; }
-      .hero-right { width: 100%; margin-top: 16px; display: flex; justify-content: center; }
+      .hero-right { width: 100%; margin-top: 16px; display: flex; justify-content: center; height: auto; }
       
       .hero-image-wrapper {
-        max-width: 420px;
+        max-width: 320px;
         width: 100%;
         height: auto;
         aspect-ratio: 4/5;
-        margin: 0 auto;
+        margin: 0;
+      }
+      .hero-device-mockup {
+        display: none; /* Safely hides overlapping secondary layouts to maintain mobile tracking speed */
       }
       
       .glass-card {
         padding: 10px 12px;
         width: 145px;
       }
-      .gc-1 { bottom: 18px; left: 16px; }
-      .gc-2 { bottom: 18px; right: 16px; }
+      .gc-1 { bottom: 18px; left: -10px; }
+      .gc-2 { bottom: 18px; right: 10px; }
       .gc-val { font-size: 16px; }
       .gc-label { font-size: 10px; }
       
@@ -1092,11 +1226,13 @@
 </head>
 <body>
 
+  <!-- ── CORE INFRASTRUCTURE BACKDROP ART DIRECTION ── -->
   <div class="infrastructure-canvas">
     <div class="infrastructure-grid"></div>
     <div class="keynote-spotlight"></div>
     <div class="ghost-shield-blueprint"></div>
     
+    <!-- Ultra-Low Speed Drift Infrastructure Particles -->
     <div class="network-particle-canvas">
       <div class="pixel-particle p1"></div>
       <div class="pixel-particle p2"></div>
@@ -1104,30 +1240,39 @@
       <div class="pixel-particle p4"></div>
     </div>
 
-    <svg class="geo-network-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
-      <path class="network-line" d="M 550 180 L 650 320"/>
-      <path class="network-line" d="M 650 320 L 450 440"/>
-      <path class="network-line" d="M 450 440 L 720 520"/>
-      <path class="network-line" d="M 550 180 L 450 440"/>
-      
-      <path class="network-line-active" d="M 550 180 L 650 320 L 450 440 L 720 520"/>
+    <!-- Geographic Trust Network Infrastructure Layer -->
+    <svg class="geo-network-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 800">
+      <!-- Barely visible premium dot-matrix outline of Africa -->
+      <g class="africa-continent-dots">
+        <circle cx="560" cy="220" r="1.5"/><circle cx="580" cy="210" r="1.5"/><circle cx="600" cy="200" r="1.5"/><circle cx="620" cy="210" r="1.5"/><circle cx="640" cy="230" r="1.5"/>
+        <circle cx="540" cy="240" r="1.5"/><circle cx="560" cy="250" r="1.5"/><circle cx="580" cy="240" r="1.5"/><circle cx="600" cy="230" r="1.5"/><circle cx="620" cy="240" r="1.5"/><circle cx="640" cy="260" r="1.5"/><circle cx="660" cy="270" r="1.5"/>
+        <circle cx="520" cy="270" r="1.5"/><circle cx="540" cy="280" r="1.5"/><circle cx="560" cy="290" r="1.5"/><circle cx="580" cy="280" r="1.5"/><circle cx="600" cy="270" r="1.5"/><circle cx="620" cy="280" r="1.5"/><circle cx="640" cy="300" r="1.5"/><circle cx="660" cy="310" r="1.5"/><circle cx="680" cy="320" r="1.5"/>
+        <circle cx="510" cy="310" r="1.5"/><circle cx="530" cy="320" r="1.5"/><circle cx="550" cy="330" r="1.5"/><circle cx="570" cy="320" r="1.5"/><circle cx="590" cy="310" r="1.5"/><circle cx="610" cy="330" r="1.5"/><circle cx="630" cy="340" r="1.5"/><circle cx="650" cy="350" r="1.5"/><circle cx="670" cy="360" r="1.5"/>
+        <circle cx="530" cy="360" r="1.5"/><circle cx="550" cy="370" r="1.5"/><circle cx="570" cy="380" r="1.5"/><circle cx="590" cy="370" r="1.5"/><circle cx="610" cy="390" r="1.5"/><circle cx="630" cy="410" r="1.5"/><circle cx="650" cy="420" r="1.5"/>
+        <circle cx="590" cy="420" r="1.5"/><circle cx="610" cy="430" r="1.5"/><circle cx="635" cy="440" r="1.5"/><circle cx="650" cy="460" r="1.5"/>
+        <circle cx="610" cy="470" r="1.5"/><circle cx="630" cy="490" r="1.5"/><circle cx="645" cy="510" r="1.5"/>
+        <circle cx="620" cy="540" r="1.5"/><circle cx="635" cy="560" r="1.5"/>
+        <circle cx="630" cy="600" r="1.5"/>
+      </g>
 
+      <!-- Network Nodes Interconnect Blueprint Paths -->
+      <path class="network-line" d="M 610 330 L 635 440"/>
+      <path class="network-line-active" d="M 610 330 L 635 440"/>
+
+      <!-- Trust Pulse Animated Data Vector Object -->
       <circle class="trust-pulse-particle" r="2.5"/>
 
-      <circle class="node-point active-hub" cx="550" cy="180" r="4"/>
-      <text class="node-text" x="562" y="184">ABUJA</text>
+      <!-- Node 1: Abuja -->
+      <circle class="node-point active-hub" cx="610" cy="330" r="5"/>
+      <text class="node-text" x="622" y="334">ABUJA</text>
 
-      <circle class="node-point" cx="450" cy="440" r="3"/>
-      <text class="node-text" x="402" y="444">ILORIN</text>
-
-      <circle class="node-point active-hub" cx="650" cy="320" r="4.5"/>
-      <text class="node-text" x="662" y="324">LAGOS</text>
-
-      <circle class="node-point" cx="720" cy="520" r="3"/>
-      <text class="node-text" x="732" y="524">PORT HARCOURT</text>
+      <!-- Node 2: Lagos -->
+      <circle class="node-point active-hub" cx="635" cy="440" r="5"/>
+      <text class="node-text" x="647" y="444">LAGOS</text>
     </svg>
   </div>
 
+  <!-- Ambient Light Layer Implementation -->
   <div class="ambient-light"></div>
 
   <nav class="load-fade nav-load">
@@ -1183,6 +1328,47 @@
           <div class="gc-val">₦120,000</div>
         </div>
       </div>
+
+      <!-- PREMIUM OVERLAY EVOLUTION: DEVICE MOCKUP INSPIRED BY STRIPE/APPLE -->
+      <div class="hero-device-mockup">
+        <div class="device-notch"></div>
+        <div class="device-screen-header">
+          <span class="device-app-brand">RISE</span>
+          <div class="device-profile-row">
+            <div class="device-welcome-meta">Welcome, <b>Temi</b> 👋</div>
+            <div class="device-avatar"></div>
+          </div>
+        </div>
+        
+        <div class="device-metric-card" style="margin-top: 4px;">
+          <span class="dm-title">Trust Score</span>
+          <div class="dm-value" style="color: var(--green);">87 <span style="font-size: 11px; color: rgba(255,255,255,0.4); font-weight: normal;">/ Excellent</span></div>
+          <div class="dm-chart-placeholder"><div class="dm-chart-fill"></div></div>
+        </div>
+
+        <div class="device-metric-card">
+          <span class="dm-title">Wallet Balance</span>
+          <div class="dm-value">₦128,450.00</div>
+        </div>
+
+        <div class="device-activity-feed">
+          <span class="dm-title" style="padding-left: 4px;">Recent Activity</span>
+          <div class="device-activity-item">
+            <div>
+              <div class="dai-label">Payment received</div>
+              <div class="dai-sub">From Joy A. · Today</div>
+            </div>
+            <span class="device-activity-item dai-amount">+₦25,000</span>
+          </div>
+          <div class="device-activity-item">
+            <div>
+              <div class="dai-label">Job completed</div>
+              <div class="dai-sub">Makeup for event · Yesterday</div>
+            </div>
+            <span class="device-activity-item dai-amount" style="color:#fff;">+4.8 ★</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1208,7 +1394,7 @@
       <div class="plines">
         <div class="pl bad"><div class="pi"><i data-lucide="circle-x"></i></div>Ghost clients never pay.</div>
         <div class="pl bad"><div class="pi"><i data-lucide="circle-x"></i></div>Good workers start from zero every single time.</div>
-        <div class="pl bad"><div class="pi"><i data-lucide="circle-x"></i></div>Businesses can't find professionals they can verify.</div>
+        <div class="pl bad"><div class="pi"><i data-lucide="circle-x"></i></div>Good businesses can't find professionals they can verify.</div>
         <div class="pl good"><div class="pi"><i data-lucide="shield-check"></i></div>RISE ensures you get paid, build trust, and open more doors.</div>
       </div>
     </section>
