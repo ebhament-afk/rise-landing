@@ -1,513 +1,418 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RISE — Africa's Trust Infrastructure</title>
-    <!-- Premium Typography: Plus Jakarta Sans & DM Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <!-- Icon Library -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        :root {
-            --bg-matte-graphite: #121314;
-            --bg-charcoal: #1a1c1e;
-            --bg-soft-black: #0a0a0b;
-            --rise-green: #39FF14;
-            --premium-purple: rgba(138, 43, 226, 0.15);
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.07);
-            --glass-highlight: rgba(255, 255, 255, 0.02);
-            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-display: 'DM Sans', sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-soft-black);
-            color: #f3f4f6;
-            font-family: var(--font-sans);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- ATMOSPHERIC LAYERS --- */
-        .ambient-universe {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-            background: radial-gradient(circle at 50% 0%, var(--bg-matte-graphite) 0%, var(--bg-soft-black) 70%);
-        }
-
-        .infrastructure-grid {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 64px 64px;
-            mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
-            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 80%);
-        }
-
-        .ambient-glow-purple {
-            position: absolute;
-            top: -20%;
-            left: 30%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--premium-purple) 0%, transparent 70%);
-            filter: blur(80px);
-        }
-
-        .ambient-glow-green {
-            position: absolute;
-            top: 15%;
-            right: 25%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(57, 255, 20, 0.03) 0%, transparent 70%);
-            filter: blur(100px);
-        }
-
-        /* --- PREFABRICATED SIGNATURE INTERACTION --- */
-        #signature-curved-r {
-            position: fixed;
-            inset: 0;
-            background: var(--bg-soft-black);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeOutSplash 1.2s cubic-bezier(0.85, 0, 0.15, 1) 1.8s forwards;
-        }
-
-        .svg-r-container {
-            width: 120px;
-            height: 120px;
-        }
-
-        .trace-path {
-            stroke: var(--rise-green);
-            stroke-dasharray: 400;
-            stroke-dashoffset: 400;
-            animation: traceLogo 1.4s cubic-bezier(0.45, 0, 0.55, 1) 0.2s forwards;
-        }
-
-        /* --- PREMIUM NAVIGATION --- */
-        .premium-nav {
-            position: fixed;
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1200px;
-            height: 64px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 32px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .premium-nav.scrolled {
-            top: 12px;
-            height: 54px;
-            width: 85%;
-            background: rgba(18, 19, 20, 0.8);
-            border-color: rgba(255, 255, 255, 0.04);
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: -0.03em;
-            font-family: var(--font-display);
-        }
-
-        .nav-logo svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--rise-green);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        /* --- CINEMATIC HERO SECTION --- */
-        .hero-viewport {
-            position: relative;
-            min-height: 100vh;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 180px 40px 100px 40px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            align-items: center;
-            gap: 60px;
-            z-index: 10;
-        }
-
-        .hero-statement {
-            max-width: 640px;
-        }
-
-        .hero-statement h1 {
-            font-family: var(--font-display);
-            font-size: clamp(3.5rem, 5vw, 5.5rem);
-            font-weight: 800;
-            line-height: 0.95;
-            letter-spacing: -0.05em;
-            color: #ffffff;
-            margin-bottom: 32px;
-        }
-
-        .hero-statement h1 span {
-            display: block;
-            color: rgba(255, 255, 255, 0.35);
-        }
-
-        .hero-statement p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 48px;
-            font-weight: 400;
-        }
-
-        /* PREMIUM BUTTONS */
-        .cta-group {
-            display: flex;
-            gap: 16px;
-        }
-
-        .btn-premium-primary {
-            position: relative;
-            background: #ffffff;
-            color: var(--bg-soft-black);
-            padding: 16px 36px;
-            border-radius: 28px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            overflow: hidden;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 0 0 0 rgba(57, 255, 20, 0);
-        }
-
-        .btn-premium-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-        }
-
-        /* --- THE PRODUCT PHONE (GLASSMORPHISM UI) --- */
-        .phone-canvas {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            height: 780px;
-            background: rgba(10, 10, 11, 0.40);
-            border: 6px solid rgba(255, 255, 255, 0.12);
-            border-radius: 54px;
-            padding: 20px;
-            box-shadow: 
-                0 30px 100px rgba(0,0,0,0.8),
-                inset 0 0 20px rgba(255,255,255,0.02);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            justify-self: center;
-            transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
-            transition: transform 0.5s ease;
-        }
-
-        .phone-canvas:hover {
-            transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
-        }
-
-        /* Glass Cards inside App Mockup */
-        .app-glass-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 20px;
-            box-shadow: inset 0 1px 1px var(--glass-highlight);
-        }
-
-        .app-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .profile-stub {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar-placeholder {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2a2c30, #141517);
-            border: 1px solid var(--glass-border);
-        }
-
-        .profile-stub h4 {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.4);
-            font-weight: 500;
-        }
-
-        .profile-stub p {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .trust-score-widget {
-            text-align: center;
-            padding: 28px 20px;
-            position: relative;
-        }
-
-        .score-circle-visual {
-            font-size: 3rem;
-            font-family: var(--font-display);
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-
-        .score-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--rise-green);
-            font-weight: 700;
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-        }
-
-        .app-section-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: rgba(255,255,255,0.4);
-            margin: 4px 0 2px 4px;
-        }
-
-        .job-strip {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 18px;
-            margin-bottom: 8px;
-            border-radius: 18px;
-        }
-
-        .job-meta h5 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .job-meta p {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.4);
-        }
-
-        .job-value {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #fff;
-            font-family: var(--font-display);
-        }
-
-        /* --- ANIMATIONS DEFINITIONS --- */
-        @keyframes traceLogo {
-            to { stroke-dashoffset: 0; }
-        }
-
-        @keyframes fadeOutSplash {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        /* --- RESPONSIVE SCALE --- */
-        @media (max-width: 1024px) {
-            .hero-viewport {
-                grid-template-columns: 1fr;
-                padding-top: 140px;
-                text-align: center;
-                gap: 40px;
-            }
-            .hero-statement {
-                margin: 0 auto;
-            }
-            .cta-group {
-                justify-content: center;
-            }
-            .phone-canvas {
-                transform: none;
-            }
-            .phone-canvas:hover {
-                transform: none;
-            }
-        }
-    </style>
-</head>
 <body>
-
-    <!-- Signature Interaction Splash -->
+    <!-- ONE-TIME SIGNATURE INTRO: Light trace path of official curved R -->
     <div id="signature-curved-r">
         <div class="svg-r-container">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Premium Curved R Architectural Blueprint Geometry -->
-                <path class="trace-path" d="M30 85V15H55C70 15 75 25 75 35C75 48 62 52 50 52H30M50 52L72 85" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="trace-path" d="M25,80 L25,20 L55,20 C70,20 75,32 55,48 L25,48 L50,48 L75,80" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path class="trace-path" d="M40,48 L52,38" stroke-width="6" stroke-linecap="round"/>
             </svg>
         </div>
     </div>
 
-    <!-- Atmospheric Layers -->
+    <!-- 6-LAYER ATMOSPHERIC UNIVERSE -->
     <div class="ambient-universe">
         <div class="infrastructure-grid"></div>
         <div class="ambient-glow-purple"></div>
         <div class="ambient-glow-green"></div>
+        <!-- Ghost Shield Masterbrand Device Watermark -->
+        <svg class="ghost-shield-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.15">
+            <path d="M50,10 L85,20 L85,55 C85,75 68,90 50,95 C32,90 15,75 15,55 L15,20 Z"/>
+            <path d="M35,45 L45,55 L65,35" stroke-width="0.3"/>
+        </svg>
     </div>
 
-    <!-- Navigation Header -->
+    <!-- NAVIGATION SYSTEM -->
     <nav class="premium-nav" id="main-nav">
         <div class="nav-logo">
-            <!-- Definitive Curved R Logo Mark -->
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 85V15H55C70 15 75 25 75 35C75 48 62 52 50 52H30M50 52L72 85" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Official Shield Icon -->
+            <svg viewBox="0 0 100 100" fill="currentColor">
+                <path d="M50,5 L88,18 L88,52 C88,74 72,89 50,95 C28,89 12,74 12,52 L12,18 Z" fill="none" stroke="#39FF14" stroke-width="4"/>
+                <path d="M35,50 L45,60 L68,35" fill="none" stroke="#39FF14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>RISE</span>
+            RISE
         </div>
         <ul class="nav-links">
-            <li><a href="#network">Infrastructure</a></li>
-            <li><a href="#trust">Trust Engine</a></li>
-            <li><a href="#waitlist">Access Portal</a></li>
+            <li><a href="#problem">The Gap</a></li>
+            <li><a href="#ecosystem">Infrastructure</a></li>
+            <li><a href="#motion">Trust Network</a></li>
+            <li><a href="#why-exists">Proof Model</a></li>
         </ul>
+        <a href="#waitlist" class="btn-premium" style="padding: 10px 20px; font-size: 0.8rem; border-radius: 18px;">Get Early Access</a>
     </nav>
 
-    <!-- Hero Sandbox -->
-    <main class="hero-viewport">
-        <section class="hero-statement">
-            <h1>
-                Get work.
-                <span>Get paid.</span>
-                <span>Build Trust.</span>
-            </h1>
-            <p>
-                Deploying Africa's digital trust infrastructure. We engineer the verification networks, transactional parameters, and performance layers that turn independent potential into generational commercial enterprise.
-            </p>
-            <div class="cta-group">
-                <a href="#waitlist" class="btn-premium-primary">Secure Infrastructure Access</a>
-            </div>
-        </section>
+    <!-- CINEMATIC HERO LAYER -->
+    <section class="hero-viewport">
+        <div class="hero-statement">
+            <h1>Get work. <span>Get paid.</span> <em>Build Trust.</em></h1>
+            <p>The premium, secure digital footprint for Africa's elite informal economy. Every verified execution expands your personal network leverage automatically.</p>
+            <a href="#waitlist" class="btn-premium">
+                Join the Movement &nbsp;<i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+            </a>
+        </div>
 
-        <!-- Upgraded Production Ready Product Phone -->
-        <section class="phone-canvas">
-            <!-- App Header Status -->
-            <div class="app-glass-card app-header">
-                <div class="profile-stub">
-                    <div class="avatar-placeholder"></div>
-                    <div>
-                        <h4>Operator Profile</h4>
-                        <p>Temi Temiloluwa</p>
+        <div class="hero-media-wrapper">
+            <!-- Temi Image Portrait Layer Frame with Embedded Glow Lighting -->
+            <div class="portrait-frame">
+                <img src="723B10FF-ABFF-47CA-8695-50CCD3E58EFA.jpeg" alt="Temi — Real Portrait Representative" style="width:100%; height:100%; object-fit:cover; mix-blend-mode: luminosity;">
+                <div class="floating-identity-card">
+                    <i data-lucide="shield-check" style="color:#39FF14; width:18px;"></i>
+                    <span>VERIFIED RISER</span>
+                </div>
+            </div>
+
+            <!-- PRODUCT PHONE CANVAS (SCROLL ALIVE CONTEXT) -->
+            <div class="phone-canvas" id="interactive-phone">
+                <div class="app-glass-card app-user-row">
+                    <div class="app-avatar-wrapper">
+                        <div class="avatar-circle"></div>
+                        <div>
+                            <p style="font-size:0.7rem; color:rgba(255,255,255,0.4);">WELCOME BACK</p>
+                            <p>Timi Adebayo</p>
+                        </div>
+                    </div>
+                    <i data-lucide="bell" style="width:16px; color:rgba(255,255,255,0.6);"></i>
+                </div>
+
+                <div class="app-glass-card app-trust-hero">
+                    <div class="app-label">Portable Reputation Score</div>
+                    <div class="app-trust-score-display" id="app-trust-counter">740</div>
+                    <div class="stars-container">
+                        <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
                     </div>
                 </div>
-                <i data-lucide="bell" style="color: rgba(255,255,255,0.6); width: 20px;"></i>
-            </div>
 
-            <!-- Trust Score Deep Integration -->
-            <div class="app-glass-card trust-score-widget">
-                <div class="score-circle-visual">98.4</div>
-                <div class="score-label">
-                    <i data-lucide="shield-check" style="width: 14px; stroke-width: 3;"></i> Verified Trust Rating
+                <div class="app-glass-card">
+                    <div class="app-label">Available Liquid Balance</div>
+                    <div class="wallet-amount" id="app-wallet-amount">₦482,000</div>
+                    <p style="font-size:0.65rem; color:#39FF14; margin-top:2px;" id="wallet-status-alert">● Vault Secured via Escrow</p>
+                </div>
+
+                <div class="app-glass-card" style="flex:1;">
+                    <div class="app-label" style="margin-bottom:8px;">Active Infrastructure Pipelines</div>
+                    <div class="job-line">
+                        <div class="job-info">
+                            <h6>UI/UX System Delivery</h6>
+                            <p>Client: Fintech Inc.</p>
+                        </div>
+                        <span class="status-badge review" id="job-status-badge">Reviewing</span>
+                    </div>
+                </div>
+
+                <!-- Production 5-Tab Navigation Bar Navigation -->
+                <div class="app-bottom-nav">
+                    <div class="active-tab"><i data-lucide="home"></i></div>
+                    <div><i data-lucide="shield"></i></div>
+                    <div><i data-lucide="wallet"></i></div>
+                    <div><i data-lucide="briefcase"></i></div>
+                    <div><i data-lucide="user"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM PLATFORM METRICS STORYTELLING LAYER -->
+    <section style="border-top:1px solid rgba(255,255,255,0.03); background:rgba(0,0,0,0.2);">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; text-align:center;">
+            <div>
+                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:#fff;">85M+</h4>
+                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Informal Sector Champions</p>
+            </div>
+            <div>
+                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:var(--rise-green);">01</h4>
+                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Portable Identity Ledger</p>
+            </div>
+            <div>
+                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:#fff;">100%</h4>
+                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Proof-of-Execution Metrics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMOTIONAL NARRATIVE MODEL: WHY RISE EXISTS -->
+    <section id="problem">
+        <div class="bento-container">
+            <div class="bento-large" style="background: linear-gradient(to bottom right, rgba(255,0,0,0.02), transparent);">
+                <div>
+                    <div class="card-icon-frame" style="color:#ef4444; border-color:rgba(239,68,68,0.2);"><i data-lucide="trending-down"></i></div>
+                    <h3 style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:16px;">The Invisible Cycle</h3>
+                    <p style="max-width:480px; font-size:1.05rem; color:rgba(255,255,255,0.6);">Without verification framework infrastructure, African elite professionals reset to zero reputation value structural limits after every executed task. High performance remains invisible to global scaling protocols.</p>
+                </div>
+                <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.05); padding-top:20px; font-size:0.85rem; color:rgba(255,255,255,0.4);">
+                    Traditional systems lack mechanisms to carry work records forward securely.
                 </div>
             </div>
 
-            <!-- Today's Work Engine Queue -->
-            <div class="app-section-title">Active Trust Allocations</div>
+            <div class="bento-tall" style="background: linear-gradient(to bottom right, rgba(57,255,20,0.03), transparent); border-color: rgba(57,255,20,0.15);">
+                <div>
+                    <div class="card-icon-frame"><i data-lucide="shield-check"></i></div>
+                    <h3 style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:16px;">The Connected Proof Model</h3>
+                    <p style="font-size:1.05rem; color:rgba(255,255,255,0.65);">RISE converts continuous professional delivery output vectors into permanent, mathematical proof blocks. Your accumulated historical context acts directly as capital security multipliers.</p>
+                </div>
+                <div style="margin-top:40px; border-top:1px solid rgba(57,255,20,0.1); padding-top:20px; font-size:0.85rem; color:var(--rise-green);">
+                    Every job automatically enhances financial trust equity across ecosystem parameters.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE INFRASTRUCTURE CONNECTED ECOSYSTEM DIAGRAM -->
+    <section id="ecosystem" style="text-align:center;">
+        <div class="section-header" style="margin: 0 auto 80px auto;">
+            <h2>The Infrastructure Ecosystem</h2>
+            <p style="color:rgba(255,255,255,0.5);">RISE isn't isolated feature utility logic. It represents the central nervous operating layer for distributed commercial transactions.</p>
+        </div>
+        
+        <div style="position:relative; width:100%; max-width:900px; height:500px; margin:0 auto; background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:40px; overflow:hidden;">
+            <!-- Central Node Structural Web Visualization mapping -->
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:5; background:#121314; border:2px solid var(--rise-green); width:110px; height:110px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:900; color:#fff; box-shadow:0 0 40px rgba(57,255,20,0.2);">
+                RISE CORE
+            </div>
             
-            <div class="app-glass-card job-strip">
-                <div class="job-meta">
-                    <h5>Lagos Node Routing</h5>
-                    <p>Verification Protocol active</p>
-                </div>
-                <div class="job-value">+$450</div>
-            </div>
+            <!-- Radiating Peripheral Hub Framework Vectors -->
+            <div style="position:absolute; top:20%; left:20%;" class="app-glass-card"><i data-lucide="shield" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Trust Registry</div>
+            <div style="position:absolute; top:15%; left:65%;" class="app-glass-card"><i data-lucide="wallet" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Vault Protection</div>
+            <div style="position:absolute; top:50%; left:78%;" class="app-glass-card"><i data-lucide="briefcase" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Opportunity Flow</div>
+            <div style="position:absolute; top:80%; left:50%; transform:translateX(-50%);" class="app-glass-card"><i data-lucide="layers" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Portable Reputation</div>
+            <div style="position:absolute; top:75%; left:15%;" class="app-glass-card"><i data-lucide="users" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Verified Collective</div>
 
-            <div class="app-glass-card job-strip">
-                <div class="job-meta">
-                    <h5>Abuja Clearing Escrow</h5>
-                    <p>Awaiting signature block</p>
-                </div>
-                <div class="job-value" style="color: var(--rise-green);">Pending</div>
-            </div>
-        </section>
-    </main>
+            <!-- Vector Connector Lines Matrix Component Setup -->
+            <svg style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                <line x1="50%" y1="50%" x2="28%" y2="25%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="50%" y1="50%" x2="72%" y2="20%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="50%" y1="50%" x2="82%" y2="52%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="50%" y1="50%" x2="50%" y2="78%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+                <line x1="50%" y1="50%" x2="23%" y2="78%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+            </svg>
+        </div>
+    </section>
 
+    <!-- LIVE TRUST IN MOTION NIGERIA REGIONAL HIGH-PERFORMANCE MAP -->
+    <section id="motion" class="map-section">
+        <div class="section-header" style="margin:0 auto 40px auto;">
+            <h2>Trust in Motion</h2>
+            <p style="color:rgba(255,255,255,0.5);">Real-time tracking of verification vectors across nodes. See completed work assets instantly turn into verified credit history status indicators.</p>
+        </div>
+
+        <div class="map-container">
+            <canvas id="network-canvas"></canvas>
+        </div>
+    </section>
+
+    <!-- WHY RISE MATTERS: EMOTIONAL BRANDING BLOCK -->
+    <section id="why-exists" style="padding:160px 40px; background:radial-gradient(circle at right, rgba(57,255,20,0.02) 0%, transparent 60%);">
+        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:center;">
+            <div>
+                <span style="color:var(--rise-green); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; display:block; margin-bottom:20px;">Why RISE Matters</span>
+                <h3 style="font-family:var(--font-display); font-size:3rem; font-weight:800; line-height:1.1; color:#fff; letter-spacing:-0.03em;">Over 85 million Nigerians hustle hard every day. Most have no way to prove it. RISE makes reputation inevitable.</h3>
+                <p style="color:rgba(255,255,255,0.5); font-size:1.1rem; line-height:1.6; margin-top:30px; max-width:520px;">We turn everyday hustle into verified trust, real opportunities, and lasting financial growth. No more start-from-scratch loops. No more unmapped productivity data.</p>
+            </div>
+            <div style="position:relative; display:flex; justify-content:center;">
+                <!-- Transparent SVG Structural Shield Ring Layout Accent -->
+                <svg viewBox="0 0 200 200" style="width:80%; opacity:0.15; color:#fff;">
+                    <polygon points="100,20 170,45 170,120 100,180 30,120 30,45" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80%;" class="app-glass-card">
+                    <div style="display:flex; justify-content:between; align-items:center; margin-bottom:12px;">
+                        <span style="font-weight:700; font-size:0.8rem; color:var(--rise-green);">RISE PROTOCOL DATA ACTIVE</span>
+                        <i data-lucide="radio" style="color:var(--rise-green); width:14px; animation: pulse 2s infinite;"></i>
+                    </div>
+                    <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.4;">
+                        Node Verification Latency: &lt;12ms <br>
+                        Cryptographic Integrity: Enforced
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE FOUNDER STATEMENT HUB -->
+    <section style="border-top:1px solid rgba(255,255,255,0.03); padding:100px 40px; text-align:center;">
+        <div style="max-width:700px; margin:0 auto;">
+            <p style="font-family:var(--font-display); font-size:1.6rem; font-weight:500; line-height:1.5; color:rgba(255,255,255,0.85); font-style:italic;">
+                "Talent exists everywhere. Opportunity does not. RISE exists to close that gap by making trust portable, verifiable, and valuable—so every completed job naturally builds the foundation for the next."
+            </p>
+            <div style="margin-top:24px; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--rise-green); font-weight:700;">
+                The RISE Mission Statement
+            </div>
+        </div>
+    </section>
+
+    <!-- EXCLUSIVE FOUNDING RISER WAITLIST INVITATION -->
+    <section id="waitlist" style="padding-bottom:180px;">
+        <div class="premium-card" style="max-width:900px; margin:0 auto; text-align:center; padding:80px 40px; background: radial-gradient(circle at top, rgba(138,43,226,0.04) 0%, transparent 70%); border-color:rgba(255,255,255,0.08);">
+            <h2 style="font-family:var(--font-display); font-size:2.8rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:16px;">Become a Founding Riser.</h2>
+            <p style="color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 40px auto; font-size:1.05rem;">The first generation of Risers won't just use the platform—they'll help shape the infrastructure architecture of African commercial trust systems.</p>
+            
+            <!-- Fully functional Waitlist Registration Input Module -->
+            <form style="display:flex; max-width:480px; margin:0 auto 40px auto; gap:12px;" onsubmit="event.preventDefault(); alert('Reputation system registration vector initiated. Welcome to RISE.');">
+                <input type="email" placeholder="Enter secure enterprise email address" required style="flex:1; background:rgba(0,0,0,0.4); border:1px solid var(--glass-border); padding:16px 24px; border-radius:20px; color:#fff; font-family:inherit; font-size:0.9rem; outline:none;">
+                <button type="submit" class="btn-premium" style="border:none; cursor:pointer;">Secure Position</button>
+            </form>
+
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:40px; text-align:left;">
+                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Early Access</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Alpha workspace access</p></div>
+                <div><p style="font-size:0.85rem; font-weight:600; color:var(--rise-green);">✓ Founding Badge</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Permanent identifier status</p></div>
+                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Direct Feedback</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Shape protocol rules</p></div>
+                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Priority Queue</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Instant partner onboarding</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINIMAL CONFIDENT MASTER BRAND FOOTER -->
+    <footer style="border-top:1px solid rgba(255,255,255,0.04); padding:60px 40px; background:var(--bg-soft-black);">
+        <div style="max-width:1400px; margin:0 auto; display:flex; justify-content:between; align-items:center; flex-wrap:wrap; gap:30px;">
+            <div style="font-size:0.85rem; color:rgba(255,255,255,0.3); display:flex; gap:24px;">
+                <span>Built in Nigeria.</span>
+                <span>Designed for Africa.</span>
+                <span>Powered by Trust.</span>
+                <span>Future Ready.</span>
+            </div>
+            <div style="font-size:0.85rem; color:rgba(255,255,255,0.4);">
+                &copy; 2026 RISE Infrastructure Technologies Inc. All validation vectors preserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTION LOGIC & PERFORMANCE MOTORS ENGINE -->
     <script>
-        // Initialize Premium Micro-Interactions via Icons
+        // Initialize Lucide Icons globally
         lucide.createIcons();
 
-        // High-performance Scroll Triggers for Apple-style Header
-        const nav = document.getElementById('main-nav');
+        // Navigation Shrink Execution on scroll events
+        const mainNav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
+            if (window.scrollY > 60) {
+                mainNav.classList.add('scrolled');
             } else {
-                nav.classList.remove('scrolled');
+                mainNav.classList.remove('scrolled');
             }
-        }, { passive: true });
+        });
+
+        // Interactive Context Engine: Dynamic App Screen Progression during user Scroll events
+        const counterEl = document.getElementById('app-trust-counter');
+        const walletEl = document.getElementById('app-wallet-amount');
+        const badgeEl = document.getElementById('job-status-badge');
+        const statusAlert = document.getElementById('wallet-status-alert');
+        let stateTriggered = false;
+
+        window.addEventListener('scroll', () => {
+            let scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            // Elegantly morph UI elements dynamically based on story narrative depth milestones
+            if (scrollPercent > 15 && !stateTriggered) {
+                stateTriggered = true;
+                
+                // Animate Trust Score Upward with precise counting transitions
+                let currentScore = 740;
+                const targetScore = 850;
+                const counterInterval = setInterval(() => {
+                    if (currentScore < targetScore) {
+                        currentScore += 2;
+                        counterEl.innerText = currentScore;
+                    } else {
+                        clearInterval(counterInterval);
+                    }
+                }, 15);
+
+                // Update structural execution states simultaneously inside phone simulation
+                walletEl.innerText = "₦1,240,000";
+                walletEl.style.color = "var(--rise-green)";
+                badgeEl.innerText = "Settled";
+                badgeEl.className = "status-badge paid";
+                statusAlert.innerText = "● Milestone Payment Completed";
+                statusAlert.style.color = "var(--rise-green)";
+            }
+        });
+
+        // LIVE NIGERIA NETWORK CANVAS MATRIX GEOMETRY SCRIPT
+        const canvas = document.getElementById('network-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Geographically structured distribution nodes coordinates (scaled mapping proxies)
+        const cityNodes = [
+            { name: "Lagos", x: 0.15, y: 0.75 },
+            { name: "Abuja", x: 0.50, y: 0.40 },
+            { name: "Port Harcourt", x: 0.45, y: 0.85 },
+            { name: "Ibadan", x: 0.20, y: 0.65 },
+            { name: "Benin", x: 0.35, y: 0.72 },
+            { name: "Enugu", x: 0.58, y: 0.78 },
+            { name: "Kano", x: 0.55, y: 0.15 },
+            { name: "Kaduna", x: 0.48, y: 0.28 }
+        ];
+
+        // Instantiate continuous internal data transaction pulse configurations
+        const communicationPulses = [
+            { from: 0, to: 1, progress: 0.0, rate: 0.006 },
+            { from: 3, to: 4, progress: 0.3, rate: 0.008 },
+            { from: 4, to: 5, progress: 0.6, rate: 0.005 },
+            { from: 2, to: 5, progress: 0.1, rate: 0.007 },
+            { from: 7, to: 1, progress: 0.5, rate: 0.004 }
+        ];
+
+        function stepNetworkAnimationEngine() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Render basic network structural web grid connection channels
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for(let i=0; i<cityNodes.length; i++) {
+                for(let j=i+1; j<cityNodes.length; j++) {
+                    // Restrict long cross-meshing lines to maintain clean network visualization density
+                    let dist = Math.hypot((cityNodes[i].x - cityNodes[j].x), (cityNodes[i].y - cityNodes[j].y));
+                    if (dist < 0.45) {
+                        ctx.moveTo(cityNodes[i].x * canvas.width, cityNodes[i].y * canvas.height);
+                        ctx.lineTo(cityNodes[j].x * canvas.width, cityNodes[j].y * canvas.height);
+                    }
+                }
+            }
+            ctx.stroke();
+
+            // Drive verification asset pulse streams through connections matrix elements
+            communicationPulses.forEach(pulse => {
+                pulse.progress += pulse.rate;
+                if (pulse.progress > 1.0) pulse.progress = 0.0;
+
+                let startNode = cityNodes[pulse.from];
+                let endNode = cityNodes[pulse.to];
+
+                let currentX = startNode.x * canvas.width + (endNode.x * canvas.width - startNode.x * canvas.width) * pulse.progress;
+                let currentY = startNode.y * canvas.height + (endNode.y * canvas.height - startNode.y * canvas.height) * pulse.progress;
+
+                ctx.fillStyle = '#39FF14';
+                ctx.beginPath();
+                ctx.arc(currentX, currentY, 3, 0, Math.PI * 2);
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#39FF14';
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset execution state context immediately
+            });
+
+            // Anchor verification station identity nodes visually across interface canvas maps
+            cityNodes.forEach(node => {
+                let realX = node.x * canvas.width;
+                let realY = node.y * canvas.height;
+
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.beginPath();
+                ctx.arc(realX, realY, 4, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.font = '9px system-ui, sans-serif';
+                ctx.fillText(node.name, realX + 10, realY + 3);
+            });
+
+            requestAnimationFrame(stepNetworkAnimationEngine);
+        }
+        stepNetworkAnimationEngine();
     </script>
 </body>
 </html>
