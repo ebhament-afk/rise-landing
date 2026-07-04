@@ -1,893 +1,752 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RISE — Get Work. Get Paid. Build Trust.</title>
-<meta name="description" content="RISE is Africa's trust infrastructure — a portable reputation, protected payments, and job network for Nigeria's informal economy.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,5 L88,18 L88,52 C88,74 72,89 50,95 C28,89 12,74 12,52 L12,18 Z' fill='none' stroke='%2339FF14' stroke-width='6'/%3E%3Cpath d='M35,50 L45,60 L68,35' fill='none' stroke='%2339FF14' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE — Your Work is Your Proof</title>
+    
+    <!-- Premium Typography: Plus Jakarta Sans & DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icon System Implementation -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-<style>
-/* ============================================================
-   RISE — DESIGN TOKENS
-   ============================================================ */
-:root{
-  --bg-void:        #0A0A0A;
-  --bg-soft-black:  #0A0A0A;
-  --bg-graphite:    #111315;
-  --bg-charcoal:    #1C1E20;
-  --rise-green:     #39FF14;
-  --rise-green-dim: rgba(57,255,20,0.14);
-  --royal-purple:   #7B5CFF;
-  --white:          #FFFFFF;
-  --ink-85:         rgba(255,255,255,0.85);
-  --ink-60:         rgba(255,255,255,0.58);
-  --ink-40:         rgba(255,255,255,0.38);
-  --glass-border:   rgba(255,255,255,0.09);
-  --glass-fill:     rgba(255,255,255,0.03);
-  --font-display:   'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono:      'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
-  --ease:           cubic-bezier(.16,.84,.44,1);
-}
+    <style>
+        :root {
+            --matte-graphite: #121314;
+            --charcoal: #1a1c1e;
+            --soft-black: #0a0a0b;
+            --rise-green: #39FF14;
+            --subtle-purple: rgba(138, 43, 226, 0.08);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-display: 'DM Sans', sans-serif;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--bg-soft-black);
-  color:var(--white);
-  font-family:var(--font-body);
-  line-height:1.5;
-  overflow-x:hidden;
-  position:relative;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-}
-a{color:inherit;text-decoration:none;}
-ul{list-style:none;}
-img{max-width:100%;display:block;}
-button{font-family:inherit;}
-section{padding:150px 8vw;position:relative;z-index:2;}
-h1,h2,h3,h4,h5,h6{font-family:var(--font-display);letter-spacing:-0.02em;}
-::selection{background:var(--rise-green);color:#06120a;}
-:focus-visible{outline:2px solid var(--rise-green);outline-offset:3px;}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
 
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
-}
+        body {
+            background-color: var(--soft-black);
+            color: #f3f4f6;
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-.section-header{max-width:640px;}
-.section-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:18px;}
-.section-header p{font-size:1.05rem;line-height:1.6;}
+        /* --- SINGLE SYSTEM CINEMATIC ATMOSPHERE --- */
+        .cinematic-universe {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 30% 20%, var(--matte-graphite) 0%, var(--soft-black) 70%);
+        }
 
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--font-mono);font-size:0.72rem;font-weight:600;
-  letter-spacing:0.18em;text-transform:uppercase;color:var(--rise-green);
-  margin-bottom:20px;
-}
-.eyebrow::before{content:'';width:20px;height:1px;background:var(--rise-green);}
+        .infrastructure-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 90%);
+        }
 
-/* ============================================================
-   ATMOSPHERE — background universe
-   ============================================================ */
-.ambient-universe{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(28,30,32,0.6), transparent),
-    var(--bg-soft-black);
-}
-.infrastructure-grid{
-  position:absolute;inset:-10%;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 60% 60% at 50% 30%, black 0%, transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 30%, black 0%, transparent 75%);
-}
-.ambient-glow-purple{
-  position:absolute;width:56vw;height:56vw;top:-16%;right:-14%;border-radius:50%;
-  background:radial-gradient(circle, var(--royal-purple) 0%, transparent 70%);
-  opacity:0.10;filter:blur(90px);
-  animation:driftA 26s ease-in-out infinite alternate;
-}
-.ambient-glow-green{
-  position:absolute;width:46vw;height:46vw;bottom:-14%;left:-12%;border-radius:50%;
-  background:radial-gradient(circle, var(--rise-green) 0%, transparent 70%);
-  opacity:0.06;filter:blur(100px);
-  animation:driftB 30s ease-in-out infinite alternate;
-}
-@keyframes driftA{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-50px,50px) scale(1.08);}}
-@keyframes driftB{0%{transform:translate(0,0) scale(1);}100%{transform:translate(50px,-40px) scale(1.05);}}
-.ghost-shield-watermark{
-  position:absolute;top:38%;left:82%;width:900px;height:900px;
-  transform:translate(-50%,-50%);color:var(--white);opacity:0.018;
-}
-@media (max-width:900px){.ghost-shield-watermark{left:50%;top:20%;width:520px;height:520px;}}
+        .ambient-leak-purple {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, var(--subtle-purple) 0%, transparent 80%);
+            filter: blur(100px);
+        }
 
-/* Floating particles */
-.particle-field{position:absolute;inset:0;overflow:hidden;}
-.particle{
-  position:absolute;width:3px;height:3px;border-radius:50%;
-  background:var(--rise-green);opacity:0.35;filter:blur(0.5px);
-  animation:particleFloat linear infinite;
-}
-@keyframes particleFloat{
-  0%{transform:translateY(0) translateX(0);opacity:0;}
-  10%{opacity:0.5;}
-  90%{opacity:0.3;}
-  100%{transform:translateY(-1200px) translateX(60px);opacity:0;}
-}
+        .ghost-r-watermark {
+            position: absolute;
+            bottom: 5%;
+            right: -5%;
+            width: 70vw;
+            height: 70vh;
+            opacity: 0.015;
+            color: #fff;
+        }
 
-/* ============================================================
-   SIGNATURE INTRO — one-time curved R trace
-   ============================================================ */
-#signature-curved-r{
-  position:fixed;inset:0;z-index:999;background:#050505;
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .9s var(--ease), visibility .9s var(--ease);
-}
-#signature-curved-r.done{opacity:0;visibility:hidden;pointer-events:none;}
-.svg-r-container{width:120px;height:120px;}
-.svg-r-container svg{width:100%;height:100%;}
-.trace-path{
-  stroke:var(--rise-green);fill:none;
-  stroke-dasharray:220;stroke-dashoffset:220;
-  filter:drop-shadow(0 0 14px rgba(57,255,20,.75));
-  animation:drawR 1.3s var(--ease) forwards;
-}
-.trace-path:nth-child(2){animation-delay:.85s;}
-@keyframes drawR{to{stroke-dashoffset:0;}}
+        /* --- SIGNATURE DELAYED SPLASH R REVEAL --- */
+        #signature-brand-entry {
+            position: fixed;
+            inset: 0;
+            background: var(--soft-black);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: exitSplash 1s cubic-bezier(0.85, 0, 0.15, 1) 1.8s forwards;
+        }
 
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
-.premium-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:30px 8vw;
-  background:transparent;
-  transition:padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
-  border-bottom:1px solid transparent;
-}
-.premium-nav.scrolled{
-  padding:16px 8vw;
-  background:rgba(9,10,11,0.72);
-  backdrop-filter:blur(20px) saturate(160%);
-  -webkit-backdrop-filter:blur(20px) saturate(160%);
-  border-bottom:1px solid var(--glass-border);
-}
-.nav-logo{
-  display:flex;align-items:center;gap:10px;
-  font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:0.01em;
-}
-.nav-logo svg{width:26px;height:26px;flex-shrink:0;}
-.nav-links{display:flex;gap:44px;font-size:0.85rem;color:var(--ink-60);}
-.nav-links a{position:relative;transition:color .3s;}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--rise-green);
-  transition:width .3s var(--ease);
-}
-.nav-links a:hover{color:var(--white);}
-.nav-links a:hover::after{width:100%;}
-@media (max-width:860px){.nav-links{display:none;}}
+        .svg-brand-path {
+            width: 80px;
+            height: 80px;
+        }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn-premium{
-  position:relative;display:inline-flex;align-items:center;gap:8px;
-  background:var(--rise-green);color:#06140a;font-weight:700;font-size:0.92rem;
-  padding:17px 34px;border-radius:100px;
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
-  box-shadow:0 0 0 rgba(57,255,20,0);
-}
-.btn-premium:hover{box-shadow:0 10px 44px rgba(57,255,20,0.38);}
+        .trace-r {
+            stroke: var(--rise-green);
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: traceActive 1.4s cubic-bezier(0.45, 0, 0.55, 1) 0.2s forwards;
+        }
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero-viewport{
-  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:40px;padding:170px 8vw 80px;
-}
-.hero-statement h1{
-  font-size:clamp(2.6rem,5.6vw,4.7rem);font-weight:800;line-height:1.06;letter-spacing:-0.03em;
-}
-.hero-statement h1 span{color:var(--rise-green);}
-.hero-statement h1 em{
-  font-style:normal;color:var(--white);
-  text-shadow:0 0 44px rgba(123,92,255,0.55);
-}
-.hero-statement p{
-  margin:28px 0 40px;color:var(--ink-60);font-size:1.15rem;max-width:460px;line-height:1.65;
-}
-.hero-media-wrapper{position:relative;height:640px;}
-.portrait-frame{
-  position:absolute;top:0;right:6%;width:300px;height:400px;border-radius:28px;overflow:hidden;
-  border:1px solid var(--glass-border);
-  box-shadow:0 50px 100px rgba(0,0,0,.65);
-  animation:floatSlow 7s ease-in-out infinite;
-}
-.portrait-frame::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(8,8,8,0.92) 100%);
-}
-.floating-identity-card{
-  position:absolute;bottom:16px;left:16px;right:16px;z-index:2;
-  display:flex;align-items:center;gap:8px;
-  background:rgba(10,10,10,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--glass-border);padding:11px 14px;border-radius:14px;
-  font-size:.72rem;font-weight:700;letter-spacing:.06em;
-}
-@keyframes floatSlow{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+        /* --- PRECISE SCANNABLE NAVIGATION --- */
+        .premium-nav {
+            position: fixed;
+            top: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            height: 56px;
+            background: rgba(10, 10, 11, 0.4);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(32px);
+            -webkit-backdrop-filter: blur(32px);
+            border-radius: 28px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-.phone-canvas{
-  position:absolute;bottom:-30px;left:0;width:270px;height:552px;
-  background:rgba(22,24,26,.55);
-  backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);
-  border:1px solid var(--glass-border);border-radius:42px;
-  padding:20px;display:flex;flex-direction:column;gap:14px;
-  box-shadow:0 60px 130px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.07);
-  animation:floatPhone 6.5s ease-in-out infinite;
-}
-@keyframes floatPhone{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+        .premium-nav.compacted {
+            top: 20px;
+            width: 80%;
+            height: 48px;
+            background: rgba(10, 10, 11, 0.85);
+            border-color: rgba(255, 255, 255, 0.03);
+        }
 
-.app-glass-card{
-  background:rgba(255,255,255,.045);border:1px solid var(--glass-border);
-  border-radius:18px;padding:14px 16px;backdrop-filter:blur(10px);
-  transition:border-color .3s, background .3s;
-}
-.app-user-row{display:flex;align-items:center;justify-content:space-between;}
-.app-avatar-wrapper{display:flex;align-items:center;gap:10px;font-size:.84rem;font-weight:700;}
-.avatar-circle{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--rise-green),var(--royal-purple));}
-.app-trust-hero{text-align:center;}
-.app-label{font-family:var(--font-mono);font-size:.63rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-40);}
-.app-trust-score-display{
-  font-family:var(--font-mono);font-size:2.5rem;font-weight:700;color:var(--rise-green);
-  margin:6px 0;text-shadow:0 0 30px rgba(57,255,20,.45);transition:color .4s;
-}
-.stars-container{display:flex;gap:4px;justify-content:center;color:var(--rise-green);}
-.stars-container i{width:13px;height:13px;}
-.wallet-amount{font-family:var(--font-mono);font-size:1.4rem;font-weight:700;margin-top:4px;transition:color .4s;}
-.job-line{display:flex;justify-content:space-between;align-items:center;gap:10px;}
-.job-info h6{font-size:.83rem;font-weight:700;}
-.job-info p{font-size:.68rem;color:var(--ink-40);margin-top:2px;}
-.status-badge{
-  font-family:var(--font-mono);font-size:.62rem;font-weight:700;white-space:nowrap;
-  padding:6px 10px;border-radius:100px;background:rgba(123,92,255,.16);color:var(--royal-purple);
-}
-.status-badge.paid{background:rgba(57,255,20,.16);color:var(--rise-green);}
-.app-bottom-nav{
-  margin-top:auto;display:flex;justify-content:space-between;padding-top:14px;
-  border-top:1px solid var(--glass-border);color:var(--ink-40);
-}
-.app-bottom-nav i{width:18px;height:18px;}
-.active-tab{color:var(--rise-green);}
+        .nav-identity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+        }
 
-@media (max-width:1000px){
-  .hero-viewport{grid-template-columns:1fr;padding-top:150px;text-align:left;}
-  .hero-statement p{max-width:100%;}
-  .hero-media-wrapper{height:520px;margin-top:50px;display:flex;justify-content:center;}
-  .portrait-frame{position:absolute;top:0;right:auto;left:0;width:210px;height:270px;}
-  .phone-canvas{position:absolute;bottom:0;left:auto;right:0;width:230px;height:480px;}
-}
-@media (max-width:560px){
-  section{padding:110px 6vw;}
-  .hero-viewport{padding:130px 6vw 60px;}
-  .hero-media-wrapper{height:440px;}
-  .portrait-frame{width:160px;height:210px;}
-  .phone-canvas{width:190px;height:400px;padding:14px;border-radius:32px;}
-  .app-trust-score-display{font-size:1.9rem;}
-}
+        /* --- CINEMATIC VIEWPORT LAYOUTS --- */
+        section {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-/* ============================================================
-   STATS ROW
-   ============================================================ */
-.stats-section{
-  border-top:1px solid rgba(255,255,255,0.05);
-  background:rgba(255,255,255,0.012);
-  padding:90px 8vw;
-}
-.stats-row{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;
-  max-width:1100px;margin:0 auto;
-}
-.stats-row h4{font-family:var(--font-mono);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--white);}
-.stats-row h4.accent{color:var(--rise-green);}
-.stats-row p{color:var(--ink-40);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:12px;}
-@media (max-width:700px){.stats-row{grid-template-columns:1fr;gap:36px;}}
+        .huge-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: #ffffff;
+            margin-bottom: 32px;
+        }
 
-/* ============================================================
-   BENTO — Why RISE Exists
-   ============================================================ */
-.bento-container{
-  display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:repeat(2,auto);
-  gap:24px;max-width:1200px;margin:0 auto;
-}
-.bento-large,.bento-tall{
-  position:relative;overflow:hidden;
-  background:var(--glass-fill);border:1px solid var(--glass-border);border-radius:28px;
-  padding:48px;display:flex;flex-direction:column;justify-content:space-between;
-  transition:transform .45s var(--ease), border-color .45s var(--ease);
-}
-.bento-large:hover,.bento-tall:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18);}
-.bento-large{grid-column:1;grid-row:1;}
-.bento-tall{grid-column:2;grid-row:1/3;}
-.bento-large h3,.bento-tall h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;margin-bottom:16px;}
-@media (max-width:900px){
-  .bento-container{grid-template-columns:1fr;}
-  .bento-large{grid-column:1;grid-row:auto;}
-  .bento-tall{grid-column:1;grid-row:auto;}
-}
-.card-icon-frame{
-  width:52px;height:52px;border-radius:14px;border:1px solid var(--glass-border);
-  background:rgba(255,255,255,.035);display:flex;align-items:center;justify-content:center;
-  color:var(--rise-green);margin-bottom:24px;
-}
-.card-icon-frame i{width:22px;height:22px;}
+        .huge-title span {
+            display: block;
+            color: rgba(255, 255, 255, 0.25);
+        }
 
-/* ============================================================
-   ECOSYSTEM DIAGRAM
-   ============================================================ */
-.ecosystem-diagram{
-  position:relative;width:100%;max-width:900px;height:500px;margin:0 auto;
-  background:rgba(255,255,255,0.012);border:1px solid var(--glass-border);border-radius:40px;
-  overflow:hidden;
-}
-.ecosystem-core{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;
-  background:#121314;border:2px solid var(--rise-green);width:112px;height:112px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  font-family:var(--font-display);font-weight:800;font-size:.85rem;color:var(--white);
-  box-shadow:0 0 44px rgba(57,255,20,0.25);
-}
-.ecosystem-node{
-  position:absolute;display:flex;align-items:center;gap:8px;
-  font-size:0.82rem;white-space:nowrap;
-}
-.ecosystem-node i{width:16px;height:16px;color:var(--rise-green);flex-shrink:0;}
-.node-1{top:18%;left:18%;} .node-2{top:14%;left:64%;} .node-3{top:50%;left:76%;}
-.node-4{top:80%;left:50%;transform:translateX(-50%);} .node-5{top:76%;left:13%;}
-.ecosystem-lines line{stroke:rgba(255,255,255,0.07);stroke-width:1.5;stroke-dasharray:4;}
+        .huge-title em {
+            font-style: normal;
+            color: var(--rise-green);
+        }
 
-.ecosystem-mobile-list{display:none;}
-@media (max-width:820px){
-  .ecosystem-diagram{display:none;}
-  .ecosystem-mobile-list{
-    display:grid;gap:14px;max-width:420px;margin:0 auto;
-  }
-  .ecosystem-mobile-list .app-glass-card{display:flex;align-items:center;gap:12px;font-size:.9rem;}
-  .ecosystem-mobile-list .app-glass-card i{width:18px;height:18px;color:var(--rise-green);flex-shrink:0;}
-}
+        .focused-paragraph {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 520px;
+            margin-bottom: 48px;
+        }
 
-/* ============================================================
-   TRUST IN MOTION — map
-   ============================================================ */
-.map-section{text-align:center;}
-.map-container{
-  max-width:1100px;margin:0 auto;height:480px;border-radius:32px;
-  border:1px solid var(--glass-border);background:rgba(255,255,255,.015);
-  position:relative;overflow:hidden;
-}
-#network-canvas{width:100%;height:100%;display:block;}
-@media (max-width:700px){.map-container{height:360px;}}
+        /* HARD CONSTRAINT BUTTON SPECIFICATIONS */
+        .cta-monolith {
+            display: inline-flex;
+            align-items: center;
+            background: #ffffff;
+            color: var(--soft-black);
+            padding: 18px 36px;
+            border-radius: 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: fit-content;
+        }
 
-/* ============================================================
-   WHY RISE MATTERS
-   ============================================================ */
-.matters-section{
-  padding:170px 8vw;
-  background:radial-gradient(circle at 82% 50%, rgba(57,255,20,0.035) 0%, transparent 62%);
-}
-.matters-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;max-width:1300px;margin:0 auto;}
-.matters-grid h3{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:800;line-height:1.14;color:var(--white);}
-.matters-grid p.support{color:var(--ink-60);font-size:1.08rem;line-height:1.65;margin-top:28px;max-width:520px;}
-.matters-visual{position:relative;display:flex;justify-content:center;}
-.matters-ring{width:80%;opacity:0.15;color:var(--white);}
-.matters-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;}
-.matters-badge-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.matters-badge-head span{font-weight:700;font-size:.78rem;color:var(--rise-green);}
-.matters-badge-head i{width:14px;height:14px;color:var(--rise-green);animation:pulse 2s infinite;}
-.matters-badge-body{font-size:.75rem;color:var(--ink-40);line-height:1.5;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-@media (max-width:900px){.matters-grid{grid-template-columns:1fr;text-align:left;}.matters-visual{margin-top:40px;}}
+        .cta-monolith:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 40px rgba(255, 255, 255, 0.08);
+        }
 
-/* ============================================================
-   FOUNDER STATEMENT
-   ============================================================ */
-.founder-section{border-top:1px solid rgba(255,255,255,0.04);padding:110px 8vw;text-align:center;}
-.founder-quote{max-width:700px;margin:0 auto;}
-.founder-quote p{
-  font-family:var(--font-display);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:500;
-  line-height:1.55;color:var(--ink-85);font-style:italic;
-}
-.founder-label{margin-top:26px;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--rise-green);font-weight:700;}
+        /* --- SCENE 1: MAGAZINE COMPOSITION HERO --- */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
 
-/* ============================================================
-   WAITLIST
-   ============================================================ */
-.waitlist-section{padding-bottom:190px;}
-.premium-card{
-  background:var(--glass-fill);border:1px solid rgba(255,255,255,0.09);border-radius:36px;
-  max-width:900px;margin:0 auto;text-align:center;padding:80px 40px;
-  background-image:radial-gradient(circle at top, rgba(123,92,255,0.05) 0%, transparent 70%);
-}
-.premium-card h2{font-size:clamp(2rem,4vw,2.7rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;}
-.premium-card > p{color:var(--ink-60);max-width:540px;margin:0 auto 40px auto;font-size:1.05rem;}
-.waitlist-form{display:flex;max-width:480px;margin:0 auto 40px auto;gap:12px;}
-.waitlist-form input{
-  flex:1;background:rgba(0,0,0,0.4);border:1px solid var(--glass-border);
-  padding:16px 24px;border-radius:20px;color:var(--white);font-family:inherit;font-size:0.9rem;outline:none;
-  transition:border-color .3s;
-}
-.waitlist-form input:focus{border-color:var(--rise-green);}
-.waitlist-form button{border:none;cursor:pointer;}
-.waitlist-benefits{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-  border-top:1px solid rgba(255,255,255,0.06);padding-top:40px;text-align:left;
-}
-.waitlist-benefits strong{display:block;font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;}
-.waitlist-benefits strong.accent{color:var(--rise-green);}
-.waitlist-benefits span{font-size:0.75rem;color:var(--ink-40);}
-@media (max-width:700px){
-  .waitlist-form{flex-direction:column;}
-  .waitlist-benefits{grid-template-columns:1fr 1fr;}
-}
-@media (max-width:460px){.waitlist-benefits{grid-template-columns:1fr;}}
+        .magazine-canvas-right {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.site-footer{border-top:1px solid rgba(255,255,255,0.04);padding:60px 8vw;background:var(--bg-soft-black);}
-.footer-row{
-  max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:24px;
-}
-.footer-tags{font-size:0.85rem;color:rgba(255,255,255,0.32);display:flex;gap:24px;flex-wrap:wrap;}
-.footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.32);}
+        .floating-portrait-wrapper {
+            position: absolute;
+            width: 340px;
+            height: 440px;
+            left: 10%;
+            top: 15%;
+            background: var(--charcoal);
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            z-index: 2;
+        }
 
-/* ============================================================
-   REVEAL ON SCROLL
-   ============================================================ */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
-.reveal.in-view{opacity:1;transform:translateY(0);}
-</style>
+        .floating-portrait-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            mix-blend-mode: luminosity;
+        }
+
+        .premium-hardware-phone {
+            position: absolute;
+            right: 5%;
+            top: 5%;
+            width: 290px;
+            height: 520px;
+            background: rgba(10, 10, 11, 0.75);
+            border: 4px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            padding: 20px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .glass-hardware-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 16px;
+            transition: all 0.5s ease;
+        }
+
+        /* --- SCENE 2 & 7: HARD HARD CRAFTSMANSHIP LINES --- */
+        .monolith-row-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .cinematic-row-card {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 28px;
+        }
+
+        .cinematic-row-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .cinematic-row-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- SCENE 3: AUTOMATED JOURNEY TIMELINE --- */
+        .journey-horizontal-track {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .journey-step-node {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .journey-step-node.active-step {
+            border-color: var(--rise-green);
+            background: rgba(57, 255, 20, 0.01);
+        }
+
+        /* --- SCENE 5: TRUST IN MOTION MATRIX --- */
+        .canvas-container-box {
+            width: 100%;
+            height: 480px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        #trust-motion-engine {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- SCENE 6: HUMAN PORTRAIT CREDENTIALS --- */
+        .human-portrait-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .human-credential-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .human-avatar-placeholder {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #232528;
+            margin: 0 auto 16px auto;
+            border: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* --- KEYS AND ADAPTABILITY OVERRIDES --- */
+        @keyframes traceActive { to { stroke-dashoffset: 0; } }
+        @keyframes exitSplash { to { opacity: 0; visibility: hidden; } }
+
+        @media (max-width: 1024px) {
+            .magazine-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .focused-paragraph { margin: 0 auto 32px auto; }
+            .cta-monolith { margin: 0 auto; }
+            .magazine-canvas-right { height: auto; padding: 40px 0; }
+            .floating-portrait-wrapper { position: relative; left: 0; top: 0; margin: 0 auto; }
+            .premium-hardware-phone { position: relative; right: 0; top: -60px; margin: 0 auto; z-index: 4; }
+            .monolith-row-grid, .journey-horizontal-track, .human-portrait-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ONE-TIME SIGNATURE INTRO: Light trace path of official curved R -->
-    <div id="signature-curved-r">
-        <div class="svg-r-container">
+    <!-- BRAND ENTRY MATTE LAYER -->
+    <div id="signature-brand-entry">
+        <div class="svg-brand-path">
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="trace-path" d="M25,80 L25,20 L55,20 C70,20 75,32 55,48 L25,48 L50,48 L75,80" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path class="trace-path" d="M40,48 L52,38" stroke-width="6" stroke-linecap="round"/>
+                <path class="trace-r" d="M25,80 L25,20 L55,20 C70,20 75,32 55,48 L25,48 L50,48 L75,80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </div>
     </div>
 
-    <!-- ATMOSPHERIC UNIVERSE -->
-    <div class="ambient-universe">
+    <!-- PERSISTENT CINEMATIC BACKGROUND -->
+    <div class="cinematic-universe">
         <div class="infrastructure-grid"></div>
-        <div class="ambient-glow-purple"></div>
-        <div class="ambient-glow-green"></div>
-        <svg class="ghost-shield-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.15">
-            <path d="M50,10 L85,20 L85,55 C85,75 68,90 50,95 C32,90 15,75 15,55 L15,20 Z"/>
-            <path d="M35,45 L45,55 L65,35" stroke-width="0.3"/>
+        <div class="ambient-leak-purple"></div>
+        <svg class="ghost-r-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.08">
+            <path d="M25,80 L25,20 L55,20 C70,20 75,32 55,48 L25,48 L50,48 L75,80"/>
         </svg>
-        <div class="particle-field" id="particle-field"></div>
     </div>
 
     <!-- NAVIGATION SYSTEM -->
-    <nav class="premium-nav" id="main-nav">
-        <div class="nav-logo">
-            <svg viewBox="0 0 100 100" fill="currentColor">
-                <path d="M50,5 L88,18 L88,52 C88,74 72,89 50,95 C28,89 12,74 12,52 L12,18 Z" fill="none" stroke="#39FF14" stroke-width="4"/>
-                <path d="M35,50 L45,60 L68,35" fill="none" stroke="#39FF14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <nav class="premium-nav" id="master-nav">
+        <div class="nav-identity">
+            <svg viewBox="0 0 100 100" fill="none" stroke="#39FF14" stroke-width="10" style="width:18px; height:18px;">
+                <path d="M25,80 L25,20 L55,20 C70,20 75,32 55,48 L25,48 L50,48 L75,80" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
             RISE
         </div>
-        <ul class="nav-links">
-            <li><a href="#problem">The Gap</a></li>
-            <li><a href="#ecosystem">Infrastructure</a></li>
-            <li><a href="#motion">Trust Network</a></li>
-            <li><a href="#why-exists">Proof Model</a></li>
-        </ul>
-        <a href="#waitlist" class="btn-premium magnetic" style="padding: 10px 20px; font-size: 0.8rem; border-radius: 18px;">Get Early Access</a>
+        <a href="#waitlist" class="cta-monolith" style="padding: 8px 18px; font-size: 0.75rem; border-radius: 14px;">Access Platform</a>
     </nav>
 
-    <!-- CINEMATIC HERO LAYER -->
-    <section class="hero-viewport">
-        <div class="hero-statement">
-            <span class="eyebrow">Africa's Trust Infrastructure</span>
-            <h1>Get work. <span>Get paid.</span> <em>Build Trust.</em></h1>
-            <p>The premium, secure digital footprint for Africa's elite informal economy. Every verified job expands your personal network and reputation automatically.</p>
-            <a href="#waitlist" class="btn-premium magnetic">
-                Join the Movement &nbsp;<i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
-            </a>
-        </div>
-
-        <div class="hero-media-wrapper">
-            <!-- Temi Image Portrait Layer Frame with Embedded Glow Lighting -->
-            <div class="portrait-frame">
-                <img src="723B10FF-ABFF-47CA-8695-50CCD3E58EFA.jpeg" alt="Temi — Real Portrait Representative" style="width:100%; height:100%; object-fit:cover; mix-blend-mode: luminosity;">
-                <div class="floating-identity-card">
-                    <i data-lucide="shield-check" style="color:#39FF14; width:16px;"></i>
-                    <span>VERIFIED RISER</span>
-                </div>
+    <!-- SCENE 1: ARRIVAL & HERO -->
+    <section id="hero">
+        <div class="magazine-grid">
+            <div>
+                <h1 class="huge-title">Get work. <span>Get paid.</span> <em>Build Trust.</em></h1>
+                <p class="focused-paragraph">The premium, portable reputation infrastructure for Africa's elite independent workforce. Secure execution metrics built natively for scalable progress.</p>
+                <a href="#waitlist" class="cta-monolith">Join the Foundation</a>
             </div>
-
-            <!-- PRODUCT PHONE CANVAS (SCROLL ALIVE CONTEXT) -->
-            <div class="phone-canvas" id="interactive-phone">
-                <div class="app-glass-card app-user-row">
-                    <div class="app-avatar-wrapper">
-                        <div class="avatar-circle"></div>
+            
+            <div class="magazine-canvas-right">
+                <!-- Temi Portrait Layer Assignment -->
+                <div class="floating-portrait-wrapper">
+                    <img src="723B10FF-ABFF-47CA-8695-50CCD3E58EFA.jpeg" alt="RISE Leader Ecosystem Portrait">
+                </div>
+                
+                <!-- Dedicated Authentic Application Experience Device -->
+                <div class="premium-hardware-phone" id="live-phone-viewport">
+                    <div class="glass-hardware-card" style="display:flex; justify-content:space-between; align-items:center;">
                         <div>
-                            <p style="font-size:0.65rem; color:rgba(255,255,255,0.4); font-family:var(--font-mono);">WELCOME BACK</p>
-                            <p>Timi Adebayo</p>
+                            <p style="font-size:0.6rem; color:rgba(255,255,255,0.4); letter-spacing:0.05em;">SECURE WORKSPACE</p>
+                            <p style="font-size:0.85rem; font-weight:600;" id="phone-app-screen-label">Home Ledger</p>
+                        </div>
+                        <i data-lucide="shield" style="color:var(--rise-green); width:16px;"></i>
+                    </div>
+
+                    <div class="glass-hardware-card" style="text-align:center; padding:24px 12px;">
+                        <p style="font-size:0.65rem; color:rgba(255,255,255,0.4); text-transform:uppercase;">Reputation Metrics</p>
+                        <div style="font-family:var(--font-display); font-size:2.6rem; font-weight:800; margin:4px 0;" id="phone-trust-metric">740</div>
+                        <p style="font-size:0.65rem; color:var(--rise-green);">● Verified Network Node</p>
+                    </div>
+
+                    <div class="glass-hardware-card">
+                        <p style="font-size:0.6rem; color:rgba(255,255,255,0.4);">ESCROW VAULT STATUS</p>
+                        <div style="font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:#fff;" id="phone-wallet-metric">₦482,000</div>
+                    </div>
+
+                    <div class="glass-hardware-card" style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+                        <p style="font-size:0.6rem; color:rgba(255,255,255,0.4); margin-bottom:4px;">PIPELINE TRANSACTION</p>
+                        <div style="display:flex; justify-content:space-between; font-size:0.75rem;">
+                            <span style="font-weight:600;" id="phone-job-title">System Architecture</span>
+                            <span style="color:rgba(255,255,255,0.4);" id="phone-job-status">Awaiting Verification</span>
                         </div>
                     </div>
-                    <i data-lucide="bell" style="width:16px; color:rgba(255,255,255,0.6);"></i>
-                </div>
-
-                <div class="app-glass-card app-trust-hero">
-                    <div class="app-label">Portable Reputation Score</div>
-                    <div class="app-trust-score-display" id="app-trust-counter">740</div>
-                    <div class="stars-container">
-                        <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-                    </div>
-                </div>
-
-                <div class="app-glass-card">
-                    <div class="app-label">Available Liquid Balance</div>
-                    <div class="wallet-amount" id="app-wallet-amount">₦482,000</div>
-                    <p style="font-size:0.65rem; color:#39FF14; margin-top:2px; font-family:var(--font-mono);" id="wallet-status-alert">● Vault Secured via Escrow</p>
-                </div>
-
-                <div class="app-glass-card" style="flex:1;">
-                    <div class="app-label" style="margin-bottom:8px;">Active Infrastructure Pipelines</div>
-                    <div class="job-line">
-                        <div class="job-info">
-                            <h6>UI/UX System Delivery</h6>
-                            <p>Client: Fintech Inc.</p>
-                        </div>
-                        <span class="status-badge review" id="job-status-badge">Reviewing</span>
-                    </div>
-                </div>
-
-                <div class="app-bottom-nav">
-                    <div class="active-tab"><i data-lucide="home"></i></div>
-                    <div><i data-lucide="shield"></i></div>
-                    <div><i data-lucide="wallet"></i></div>
-                    <div><i data-lucide="briefcase"></i></div>
-                    <div><i data-lucide="user"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PREMIUM PLATFORM METRICS STORYTELLING LAYER -->
-    <section class="stats-section">
-        <div class="stats-row reveal">
-            <div>
-                <h4>85M+</h4>
-                <p>Informal Sector Champions</p>
-            </div>
-            <div>
-                <h4 class="accent">01</h4>
-                <p>Portable Identity Ledger</p>
-            </div>
-            <div>
-                <h4>100%</h4>
-                <p>Proof-of-Execution Metrics</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- EMOTIONAL NARRATIVE MODEL: WHY RISE EXISTS -->
+    <!-- SCENE 2: THE PROBLEM -->
     <section id="problem">
-        <div class="bento-container">
-            <div class="bento-large reveal">
-                <div>
-                    <div class="card-icon-frame" style="color:#ef4444; border-color:rgba(239,68,68,0.25);"><i data-lucide="trending-down"></i></div>
-                    <h3>The Invisible Cycle</h3>
-                    <p style="max-width:480px; font-size:1.05rem; color:rgba(255,255,255,0.6);">Without a verification layer, Africa's most talented workers reset to zero reputation after every finished job. Great work stays invisible — and invisible work can't scale.</p>
-                </div>
-                <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.06); padding-top:20px; font-size:0.85rem; color:rgba(255,255,255,0.4);">
-                    Traditional systems have no way to carry work history forward, securely.
-                </div>
+        <h2 class="huge-title">85 million Nigerians <span>work every day.</span> <em>Too few can prove it.</em></h2>
+        
+        <div class="monolith-row-grid">
+            <div class="cinematic-row-card">
+                <h4>Ghost Clients</h4>
+                <p>Payments disappear into undocumented communication blackholes. Value extraction metrics remain entirely unprotected.</p>
             </div>
-
-            <div class="bento-tall reveal" style="border-color: rgba(57,255,20,0.15);">
-                <div>
-                    <div class="card-icon-frame"><i data-lucide="shield-check"></i></div>
-                    <h3>The Connected Proof Model</h3>
-                    <p style="font-size:1.05rem; color:rgba(255,255,255,0.65);">RISE turns every completed job into permanent, verifiable proof. Your work history becomes capital — something lenders, clients, and platforms can actually trust.</p>
-                </div>
-                <div style="margin-top:40px; border-top:1px solid rgba(57,255,20,0.12); padding-top:20px; font-size:0.85rem; color:var(--rise-green);">
-                    Every job automatically strengthens your standing across the whole ecosystem.
-                </div>
+            <div class="cinematic-row-card">
+                <h4>No Reputation</h4>
+                <p>Every single engagement resets your history vector back to zero absolute data value. True consistency remains completely unrecorded.</p>
+            </div>
+            <div class="cinematic-row-card">
+                <h4>Businesses Barrier</h4>
+                <p>Enterprises and global operations fail to verify exceptional local delivery capabilities due to tracking isolation metrics.</p>
             </div>
         </div>
     </section>
 
-    <!-- CORE INFRASTRUCTURE CONNECTED ECOSYSTEM DIAGRAM -->
-    <section id="ecosystem" style="text-align:center;">
-        <div class="section-header reveal" style="margin: 0 auto 80px auto;">
-            <h2>The Infrastructure Ecosystem</h2>
-            <p style="color:rgba(255,255,255,0.5);">RISE isn't a single feature. It's the connective layer underneath every job, payment, and relationship built on the platform.</p>
-        </div>
-
-        <div class="ecosystem-diagram reveal">
-            <div class="ecosystem-core">RISE<br>CORE</div>
-            <div class="ecosystem-node node-1 app-glass-card"><i data-lucide="shield"></i> Trust Registry</div>
-            <div class="ecosystem-node node-2 app-glass-card"><i data-lucide="wallet"></i> Vault Protection</div>
-            <div class="ecosystem-node node-3 app-glass-card"><i data-lucide="briefcase"></i> Opportunity Flow</div>
-            <div class="ecosystem-node node-4 app-glass-card"><i data-lucide="layers"></i> Portable Reputation</div>
-            <div class="ecosystem-node node-5 app-glass-card"><i data-lucide="users"></i> Verified Collective</div>
-
-            <svg class="ecosystem-lines" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
-                <line x1="50%" y1="50%" x2="28%" y2="25%"/>
-                <line x1="50%" y1="50%" x2="72%" y2="20%"/>
-                <line x1="50%" y1="50%" x2="82%" y2="52%"/>
-                <line x1="50%" y1="50%" x2="50%" y2="78%"/>
-                <line x1="50%" y1="50%" x2="23%" y2="78%"/>
-            </svg>
-        </div>
-
-        <div class="ecosystem-mobile-list reveal">
-            <div class="app-glass-card"><i data-lucide="shield"></i> Trust Registry</div>
-            <div class="app-glass-card"><i data-lucide="wallet"></i> Vault Protection</div>
-            <div class="app-glass-card"><i data-lucide="briefcase"></i> Opportunity Flow</div>
-            <div class="app-glass-card"><i data-lucide="layers"></i> Portable Reputation</div>
-            <div class="app-glass-card"><i data-lucide="users"></i> Verified Collective</div>
-        </div>
-    </section>
-
-    <!-- LIVE TRUST IN MOTION NIGERIA REGIONAL MAP -->
-    <section id="motion" class="map-section">
-        <div class="section-header reveal" style="margin:0 auto 40px auto;">
-            <h2>Trust in Motion</h2>
-            <p style="color:rgba(255,255,255,0.5);">Real-time verification flowing across Nigeria. Every completed job instantly becomes part of a worker's verified history.</p>
-        </div>
-
-        <div class="map-container reveal">
-            <canvas id="network-canvas"></canvas>
-        </div>
-    </section>
-
-    <!-- WHY RISE MATTERS: EMOTIONAL BRANDING BLOCK -->
-    <section id="why-exists" class="matters-section">
-        <div class="matters-grid">
-            <div class="reveal">
-                <span class="eyebrow">Why RISE Matters</span>
-                <h3>Over 85 million Nigerians hustle hard every day. Most have no way to prove it. RISE makes reputation inevitable.</h3>
-                <p class="support">We turn everyday hustle into verified trust, real opportunities, and lasting financial growth. No more starting from scratch. No more work that disappears the moment it's done.</p>
+    <!-- SCENE 3: THE SOLUTION PATH -->
+    <section id="solution">
+        <h2 class="huge-title">The Real-Time <span>Reputation Loop.</span></h2>
+        
+        <div class="journey-horizontal-track" id="journey-track">
+            <div class="journey-step-node active-step">
+                <span style="font-size:0.75rem; color:var(--rise-green); font-weight:700;">01</span>
+                <h5 style="margin:12px 0 6px 0; font-size:1rem;">Complete Job</h5>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Execution logs verified directly via decentralized validation parameters.</p>
             </div>
-            <div class="matters-visual reveal">
-                <svg class="matters-ring" viewBox="0 0 200 200">
-                    <polygon points="100,20 170,45 170,120 100,180 30,120 30,45" fill="none" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                <div class="matters-badge app-glass-card">
-                    <div class="matters-badge-head">
-                        <span>RISE PROTOCOL DATA ACTIVE</span>
-                        <i data-lucide="radio"></i>
-                    </div>
-                    <div class="matters-badge-body">
-                        Node Verification Latency: &lt;12ms <br>
-                        Cryptographic Integrity: Enforced
-                    </div>
-                </div>
+            <div class="journey-step-node">
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.3);">02</span>
+                <h5 style="margin:12px 0 6px 0; font-size:1rem;">Get Paid</h5>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Instant automated escrow settlement directly inside protected currency vaults.</p>
+            </div>
+            <div class="journey-step-node">
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.3);">03</span>
+                <h5 style="margin:12px 0 6px 0; font-size:1rem;">Trust Grows</h5>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Mathematical rating loops update verification vectors completely in real-time.</p>
+            </div>
+            <div class="journey-step-node">
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.3);">04</span>
+                <h5 style="margin:12px 0 6px 0; font-size:1rem;">Better Flow</h5>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Premium high-tier corporate allocations unlock automatically for the node network.</p>
+            </div>
+            <div class="journey-step-node">
+                <span style="font-size:0.75rem; color:rgba(255,255,255,0.3);">05</span>
+                <h5 style="margin:12px 0 6px 0; font-size:1rem;">Higher Income</h5>
+                <p style="font-size:0.8rem; color:rgba(255,255,255,0.4);">Continuous compounding capital access multipliers become scalable realities.</p>
             </div>
         </div>
     </section>
 
-    <!-- FOUNDER STATEMENT -->
-    <section class="founder-section">
-        <div class="founder-quote reveal">
-            <p>"Talent exists everywhere. Opportunity does not. RISE exists to close that gap by making trust portable, verifiable, and valuable — so every completed job naturally builds the foundation for the next."</p>
-            <div class="founder-label">The RISE Mission</div>
+    <!-- SCENE 5: HOW TRUST WORKS — REGIONAL INTERACTIVE MATRIX -->
+    <section id="trust-motion">
+        <h2 class="huge-title">Connecting <span>Ecosystem Nodes.</span> <em>Lagos to Abuja.</em></h2>
+        <p class="focused-paragraph" style="margin-bottom:0;">Watch validation assets travel securely across geographical workspace parameters with programmatic tracking accuracy.</p>
+        
+        <div class="canvas-container-box">
+            <canvas id="trust-motion-engine"></canvas>
         </div>
     </section>
 
-    <!-- EXCLUSIVE FOUNDING RISER WAITLIST -->
-    <section id="waitlist" class="waitlist-section">
-        <div class="premium-card reveal">
-            <h2>Become a Founding Riser.</h2>
-            <p>The first generation of Risers won't just use the platform — they'll help shape the infrastructure of African commercial trust.</p>
-
-            <form class="waitlist-form" onsubmit="event.preventDefault(); alert('Welcome to RISE. We will be in touch soon.');">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit" class="btn-premium magnetic">Secure Position</button>
-            </form>
-
-            <div class="waitlist-benefits">
-                <div><strong>✓ Early Access</strong><span>Alpha workspace access</span></div>
-                <div><strong class="accent">✓ Founding Badge</strong><span>Permanent identifier status</span></div>
-                <div><strong>✓ Direct Feedback</strong><span>Shape protocol rules</span></div>
-                <div><strong>✓ Priority Queue</strong><span>Instant partner onboarding</span></div>
+    <!-- SCENE 6: HUMAN INSIGHT PORTRAITS -->
+    <section id="humanity">
+        <h2 class="huge-title">The Real Independent <span>Ecosystem Engine.</span></h2>
+        
+        <div class="human-portrait-grid">
+            <div class="human-credential-card">
+                <div class="human-avatar-placeholder"><i data-lucide="camera"></i></div>
+                <h5 style="font-size:1.1rem; margin-bottom:4px;">Photographer</h5>
+                <p style="color:var(--rise-green); font-size:0.75rem; margin-bottom:12px;">★★★★★</p>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">"My execution proof tracking is fully secured on RISE."</p>
+            </div>
+            <div class="human-credential-card">
+                <div class="human-avatar-placeholder"><i data-lucide="scissors"></i></div>
+                <h5 style="font-size:1.1rem; margin-bottom:4px;">Master Tailor</h5>
+                <p style="color:var(--rise-green); font-size:0.75rem; margin-bottom:12px;">★★★★★</p>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">"Reputation scaling across regions is completely seamless now."</p>
+            </div>
+            <div class="human-credential-card">
+                <div class="human-avatar-placeholder"><i data-lucide="chef-hat"></i></div>
+                <h5 style="font-size:1.1rem; margin-bottom:4px;">Eatery Caterer</h5>
+                <p style="color:var(--rise-green); font-size:0.75rem; margin-bottom:12px;">★★★★★</p>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">"Corporate entities transparently clear our operational milestone paths."</p>
+            </div>
+            <div class="human-credential-card">
+                <div class="human-avatar-placeholder"><i data-lucide="wrench"></i></div>
+                <h5 style="font-size:1.1rem; margin-bottom:4px;">System Engineer</h5>
+                <p style="color:var(--rise-green); font-size:0.75rem; margin-bottom:12px;">★★★★★</p>
+                <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">"No duplicate verification runs needed. Trust is truly portable."</p>
             </div>
         </div>
     </section>
 
-    <!-- MINIMAL CONFIDENT MASTER BRAND FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-row">
-            <div class="footer-tags">
-                <span>Built in Nigeria.</span>
-                <span>Designed for Africa.</span>
-                <span>Powered by Trust.</span>
-                <span>Future Ready.</span>
+    <!-- SCENE 7: CONFIDENCE DIFFERENTIATION MATRIX -->
+    <section id="differentiation">
+        <h2 class="huge-title">Structural <span>Architecture.</span></h2>
+        
+        <div class="monolith-row-grid">
+            <div class="cinematic-row-card">
+                <h4 style="color:var(--rise-green);">Trust Score</h4>
+                <p style="font-size:1.1rem; color:#fff; margin-bottom:8px;">Fully Portable Network Utility</p>
+                <p>Move your historical operational integrity matrices anywhere across enterprise borders instantly.</p>
             </div>
-            <div class="footer-copy">
-                &copy; 2026 RISE Africa Technologies Limited. All rights reserved.
+            <div class="cinematic-row-card">
+                <h4 style="color:var(--rise-green);">Vault Infrastructure</h4>
+                <p style="font-size:1.1rem; color:#fff; margin-bottom:8px;">Protected Capital Escrow</p>
+                <p>Contract parameters execute tracking securely to completely mitigate regional transaction risk vectors.</p>
             </div>
+            <div class="cinematic-row-card">
+                <h4 style="color:var(--rise-green);">Verification Layer</h4>
+                <p style="font-size:1.1rem; color:#fff; margin-bottom:8px;">Earned Growth Trajectory</p>
+                <p>Transform raw daily productivity execution cycles systematically into formal commercial leverage assets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 8: THE ASPIRATIONAL WAITLIST EXCLUSIVITY -->
+    <section id="waitlist" style="text-align:center; align-items:center;">
+        <h2 class="huge-title">Become a <span>Founding Riser.</span></h2>
+        <p class="focused-paragraph" style="text-align:center;">Shape the infrastructure architecture of African commercial trust systems from step one.</p>
+        
+        <form style="display:flex; width:100%; max-width:460px; gap:12px;" onsubmit="event.preventDefault(); alert('Reputation initialization trace active.');">
+            <input type="email" placeholder="Enter secure identity email" required style="flex:1; background:rgba(0,0,0,0.4); border:1px solid var(--glass-border); padding:16px 24px; border-radius:24px; color:#fff; font-family:inherit; outline:none;">
+            <button type="submit" class="cta-monolith" style="border:none; cursor:pointer;">Secure Station</button>
+        </form>
+    </section>
+
+    <!-- SCENE 9: THE HUMAN VOICE PHILOSOPHY MISSION -->
+    <section id="mission" style="text-align:center; align-items:center; min-height:60vh; border-top:1px solid rgba(255,255,255,0.03);">
+        <div style="max-width:640px;">
+            <p style="font-family:var(--font-display); font-size:2.2rem; font-weight:500; line-height:1.4; color:rgba(255,255,255,0.9); margin-bottom:24px;">
+                Talent exists everywhere. Opportunity does not. We're building the bridge.
+            </p>
+            <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--rise-green); font-weight:700;">
+                RISE Master Protocol Mission Specification
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="border-top:1px solid rgba(255,255,255,0.04); padding:48px 40px; background:var(--soft-black); font-size:0.8rem; color:rgba(255,255,255,0.3);">
+        <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:between; align-items:center; flex-wrap:wrap; gap:20px;">
+            <div>Built in Nigeria. Designed for Africa. Powered by Trust. Future Ready.</div>
+            <div>&copy; 2026 RISE Technologies. All reputation distribution vectors locked and secured.</div>
         </div>
     </footer>
 
-    <!-- LUCIDE ICON LIBRARY (must load before the script below) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- INTERACTION LOGIC & PERFORMANCE MOTORS ENGINE -->
+    <!-- DYNAMIC PERFORMANCE MOTORS ENGINE -->
     <script>
-        // Initialize Lucide Icons globally
         lucide.createIcons();
 
-        // ---- Signature intro: fade the R-trace overlay out once it has played ----
-        const introOverlay = document.getElementById('signature-curved-r');
-        setTimeout(() => introOverlay.classList.add('done'), 2100);
-
-        // ---- Navigation Shrink on scroll ----
-        const mainNav = document.getElementById('main-nav');
+        // Navigation state transformation based on structural depth milestones
+        const navBar = document.getElementById('master-nav');
         window.addEventListener('scroll', () => {
-            mainNav.classList.toggle('scrolled', window.scrollY > 60);
-        });
-
-        // ---- Interactive phone: product state morphs on scroll ----
-        const counterEl = document.getElementById('app-trust-counter');
-        const walletEl = document.getElementById('app-wallet-amount');
-        const badgeEl = document.getElementById('job-status-badge');
-        const statusAlert = document.getElementById('wallet-status-alert');
-        let stateTriggered = false;
-
-        window.addEventListener('scroll', () => {
-            let scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            if (scrollPercent > 15 && !stateTriggered) {
-                stateTriggered = true;
-                let currentScore = 740;
-                const targetScore = 850;
-                const counterInterval = setInterval(() => {
-                    if (currentScore < targetScore) {
-                        currentScore += 2;
-                        counterEl.innerText = currentScore;
-                    } else {
-                        clearInterval(counterInterval);
-                    }
-                }, 15);
-
-                walletEl.innerText = "₦1,240,000";
-                walletEl.style.color = "var(--rise-green)";
-                badgeEl.innerText = "Settled";
-                badgeEl.className = "status-badge paid";
-                statusAlert.innerText = "● Milestone Payment Completed";
-                statusAlert.style.color = "var(--rise-green)";
+            if (window.scrollY > 80) {
+                navBar.classList.add('compacted');
+            } else {
+                navBar.classList.remove('compacted');
             }
         });
 
-        // ---- Floating particles ----
-        const particleField = document.getElementById('particle-field');
-        for (let i = 0; i < 24; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.bottom = (Math.random() * -40) + 'px';
-            p.style.animationDuration = (14 + Math.random() * 16) + 's';
-            p.style.animationDelay = (Math.random() * 20) + 's';
-            particleField.appendChild(p);
-        }
+        // Application Experience Device Simulation Management
+        const phoneViewport = document.getElementById('live-phone-viewport');
+        const trustVal = document.getElementById('phone-trust-metric');
+        const walletVal = document.getElementById('phone-wallet-metric');
+        const jobTitle = document.getElementById('phone-job-title');
+        const jobStatus = document.getElementById('phone-job-status');
+        const appLabel = document.getElementById('phone-app-screen-label');
 
-        // ---- Magnetic button hover ----
-        document.querySelectorAll('.magnetic').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const r = btn.getBoundingClientRect();
-                const x = e.clientX - r.left - r.width / 2;
-                const y = e.clientY - r.top - r.height / 2;
-                btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
-            });
-            btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
-        });
+        // Continuous Elegant Automated Product Screen Transitions
+        const deviceScreens = [
+            { label: "Home Ledger", trust: "740", wallet: "₦482,000", title: "System Architecture", status: "Awaiting Verification" },
+            { label: "Wallet Core", trust: "790", wallet: "₦1,240,000", title: "API Vault Ingestion", status: "Settled & Protected" },
+            { label: "Trust Network", trust: "850", wallet: "₦1,240,000", title: "Enterprise Milestone", status: "Verification Complete" }
+        ];
 
-        // ---- Scroll reveal ----
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                    revealObserver.unobserve(entry.target);
+        let targetScreenIdx = 0;
+        setInterval(() => {
+            targetScreenIdx = (targetScreenIdx + 1) % deviceScreens.length;
+            const data = deviceScreens[targetScreenIdx];
+            
+            phoneViewport.style.opacity = 0.4;
+            setTimeout(() => {
+                appLabel.innerText = data.label;
+                trustVal.innerText = data.trust;
+                walletVal.innerText = data.wallet;
+                jobTitle.innerText = data.title;
+                jobStatus.innerText = data.status;
+                if(data.status === "Settled & Protected" || data.status === "Verification Complete") {
+                    jobStatus.style.color = "var(--rise-green)";
+                } else {
+                    jobStatus.style.color = "rgba(255,255,255,0.4)";
+                }
+                phoneViewport.style.opacity = 1;
+            }, 400);
+        }, 4000);
+
+        // Timeline Highlight Scroll Synchronization
+        const trackNodes = document.querySelectorAll('.journey-step-node');
+        window.addEventListener('scroll', () => {
+            let computedProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * trackNodes.length;
+            let currentActiveIndex = Math.min(Math.floor(computedProgress), trackNodes.length - 1);
+            
+            trackNodes.forEach((node, idx) => {
+                if (idx === currentActiveIndex) {
+                    node.classList.add('active-step');
+                } else {
+                    node.classList.remove('active-step');
                 }
             });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        });
 
-        // ---- LIVE NIGERIA NETWORK CANVAS ----
-        const canvas = document.getElementById('network-canvas');
-        const ctx = canvas.getContext('2d');
+        // TRUST FLOW INTERACTIVE MATRIX GEOMETRY
+        const motionCanvas = document.getElementById('trust-motion-engine');
+        const mCtx = motionCanvas.getContext('2d');
 
-        function resizeCanvas() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+        function resizeMotionCanvas() {
+            motionCanvas.width = motionCanvas.offsetWidth;
+            motionCanvas.height = motionCanvas.offsetHeight;
         }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        resizeMotionCanvas();
+        window.addEventListener('resize', resizeMotionCanvas);
 
-        const cityNodes = [
-            { name: "Lagos", x: 0.15, y: 0.75 },
-            { name: "Abuja", x: 0.50, y: 0.40 },
-            { name: "Port Harcourt", x: 0.45, y: 0.85 },
-            { name: "Ibadan", x: 0.20, y: 0.65 },
-            { name: "Benin", x: 0.35, y: 0.72 },
-            { name: "Enugu", x: 0.58, y: 0.78 },
-            { name: "Kano", x: 0.55, y: 0.15 },
-            { name: "Kaduna", x: 0.48, y: 0.28 }
+        // Core Spatial Node Anchors
+        const coordinateNodes = [
+            { id: "Lagos", x: 0.2, y: 0.4 },
+            { id: "Abuja", x: 0.8, y: 0.4 }
         ];
 
         const communicationPulses = [
-            { from: 0, to: 1, progress: 0.0, rate: 0.006 },
-            { from: 3, to: 4, progress: 0.3, rate: 0.008 },
-            { from: 4, to: 5, progress: 0.6, rate: 0.005 },
-            { from: 2, to: 5, progress: 0.1, rate: 0.007 },
-            { from: 7, to: 1, progress: 0.5, rate: 0.004 }
+            { start: 0, end: 1, step: 0.0, rate: 0.008, text: "Payment Protection Active" },
+            { start: 1, end: 0, step: 0.4, rate: 0.006, text: "Execution Trace Complete" }
         ];
 
         function stepNetworkAnimationEngine() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            mCtx.clearRect(0, 0, motionCanvas.width, motionCanvas.height);
+            
+            // Baseline Matrix Grid Construction
+            mCtx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+            mCtx.lineWidth = 2;
+            mCtx.beginPath();
+            mCtx.moveTo(coordinateNodes[0].x * motionCanvas.width, coordinateNodes[0].y * motionCanvas.height);
+            mCtx.lineTo(coordinateNodes[1].x * motionCanvas.width, coordinateNodes[1].y * motionCanvas.height);
+            mCtx.stroke();
 
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            for (let i = 0; i < cityNodes.length; i++) {
-                for (let j = i + 1; j < cityNodes.length; j++) {
-                    let dist = Math.hypot((cityNodes[i].x - cityNodes[j].x), (cityNodes[i].y - cityNodes[j].y));
-                    if (dist < 0.45) {
-                        ctx.moveTo(cityNodes[i].x * canvas.width, cityNodes[i].y * canvas.height);
-                        ctx.lineTo(cityNodes[j].x * canvas.width, cityNodes[j].y * canvas.height);
-                    }
-                }
-            }
-            ctx.stroke();
-
+            // Render Validation Signals Along Connection Vectors
             communicationPulses.forEach(pulse => {
-                pulse.progress += pulse.rate;
-                if (pulse.progress > 1.0) pulse.progress = 0.0;
+                pulse.step += pulse.rate;
+                if (pulse.step > 1.0) pulse.step = 0.0;
 
-                let startNode = cityNodes[pulse.from];
-                let endNode = cityNodes[pulse.to];
+                let origin = coordinateNodes[pulse.start];
+                let destination = coordinateNodes[pulse.end];
 
-                let currentX = startNode.x * canvas.width + (endNode.x * canvas.width - startNode.x * canvas.width) * pulse.progress;
-                let currentY = startNode.y * canvas.height + (endNode.y * canvas.height - startNode.y * canvas.height) * pulse.progress;
+                let pX = origin.x * motionCanvas.width + (destination.x * motionCanvas.width - origin.x * motionCanvas.width) * pulse.step;
+                let pY = origin.y * motionCanvas.width + (destination.y * motionCanvas.height - origin.y * motionCanvas.height) * pulse.step; // standard layout mapping matching proxy scale
 
-                ctx.fillStyle = '#39FF14';
-                ctx.beginPath();
-                ctx.arc(currentX, currentY, 3, 0, Math.PI * 2);
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#39FF14';
-                ctx.fill();
-                ctx.shadowBlur = 0;
+                mCtx.fillStyle = '#39FF14';
+                mCtx.beginPath();
+                mCtx.arc(pX, origin.y * motionCanvas.height, 4, 0, Math.PI * 2);
+                mCtx.shadowBlur = 12;
+                mCtx.shadowColor = '#39FF14';
+                mCtx.fill();
+                mCtx.shadowBlur = 0;
+
+                mCtx.fillStyle = 'rgba(255,255,255,0.2)';
+                mCtx.font = '10px system-ui, sans-serif';
+                mCtx.fillText(pulse.text, pX - 40, (origin.y * motionCanvas.height) - 15);
             });
 
-            cityNodes.forEach(node => {
-                let realX = node.x * canvas.width;
-                let realY = node.y * canvas.height;
+            // Identity Stationary Terminals Layout Render
+            coordinateNodes.forEach(node => {
+                let nX = node.x * motionCanvas.width;
+                let nY = node.y * motionCanvas.height;
 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
-                ctx.beginPath();
-                ctx.arc(realX, realY, 4, 0, Math.PI * 2);
-                ctx.fill();
+                mCtx.fillStyle = '#fff';
+                mCtx.beginPath();
+                mCtx.arc(nX, nY, 6, 0, Math.PI * 2);
+                mCtx.fill();
 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-                ctx.font = '9px "Plus Jakarta Sans", system-ui, sans-serif';
-                ctx.fillText(node.name, realX + 10, realY + 3);
+                mCtx.fillStyle = '#fff';
+                mCtx.font = 'bold 12px system-ui, sans-serif';
+                mCtx.fillText(node.id, nX - 18, nY + 24);
             });
 
             requestAnimationFrame(stepNetworkAnimationEngine);
