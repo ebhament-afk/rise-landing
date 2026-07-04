@@ -1,4 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RISE — Get Work. Get Paid. Build Trust.</title>
+<meta name="description" content="RISE is Africa's trust infrastructure — a portable reputation, protected payments, and job network for Nigeria's informal economy.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,5 L88,18 L88,52 C88,74 72,89 50,95 C28,89 12,74 12,52 L12,18 Z' fill='none' stroke='%2339FF14' stroke-width='6'/%3E%3Cpath d='M35,50 L45,60 L68,35' fill='none' stroke='%2339FF14' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   RISE — DESIGN TOKENS
+   ============================================================ */
+:root{
+  --bg-void:        #0A0A0A;
+  --bg-soft-black:  #0A0A0A;
+  --bg-graphite:    #111315;
+  --bg-charcoal:    #1C1E20;
+  --rise-green:     #39FF14;
+  --rise-green-dim: rgba(57,255,20,0.14);
+  --royal-purple:   #7B5CFF;
+  --white:          #FFFFFF;
+  --ink-85:         rgba(255,255,255,0.85);
+  --ink-60:         rgba(255,255,255,0.58);
+  --ink-40:         rgba(255,255,255,0.38);
+  --glass-border:   rgba(255,255,255,0.09);
+  --glass-fill:     rgba(255,255,255,0.03);
+  --font-display:   'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:      'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --ease:           cubic-bezier(.16,.84,.44,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg-soft-black);
+  color:var(--white);
+  font-family:var(--font-body);
+  line-height:1.5;
+  overflow-x:hidden;
+  position:relative;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;}
+section{padding:150px 8vw;position:relative;z-index:2;}
+h1,h2,h3,h4,h5,h6{font-family:var(--font-display);letter-spacing:-0.02em;}
+::selection{background:var(--rise-green);color:#06120a;}
+:focus-visible{outline:2px solid var(--rise-green);outline-offset:3px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+}
+
+.section-header{max-width:640px;}
+.section-header h2{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;margin-bottom:18px;}
+.section-header p{font-size:1.05rem;line-height:1.6;}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:0.72rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;color:var(--rise-green);
+  margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--rise-green);}
+
+/* ============================================================
+   ATMOSPHERE — background universe
+   ============================================================ */
+.ambient-universe{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(28,30,32,0.6), transparent),
+    var(--bg-soft-black);
+}
+.infrastructure-grid{
+  position:absolute;inset:-10%;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 60% 60% at 50% 30%, black 0%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 30%, black 0%, transparent 75%);
+}
+.ambient-glow-purple{
+  position:absolute;width:56vw;height:56vw;top:-16%;right:-14%;border-radius:50%;
+  background:radial-gradient(circle, var(--royal-purple) 0%, transparent 70%);
+  opacity:0.10;filter:blur(90px);
+  animation:driftA 26s ease-in-out infinite alternate;
+}
+.ambient-glow-green{
+  position:absolute;width:46vw;height:46vw;bottom:-14%;left:-12%;border-radius:50%;
+  background:radial-gradient(circle, var(--rise-green) 0%, transparent 70%);
+  opacity:0.06;filter:blur(100px);
+  animation:driftB 30s ease-in-out infinite alternate;
+}
+@keyframes driftA{0%{transform:translate(0,0) scale(1);}100%{transform:translate(-50px,50px) scale(1.08);}}
+@keyframes driftB{0%{transform:translate(0,0) scale(1);}100%{transform:translate(50px,-40px) scale(1.05);}}
+.ghost-shield-watermark{
+  position:absolute;top:38%;left:82%;width:900px;height:900px;
+  transform:translate(-50%,-50%);color:var(--white);opacity:0.018;
+}
+@media (max-width:900px){.ghost-shield-watermark{left:50%;top:20%;width:520px;height:520px;}}
+
+/* Floating particles */
+.particle-field{position:absolute;inset:0;overflow:hidden;}
+.particle{
+  position:absolute;width:3px;height:3px;border-radius:50%;
+  background:var(--rise-green);opacity:0.35;filter:blur(0.5px);
+  animation:particleFloat linear infinite;
+}
+@keyframes particleFloat{
+  0%{transform:translateY(0) translateX(0);opacity:0;}
+  10%{opacity:0.5;}
+  90%{opacity:0.3;}
+  100%{transform:translateY(-1200px) translateX(60px);opacity:0;}
+}
+
+/* ============================================================
+   SIGNATURE INTRO — one-time curved R trace
+   ============================================================ */
+#signature-curved-r{
+  position:fixed;inset:0;z-index:999;background:#050505;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .9s var(--ease), visibility .9s var(--ease);
+}
+#signature-curved-r.done{opacity:0;visibility:hidden;pointer-events:none;}
+.svg-r-container{width:120px;height:120px;}
+.svg-r-container svg{width:100%;height:100%;}
+.trace-path{
+  stroke:var(--rise-green);fill:none;
+  stroke-dasharray:220;stroke-dashoffset:220;
+  filter:drop-shadow(0 0 14px rgba(57,255,20,.75));
+  animation:drawR 1.3s var(--ease) forwards;
+}
+.trace-path:nth-child(2){animation-delay:.85s;}
+@keyframes drawR{to{stroke-dashoffset:0;}}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.premium-nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:30px 8vw;
+  background:transparent;
+  transition:padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.premium-nav.scrolled{
+  padding:16px 8vw;
+  background:rgba(9,10,11,0.72);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
+  border-bottom:1px solid var(--glass-border);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:0.01em;
+}
+.nav-logo svg{width:26px;height:26px;flex-shrink:0;}
+.nav-links{display:flex;gap:44px;font-size:0.85rem;color:var(--ink-60);}
+.nav-links a{position:relative;transition:color .3s;}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--rise-green);
+  transition:width .3s var(--ease);
+}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after{width:100%;}
+@media (max-width:860px){.nav-links{display:none;}}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-premium{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  background:var(--rise-green);color:#06140a;font-weight:700;font-size:0.92rem;
+  padding:17px 34px;border-radius:100px;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  box-shadow:0 0 0 rgba(57,255,20,0);
+}
+.btn-premium:hover{box-shadow:0 10px 44px rgba(57,255,20,0.38);}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-viewport{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:40px;padding:170px 8vw 80px;
+}
+.hero-statement h1{
+  font-size:clamp(2.6rem,5.6vw,4.7rem);font-weight:800;line-height:1.06;letter-spacing:-0.03em;
+}
+.hero-statement h1 span{color:var(--rise-green);}
+.hero-statement h1 em{
+  font-style:normal;color:var(--white);
+  text-shadow:0 0 44px rgba(123,92,255,0.55);
+}
+.hero-statement p{
+  margin:28px 0 40px;color:var(--ink-60);font-size:1.15rem;max-width:460px;line-height:1.65;
+}
+.hero-media-wrapper{position:relative;height:640px;}
+.portrait-frame{
+  position:absolute;top:0;right:6%;width:300px;height:400px;border-radius:28px;overflow:hidden;
+  border:1px solid var(--glass-border);
+  box-shadow:0 50px 100px rgba(0,0,0,.65);
+  animation:floatSlow 7s ease-in-out infinite;
+}
+.portrait-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(8,8,8,0.92) 100%);
+}
+.floating-identity-card{
+  position:absolute;bottom:16px;left:16px;right:16px;z-index:2;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(10,10,10,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--glass-border);padding:11px 14px;border-radius:14px;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;
+}
+@keyframes floatSlow{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+
+.phone-canvas{
+  position:absolute;bottom:-30px;left:0;width:270px;height:552px;
+  background:rgba(22,24,26,.55);
+  backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);
+  border:1px solid var(--glass-border);border-radius:42px;
+  padding:20px;display:flex;flex-direction:column;gap:14px;
+  box-shadow:0 60px 130px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.07);
+  animation:floatPhone 6.5s ease-in-out infinite;
+}
+@keyframes floatPhone{0%,100%{transform:translateY(0);}50%{transform:translateY(-18px);}}
+
+.app-glass-card{
+  background:rgba(255,255,255,.045);border:1px solid var(--glass-border);
+  border-radius:18px;padding:14px 16px;backdrop-filter:blur(10px);
+  transition:border-color .3s, background .3s;
+}
+.app-user-row{display:flex;align-items:center;justify-content:space-between;}
+.app-avatar-wrapper{display:flex;align-items:center;gap:10px;font-size:.84rem;font-weight:700;}
+.avatar-circle{width:34px;height:34px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--rise-green),var(--royal-purple));}
+.app-trust-hero{text-align:center;}
+.app-label{font-family:var(--font-mono);font-size:.63rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-40);}
+.app-trust-score-display{
+  font-family:var(--font-mono);font-size:2.5rem;font-weight:700;color:var(--rise-green);
+  margin:6px 0;text-shadow:0 0 30px rgba(57,255,20,.45);transition:color .4s;
+}
+.stars-container{display:flex;gap:4px;justify-content:center;color:var(--rise-green);}
+.stars-container i{width:13px;height:13px;}
+.wallet-amount{font-family:var(--font-mono);font-size:1.4rem;font-weight:700;margin-top:4px;transition:color .4s;}
+.job-line{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.job-info h6{font-size:.83rem;font-weight:700;}
+.job-info p{font-size:.68rem;color:var(--ink-40);margin-top:2px;}
+.status-badge{
+  font-family:var(--font-mono);font-size:.62rem;font-weight:700;white-space:nowrap;
+  padding:6px 10px;border-radius:100px;background:rgba(123,92,255,.16);color:var(--royal-purple);
+}
+.status-badge.paid{background:rgba(57,255,20,.16);color:var(--rise-green);}
+.app-bottom-nav{
+  margin-top:auto;display:flex;justify-content:space-between;padding-top:14px;
+  border-top:1px solid var(--glass-border);color:var(--ink-40);
+}
+.app-bottom-nav i{width:18px;height:18px;}
+.active-tab{color:var(--rise-green);}
+
+@media (max-width:1000px){
+  .hero-viewport{grid-template-columns:1fr;padding-top:150px;text-align:left;}
+  .hero-statement p{max-width:100%;}
+  .hero-media-wrapper{height:520px;margin-top:50px;display:flex;justify-content:center;}
+  .portrait-frame{position:absolute;top:0;right:auto;left:0;width:210px;height:270px;}
+  .phone-canvas{position:absolute;bottom:0;left:auto;right:0;width:230px;height:480px;}
+}
+@media (max-width:560px){
+  section{padding:110px 6vw;}
+  .hero-viewport{padding:130px 6vw 60px;}
+  .hero-media-wrapper{height:440px;}
+  .portrait-frame{width:160px;height:210px;}
+  .phone-canvas{width:190px;height:400px;padding:14px;border-radius:32px;}
+  .app-trust-score-display{font-size:1.9rem;}
+}
+
+/* ============================================================
+   STATS ROW
+   ============================================================ */
+.stats-section{
+  border-top:1px solid rgba(255,255,255,0.05);
+  background:rgba(255,255,255,0.012);
+  padding:90px 8vw;
+}
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;
+  max-width:1100px;margin:0 auto;
+}
+.stats-row h4{font-family:var(--font-mono);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:700;color:var(--white);}
+.stats-row h4.accent{color:var(--rise-green);}
+.stats-row p{color:var(--ink-40);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;margin-top:12px;}
+@media (max-width:700px){.stats-row{grid-template-columns:1fr;gap:36px;}}
+
+/* ============================================================
+   BENTO — Why RISE Exists
+   ============================================================ */
+.bento-container{
+  display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:repeat(2,auto);
+  gap:24px;max-width:1200px;margin:0 auto;
+}
+.bento-large,.bento-tall{
+  position:relative;overflow:hidden;
+  background:var(--glass-fill);border:1px solid var(--glass-border);border-radius:28px;
+  padding:48px;display:flex;flex-direction:column;justify-content:space-between;
+  transition:transform .45s var(--ease), border-color .45s var(--ease);
+}
+.bento-large:hover,.bento-tall:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.18);}
+.bento-large{grid-column:1;grid-row:1;}
+.bento-tall{grid-column:2;grid-row:1/3;}
+.bento-large h3,.bento-tall h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;margin-bottom:16px;}
+@media (max-width:900px){
+  .bento-container{grid-template-columns:1fr;}
+  .bento-large{grid-column:1;grid-row:auto;}
+  .bento-tall{grid-column:1;grid-row:auto;}
+}
+.card-icon-frame{
+  width:52px;height:52px;border-radius:14px;border:1px solid var(--glass-border);
+  background:rgba(255,255,255,.035);display:flex;align-items:center;justify-content:center;
+  color:var(--rise-green);margin-bottom:24px;
+}
+.card-icon-frame i{width:22px;height:22px;}
+
+/* ============================================================
+   ECOSYSTEM DIAGRAM
+   ============================================================ */
+.ecosystem-diagram{
+  position:relative;width:100%;max-width:900px;height:500px;margin:0 auto;
+  background:rgba(255,255,255,0.012);border:1px solid var(--glass-border);border-radius:40px;
+  overflow:hidden;
+}
+.ecosystem-core{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:5;
+  background:#121314;border:2px solid var(--rise-green);width:112px;height:112px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--font-display);font-weight:800;font-size:.85rem;color:var(--white);
+  box-shadow:0 0 44px rgba(57,255,20,0.25);
+}
+.ecosystem-node{
+  position:absolute;display:flex;align-items:center;gap:8px;
+  font-size:0.82rem;white-space:nowrap;
+}
+.ecosystem-node i{width:16px;height:16px;color:var(--rise-green);flex-shrink:0;}
+.node-1{top:18%;left:18%;} .node-2{top:14%;left:64%;} .node-3{top:50%;left:76%;}
+.node-4{top:80%;left:50%;transform:translateX(-50%);} .node-5{top:76%;left:13%;}
+.ecosystem-lines line{stroke:rgba(255,255,255,0.07);stroke-width:1.5;stroke-dasharray:4;}
+
+.ecosystem-mobile-list{display:none;}
+@media (max-width:820px){
+  .ecosystem-diagram{display:none;}
+  .ecosystem-mobile-list{
+    display:grid;gap:14px;max-width:420px;margin:0 auto;
+  }
+  .ecosystem-mobile-list .app-glass-card{display:flex;align-items:center;gap:12px;font-size:.9rem;}
+  .ecosystem-mobile-list .app-glass-card i{width:18px;height:18px;color:var(--rise-green);flex-shrink:0;}
+}
+
+/* ============================================================
+   TRUST IN MOTION — map
+   ============================================================ */
+.map-section{text-align:center;}
+.map-container{
+  max-width:1100px;margin:0 auto;height:480px;border-radius:32px;
+  border:1px solid var(--glass-border);background:rgba(255,255,255,.015);
+  position:relative;overflow:hidden;
+}
+#network-canvas{width:100%;height:100%;display:block;}
+@media (max-width:700px){.map-container{height:360px;}}
+
+/* ============================================================
+   WHY RISE MATTERS
+   ============================================================ */
+.matters-section{
+  padding:170px 8vw;
+  background:radial-gradient(circle at 82% 50%, rgba(57,255,20,0.035) 0%, transparent 62%);
+}
+.matters-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;max-width:1300px;margin:0 auto;}
+.matters-grid h3{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:800;line-height:1.14;color:var(--white);}
+.matters-grid p.support{color:var(--ink-60);font-size:1.08rem;line-height:1.65;margin-top:28px;max-width:520px;}
+.matters-visual{position:relative;display:flex;justify-content:center;}
+.matters-ring{width:80%;opacity:0.15;color:var(--white);}
+.matters-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;}
+.matters-badge-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.matters-badge-head span{font-weight:700;font-size:.78rem;color:var(--rise-green);}
+.matters-badge-head i{width:14px;height:14px;color:var(--rise-green);animation:pulse 2s infinite;}
+.matters-badge-body{font-size:.75rem;color:var(--ink-40);line-height:1.5;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+@media (max-width:900px){.matters-grid{grid-template-columns:1fr;text-align:left;}.matters-visual{margin-top:40px;}}
+
+/* ============================================================
+   FOUNDER STATEMENT
+   ============================================================ */
+.founder-section{border-top:1px solid rgba(255,255,255,0.04);padding:110px 8vw;text-align:center;}
+.founder-quote{max-width:700px;margin:0 auto;}
+.founder-quote p{
+  font-family:var(--font-display);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:500;
+  line-height:1.55;color:var(--ink-85);font-style:italic;
+}
+.founder-label{margin-top:26px;font-size:.82rem;text-transform:uppercase;letter-spacing:.12em;color:var(--rise-green);font-weight:700;}
+
+/* ============================================================
+   WAITLIST
+   ============================================================ */
+.waitlist-section{padding-bottom:190px;}
+.premium-card{
+  background:var(--glass-fill);border:1px solid rgba(255,255,255,0.09);border-radius:36px;
+  max-width:900px;margin:0 auto;text-align:center;padding:80px 40px;
+  background-image:radial-gradient(circle at top, rgba(123,92,255,0.05) 0%, transparent 70%);
+}
+.premium-card h2{font-size:clamp(2rem,4vw,2.7rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;}
+.premium-card > p{color:var(--ink-60);max-width:540px;margin:0 auto 40px auto;font-size:1.05rem;}
+.waitlist-form{display:flex;max-width:480px;margin:0 auto 40px auto;gap:12px;}
+.waitlist-form input{
+  flex:1;background:rgba(0,0,0,0.4);border:1px solid var(--glass-border);
+  padding:16px 24px;border-radius:20px;color:var(--white);font-family:inherit;font-size:0.9rem;outline:none;
+  transition:border-color .3s;
+}
+.waitlist-form input:focus{border-color:var(--rise-green);}
+.waitlist-form button{border:none;cursor:pointer;}
+.waitlist-benefits{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  border-top:1px solid rgba(255,255,255,0.06);padding-top:40px;text-align:left;
+}
+.waitlist-benefits strong{display:block;font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:4px;}
+.waitlist-benefits strong.accent{color:var(--rise-green);}
+.waitlist-benefits span{font-size:0.75rem;color:var(--ink-40);}
+@media (max-width:700px){
+  .waitlist-form{flex-direction:column;}
+  .waitlist-benefits{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:460px){.waitlist-benefits{grid-template-columns:1fr;}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{border-top:1px solid rgba(255,255,255,0.04);padding:60px 8vw;background:var(--bg-soft-black);}
+.footer-row{
+  max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:24px;
+}
+.footer-tags{font-size:0.85rem;color:rgba(255,255,255,0.32);display:flex;gap:24px;flex-wrap:wrap;}
+.footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.32);}
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease), transform .8s var(--ease);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+</style>
+</head>
 <body>
+
     <!-- ONE-TIME SIGNATURE INTRO: Light trace path of official curved R -->
     <div id="signature-curved-r">
         <div class="svg-r-container">
@@ -9,22 +468,21 @@
         </div>
     </div>
 
-    <!-- 6-LAYER ATMOSPHERIC UNIVERSE -->
+    <!-- ATMOSPHERIC UNIVERSE -->
     <div class="ambient-universe">
         <div class="infrastructure-grid"></div>
         <div class="ambient-glow-purple"></div>
         <div class="ambient-glow-green"></div>
-        <!-- Ghost Shield Masterbrand Device Watermark -->
         <svg class="ghost-shield-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.15">
             <path d="M50,10 L85,20 L85,55 C85,75 68,90 50,95 C32,90 15,75 15,55 L15,20 Z"/>
             <path d="M35,45 L45,55 L65,35" stroke-width="0.3"/>
         </svg>
+        <div class="particle-field" id="particle-field"></div>
     </div>
 
     <!-- NAVIGATION SYSTEM -->
     <nav class="premium-nav" id="main-nav">
         <div class="nav-logo">
-            <!-- Official Shield Icon -->
             <svg viewBox="0 0 100 100" fill="currentColor">
                 <path d="M50,5 L88,18 L88,52 C88,74 72,89 50,95 C28,89 12,74 12,52 L12,18 Z" fill="none" stroke="#39FF14" stroke-width="4"/>
                 <path d="M35,50 L45,60 L68,35" fill="none" stroke="#39FF14" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -37,15 +495,16 @@
             <li><a href="#motion">Trust Network</a></li>
             <li><a href="#why-exists">Proof Model</a></li>
         </ul>
-        <a href="#waitlist" class="btn-premium" style="padding: 10px 20px; font-size: 0.8rem; border-radius: 18px;">Get Early Access</a>
+        <a href="#waitlist" class="btn-premium magnetic" style="padding: 10px 20px; font-size: 0.8rem; border-radius: 18px;">Get Early Access</a>
     </nav>
 
     <!-- CINEMATIC HERO LAYER -->
     <section class="hero-viewport">
         <div class="hero-statement">
+            <span class="eyebrow">Africa's Trust Infrastructure</span>
             <h1>Get work. <span>Get paid.</span> <em>Build Trust.</em></h1>
-            <p>The premium, secure digital footprint for Africa's elite informal economy. Every verified execution expands your personal network leverage automatically.</p>
-            <a href="#waitlist" class="btn-premium">
+            <p>The premium, secure digital footprint for Africa's elite informal economy. Every verified job expands your personal network and reputation automatically.</p>
+            <a href="#waitlist" class="btn-premium magnetic">
                 Join the Movement &nbsp;<i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
             </a>
         </div>
@@ -55,7 +514,7 @@
             <div class="portrait-frame">
                 <img src="723B10FF-ABFF-47CA-8695-50CCD3E58EFA.jpeg" alt="Temi — Real Portrait Representative" style="width:100%; height:100%; object-fit:cover; mix-blend-mode: luminosity;">
                 <div class="floating-identity-card">
-                    <i data-lucide="shield-check" style="color:#39FF14; width:18px;"></i>
+                    <i data-lucide="shield-check" style="color:#39FF14; width:16px;"></i>
                     <span>VERIFIED RISER</span>
                 </div>
             </div>
@@ -66,7 +525,7 @@
                     <div class="app-avatar-wrapper">
                         <div class="avatar-circle"></div>
                         <div>
-                            <p style="font-size:0.7rem; color:rgba(255,255,255,0.4);">WELCOME BACK</p>
+                            <p style="font-size:0.65rem; color:rgba(255,255,255,0.4); font-family:var(--font-mono);">WELCOME BACK</p>
                             <p>Timi Adebayo</p>
                         </div>
                     </div>
@@ -84,7 +543,7 @@
                 <div class="app-glass-card">
                     <div class="app-label">Available Liquid Balance</div>
                     <div class="wallet-amount" id="app-wallet-amount">₦482,000</div>
-                    <p style="font-size:0.65rem; color:#39FF14; margin-top:2px;" id="wallet-status-alert">● Vault Secured via Escrow</p>
+                    <p style="font-size:0.65rem; color:#39FF14; margin-top:2px; font-family:var(--font-mono);" id="wallet-status-alert">● Vault Secured via Escrow</p>
                 </div>
 
                 <div class="app-glass-card" style="flex:1;">
@@ -98,7 +557,6 @@
                     </div>
                 </div>
 
-                <!-- Production 5-Tab Navigation Bar Navigation -->
                 <div class="app-bottom-nav">
                     <div class="active-tab"><i data-lucide="home"></i></div>
                     <div><i data-lucide="shield"></i></div>
@@ -111,19 +569,19 @@
     </section>
 
     <!-- PREMIUM PLATFORM METRICS STORYTELLING LAYER -->
-    <section style="border-top:1px solid rgba(255,255,255,0.03); background:rgba(0,0,0,0.2);">
-        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:40px; text-align:center;">
+    <section class="stats-section">
+        <div class="stats-row reveal">
             <div>
-                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:#fff;">85M+</h4>
-                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Informal Sector Champions</p>
+                <h4>85M+</h4>
+                <p>Informal Sector Champions</p>
             </div>
             <div>
-                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:var(--rise-green);">01</h4>
-                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Portable Identity Ledger</p>
+                <h4 class="accent">01</h4>
+                <p>Portable Identity Ledger</p>
             </div>
             <div>
-                <h4 style="font-family:var(--font-display); font-size:3.5rem; font-weight:800; color:#fff;">100%</h4>
-                <p style="color:rgba(255,255,255,0.4); font-size:0.85rem; letter-spacing:0.05em; text-transform:uppercase; margin-top:10px;">Proof-of-Execution Metrics</p>
+                <h4>100%</h4>
+                <p>Proof-of-Execution Metrics</p>
             </div>
         </div>
     </section>
@@ -131,25 +589,25 @@
     <!-- EMOTIONAL NARRATIVE MODEL: WHY RISE EXISTS -->
     <section id="problem">
         <div class="bento-container">
-            <div class="bento-large" style="background: linear-gradient(to bottom right, rgba(255,0,0,0.02), transparent);">
+            <div class="bento-large reveal">
                 <div>
-                    <div class="card-icon-frame" style="color:#ef4444; border-color:rgba(239,68,68,0.2);"><i data-lucide="trending-down"></i></div>
-                    <h3 style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:16px;">The Invisible Cycle</h3>
-                    <p style="max-width:480px; font-size:1.05rem; color:rgba(255,255,255,0.6);">Without verification framework infrastructure, African elite professionals reset to zero reputation value structural limits after every executed task. High performance remains invisible to global scaling protocols.</p>
+                    <div class="card-icon-frame" style="color:#ef4444; border-color:rgba(239,68,68,0.25);"><i data-lucide="trending-down"></i></div>
+                    <h3>The Invisible Cycle</h3>
+                    <p style="max-width:480px; font-size:1.05rem; color:rgba(255,255,255,0.6);">Without a verification layer, Africa's most talented workers reset to zero reputation after every finished job. Great work stays invisible — and invisible work can't scale.</p>
                 </div>
-                <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.05); padding-top:20px; font-size:0.85rem; color:rgba(255,255,255,0.4);">
-                    Traditional systems lack mechanisms to carry work records forward securely.
+                <div style="margin-top:40px; border-top:1px solid rgba(255,255,255,0.06); padding-top:20px; font-size:0.85rem; color:rgba(255,255,255,0.4);">
+                    Traditional systems have no way to carry work history forward, securely.
                 </div>
             </div>
 
-            <div class="bento-tall" style="background: linear-gradient(to bottom right, rgba(57,255,20,0.03), transparent); border-color: rgba(57,255,20,0.15);">
+            <div class="bento-tall reveal" style="border-color: rgba(57,255,20,0.15);">
                 <div>
                     <div class="card-icon-frame"><i data-lucide="shield-check"></i></div>
-                    <h3 style="font-family:var(--font-display); font-size:2rem; font-weight:800; margin-bottom:16px;">The Connected Proof Model</h3>
-                    <p style="font-size:1.05rem; color:rgba(255,255,255,0.65);">RISE converts continuous professional delivery output vectors into permanent, mathematical proof blocks. Your accumulated historical context acts directly as capital security multipliers.</p>
+                    <h3>The Connected Proof Model</h3>
+                    <p style="font-size:1.05rem; color:rgba(255,255,255,0.65);">RISE turns every completed job into permanent, verifiable proof. Your work history becomes capital — something lenders, clients, and platforms can actually trust.</p>
                 </div>
-                <div style="margin-top:40px; border-top:1px solid rgba(57,255,20,0.1); padding-top:20px; font-size:0.85rem; color:var(--rise-green);">
-                    Every job automatically enhances financial trust equity across ecosystem parameters.
+                <div style="margin-top:40px; border-top:1px solid rgba(57,255,20,0.12); padding-top:20px; font-size:0.85rem; color:var(--rise-green);">
+                    Every job automatically strengthens your standing across the whole ecosystem.
                 </div>
             </div>
         </div>
@@ -157,66 +615,67 @@
 
     <!-- CORE INFRASTRUCTURE CONNECTED ECOSYSTEM DIAGRAM -->
     <section id="ecosystem" style="text-align:center;">
-        <div class="section-header" style="margin: 0 auto 80px auto;">
+        <div class="section-header reveal" style="margin: 0 auto 80px auto;">
             <h2>The Infrastructure Ecosystem</h2>
-            <p style="color:rgba(255,255,255,0.5);">RISE isn't isolated feature utility logic. It represents the central nervous operating layer for distributed commercial transactions.</p>
+            <p style="color:rgba(255,255,255,0.5);">RISE isn't a single feature. It's the connective layer underneath every job, payment, and relationship built on the platform.</p>
         </div>
-        
-        <div style="position:relative; width:100%; max-width:900px; height:500px; margin:0 auto; background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:40px; overflow:hidden;">
-            <!-- Central Node Structural Web Visualization mapping -->
-            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); z-index:5; background:#121314; border:2px solid var(--rise-green); width:110px; height:110px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:900; color:#fff; box-shadow:0 0 40px rgba(57,255,20,0.2);">
-                RISE CORE
-            </div>
-            
-            <!-- Radiating Peripheral Hub Framework Vectors -->
-            <div style="position:absolute; top:20%; left:20%;" class="app-glass-card"><i data-lucide="shield" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Trust Registry</div>
-            <div style="position:absolute; top:15%; left:65%;" class="app-glass-card"><i data-lucide="wallet" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Vault Protection</div>
-            <div style="position:absolute; top:50%; left:78%;" class="app-glass-card"><i data-lucide="briefcase" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Opportunity Flow</div>
-            <div style="position:absolute; top:80%; left:50%; transform:translateX(-50%);" class="app-glass-card"><i data-lucide="layers" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Portable Reputation</div>
-            <div style="position:absolute; top:75%; left:15%;" class="app-glass-card"><i data-lucide="users" style="width:16px; margin-right:6px; vertical-align:middle;"></i> Verified Collective</div>
 
-            <!-- Vector Connector Lines Matrix Component Setup -->
-            <svg style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
-                <line x1="50%" y1="50%" x2="28%" y2="25%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
-                <line x1="50%" y1="50%" x2="72%" y2="20%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
-                <line x1="50%" y1="50%" x2="82%" y2="52%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
-                <line x1="50%" y1="50%" x2="50%" y2="78%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
-                <line x1="50%" y1="50%" x2="23%" y2="78%" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="4"/>
+        <div class="ecosystem-diagram reveal">
+            <div class="ecosystem-core">RISE<br>CORE</div>
+            <div class="ecosystem-node node-1 app-glass-card"><i data-lucide="shield"></i> Trust Registry</div>
+            <div class="ecosystem-node node-2 app-glass-card"><i data-lucide="wallet"></i> Vault Protection</div>
+            <div class="ecosystem-node node-3 app-glass-card"><i data-lucide="briefcase"></i> Opportunity Flow</div>
+            <div class="ecosystem-node node-4 app-glass-card"><i data-lucide="layers"></i> Portable Reputation</div>
+            <div class="ecosystem-node node-5 app-glass-card"><i data-lucide="users"></i> Verified Collective</div>
+
+            <svg class="ecosystem-lines" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;">
+                <line x1="50%" y1="50%" x2="28%" y2="25%"/>
+                <line x1="50%" y1="50%" x2="72%" y2="20%"/>
+                <line x1="50%" y1="50%" x2="82%" y2="52%"/>
+                <line x1="50%" y1="50%" x2="50%" y2="78%"/>
+                <line x1="50%" y1="50%" x2="23%" y2="78%"/>
             </svg>
+        </div>
+
+        <div class="ecosystem-mobile-list reveal">
+            <div class="app-glass-card"><i data-lucide="shield"></i> Trust Registry</div>
+            <div class="app-glass-card"><i data-lucide="wallet"></i> Vault Protection</div>
+            <div class="app-glass-card"><i data-lucide="briefcase"></i> Opportunity Flow</div>
+            <div class="app-glass-card"><i data-lucide="layers"></i> Portable Reputation</div>
+            <div class="app-glass-card"><i data-lucide="users"></i> Verified Collective</div>
         </div>
     </section>
 
-    <!-- LIVE TRUST IN MOTION NIGERIA REGIONAL HIGH-PERFORMANCE MAP -->
+    <!-- LIVE TRUST IN MOTION NIGERIA REGIONAL MAP -->
     <section id="motion" class="map-section">
-        <div class="section-header" style="margin:0 auto 40px auto;">
+        <div class="section-header reveal" style="margin:0 auto 40px auto;">
             <h2>Trust in Motion</h2>
-            <p style="color:rgba(255,255,255,0.5);">Real-time tracking of verification vectors across nodes. See completed work assets instantly turn into verified credit history status indicators.</p>
+            <p style="color:rgba(255,255,255,0.5);">Real-time verification flowing across Nigeria. Every completed job instantly becomes part of a worker's verified history.</p>
         </div>
 
-        <div class="map-container">
+        <div class="map-container reveal">
             <canvas id="network-canvas"></canvas>
         </div>
     </section>
 
     <!-- WHY RISE MATTERS: EMOTIONAL BRANDING BLOCK -->
-    <section id="why-exists" style="padding:160px 40px; background:radial-gradient(circle at right, rgba(57,255,20,0.02) 0%, transparent 60%);">
-        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:center;">
-            <div>
-                <span style="color:var(--rise-green); font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; display:block; margin-bottom:20px;">Why RISE Matters</span>
-                <h3 style="font-family:var(--font-display); font-size:3rem; font-weight:800; line-height:1.1; color:#fff; letter-spacing:-0.03em;">Over 85 million Nigerians hustle hard every day. Most have no way to prove it. RISE makes reputation inevitable.</h3>
-                <p style="color:rgba(255,255,255,0.5); font-size:1.1rem; line-height:1.6; margin-top:30px; max-width:520px;">We turn everyday hustle into verified trust, real opportunities, and lasting financial growth. No more start-from-scratch loops. No more unmapped productivity data.</p>
+    <section id="why-exists" class="matters-section">
+        <div class="matters-grid">
+            <div class="reveal">
+                <span class="eyebrow">Why RISE Matters</span>
+                <h3>Over 85 million Nigerians hustle hard every day. Most have no way to prove it. RISE makes reputation inevitable.</h3>
+                <p class="support">We turn everyday hustle into verified trust, real opportunities, and lasting financial growth. No more starting from scratch. No more work that disappears the moment it's done.</p>
             </div>
-            <div style="position:relative; display:flex; justify-content:center;">
-                <!-- Transparent SVG Structural Shield Ring Layout Accent -->
-                <svg viewBox="0 0 200 200" style="width:80%; opacity:0.15; color:#fff;">
+            <div class="matters-visual reveal">
+                <svg class="matters-ring" viewBox="0 0 200 200">
                     <polygon points="100,20 170,45 170,120 100,180 30,120 30,45" fill="none" stroke="currentColor" stroke-width="2"/>
                 </svg>
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:80%;" class="app-glass-card">
-                    <div style="display:flex; justify-content:between; align-items:center; margin-bottom:12px;">
-                        <span style="font-weight:700; font-size:0.8rem; color:var(--rise-green);">RISE PROTOCOL DATA ACTIVE</span>
-                        <i data-lucide="radio" style="color:var(--rise-green); width:14px; animation: pulse 2s infinite;"></i>
+                <div class="matters-badge app-glass-card">
+                    <div class="matters-badge-head">
+                        <span>RISE PROTOCOL DATA ACTIVE</span>
+                        <i data-lucide="radio"></i>
                     </div>
-                    <div style="font-size:0.75rem; color:rgba(255,255,255,0.4); line-height:1.4;">
+                    <div class="matters-badge-body">
                         Node Verification Latency: &lt;12ms <br>
                         Cryptographic Integrity: Enforced
                     </div>
@@ -225,70 +684,68 @@
         </div>
     </section>
 
-    <!-- THE FOUNDER STATEMENT HUB -->
-    <section style="border-top:1px solid rgba(255,255,255,0.03); padding:100px 40px; text-align:center;">
-        <div style="max-width:700px; margin:0 auto;">
-            <p style="font-family:var(--font-display); font-size:1.6rem; font-weight:500; line-height:1.5; color:rgba(255,255,255,0.85); font-style:italic;">
-                "Talent exists everywhere. Opportunity does not. RISE exists to close that gap by making trust portable, verifiable, and valuable—so every completed job naturally builds the foundation for the next."
-            </p>
-            <div style="margin-top:24px; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--rise-green); font-weight:700;">
-                The RISE Mission Statement
-            </div>
+    <!-- FOUNDER STATEMENT -->
+    <section class="founder-section">
+        <div class="founder-quote reveal">
+            <p>"Talent exists everywhere. Opportunity does not. RISE exists to close that gap by making trust portable, verifiable, and valuable — so every completed job naturally builds the foundation for the next."</p>
+            <div class="founder-label">The RISE Mission</div>
         </div>
     </section>
 
-    <!-- EXCLUSIVE FOUNDING RISER WAITLIST INVITATION -->
-    <section id="waitlist" style="padding-bottom:180px;">
-        <div class="premium-card" style="max-width:900px; margin:0 auto; text-align:center; padding:80px 40px; background: radial-gradient(circle at top, rgba(138,43,226,0.04) 0%, transparent 70%); border-color:rgba(255,255,255,0.08);">
-            <h2 style="font-family:var(--font-display); font-size:2.8rem; font-weight:800; letter-spacing:-0.03em; margin-bottom:16px;">Become a Founding Riser.</h2>
-            <p style="color:rgba(255,255,255,0.5); max-width:540px; margin:0 auto 40px auto; font-size:1.05rem;">The first generation of Risers won't just use the platform—they'll help shape the infrastructure architecture of African commercial trust systems.</p>
-            
-            <!-- Fully functional Waitlist Registration Input Module -->
-            <form style="display:flex; max-width:480px; margin:0 auto 40px auto; gap:12px;" onsubmit="event.preventDefault(); alert('Reputation system registration vector initiated. Welcome to RISE.');">
-                <input type="email" placeholder="Enter secure enterprise email address" required style="flex:1; background:rgba(0,0,0,0.4); border:1px solid var(--glass-border); padding:16px 24px; border-radius:20px; color:#fff; font-family:inherit; font-size:0.9rem; outline:none;">
-                <button type="submit" class="btn-premium" style="border:none; cursor:pointer;">Secure Position</button>
+    <!-- EXCLUSIVE FOUNDING RISER WAITLIST -->
+    <section id="waitlist" class="waitlist-section">
+        <div class="premium-card reveal">
+            <h2>Become a Founding Riser.</h2>
+            <p>The first generation of Risers won't just use the platform — they'll help shape the infrastructure of African commercial trust.</p>
+
+            <form class="waitlist-form" onsubmit="event.preventDefault(); alert('Welcome to RISE. We will be in touch soon.');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-premium magnetic">Secure Position</button>
             </form>
 
-            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px; border-top:1px solid rgba(255,255,255,0.05); padding-top:40px; text-align:left;">
-                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Early Access</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Alpha workspace access</p></div>
-                <div><p style="font-size:0.85rem; font-weight:600; color:var(--rise-green);">✓ Founding Badge</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Permanent identifier status</p></div>
-                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Direct Feedback</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Shape protocol rules</p></div>
-                <div><p style="font-size:0.85rem; font-weight:600; color:#fff;">✓ Priority Queue</p><p style="font-size:0.75rem; color:rgba(255,255,255,0.4);">Instant partner onboarding</p></div>
+            <div class="waitlist-benefits">
+                <div><strong>✓ Early Access</strong><span>Alpha workspace access</span></div>
+                <div><strong class="accent">✓ Founding Badge</strong><span>Permanent identifier status</span></div>
+                <div><strong>✓ Direct Feedback</strong><span>Shape protocol rules</span></div>
+                <div><strong>✓ Priority Queue</strong><span>Instant partner onboarding</span></div>
             </div>
         </div>
     </section>
 
     <!-- MINIMAL CONFIDENT MASTER BRAND FOOTER -->
-    <footer style="border-top:1px solid rgba(255,255,255,0.04); padding:60px 40px; background:var(--bg-soft-black);">
-        <div style="max-width:1400px; margin:0 auto; display:flex; justify-content:between; align-items:center; flex-wrap:wrap; gap:30px;">
-            <div style="font-size:0.85rem; color:rgba(255,255,255,0.3); display:flex; gap:24px;">
+    <footer class="site-footer">
+        <div class="footer-row">
+            <div class="footer-tags">
                 <span>Built in Nigeria.</span>
                 <span>Designed for Africa.</span>
                 <span>Powered by Trust.</span>
                 <span>Future Ready.</span>
             </div>
-            <div style="font-size:0.85rem; color:rgba(255,255,255,0.4);">
-                &copy; 2026 RISE Infrastructure Technologies Inc. All validation vectors preserved.
+            <div class="footer-copy">
+                &copy; 2026 RISE Africa Technologies Limited. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- LUCIDE ICON LIBRARY (must load before the script below) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- INTERACTION LOGIC & PERFORMANCE MOTORS ENGINE -->
     <script>
         // Initialize Lucide Icons globally
         lucide.createIcons();
 
-        // Navigation Shrink Execution on scroll events
+        // ---- Signature intro: fade the R-trace overlay out once it has played ----
+        const introOverlay = document.getElementById('signature-curved-r');
+        setTimeout(() => introOverlay.classList.add('done'), 2100);
+
+        // ---- Navigation Shrink on scroll ----
         const mainNav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
-                mainNav.classList.add('scrolled');
-            } else {
-                mainNav.classList.remove('scrolled');
-            }
+            mainNav.classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // Interactive Context Engine: Dynamic App Screen Progression during user Scroll events
+        // ---- Interactive phone: product state morphs on scroll ----
         const counterEl = document.getElementById('app-trust-counter');
         const walletEl = document.getElementById('app-wallet-amount');
         const badgeEl = document.getElementById('job-status-badge');
@@ -297,12 +754,8 @@
 
         window.addEventListener('scroll', () => {
             let scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            
-            // Elegantly morph UI elements dynamically based on story narrative depth milestones
             if (scrollPercent > 15 && !stateTriggered) {
                 stateTriggered = true;
-                
-                // Animate Trust Score Upward with precise counting transitions
                 let currentScore = 740;
                 const targetScore = 850;
                 const counterInterval = setInterval(() => {
@@ -314,7 +767,6 @@
                     }
                 }, 15);
 
-                // Update structural execution states simultaneously inside phone simulation
                 walletEl.innerText = "₦1,240,000";
                 walletEl.style.color = "var(--rise-green)";
                 badgeEl.innerText = "Settled";
@@ -324,7 +776,41 @@
             }
         });
 
-        // LIVE NIGERIA NETWORK CANVAS MATRIX GEOMETRY SCRIPT
+        // ---- Floating particles ----
+        const particleField = document.getElementById('particle-field');
+        for (let i = 0; i < 24; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.bottom = (Math.random() * -40) + 'px';
+            p.style.animationDuration = (14 + Math.random() * 16) + 's';
+            p.style.animationDelay = (Math.random() * 20) + 's';
+            particleField.appendChild(p);
+        }
+
+        // ---- Magnetic button hover ----
+        document.querySelectorAll('.magnetic').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const r = btn.getBoundingClientRect();
+                const x = e.clientX - r.left - r.width / 2;
+                const y = e.clientY - r.top - r.height / 2;
+                btn.style.transform = `translate(${x * 0.18}px, ${y * 0.35}px)`;
+            });
+            btn.addEventListener('mouseleave', () => { btn.style.transform = 'translate(0,0)'; });
+        });
+
+        // ---- Scroll reveal ----
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ---- LIVE NIGERIA NETWORK CANVAS ----
         const canvas = document.getElementById('network-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -335,7 +821,6 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Geographically structured distribution nodes coordinates (scaled mapping proxies)
         const cityNodes = [
             { name: "Lagos", x: 0.15, y: 0.75 },
             { name: "Abuja", x: 0.50, y: 0.40 },
@@ -347,7 +832,6 @@
             { name: "Kaduna", x: 0.48, y: 0.28 }
         ];
 
-        // Instantiate continuous internal data transaction pulse configurations
         const communicationPulses = [
             { from: 0, to: 1, progress: 0.0, rate: 0.006 },
             { from: 3, to: 4, progress: 0.3, rate: 0.008 },
@@ -358,14 +842,12 @@
 
         function stepNetworkAnimationEngine() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Render basic network structural web grid connection channels
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
             ctx.lineWidth = 1;
             ctx.beginPath();
-            for(let i=0; i<cityNodes.length; i++) {
-                for(let j=i+1; j<cityNodes.length; j++) {
-                    // Restrict long cross-meshing lines to maintain clean network visualization density
+            for (let i = 0; i < cityNodes.length; i++) {
+                for (let j = i + 1; j < cityNodes.length; j++) {
                     let dist = Math.hypot((cityNodes[i].x - cityNodes[j].x), (cityNodes[i].y - cityNodes[j].y));
                     if (dist < 0.45) {
                         ctx.moveTo(cityNodes[i].x * canvas.width, cityNodes[i].y * canvas.height);
@@ -375,7 +857,6 @@
             }
             ctx.stroke();
 
-            // Drive verification asset pulse streams through connections matrix elements
             communicationPulses.forEach(pulse => {
                 pulse.progress += pulse.rate;
                 if (pulse.progress > 1.0) pulse.progress = 0.0;
@@ -392,21 +873,20 @@
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = '#39FF14';
                 ctx.fill();
-                ctx.shadowBlur = 0; // Reset execution state context immediately
+                ctx.shadowBlur = 0;
             });
 
-            // Anchor verification station identity nodes visually across interface canvas maps
             cityNodes.forEach(node => {
                 let realX = node.x * canvas.width;
                 let realY = node.y * canvas.height;
 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.18)';
                 ctx.beginPath();
                 ctx.arc(realX, realY, 4, 0, Math.PI * 2);
                 ctx.fill();
 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-                ctx.font = '9px system-ui, sans-serif';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+                ctx.font = '9px "Plus Jakarta Sans", system-ui, sans-serif';
                 ctx.fillText(node.name, realX + 10, realY + 3);
             });
 
