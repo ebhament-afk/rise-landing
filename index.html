@@ -82,28 +82,46 @@
     }
     .nav-cta:hover{transform:translateY(-1px);background:rgba(57,255,20,.065);box-shadow:0 16px 48px rgba(57,255,20,.13)}
     .nav-cta i{width:18px;height:18px}
-    .hero{position:relative;min-height:100vh;padding:132px 0 0px;overflow:hidden}
-    .hero-inner{position:relative;z-index:3;min-height:calc(100vh - 132px);display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:center}
-    .hero-copy-block{padding-top:32px;padding-left:48px;position:relative;z-index:5}
+    
+    /* 8. Made the hero taller for premium layout breathing room */
+    .hero{position:relative;min-height:1080px;padding:132px 0 0px;overflow:hidden}
+    .hero-inner{position:relative;z-index:3;min-height:calc(1080px - 132px);display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:center}
+    
+    /* 6. Bigger glow layer strictly behind text */
+    .hero-copy-block{padding-top:32px;padding-left:48px;position:relative;z-index:10}
+    .hero-copy-block:before{
+      content:"";position:absolute;left:-160px;top:120px;width:420px;height:420px;
+      background:radial-gradient(circle,rgba(57,255,20,.05),transparent 70%);
+      filter:blur(90px);z-index:-1;
+    }
+    
     .eyebrow-row{display:flex;align-items:center;gap:22px;margin-bottom:26px;flex-wrap:wrap}
     .eyebrow{
       display:inline-flex;align-items:center;gap:14px;color:var(--green);font-family:var(--head);
       font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;
     }
     .eyebrow:before{content:"";width:38px;height:2px;background:var(--green);box-shadow:0 0 16px rgba(57,255,20,.6)}
+    
+    /* 11. Rotating badge styling variables */
     .tag-chip{
       display:inline-flex;align-items:center;gap:10px;height:38px;padding:0 17px;border-radius:999px;
       border:1px solid rgba(57,255,20,.36);background:rgba(57,255,20,.055);color:rgba(255,255,255,.92);
       font-size:13px;font-weight:800;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+      transition:all 0.35s var(--ease);
     }
+    .tag-chip.fade {opacity: 0;transform: translateY(-4px);}
     .tag-chip i{width:17px;height:17px;color:#fff}
+    
+    /* 5. Luxury Headings Spacing */
     h1{
       font-family:var(--head);font-size:clamp(66px,7vw,108px);line-height:.96;letter-spacing:-.065em;
       font-weight:800;margin-bottom:48px;text-shadow:0 16px 50px rgba(0,0,0,.72);
     }
     h1 span{display:block}
     h1 .green{color:var(--green);text-shadow:0 0 62px rgba(57,255,20,.25)}
-    .hero-copy{max-width:560px;color:rgba(255,255,255,.79);font-size:20px;line-height:1.58;margin-bottom:34px}
+    
+    /* 9. Premium narrow paragraph width */
+    .hero-copy{max-width:470px;color:rgba(255,255,255,.79);font-size:20px;line-height:1.58;margin-bottom:34px}
     .actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:42px}
     .btn-primary,.btn-secondary{
       min-height:62px;display:inline-flex;align-items:center;justify-content:center;gap:13px;border-radius:999px;
@@ -122,57 +140,56 @@
     .stars{color:var(--green);font-size:17px;letter-spacing:.20em;font-weight:900;text-shadow:0 0 10px rgba(57,255,20,.35)}
     .rating{color:#fff;font-weight:800}
     
-    /* Luxury Stage Refinements */
-    .hero-stage{position:relative;min-height:920px;align-self:end}
+    /* 5. Clean Stage Height */
+    .hero-stage{position:relative;height:760px;}
     
-    .stage-ring {
-      position:absolute;inset:-40px -80px 0 -80px;z-index:1;pointer-events:none;
-      background:radial-gradient(ellipse at 50% 50%,transparent 0 46%,rgba(57,255,20,.05) 46.2%,transparent 46.5%),
-                 radial-gradient(ellipse at 50% 50%,transparent 0 63%,rgba(255,255,255,.02) 63.2%,transparent 63.5%);
-      opacity:.18;mask-image:linear-gradient(90deg,transparent 0%,black 22%,black 100%);
+    /* 7. Subtle stage ring profile */
+    .stage-ring{
+      position:absolute;inset:20px -80px 0 -80px;z-index:0;pointer-events:none;
+      background:radial-gradient(ellipse at 55% 46%,transparent 0 46%,rgba(57,255,20,.20) 46.2%,transparent 46.7%),
+                 radial-gradient(ellipse at 55% 46%,transparent 0 63%,rgba(255,255,255,.07) 63.2%,transparent 63.7%);
+      opacity:.06;mask-image:linear-gradient(90deg,transparent 0%,black 22%,black 100%);
     }
     
-    /* Glow strictly behind the woman */
-    .woman-glow {
-      position:absolute;left:0%;bottom:0;width:760px;height:820px;z-index:2;pointer-events:none;
-      background:radial-gradient(circle at 50% 50%,rgba(57,255,20,.18),transparent 55%),
-                 radial-gradient(circle at 45% 60%,rgba(57,255,20,.09),transparent 65%);
-      filter:blur(40px);opacity:.85;
+    /* 3. Replaced woman-glow with localized layout glow background */
+    .hero-glow{
+      position:absolute;right:110px;top:90px;width:620px;height:620px;
+      background:radial-gradient(circle,rgba(57,255,20,.18),transparent 68%);
+      filter:blur(80px);opacity:.85;z-index:1;pointer-events:none;
     }
 
-    .woman{position:absolute;left:-4%;bottom:0;width:82%;height:1040px;z-index:3;pointer-events:none}
-    .woman img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:contrast(1.04) saturate(.98) brightness(.98)}
-    
-    /* Fades her shoulders softly into darkness with NO rectangle */
-    .woman:after {
-      content:"";position:absolute;inset:0;z-index:4;
-      background:linear-gradient(to top, #010201 0%, rgba(1,2,1,0.8) 12%, rgba(1,2,1,0) 45%);
-      pointer-events:none;
+    /* 1. Integrated & scaled woman asset properties */
+    .woman{
+      position:absolute;left:10%;bottom:-20px;width:620px;height:auto;z-index:3;pointer-events:none;
+    }
+    .woman img{
+      width:100%;height:auto;display:block;object-fit:contain;
+      mask-image:linear-gradient(to top,black 72%,rgba(0,0,0,.9) 82%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to top,black 72%,rgba(0,0,0,.9) 82%,transparent 100%);
     }
     
-    /* Moved LEFT, DOWN, Increased 20%, Overlapping Woman with ambient shadows underneath */
+    /* 2. Elevated hero phone specifications over woman's layers */
     .phone-png{
-      position:absolute;right:18%;top:140px;z-index:5;width:474px;transform:rotate(5deg);
-      filter:
-        drop-shadow(-12px 24px 20px rgba(0,0,0,.65)) 
-        drop-shadow(-40px 80px 70px rgba(0,0,0,.85)) 
-        drop-shadow(0 0 32px rgba(57,255,20,.06));
+      position:absolute;width:430px;right:40px;top:40px;z-index:4;
+      transform:rotate(8deg);
+      filter:drop-shadow(0 80px 90px rgba(0,0,0,.7)) drop-shadow(0 0 60px rgba(57,255,20,.08));
       animation:floatPhone 7s ease-in-out infinite alternate;pointer-events:none;
     }
-    @keyframes floatPhone{to{transform:rotate(3.8deg) translateY(-12px)}}
+    @keyframes floatPhone{to{transform:rotate(6.2deg) translateY(-10px)}}
     
-    /* Trust Card: Moved lower, slightly left, shrunk, stronger blur, ultra thin border */
+    /* 4. Fine-tuned subtle floating trust card positioning */
     .trust-card{
-      position:absolute;left:-12%;bottom:80px;z-index:7;width:370px;min-height:138px;display:grid;
-      grid-template-columns:98px 1fr;align-items:center;gap:20px;padding:20px;background:rgba(4,6,4,.42);
-      border:1px solid rgba(255,255,255,.07);border-radius:24px;backdrop-filter:blur(50px);-webkit-backdrop-filter:blur(50px);
-      box-shadow:0 34px 88px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.03),0 0 30px rgba(57,255,20,.04);
+      position:absolute;width:320px;bottom:120px;left:80px;padding:18px;z-index:5;
+      display:grid;grid-template-columns:78px 1fr;align-items:center;gap:20px;
+      background:rgba(8,8,8,.45);border:1px solid rgba(255,255,255,.07);border-radius:24px;
+      backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);
+      box-shadow:0 28px 78px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);
       animation:floatCard 6s ease-in-out infinite alternate;
     }
-    @keyframes floatCard{to{transform:translateY(-10px)}}
-    .trust-card img{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(57,255,20,.15))}
-    .trust-list{border-left:1px solid rgba(255,255,255,.12);padding-left:22px}
-    .trust-list div{font-family:var(--head);font-size:17px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:10px 0;color:#fff}
+    @keyframes floatCard{to{transform:translateY(-8px)}}
+    .trust-card img{width:68px;height:68px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(57,255,20,.22))}
+    .trust-list{border-left:1px solid rgba(255,255,255,.14);padding-left:20px}
+    .trust-list div{font-family:var(--head);font-size:16px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:10px 0;color:#fff}
     .trust-list span{color:var(--green)}
     
     .scroll-mark{
@@ -191,10 +208,10 @@
       .nav-links{display:none}
       .hero-inner{grid-template-columns:1fr;gap:20px}
       .hero-copy-block{max-width:700px;padding-top:10px;padding-left:0}
-      .hero-stage{min-height:680px}
-      .woman{left:18%;width:50%;height:720px}
-      .phone-png{right:5%;width:395px}
-      .trust-card{left:14%;bottom:135px}
+      .hero-stage{height:auto;min-height:680px}
+      .woman{left:18%;width:420px}
+      .phone-png{right:5%;width:340px}
+      .trust-card{left:14%;bottom:60px}
     }
     @media(max-width:760px){
       .container{width:calc(100% - 34px)}
@@ -214,9 +231,9 @@
       .avatar{width:38px;height:38px}
       .stars{font-size:13px}
       .hero-stage{min-height:590px;margin-top:18px}
-      .stage-ring{inset:0 -120px 0 -120px;opacity:.35}
-      .woman{left:-14%;bottom:4px;width:82%;height:530px;opacity:.9}
-      .phone-png{right:-28px;top:8px;width:235px}
+      .stage-ring{inset:0 -120px 0 -120px;opacity:.04}
+      .woman{left:-5%;bottom:4px;width:290px;height:auto}
+      .phone-png{right:-10px;top:20px;width:240px}
       .trust-card{left:0;right:0;margin:auto;bottom:20px;width:calc(100% - 10px);min-height:118px;grid-template-columns:86px 1fr;gap:16px;padding:16px}
       .trust-card img{width:78px;height:78px}
       .trust-list{padding-left:18px}
@@ -256,7 +273,7 @@
         <section class="hero-copy-block reveal" aria-label="RISE hero introduction">
           <div class="eyebrow-row">
             <div class="eyebrow">Built for Nigeria. Designed for Africa.</div>
-            <div class="tag-chip"><i data-lucide="sparkles"></i> Naija no dey carry last.</div>
+            <div class="tag-chip" id="rotating-badge"><i data-lucide="sparkles"></i> <span>🇳🇬 Naija no dey carry last.</span></div>
           </div>
 
           <h1>
@@ -286,21 +303,16 @@
         </section>
 
         <section class="hero-stage reveal reveal-delay" id="stage" aria-label="RISE visual preview">
-          <!-- Ambient rings (barely visible) -->
           <div class="stage-ring" aria-hidden="true"></div>
           
-          <!-- Backlighting glow - right behind her -->
-          <div class="woman-glow" aria-hidden="true"></div>
+          <div class="hero-glow" aria-hidden="true"></div>
           
-          <!-- Almost Life-size Woman starting from base with linear shadow mask -->
           <div class="woman parallax" data-depth="10">
             <img src="hero-woman.png" alt="Nigerian woman looking toward the future" onerror="this.src='hero-future.png';" />
           </div>
           
-          <!-- Large floating mockup overlapping woman with deep shadows -->
           <img class="phone-png parallax" data-depth="18" src="phone-mockup.png" alt="RISE app phone mockup" />
           
-          <!-- Shrunk, clean glassmorphic trust card shifted left & lower -->
           <div class="trust-card parallax" data-depth="25">
             <img src="riseshield.png" alt="RISE shield" />
             <div class="trust-list">
@@ -321,6 +333,28 @@
     lucide.createIcons();
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
+
+    // 11. Premium Rotating Badge Logic Core
+    const strings = [
+      "🇳🇬 Naija no dey carry last.",
+      "💸 Make money make sense.",
+      "🚀 Built for Africa.",
+      "⭐ First 10,000 Founding Risers."
+    ];
+    let idx = 0;
+    const badgeEl = document.getElementById('rotating-badge');
+    const badgeText = badgeEl ? badgeEl.querySelector('span') : null;
+    
+    if (badgeText) {
+      setInterval(() => {
+        badgeEl.classList.add('fade');
+        setTimeout(() => {
+          idx = (idx + 1) % strings.length;
+          badgeText.textContent = strings[idx];
+          badgeEl.classList.remove('fade');
+        }, 350);
+      }, 3000);
+    }
 
     const stage = document.getElementById('stage');
     const layers = stage ? stage.querySelectorAll('.parallax') : [];
