@@ -1,226 +1,600 @@
-<!-- PLACE THIS IN YOUR <head> TO FIX SIZING, MOBILE VIEW, AND HIGHLIGHTS -->
-<style>
-  /* 1. HERO COMPOSITION FIXES (DESKTOP) */
-  .hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    overflow: visible;
-  }
-  .hero-text-side {
-    flex: 1;
-    max-width: 55%; /* Keeps text strictly on the left */
-    z-index: 2;
-  }
-  .hero-image-side {
-    flex: 1;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    z-index: 1;
-  }
-  /* Enlarging the hero girl significantly without shifting her position */
-  .hero-image-side img.hero-girl {
-    width: 125%; /* Boosted size */
-    max-width: none;
-    transform: scale(1.15) translateY(5%); /* Scales up cleanly while staying anchored */
-    transform-origin: bottom right;
-    object-fit: contain;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISE — Build Trust</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  /* 2. TEXT HIGHLIGHTING */
-  .highlight-green {
-    color: #00FF87; /* Replace with your exact RISE green hex */
-    font-weight: bold;
-  }
+        :root {
+            --bg-color: #0A0A0A;
+            --card-bg: #141414;
+            --border-color: #222;
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --rise-green: #00FF87;
+        }
 
-  /* 3. MOTORCYCLE MAN SECTION CLEANUP */
-  .next-move-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-  .next-move-text {
-    max-width: 45%; /* Shrinks headline footprint so it doesn't cover the photo */
-  }
-  .next-move-image-wrapper {
-    max-width: 50%;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .next-move-image-wrapper img {
-    max-width: 100%;
-    object-fit: cover;
-  }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
 
-  /* 4. ROBUST MOBILE RESPONSIVENESS OVERRIDES */
-  @media (max-width: 768px) {
-    .hero-container {
-      flex-direction: column;
-      text-align: center;
-      padding-top: 1rem;
-    }
-    .hero-text-side {
-      max-width: 100%;
-      margin-bottom: 0; /* Closes up the dead space gap */
-    }
-    /* Mobile Hero Girl: Massive, aggressive sizing, no dead space */
-    .hero-image-side {
-      width: 100%;
-      margin-top: -20px; /* Pulls her up into the composition */
-      justify-content: center;
-    }
-    .hero-image-side img.hero-girl {
-      width: 95%; 
-      transform: scale(1) translateY(0);
-      margin: 0 auto;
-    }
-    
-    /* Mobile Navigation Drawer Menu */
-    .mobile-menu-drawer {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      height: 100vh;
-      background: #111; /* Your dark theme background */
-      z-index: 999;
-      transition: right 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      padding: 80px 40px;
-      gap: 24px;
-    }
-    .mobile-menu-drawer.active {
-      right: 0;
-    }
-    .hamburger-btn {
-      display: block !important;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    
-    /* Adjusting the text block overlaying the motorcycle photo on mobile */
-    .next-move-section {
-      flex-direction: column-reverse; /* Puts photo clear of text or vice-versa */
-    }
-    .next-move-text {
-      max-width: 100%;
-    }
-  }
+        /* UTILITIES & HIGHLIGHTS */
+        .highlight-green {
+            color: var(--rise-green);
+            font-weight: 700;
+        }
+        
+        .no-wrap {
+            white-space: nowrap;
+        }
 
-  /* 5. QUICK MODAL/POPUP STYLES FOR "ABOUT US" */
-  .about-popup-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 2000; visibility: hidden; opacity: 0;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-  }
-  .about-popup-overlay.active {
-    visibility: visible; opacity: 1;
-  }
-  .about-popup-card {
-    background: #1A1A1A; border: 1px solid #333; padding: 32px;
-    border-radius: 12px; max-width: 450px; width: 90%; position: relative;
-  }
-  .about-popup-close {
-    position: absolute; top: 16px; right: 16px; cursor: pointer; color: #fff;
-  }
-</style>
+        /* HEADER & NAVIGATION */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 8%;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            z-index: 100;
+            background: var(--bg-color);
+        }
 
-<!-- ================================================================= -->
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
 
-<!-- COPIED & CORRECTED TEXT LAYOUT FOR MANUALLY FIXING TYPOS -->
+        nav.desktop-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
 
-<!-- Header Links Area Updates -->
-<!-- Note the smooth scroll anchors (#why-rise, #how-it-works, etc.) and the Contest link right next to About Us -->
-<nav class="desktop-nav">
-  <a href="#why-rise">Why RISE</a>
-  <a href="#how-it-works">How It Works</a>
-  <a href="#who-its-for">Who It's For</a>
-  <a href="#for-businesses">For Businesses</a>
-  <a href="#" id="about-us-trigger">About Us</a>
-  <a href="#" class="contest-link-header" onclick="openContestPopup()">August Contest</a>
-</nav>
+        nav.desktop-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
 
-<!-- Hamburger Button (Visible on Mobile Only) -->
-<div class="hamburger-btn" style="display:none;" onclick="toggleMobileMenu()">
-  <!-- Simple CSS/SVG Hamburger Icon -->
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-</div>
+        nav.desktop-nav a:hover {
+            color: var(--text-main);
+        }
 
-<!-- Complete Mobile Menu Drawer Including Contest -->
-<div class="mobile-menu-drawer" id="mobileDrawer">
-  <a href="#why-rise" onclick="toggleMobileMenu()">Why RISE</a>
-  <a href="#how-it-works" onclick="toggleMobileMenu()">How It Works</a>
-  <a href="#who-its-for" onclick="toggleMobileMenu()">Who It's For</a>
-  <a href="#for-businesses" onclick="toggleMobileMenu()">For Businesses</a>
-  <a href="#" onclick="toggleMobileMenu(); openAboutPopup();">About Us</a>
-  <a href="#" style="color: #00FF87;" onclick="toggleMobileMenu(); openContestPopup();">August Contest</a>
-</div>
+        nav.desktop-nav a.contest-link-header {
+            color: var(--rise-green);
+            border: 1px solid rgba(0, 255, 135, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: rgba(0, 255, 135, 0.05);
+        }
 
-<!-- Typo Correction & Moto Formatting -->
-<div class="hero-text-side">
-  <!-- Ensure Build Trust is on a single line wrap if needed without breaks -->
-  <h1>Build Trust.</h1> 
-  <p>
-    Your work should do more than pay today's bills. RISE helps you turn what you do into a reputation you can prove, payments you can trust, and opportunities that grow with you.
-  </p>
-  <p class="moto-line">Make money make <span class="highlight-green">sense.</span></p>
-  <p class="location-tag">Starting in Abuja and Lagos</p>
-</div>
+        nav.desktop-nav a.contest-link-header:hover {
+            background: rgba(0, 255, 135, 0.15);
+            color: var(--rise-green);
+        }
 
-<!-- Footer Fix -->
-<footer class="footer-line">
-  <p>Made in Nigeria. Designed for Africa.</p>
-</footer>
+        /* Hamburger Button */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 4px;
+        }
 
-<!-- About Us Popup Structure -->
-<div class="about-popup-overlay" id="aboutPopup">
-  <div class="about-popup-card">
-    <span class="about-popup-close" onclick="closeAboutPopup()">&times;</span>
-    <h3 style="margin-top:0; color:#00FF87;">Who We Are</h3>
-    <p style="color:#ccc; line-height: 1.6; margin-bottom:0;">
-      RISE is built to bridge the trust gap. We empower talent and businesses across Africa by turning everyday work into verified reputations, securing payments cleanly, and creating a workspace where tracking performance makes growth inevitable.
-    </p>
-  </div>
-</div>
+        /* Mobile Menu Drawer */
+        .mobile-menu-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: #111;
+            border-left: 1px solid var(--border-color);
+            z-index: 999;
+            transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 100px 40px;
+            gap: 28px;
+        }
 
-<!-- ================================================================= -->
+        .mobile-menu-drawer.active {
+            right: 0;
+        }
 
-<!-- JAVASCRIPT LOGIC FOR INTERACTIONS & DE-DUPLICATING POPUPS -->
-<script>
-  // On Page Load: ONLY show the August Contest popup, bypass the redundant generic one
-  window.addEventListener('DOMContentLoaded', () => {
-    // If you have an automated trigger script running both, disable the generic one here
-    if (typeof openContestPopup === 'function') {
-      openContestPopup(); // Only auto-launch the contest
-    }
-  });
+        .mobile-menu-drawer a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-  // Mobile Menu Toggle
-  function toggleMobileMenu() {
-    document.getElementById('mobileDrawer').classList.toggle('active');
-  }
+        .mobile-menu-drawer .contest-mobile {
+            color: var(--rise-green);
+            margin-top: 12px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
 
-  // About Us Modal Controls
-  const aboutTrigger = document.getElementById('about-us-trigger');
-  if(aboutTrigger) {
-    aboutTrigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      openAboutPopup();
-    });
-  }
+        /* HERO SECTION */
+        .hero-section {
+            padding: 60px 8% 0 8%;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: visible;
+        }
 
-  function openAboutPopup() {
-    document.getElementById('aboutPopup').classList.add('active');
-  }
-  function closeAboutPopup() {
-    document.getElementById('aboutPopup').classList.remove('active');
-  }
-</script>
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .hero-text-side {
+            flex: 1;
+            max-width: 55%;
+            z-index: 2;
+        }
+
+        .hero-text-side h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .hero-text-side p.hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .moto-line {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .location-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .hero-image-side {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+            height: 100%;
+        }
+
+        /* Enlarging the girl cleanly anchored on the bottom right side */
+        .hero-image-side img.hero-girl {
+            width: 120%;
+            max-width: none;
+            transform: scale(1.15) translateY(4%);
+            transform-origin: bottom right;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* SECTION: YOUR NEXT MOVE (MOTORCYCLE) */
+        .next-move-section {
+            padding: 100px 8%;
+            background: #0D0D0D;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .next-move-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .next-move-text {
+            flex: 1;
+            max-width: 45%; /* Shrinks footprint down so typography doesn't mask the photo */
+        }
+
+        .next-move-text h2 {
+            font-size: 40px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .next-move-text p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .next-move-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            max-width: 50%;
+        }
+
+        .next-move-image-wrapper img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+        }
+
+        /* ANCHOR SECTIONS FOR MARGINAL LINKS */
+        .content-section {
+            padding: 100px 8%;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .section-placeholder {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-placeholder h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 8%;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-line p {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* MODAL POPUPS STYLES */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .popup-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+        }
+
+        .popup-overlay.active .popup-card {
+            transform: scale(1);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 24px;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+        }
+
+        .popup-close:hover {
+            color: var(--text-main);
+        }
+
+        .popup-card h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .popup-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVE RESPONSIVENESS OVERRIDES (MOBILE & TABLET) */
+        @media (max-width: 991px) {
+            .hero-text-side h1 { font-size: 52px; }
+            .hero-image-side img.hero-girl { width: 110%; transform: scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 20px 6%; }
+            nav.desktop-nav { display: none; }
+            .hamburger-btn { display: block; }
+
+            .hero-section {
+                padding: 40px 6% 0 6%;
+                min-height: auto;
+            }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .hero-text-side {
+                max-width: 100%;
+                margin-bottom: 0; /* Clear out dead space gap entirely */
+            }
+
+            .hero-text-side h1 {
+                font-size: 44px;
+                margin-bottom: 16px;
+            }
+
+            /* Massive mobile image layout with zero clipping or extra empty gaps */
+            .hero-image-side {
+                width: 100%;
+                margin-top: 10px;
+                justify-content: center;
+                align-items: flex-end;
+            }
+
+            .hero-image-side img.hero-girl {
+                width: 100%;
+                max-width: 420px;
+                transform: none;
+                margin: 0 auto;
+            }
+
+            /* Motorcycle section reconfiguration */
+            .next-move-section { padding: 60px 6%; }
+            .next-move-container {
+                flex-direction: column-reverse; /* Switches layout priority cleanly */
+                gap: 32px;
+            }
+            .next-move-text { max-width: 100%; text-align: center; }
+            .next-move-image-wrapper { max-width: 100%; justify-content: center; }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 30px 6%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / LOGO & NAVIGATION ARCHITECTURE -->
+    <header>
+        <div class="logo">RISE</div>
+        
+        <nav class="desktop-nav">
+            <a href="#why-rise">Why RISE</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#who-its-for">Who It's For</a>
+            <a href="#for-businesses">For Businesses</a>
+            <a id="aboutUsDesktopBtn">About Us</a>
+            <a class="contest-link-header" id="contestDesktopBtn">August Contest</a>
+        </nav>
+
+        <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </header>
+
+    <!-- MOBILE SYSTEM SLIDE MENU DRAWER -->
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+        <a href="#why-rise" onclick="toggleMobileMenu()">Why RISE</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()">How It Works</a>
+        <a href="#who-its-for" onclick="toggleMobileMenu()">Who It's For</a>
+        <a href="#for-businesses" onclick="toggleMobileMenu()">For Businesses</a>
+        <a id="aboutUsMobileBtn">About Us</a>
+        <a id="contestMobileBtn" class="contest-mobile">August Contest</a>
+    </div>
+
+    <!-- MAIN LANDING HERO CONTAINER -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-text-side">
+                <h1 class="no-wrap">Build Trust.</h1>
+                <p class="hero-description">
+                    Your work should do more than pay today's bills. RISE helps you turn what you do into a reputation you can prove, payments you can trust, and opportunities that grow with you.
+                </p>
+                <p class="moto-line">Make money make <span class="highlight-green">sense.</span></p>
+                <div class="location-tag">Starting in Abuja and Lagos</div>
+            </div>
+            
+            <div class="hero-image-side">
+                <!-- Main Attaction Image Node -->
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="RISE Independent Professional Leader" class="hero-girl">
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERMEDIATE ANCHORED PAGES -->
+    <div id="why-rise" class="content-section">
+        <div class="section-placeholder">
+            <h2>Why RISE</h2>
+            <p style="color: var(--text-muted);">Transforming performance capture and secure milestones into verified assets across regional economic hubs.</p>
+        </div>
+    </div>
+
+    <div id="how-it-works" class="content-section">
+        <div class="section-placeholder">
+            <h2>How It Works</h2>
+            <p style="color: var(--text-muted);">Scope your dynamic parameters, execute smart payment integrations seamlessly, and construct permanent operational validation.</p>
+        </div>
+    </div>
+
+    <!-- RECONFIGURED MOTORCYCLE MAN SECTOR COMPOSITION -->
+    <section id="who-its-for" class="next-move-section">
+        <div class="next-move-container">
+            <div class="next-move-text">
+                <h2>Your Next Move.</h2>
+                <p>
+                    Whether managing decentralized cargo infrastructure or scaled operational ecosystems, ensure that every interaction leaves an unalterable footprint of execution. Get work, get paid, and build <span class="highlight-green">trust.</span>
+                </p>
+            </div>
+            <div class="next-move-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" alt="Logistics Logistics Driver and Mobility Network Profile">
+            </div>
+        </div>
+    </section>
+
+    <div id="for-businesses" class="content-section">
+        <div class="section-placeholder">
+            <h2>For Businesses</h2>
+            <p style="color: var(--text-muted);">Mitigate delivery risks completely, establish trust pathways across variable markets, and scale transactional output safely.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER ARCHITECTURE -->
+    <footer>
+        <div class="footer-line">
+            <p>Made in Nigeria. Designed for Africa.</p>
+        </div>
+        <div style="color: var(--text-muted); font-size: 14px;">
+            &copy; 2026 RISE. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- INTERACTION COMPONENT: ABOUT US POPUP -->
+    <div class="popup-overlay" id="aboutPopupOverlay">
+        <div class="popup-card">
+            <button class="popup-close" id="closeAboutPopup">&times;</button>
+            <h3 class="highlight-green">Who We Are</h3>
+            <p>
+                RISE is built to bridge the trust gap. We empower talent and businesses across Africa by turning everyday work into verified reputations, securing payments cleanly, and creating a workspace where tracking performance makes growth inevitable.
+            </p>
+        </div>
+    </div>
+
+    <!-- INTERACTION COMPONENT: CONTEST POPUP -->
+    <div class="popup-overlay" id="contestPopupOverlay">
+        <div class="popup-card">
+            <button class="popup-close" id="closeContestPopup">&times;</button>
+            <h3>August Contest</h3>
+            <p style="margin-bottom: 16px;">
+                Join the launch race this month. Secure early waitlist priority status, accumulate performance points before general deployment, and access foundational network rewards.
+            </p>
+            <div class="highlight-green" style="font-weight:600; font-size:14px;">Bypassing redundant secondary window... Active Status Enabled</div>
+        </div>
+    </div>
+
+    <!-- APPLICATION SYSTEM LOGIC ACTIONS -->
+    <script>
+        // Drawer Toggle System Control
+        function toggleMobileMenu() {
+            document.getElementById('mobileDrawer').classList.toggle('active');
+        }
+
+        // Close drawer cleanly if a content target link is targeted
+        window.addEventListener('hashchange', () => {
+            document.getElementById('mobileDrawer').classList.remove('active');
+        });
+
+        // Popup Target Selectors
+        const aboutOverlay = document.getElementById('aboutPopupOverlay');
+        const contestOverlay = document.getElementById('contestPopupOverlay');
+
+        // Opening Triggers Execution Definitions
+        function openAbout() {
+            aboutOverlay.classList.add('active');
+        }
+
+        function openContest() {
+            contestOverlay.classList.add('active');
+        }
+
+        // Event Setup Listeners for About Interface Elements
+        document.getElementById('aboutUsDesktopBtn').addEventListener('click', (e) => { e.preventDefault(); openAbout(); });
+        document.getElementById('aboutUsMobileBtn').addEventListener('click', (e) => { e.preventDefault(); toggleMobileMenu(); openAbout(); });
+        document.getElementById('closeAboutPopup').addEventListener('click', () => aboutOverlay.classList.remove('active'));
+
+        // Event Setup Listeners for Contest Interface Elements
+        document.getElementById('contestDesktopBtn').addEventListener('click', (e) => { e.preventDefault(); openContest(); });
+        document.getElementById('contestMobileBtn').addEventListener('click', (e) => { e.preventDefault(); toggleMobileMenu(); openContest(); });
+        document.getElementById('closeContestPopup').addEventListener('click', () => contestOverlay.classList.remove('active'));
+
+        // Close overlays cleanly when backdrop fields are selected
+        window.addEventListener('click', (e) => {
+            if (e.target === aboutOverlay) aboutOverlay.classList.remove('active');
+            if (e.target === contestOverlay) contestOverlay.classList.remove('active');
+        });
+
+        // PAGE LOAD INITIALIZATION: Trigger ONLY the Contest Popup automatically (De-duplicating redundancy)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                openContest();
+            }, 600); // Smooth loading entry offset delay parameter
+        });
+    </script>
+</body>
+</html>
