@@ -8,7 +8,10 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- FIX: External scripts must be completely self-closed and separate from inline JS -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  
   <style>
     :root{--green:#39FF14;--white:#fff;--muted:rgba(255,255,255,.72);--head:'Plus Jakarta Sans',system-ui,sans-serif;--body:'DM Sans',system-ui,sans-serif;--ease:cubic-bezier(.16,1,.3,1)}
     *{box-sizing:border-box;margin:0;padding:0} html,body{width:100%;overflow-x:hidden;scroll-behavior:smooth} body{min-height:100vh;background:#010201;color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased}
@@ -140,6 +143,10 @@
     /* FOOTER */
     .site-footer{position:relative;padding:80px 0 0;background:#010201;border-top:1px solid rgba(57,255,20,.10)}
     .footer-top{display:grid;grid-template-columns:1.1fr 2fr;gap:60px;padding-bottom:60px}
+    
+    /* FIX: Added style rules to prevent brand logo from collapsing in the footer */
+    .footer-brand img {width: 110px; height: auto; display: block; margin-bottom: 18px; filter: drop-shadow(0 0 12px rgba(57,255,20,.2));}
+    
     .footer-logo{font-family:var(--head);font-size:26px;font-weight:800;color:var(--green);margin-bottom:18px}
     .footer-tagline{font-size:15px;color:rgba(255,255,255,.62);line-height:1.6}
     .footer-columns{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -188,7 +195,7 @@
 
 
     /* FINAL EXPO POLISH */
-    .waitlist-section{min-height:940px;background:linear-gradient(90deg,rgba(1,2,1,.98) 0%,rgba(1,2,1,.88) 34%,rgba(1,2,1,.48) 66%,rgba(1,2,1,.22) 100%),linear-gradient(180deg,rgba(1,2,1,.08),rgba(1,2,1,.90)),var(--moto-bg, none) center right/cover no-repeat}
+    .waitlist-section{min-height:940px;background:linear-gradient(90deg,rgba(1,2,1,.98) 0%,rgba(1,2,1,.88) 34%,rgba(1,2,1,.48) 66%,rgba(1,2,1,.22) 100%),linear-gradient(180deg,rgba(1,2,1,.08),rgba(1,2,1,.90)),url("motorcycle-rider.png") center right/cover no-repeat}
     .waitlist-section:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 72% 45%,rgba(57,255,20,.14),transparent 43%);z-index:0}
     .waitlist-intro,.waitlist-section>.container{position:relative;z-index:2}
     .waitlist-perks{max-width:1160px;grid-template-columns:repeat(5,1fr);padding:24px;border-radius:24px;background:rgba(1,2,1,.58);border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(14px)}
@@ -199,22 +206,7 @@
     .legal-header{display:flex;align-items:center;justify-content:space-between;padding:22px 26px;border-bottom:1px solid rgba(255,255,255,.08)}.legal-brand{font-family:var(--head);font-size:20px;font-weight:800;color:var(--green)}.legal-brand span{font-size:10px;color:rgba(255,255,255,.45);margin-left:8px;letter-spacing:.18em}
     .legal-close{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;display:grid;place-items:center;cursor:pointer}.legal-body{padding:38px 46px 54px;overflow-y:auto}.legal-body h2{font-family:var(--head);font-size:clamp(32px,4vw,50px);margin-bottom:8px}.legal-body h3{font-family:var(--head);font-size:19px;color:var(--green);margin:30px 0 10px}.legal-body p,.legal-body li{font-size:15px;line-height:1.75;color:rgba(255,255,255,.70)}.legal-body p{margin-bottom:14px}.legal-body ul{padding-left:22px}.legal-body a{color:var(--green)}.legal-date{color:var(--green)!important;margin-bottom:28px!important}
     @media(max-width:900px){.waitlist-perks{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:760px){.waitlist-section{background:linear-gradient(180deg,rgba(1,2,1,.70),rgba(1,2,1,.96)),var(--moto-bg, none) 60% center/cover no-repeat}.waitlist-perks{grid-template-columns:1fr}.legal-modal{padding:10px}.legal-shell{height:92vh;border-radius:20px}.legal-body{padding:28px 22px 42px}}
-
-    
-    /* MONTHLY CONTEST POPUP */
-    .contest-modal{position:fixed;inset:0;z-index:350;display:none;align-items:center;justify-content:center;padding:22px}
-    .contest-modal.active{display:flex}
-    .contest-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-    .contest-card{position:relative;z-index:2;width:min(520px,100%);padding:46px 38px 38px;border-radius:30px;text-align:center;overflow:hidden;background:radial-gradient(circle at 50% -10%,rgba(57,255,20,.22),transparent 45%),#050705;border:1px solid rgba(57,255,20,.48);box-shadow:0 45px 110px rgba(0,0,0,.82),0 0 70px rgba(57,255,20,.13)}
-    .contest-card:before{content:"";position:absolute;inset:-1px;pointer-events:none;border-radius:30px;background:linear-gradient(120deg,rgba(57,255,20,.12),transparent 30%,transparent 70%,rgba(57,255,20,.06))}
-    .contest-close{position:absolute;top:15px;right:15px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);color:#fff;display:grid;place-items:center;cursor:pointer}
-    .contest-kicker{position:relative;display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;padding:8px 13px;border:1px solid rgba(57,255,20,.30);border-radius:999px;color:var(--green);font-family:var(--head);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
-    .contest-card h2{position:relative;font-family:var(--head);font-size:clamp(34px,6vw,52px);line-height:1;letter-spacing:-.05em;margin-bottom:16px}
-    .contest-card h2 span{color:var(--green)}
-    .contest-card p{position:relative;color:rgba(255,255,255,.70);font-size:16px;line-height:1.65;margin:0 auto 26px;max-width:420px}
-    .contest-card .btn-primary{position:relative;width:100%;min-height:58px}
-    .contest-note{position:relative;margin-top:16px!important;margin-bottom:0!important;font-size:12px!important;color:rgba(255,255,255,.42)!important}
+    @media(max-width:760px){.waitlist-section{background:linear-gradient(180deg,rgba(1,2,1,.70),rgba(1,2,1,.96)),url("motorcycle-rider.png") 60% center/cover no-repeat}.waitlist-perks{grid-template-columns:1fr}.legal-modal{padding:10px}.legal-shell{height:92vh;border-radius:20px}.legal-body{padding:28px 22px 42px}}
 
     @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.dot-ring,.hint-dot{animation:none!important}}
   </style>
@@ -222,13 +214,13 @@
 <body>
   <div class="page">
     <nav id="nav"><div class="container nav-inner"><a href="#" class="brand" aria-label="RISE home"><img src="rise-wordmark.png" alt="RISE" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"/><span class="brand-fallback">RISE</span></a><div class="nav-links" aria-label="Primary navigation"><a href="#why">Why RISE</a><a href="#how">How it works</a><a href="#for">Who it's for</a><a href="#business">For businesses</a><a href="#about">About us</a></div><a class="nav-cta" href="https://tally.so/r/68py7B" target="_blank" rel="noopener">Join the Waitlist <i data-lucide="arrow-up-right"></i></a></div></nav>
-    <header class="hero" id="top"><div class="hero-ambient" aria-hidden="true"><div class="hero-smoke"></div></div><div class="container hero-inner"><section class="hero-copy-block reveal" aria-label="RISE hero introduction"><div class="eyebrow-row"><div class="eyebrow">Built for Nigeria. Designed for Africa.</div><div class="tag-chip" id="rotating-badge"><i data-lucide="sparkles"></i><span>🇳🇬 Naija no dey carry last.</span></div></div><h1><span>Get work.</span><span>Get paid.</span><span class="green">Build Trust.</span></h1><p class="hero-copy">RISE helps everyday Nigerians turn completed work into proof, payments into confidence, and trust into bigger opportunities.</p><div class="actions"><a class="btn-primary" href="https://tally.so/r/68py7B" target="_blank" rel="noopener">Join the Waitlist <i data-lucide="arrow-up-right"></i></a><a class="btn-secondary" href="#how"><i data-lucide="play"></i> See how it works</a></div><div class="proof" aria-label="Social proof"><div class="avatars" aria-hidden="true"><div class="avatar"><img src="Girl1.jpg" alt=""/></div><div class="avatar"><img src="Girl2.png" alt=""/></div><div class="avatar"><img src="Man1.jpg" alt=""/></div><div class="avatar"><img src="Man2.jpg" alt=""/></div></div><span>Join Nigerians getting in early.</span></div></section><section class="hero-stage reveal reveal-delay" aria-label="RISE visual preview"><div class="stage-ring" aria-hidden="true"></div><div class="woman"><img id="heroWoman" src="./hero-woman.png" alt="Nigerian woman looking toward the future"/></div></section></div><div class="scroll-mark" aria-hidden="true">Scroll</div></header>
+    <header class="hero" id="top"><div class="hero-ambient" aria-hidden="true"><div class="hero-smoke"></div></div><div class="container hero-inner"><section class="hero-copy-block reveal" aria-label="RISE hero introduction"><div class="eyebrow-row"><div class="eyebrow">Built for Nigeria. Designed for Africa.</div><div class="tag-chip" id="rotating-badge"><i data-lucide="sparkles"></i><span>🇳🇬 Naija no dey carry last.</span></div></div><h1><span>Get work.</span><span>Get paid.</span><span class="green">Build Trust.</span></h1><p class="hero-copy">RISE helps everyday Nigerians turn completed work into proof, payments into confidence, and trust into bigger opportunities.</p><div class="actions"><a class="btn-primary" href="https://tally.so/r/68py7B" target="_blank" rel="noopener">Join the Waitlist <i data-lucide="arrow-up-right"></i></a><a class="btn-secondary" href="#how"><i data-lucide="play"></i> See how it works</a></div><div class="proof" aria-label="Social proof"><div class="avatars" aria-hidden="true"><div class="avatar"><img src="Girl1.jpg" alt=""/></div><div class="avatar"><img src="Girl2.png" alt=""/></div><div class="avatar"><img src="Man1.jpg" alt=""/></div><div class="avatar"><img src="Man2.jpg" alt=""/></div></div><span>Join Nigerians getting in early.</span></div></section><section class="hero-stage reveal reveal-delay" aria-label="RISE visual preview"><div class="stage-ring" aria-hidden="true"></div><div class="woman"><img src="hero-woman.png" alt="Nigerian woman looking toward the future"/></div></section></div><div class="scroll-mark" aria-hidden="true">Scroll</div></header>
 
     <section class="how-section" id="how">
       <div class="container how-grid">
         <div class="how-copy-block reveal">
           <h2 class="section-title">How RISE <span>Helps You</span></h2>
-          <p class="how-copy">Your work should do more than pay today\'s bills. RISE helps you turn what you do into a reputation you can prove, payments you can trust, and opportunities that grow with you.<br><span class="how-copy-tag">Make money make sense.</span></p>
+          <p class="how-copy">Your work should do more than pay today's bills. RISE helps you turn what you do into a reputation you can prove, payments you can trust, and opportunities that grow with you.<br><span class="how-copy-tag">Make money make sense.</span></p>
           <div class="feature-list">
             <details class="feature-row active" open><summary><div class="feature-icon"><i data-lucide="shield-check"></i></div><h3>Build a Reputation That Follows You</h3><i class="chev" data-lucide="chevron-right"></i></summary><p>Turn completed work, reviews, and reliability into a trusted track record that speaks for you.</p></details>
             <details class="feature-row" open><summary><div class="feature-icon"><i data-lucide="wallet"></i></div><h3>Get Paid Safely</h3><i class="chev" data-lucide="chevron-right"></i></summary><p>No chasing customers. No "I'll pay tomorrow."</p></details>
@@ -361,7 +353,9 @@
     <footer class="site-footer">
       <div class="container footer-top">
         <div class="footer-brand">
-          <div class="footer-logo">RISE</div>
+          <!-- FIX: Swapped plain text logo for the proper image asset matching your nav header -->
+          <img src="rise-wordmark.png" alt="RISE" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+          <div class="footer-logo" style="display:none;">RISE</div>
           <p class="footer-tagline">Get Work.<br>Get Paid.<br>Build Trust.</p>
         </div>
         <div class="footer-columns">
@@ -378,20 +372,7 @@
       </div>
     </footer>
 
-
-    <div class="contest-modal" id="contestModal" aria-hidden="true">
-      <div class="contest-backdrop" data-close-contest></div>
-      <div class="contest-card" role="dialog" aria-modal="true" aria-labelledby="contestTitle">
-        <button class="contest-close" data-close-contest aria-label="Close"><i data-lucide="x"></i></button>
-        <div class="contest-kicker"><i data-lucide="gift"></i> RISE Community Perks</div>
-        <h2 id="contestTitle">Get in early.<br><span>Win along the way.</span></h2>
-        <p>Join the RISE waitlist to be among the first to hear about our monthly contests, giveaways, launch surprises, and opportunities for the RISE community.</p>
-        <a class="btn-primary" href="https://tally.so/r/68py7B" target="_blank" rel="noopener">Join the Waitlist <i data-lucide="arrow-up-right"></i></a>
-        <p class="contest-note">Built for Nigeria. Designed for Africa.</p>
-      </div>
-    </div>
-
-<div class="legal-modal" id="legalModal" aria-hidden="true"><div class="legal-backdrop" data-close-legal></div><div class="legal-shell" role="dialog" aria-modal="true"><div class="legal-header"><div class="legal-brand">RISE <span>LEGAL</span></div><button class="legal-close" data-close-legal aria-label="Close"><i data-lucide="x"></i></button></div><div class="legal-body" id="legalBody"></div></div></div><template id="termsTemplate"><h2>RISE Terms of Service</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>Welcome to RISE. These Terms of Service (“Terms”) govern your access to and use of the RISE website, waitlist, surveys, forms, and other pre-launch services and experiences provided by <strong>RISE Africa Technologies Limited</strong> (“RISE,” “we,” “us,” or “our”), collectively referred to as the “Service.” By accessing or using the Service, you agree to these Terms.</p><h3>1. Eligibility</h3><p>You must be at least 18 years old to use the Service or otherwise have the legal capacity and appropriate consent required under applicable law.</p><h3>2. Waitlist, Surveys & Information</h3><p>You may join the waitlist, participate in surveys, submit forms, or register interest. Information you provide must be accurate and not intentionally misleading. Joining does not guarantee platform access, beta participation, or any particular feature.</p><h3>3. Pre-Launch Services</h3><p>RISE is currently under development. Planned features, functionality, pricing, eligibility requirements, launch dates, and availability may change.</p><h3>4. Acceptable Use</h3><p>You agree not to misrepresent your identity; submit fraudulent information; attempt unauthorised access; disrupt the Service; use it for unlawful or harmful activities; introduce malicious technology; or use RISE intellectual property without permission.</p><h3>5. Privacy</h3><p>Our Privacy Policy explains how we collect, use, store, and protect personal information.</p><h3>6. Communications</h3><p>By providing contact information, you may receive waitlist confirmations, company and product updates, launch announcements, research requests, event information, testing opportunities, and important notices. Where required by law, you may unsubscribe from promotional communications.</p><h3>7. Intellectual Property</h3><p>Unless otherwise stated, the RISE name, brand, logos, designs, graphics, website content, written materials, technology concepts, and other materials are owned by or licensed to RISE and may not be commercially exploited without written permission.</p><h3>8. Third-Party Services</h3><p>RISE is not responsible for the content, availability, security, privacy practices, or actions of third-party services linked to or integrated with the Service.</p><h3>9. Modifications</h3><p>RISE may update, modify, suspend, or discontinue any part of the Service or update these Terms from time to time.</p><h3>10. Suspension or Termination</h3><p>We may restrict, suspend, or terminate access where we reasonably believe these Terms have been violated or the Service or community may be harmed.</p><h3>11. Disclaimer</h3><p>The Service is provided on an “as is” and “as available” basis. We do not guarantee uninterrupted, secure, or error-free availability. Future product information may change before launch.</p><h3>12. Limitation of Liability</h3><p>To the maximum extent permitted by applicable law, RISE will not be liable for indirect, incidental, special, or consequential losses arising from use of or inability to use the Service.</p><h3>13. Governing Law</h3><p>These Terms are governed by applicable laws of the Federal Republic of Nigeria.</p><h3>14. Future Platform Terms</h3><p>Additional or updated terms may apply when RISE introduces user accounts, opportunity features, reputation or trust systems, financial tools, savings features, payment services, or third-party partner services.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template><template id="privacyTemplate"><h2>RISE Privacy Policy</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>RISE (“RISE,” “we,” “us,” or “our”) respects your privacy. This policy explains how <strong>RISE Africa Technologies Limited</strong> collects, uses, stores, and protects information when you interact with our website and pre-launch services.</p><h3>1. Information We Collect</h3><p>We may collect your name, email, phone number, general location, occupation or business information, survey and research responses, product interests, feedback, event or beta participation information, and basic technical information. Please do not submit sensitive personal information unless specifically requested and necessary.</p><h3>2. Information Collected Automatically</h3><p>Cookies, analytics tools, or similar technologies may collect IP address, browser and device type, operating system, pages visited, access time, referral source, and general interaction information.</p><h3>3. How We Use Your Information</h3><p>We may use information to manage the waitlist, communicate about RISE, send updates, invite users to testing or research, conduct surveys, improve products, analyse engagement, organise events or promotions, respond to requests, protect our services, prevent misuse, and comply with legal requirements.</p><h3>4. Communications</h3><p>We may contact you about registration, product updates, launch announcements, beta testing, research, surveys, events, community activities, relevant opportunities, and important service, privacy, or security notices.</p><h3>5. How We Share Information</h3><p>RISE does not sell your personal information. We may share information with trusted providers supporting hosting, storage, communications, forms, analytics, support, security, and professional services, or where required by law.</p><h3>6. Data Storage and Security</h3><p>We take reasonable administrative, organisational, and technical measures designed to protect personal information. No electronic transmission or storage method is completely secure.</p><h3>7. Cookies and Analytics</h3><p>We may use cookies and analytics tools to understand website traffic and improve user experience. Where required, we will request appropriate consent.</p><h3>8. Your Privacy Rights</h3><p>Depending on applicable law and location, you may have rights to access, correct, delete, object to or restrict uses of your information, withdraw consent, and request information about processing.</p><h3>9. Children's Privacy</h3><p>Current RISE services are not intended for children under 18. We do not knowingly collect their personal information through our waitlist or pre-launch services.</p><h3>10. Third-Party Links</h3><p>RISE is not responsible for the privacy practices, security, or content of third-party services.</p><h3>11. International Data Processing</h3><p>Some providers may process or store information outside Nigeria. We will take reasonable steps to apply appropriate protections as required by applicable law.</p><h3>12. Nigeria Data Protection</h3><p>RISE intends to handle personal information in accordance with applicable Nigerian data protection requirements, including the Nigeria Data Protection Act 2023 and other applicable regulations or guidance.</p><h3>13. Future RISE Platform Features</h3><p>As RISE launches additional functionality, additional information may be collected for user accounts, identity verification, profiles, reputation or trust systems, transactions, payments, savings tools, or authorised third-party services. This policy may be updated accordingly.</p><h3>14. Changes to This Policy</h3><p>We may update this Privacy Policy as RISE develops or legal and regulatory requirements change.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template>
+<div class="legal-modal" id="legalModal" aria-hidden="true"><div class="legal-backdrop" data-close-legal></div><div class="legal-shell" role="dialog" aria-modal="true"><div class="legal-header"><div class="legal-brand">RISE <span>LEGAL</span></div><button class="legal-close" data-close-legal aria-label="Close"><i data-lucide="x"></i></button></div><div class="legal-body" id="legalBody"></div></div></div><template id="termsTemplate"><h2>RISE Terms of Service</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>Welcome to RISE. These Terms of Service (“Terms”) govern your access to and use of the RISE website, waitlist, surveys, forms, and other pre-launch services and experiences provided by <strong>RISE Africa Technologies Limited</strong> (“RISE,” “we,” “us,” or "our"), collectively referred to as the “Service.” By accessing or using the Service, you agree to these Terms.</p><h3>1. Eligibility</h3><p>You must be at least 18 years old to use the Service or otherwise have the legal capacity and appropriate consent required under applicable law.</p><h3>2. Waitlist, Surveys & Information</h3><p>You may join the waitlist, participate in surveys, submit forms, or register interest. Information you provide must be accurate and not intentionally misleading. Joining does not guarantee platform access, beta participation, or any particular feature.</p><h3>3. Pre-Launch Services</h3><p>RISE is currently under development. Planned features, functionality, pricing, eligibility requirements, launch dates, and availability may change.</p><h3>4. Acceptable Use</h3><p>You agree not to misrepresent your identity; submit fraudulent information; attempt unauthorised access; disrupt the Service; use it for unlawful or harmful activities; introduce malicious technology; or use RISE intellectual property without permission.</p><h3>5. Privacy</h3><p>Our Privacy Policy explains how we collect, use, store, and protect personal information.</p><h3>6. Communications</h3><p>By providing contact information, you may receive waitlist confirmations, company and product updates, launch announcements, research requests, event information, testing opportunities, and important notices. Where required by law, you may unsubscribe from promotional communications.</p><h3>7. Intellectual Property</h3><p>Unless otherwise stated, the RISE name, brand, logos, designs, graphics, website content, written materials, technology concepts, and other materials are owned by or licensed to RISE and may not be commercially exploited without written permission.</p><h3>8. Third-Party Services</h3><p>RISE is not responsible for the content, availability, security, privacy practices, or actions of third-party services linked to or integrated with the Service.</p><h3>9. Modifications</h3><p>RISE may update, modify, suspend, or discontinue any part of the Service or update these Terms from time to time.</p><h3>10. Suspension or Termination</h3><p>We may restrict, suspend, or terminate access where we reasonably believe these Terms have been violated or the Service or community may be harmed.</p><h3>11. Disclaimer</h3><p>The Service is provided on an “as is” and “as available” basis. We do not guarantee uninterrupted, secure, or error-free availability. Future product information may change before launch.</p><h3>12. Limitation of Liability</h3><p>To the maximum extent permitted by applicable law, RISE will not be liable for indirect, incidental, special, or consequential losses arising from use of or inability to use the Service.</p><h3>13. Governing Law</h3><p>These Terms are governed by applicable laws of the Federal Republic of Nigeria.</p><h3>14. Future Platform Terms</h3><p>Additional or updated terms may apply when RISE introduces user accounts, opportunity features, reputation or trust systems, financial tools, savings features, payment services, or third-party partner services.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template><template id="privacyTemplate"><h2>RISE Privacy Policy</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>RISE (“RISE,” “we,” “us,” or “our”) respects your privacy. This policy explains how <strong>RISE Africa Technologies Limited</strong> collects, uses, stores, and protects information when you interact with our website and pre-launch services.</p><h3>1. Information We Collect</h3><p>We may collect your name, email, phone number, general location, occupation or business information, survey and research responses, product interests, feedback, event or beta participation information, and basic technical information. Please do not submit sensitive personal information unless specifically requested and necessary.</p><h3>2. Information Collected Automatically</h3><p>Cookies, analytics tools, or similar technologies may collect IP address, browser and device type, operating system, pages visited, access time, referral source, and general interaction information.</p><h3>3. How We Use Your Information</h3><p>We may use information to manage the waitlist, communicate about RISE, send updates, invite users to testing or research, conduct surveys, improve products, analyse engagement, organise events or promotions, respond to requests, protect our services, prevent misuse, and comply with legal requirements.</p><h3>4. Communications</h3><p>We may contact you about registration, product updates, launch announcements, beta testing, research, surveys, events, community activities, relevant opportunities, and important service, privacy, or security notices.</p><h3>5. How We Share Information</h3><p>RISE does not sell your personal information. We may share information with trusted providers supporting hosting, storage, communications, forms, analytics, support, security, and professional services, or where required by law.</p><h3>6. Data Storage and Security</h3><p>We take reasonable administrative, organisational, and technical measures designed to protect personal information. No electronic transmission or storage method is completely secure.</p><h3>7. Cookies and Analytics</h3><p>We may use cookies and analytics tools to understand website traffic and improve user experience. Where required, we will request appropriate consent.</p><h3>8. Your Privacy Rights</h3><p>Depending on applicable law and location, you may have rights to access, correct, delete, object to or restrict uses of your information, withdraw consent, and request information about processing.</p><h3>9. Children's Privacy</h3><p>Current RISE services are not intended for children under 18. We do not knowingly collect their personal information through our waitlist or pre-launch services.</p><h3>10. Third-Party Links</h3><p>RISE is not responsible for the privacy practices, security, or content of third-party services.</p><h3>11. International Data Processing</h3><p>Some providers may process or store information outside Nigeria. We will take reasonable steps to apply appropriate protections as required by applicable law.</p><h3>12. Nigeria Data Protection</h3><p>RISE intends to handle personal information in accordance with applicable Nigerian data protection requirements, including the Nigeria Data Protection Act 2023 and other applicable regulations or guidance.</p><h3>13. Future RISE Platform Features</h3><p>As RISE launches additional functionality, additional information may be collected for user accounts, identity verification, profiles, reputation or trust systems, transactions, payments, savings tools, or authorised third-party services. This policy may be updated accordingly.</p><h3>14. Changes to This Policy</h3><p>We may update this Privacy Policy as RISE develops or legal and regulatory requirements change.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template>
     <div class="coming-soon-modal" id="comingSoonModal" aria-hidden="true">
       <div class="modal-backdrop" data-close-modal></div>
       <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -403,100 +384,67 @@
     </div>
 
   </div>
-  <script>lucide.createIcons();const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30)},{passive:true});const strings=["Naija no dey carry last.","Make money make sense.","Built for Africa.","First 1,000 Risers."];let idx=0;const badgeEl=document.getElementById('rotating-badge');const badgeText=badgeEl?badgeEl.querySelector('span'):null;if(badgeText){setInterval(()=>{badgeEl.classList.add('fade');setTimeout(()=>{idx=(idx+1)%strings.length;badgeText.textContent=strings[idx];badgeEl.classList.remove('fade')},350)},3200)}const modal=document.getElementById('comingSoonModal');
-const modalMsg=document.getElementById('modalMessage');
-document.querySelectorAll('[data-popup]').forEach(link=>{link.addEventListener('click',e=>{e.preventDefault();modalMsg.textContent=link.dataset.popup||'This page is coming soon.';modal.classList.add('active');modal.setAttribute('aria-hidden','false');lucide.createIcons();});});
-document.querySelectorAll('[data-close-modal]').forEach(el=>{el.addEventListener('click',()=>{modal.classList.remove('active');modal.setAttribute('aria-hidden','true');});});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('active')){modal.classList.remove('active');modal.setAttribute('aria-hidden','true');}});
-const legalModal=document.getElementById('legalModal'),legalBody=document.getElementById('legalBody');document.querySelectorAll('[data-legal]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById(link.dataset.legal+'Template');legalBody.innerHTML=t.innerHTML;legalBody.scrollTop=0;legalModal.classList.add('active');legalModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}));document.querySelectorAll('[data-close-legal]').forEach(el=>el.addEventListener('click',()=>{legalModal.classList.remove('active');legalModal.setAttribute('aria-hidden','true');document.body.style.overflow='';}));</script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Resolve image filenames safely on GitHub/Vercel, including common space/hyphen variants.
-  function firstWorkingImage(candidates, onSuccess) {
-    let i = 0;
-    function tryNext() {
-      if (i >= candidates.length) return;
-      const url = candidates[i++];
-      const test = new Image();
-      test.onload = () => onSuccess(url);
-      test.onerror = tryNext;
-      test.src = url + (url.includes('?') ? '&' : '?') + 'v=20260718';
-    }
-    tryNext();
-  }
-
-  const hero = document.getElementById('heroWoman');
-  if (hero) {
-    firstWorkingImage(
-      ['./hero-woman.png','./hero woman.png','./hero_woman.png','./Hero-woman.png','./Hero Woman.png'],
-      url => { hero.src = url; hero.style.display = 'block'; }
-    );
-  }
-
-  const waitlist = document.querySelector('.waitlist-section');
-  if (waitlist) {
-    firstWorkingImage(
-      ['./motorcycle-rider.png','./motorcycle rider.png','./motorcycle_rider.png','./Motorcycle-rider.png','./Motorcycle Rider.png'],
-      url => waitlist.style.setProperty('--moto-bg', 'url("' + url + '")')
-    );
-  }
-
-  // Generic "coming soon" footer popups.
-  const comingModal = document.querySelector('.coming-soon-modal');
-  const comingText = comingModal ? comingModal.querySelector('p') : null;
-  document.querySelectorAll('[data-popup]').forEach(link => {
-    link.addEventListener('click', e => {
+  
+  <!-- FIX: Moved the modal legal JavaScript block out of the Lucide unpkg script tag and into its own block -->
+  <script>
+    const legalModal=document.getElementById('legalModal'),legalBody=document.getElementById('legalBody');
+    document.querySelectorAll('[data-legal]').forEach(link=>link.addEventListener('click',e=>{
       e.preventDefault();
-      if (!comingModal) return;
-      if (comingText) comingText.textContent = link.dataset.popup;
-      comingModal.classList.add('active');
-    });
-  });
-  document.querySelectorAll('.modal-close,.modal-backdrop').forEach(el => el.addEventListener('click', () => {
-    if (comingModal) comingModal.classList.remove('active');
-  }));
-
-  // Legal popups.
-  const legalModal = document.getElementById('legalModal');
-  const legalBody = document.getElementById('legalBody');
-  document.querySelectorAll('[data-legal]').forEach(link => link.addEventListener('click', e => {
-    e.preventDefault();
-    const template = document.getElementById(link.dataset.legal + 'Template');
-    if (!legalModal || !legalBody || !template) return;
-    legalBody.innerHTML = template.innerHTML;
-    legalBody.scrollTop = 0;
-    legalModal.classList.add('active');
-    legalModal.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  }));
-  document.querySelectorAll('[data-close-legal]').forEach(el => el.addEventListener('click', () => {
-    if (!legalModal) return;
-    legalModal.classList.remove('active');
-    legalModal.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
-  }));
-
-  // Contest popup: once per browser session, shortly after arrival.
-  const contestModal = document.getElementById('contestModal');
-  if (contestModal) {
-    document.querySelectorAll('[data-close-contest]').forEach(el => el.addEventListener('click', () => {
-      contestModal.classList.remove('active');
-      contestModal.setAttribute('aria-hidden','true');
-      sessionStorage.setItem('riseContestSeen','1');
+      const t=document.getElementById(link.dataset.legal+'Template');
+      legalBody.innerHTML=t.innerHTML;
+      legalBody.scrollTop=0;
+      legalModal.classList.add('active');
+      legalModal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
     }));
-    if (!sessionStorage.getItem('riseContestSeen')) {
-      setTimeout(() => {
-        contestModal.classList.add('active');
-        contestModal.setAttribute('aria-hidden','false');
-        if (window.lucide) lucide.createIcons();
-      }, 1800);
+    document.querySelectorAll('[data-close-legal]').forEach(el=>el.addEventListener('click',()=>{
+      legalModal.classList.remove('active');
+      legalModal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+    }));
+  </script>
+
+  <script>
+    lucide.createIcons();
+    const nav=document.getElementById('nav');
+    window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30)},{passive:true});
+    const strings=["Naija no dey carry last.","Make money make sense.","Built for Africa.","First 1,000 Risers."];
+    let idx=0;
+    const badgeEl=document.getElementById('rotating-badge');
+    const badgeText=badgeEl?badgeEl.querySelector('span'):null;
+    if(badgeText){
+      setInterval(()=>{
+        badgeEl.classList.add('fade');
+        setTimeout(()=>{
+          idx=(idx+1)%strings.length;
+          badgeText.textContent=strings[idx];
+          badgeEl.classList.remove('fade')
+        },350)
+      },3200)
     }
-  }
-
-  if (window.lucide) lucide.createIcons();
-});
-</script>
-
+    const modal=document.getElementById('comingSoonModal');
+    const modalMsg=document.getElementById('modalMessage');
+    document.querySelectorAll('[data-popup]').forEach(link=>{
+      link.addEventListener('click',e=>{
+        e.preventDefault();
+        modalMsg.textContent=link.dataset.popup||'This page is coming soon.';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden','false');
+        lucide.createIcons();
+      });
+    });
+    document.querySelectorAll('[data-close-modal]').forEach(el=>{
+      el.addEventListener('click',()=>{
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden','true');
+      });
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'&&modal.classList.contains('active')){
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden','true');
+      }
+    });
+  </script>
 </body>
 </html>
