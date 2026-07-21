@@ -764,6 +764,12 @@
       min-height: 650px;
 
       align-self: end;
+
+      /*
+        Allow the portrait to visually extend
+        beyond the normal right-column boundaries.
+      */
+      overflow: visible;
     }
 
 
@@ -772,60 +778,78 @@
     .hero-glow {
       position: absolute;
 
-      width: 900px;
-      height: 820px;
+      width: 1150px;
+      height: 1000px;
 
-      left: 50%;
-      top: 50%;
+      left: 55%;
+      top: 48%;
 
-      transform:
-        translate(-45%, -50%);
+      transform: translate(-50%, -50%);
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(57, 255, 20, 0.2),
-          transparent 60%
+          rgba(57, 255, 20, 0.26) 0%,
+          rgba(57, 255, 20, 0.14) 30%,
+          rgba(57, 255, 20, 0.05) 52%,
+          transparent 72%
         );
 
-      filter: blur(45px);
+      filter: blur(42px);
 
       pointer-events: none;
     }
 
 
-    /* WOMAN */
+    /* HERO WOMAN — LARGE / RISE ABOVE */
 
     .hero-woman {
       position: absolute;
 
-      right: -35px;
-      bottom: -10px;
+      /* Pull her farther into the center of the hero */
+      right: -8%;
+
+      /* Anchor her to the bottom */
+      bottom: -4%;
 
       z-index: 5;
 
-      width: min(49vw, 820px);
+      /*
+        Much larger than before.
+        She should dominate the right side of the screen.
+      */
+      width: 125%;
+
+      max-width: none;
 
       pointer-events: none;
     }
 
     .hero-woman img {
+      display: block;
+
       width: 100%;
       height: auto;
-
-      display: block;
 
       object-fit: contain;
       object-position: right bottom;
 
+      /*
+        Extra scale gives us the dramatic,
+        larger-than-the-frame feeling.
+      */
+      transform: scale(1.12);
+
+      transform-origin: right bottom;
+
       filter:
         contrast(1.08)
-        saturate(1.1)
+        saturate(1.12)
         brightness(1.04)
         drop-shadow(
-          0 45px 55px rgba(0, 0, 0, 0.68)
+          0 45px 60px rgba(0, 0, 0, 0.72)
         );
     }
 
@@ -900,9 +924,10 @@
       }
 
       .hero-woman {
-        right: -55px;
+        right: -12%;
+        bottom: -5%;
 
-        width: min(48vw, 880px);
+        width: 135%;
       }
 
     }
