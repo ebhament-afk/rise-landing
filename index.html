@@ -27,7 +27,6 @@
     /* =========================================================
        RISE
        CLEAN MASTER BUILD
-       SECTION 01 — FOUNDATION + NAVIGATION + HERO
        ========================================================= */
 
 
@@ -1763,6 +1762,118 @@
 
 
     /* =========================================================
+       SECTION 05 — FINAL CTA & FOOTER STYLING
+       ========================================================= */
+
+    .cta-section {
+      position: relative;
+      padding: 140px 0;
+      text-align: center;
+      background: linear-gradient(180deg, #010201 0%, #050805 100%);
+    }
+
+    .cta-content {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .cta-content h2 {
+      font-family: var(--heading);
+      font-size: clamp(42px, 4.5vw, 72px);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin-bottom: 24px;
+    }
+
+    .cta-description {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+
+    .cta-note {
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 80px 0 50px;
+      border-top: 1px solid rgba(57, 255, 20, 0.1);
+      background: #010201;
+    }
+
+    .footer .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .footer-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+
+    .footer-closing h3 {
+      font-family: var(--heading);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .footer-philosophy {
+      color: var(--green);
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .copyright {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
        8. LARGE DESKTOP
        ========================================================= */
 
@@ -2295,7 +2406,7 @@
 
 
       /* =======================================================
-         MOBILE — FOR BUSINESSES
+         MOBILE — FOR BUSINESSES & FOOTER
          ======================================================= */
 
       .business-grid{
@@ -2310,6 +2421,11 @@
 
       .business-title{
         font-size:clamp(44px,11vw,68px);
+      }
+
+      .footer .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
 
     }
@@ -2500,10 +2616,14 @@
 
 
     <!-- ======================================================
-         HERO
+         MAIN CONTENT
          ====================================================== -->
 
     <main>
+
+      <!-- ================================================
+           HERO SECTION
+           ================================================ -->
 
       <section
         class="hero"
@@ -2522,9 +2642,7 @@
         <div class="container hero-inner">
 
 
-          <!-- ================================================
-               HERO LEFT
-               ================================================ -->
+          <!-- HERO LEFT -->
 
           <div class="hero-copy-block">
 
@@ -2682,9 +2800,7 @@
 
 
 
-          <!-- ================================================
-               HERO RIGHT
-               ================================================ -->
+          <!-- HERO RIGHT -->
 
           <div class="hero-stage">
 
@@ -3234,8 +3350,85 @@
       </section>
 
 
+      <!-- ======================================================
+           FINAL CTA
+           ====================================================== -->
+
+      <section class="cta-section" id="waitlist">
+          <div class="container">
+              <div class="cta-content">
+
+                  <span class="section-label">Join the Movement</span>
+
+                  <h2>
+                      Build a reputation that opens doors.
+                  </h2>
+
+                  <p class="cta-description">
+                      Be among the first to build a reputation that opens doors across Africa.
+                  </p>
+
+                  <a href="#waitlist-form" class="btn btn-primary">
+                      Join the Waitlist
+                      <i data-lucide="arrow-up-right"></i>
+                  </a>
+
+                  <p class="cta-note">
+                      Free to join. Early members will receive first access to the beta.
+                  </p>
+
+              </div>
+          </div>
+      </section>
+
     </main>
 
+
+    <!-- ======================================================
+         FOOTER
+         ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-brand">
+                <img src="rise-logo.png" alt="RISE Logo" class="footer-logo">
+
+                <p class="footer-tagline">
+                    Building trust. Creating opportunity.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="https://www.instagram.com/useriseafrica" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/company/useriseafrica" target="_blank">LinkedIn</a>
+                <a href="https://x.com/useriseafrica" target="_blank">X</a>
+                <a href="https://www.tiktok.com/@useriseafrica" target="_blank">TikTok</a>
+            </div>
+
+            <div class="footer-closing">
+
+                <h3>
+                    The future belongs to those others can trust.
+                </h3>
+
+                <p class="footer-philosophy">
+                    We make your reputation inevitable.
+                </p>
+
+                <p class="copyright">
+                    © 2026 RISE Technologies Limited.<br>
+                    Made in Nigeria. Designed for Africa.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
 
   </div>
 
@@ -3252,7 +3445,6 @@
     lucide.createIcons();
 
 
-
     /* ELEMENTS */
 
     const header =
@@ -3263,7 +3455,6 @@
 
     const navLinks =
       document.getElementById("navLinks");
-
 
 
     /* HEADER SCROLL EFFECT */
@@ -3284,7 +3475,6 @@
 
       }
     );
-
 
 
     /* MOBILE MENU */
@@ -3313,7 +3503,6 @@
 
       }
     );
-
 
 
     /* CLOSE MOBILE MENU AFTER LINK CLICK */
@@ -3345,7 +3534,6 @@
       });
 
 
-
     /* RESET MENU WHEN RETURNING TO DESKTOP */
 
     window.addEventListener(
@@ -3371,74 +3559,6 @@
 
       }
     );
-    <!-- FINAL CTA -->
-<section class="cta-section" id="waitlist">
-    <div class="container">
-        <div class="cta-content">
-
-            <span class="section-label">Join the Movement</span>
-
-            <h2>
-                Build a reputation that opens doors.
-            </h2>
-
-            <p class="cta-description">
-                Be among the first to build a reputation that opens doors across Africa.
-            </p>
-
-            <a href="#waitlist-form" class="btn-primary">
-                Join the Waitlist
-            </a>
-
-            <p class="cta-note">
-                Free to join. Early members will receive first access to the beta.
-            </p>
-
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-
-    <div class="container">
-
-        <div class="footer-brand">
-            <img src="rise-logo.png" alt="RISE Logo" class="footer-logo">
-
-            <p class="footer-tagline">
-                Building trust. Creating opportunity.
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="https://www.instagram.com/useriseafrica" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/company/useriseafrica" target="_blank">LinkedIn</a>
-            <a href="https://x.com/useriseafrica" target="_blank">X</a>
-            <a href="https://www.tiktok.com/@useriseafrica" target="_blank">TikTok</a>
-        </div>
-
-        <div class="footer-closing">
-
-            <h3>
-                The future belongs to those others can trust.
-            </h3>
-
-            <p class="footer-philosophy">
-                We make your reputation inevitable.
-            </p>
-
-            <p class="copyright">
-                © 2026 RISE Technologies Limited.<br>
-                Made in Nigeria. Designed for Africa.
-            </p>
-
-        </div>
-
-    </div>
-</footer>
 
   </script>
 
