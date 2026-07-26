@@ -1704,6 +1704,26 @@
     }
 
 
+    
+    /* =========================================================
+       SECTION 04 — FOR BUSINESSES
+       ========================================================= */
+    .business-section{position:relative;padding:150px 0;background:linear-gradient(180deg,#010201,#040704,#010201);overflow:hidden}
+    .business-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+    .business-title{font-family:var(--heading);font-size:clamp(54px,5vw,84px);line-height:.95;letter-spacing:-.05em;margin:18px 0 24px}
+    .business-title span{color:var(--green)}
+    .business-text{max-width:520px;color:rgba(255,255,255,.65);font-size:17px;line-height:1.8;margin-bottom:40px}
+    .business-features{display:grid;gap:18px;margin-bottom:40px}
+    .feature-card{padding:24px;border:1px solid rgba(255,255,255,.08);border-radius:22px;background:rgba(255,255,255,.02)}
+    .feature-card svg{width:28px;height:28px;color:var(--green);margin-bottom:12px}
+    .feature-card h4{font-family:var(--heading);font-size:22px;margin-bottom:8px}
+    .feature-card p{color:rgba(255,255,255,.6);line-height:1.7}
+    .business-phone{position:relative;display:flex;justify-content:center}
+    .business-phone img{width:min(460px,100%);position:relative;z-index:2}
+    .phone-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(57,255,20,.15);filter:blur(70px)}
+    @media(max-width:900px){.business-section{padding:95px 0}.business-grid{grid-template-columns:1fr;gap:50px}.business-title{font-size:clamp(44px,11vw,66px)}.business-text{font-size:15px}.business-phone img{max-width:340px}}
+
+
     /* =========================================================
        8. LARGE DESKTOP
        ========================================================= */
@@ -3104,6 +3124,27 @@
         </div>
 
       </section>
+
+
+<section class="business-section" id="businesses">
+<div class="container business-grid">
+<div>
+<div class="section-kicker"><span class="section-kicker-line"></span>FOR BUSINESSES</div>
+<h2 class="business-title">Hire with <span>confidence.</span><br>Not guesswork.</h2>
+<p class="business-text">RISE helps businesses discover people with a growing record of completed work, earned trust, and real reputation.</p>
+<div class="business-features">
+<div class="feature-card"><i data-lucide="badge-check"></i><h4>Verified Work</h4><p>Every completed job strengthens a professional record.</p></div>
+<div class="feature-card"><i data-lucide="shield-check"></i><h4>Trust Score</h4><p>Built from consistency, not popularity.</p></div>
+<div class="feature-card"><i data-lucide="briefcase-business"></i><h4>Better Hiring</h4><p>Spend less time guessing and more time hiring.</p></div>
+</div>
+<a href="#waitlist" class="btn btn-primary">Partner With RISE <i data-lucide="arrow-up-right"></i></a>
+</div>
+<div class="business-phone">
+<div class="phone-glow"></div>
+<img src="phone-mockup.png" alt="RISE app">
+</div>
+</div>
+</section>
 
 
     </main>
