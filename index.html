@@ -256,6 +256,26 @@
       color: var(--green);
     }
 
+    /* GREEN GIVEAWAY PILL LINK */
+    .nav-links a.contest-pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(57, 255, 20, 0.1);
+      border: 1px solid rgba(57, 255, 20, 0.4);
+      color: var(--green);
+      font-weight: 800;
+      transition: all 0.25s var(--ease);
+    }
+
+    .nav-links a.contest-pill-link:hover {
+      background: rgba(57, 255, 20, 0.2);
+      transform: translateY(-1px);
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
+    }
+
 
     /* NAV CTA */
 
@@ -1931,393 +1951,1936 @@
       }
 
       .hero-title {
-        font-size: clamp(54px, 5vw, 82px);
+        font-size:
+          clamp(64px, 7vw, 84px);
       }
+
+      .hero-description {
+        max-width: 500px;
+
+        font-size: 16px;
+      }
+
+      .hero-woman {
+        right: -90px;
+
+        width: min(56vw, 700px);
+      }
+
     }
 
+
     /* =========================================================
-       10. MOBILE & TABLET RESPONSIVENESS
+       10. MOBILE / TABLET NAV
        ========================================================= */
 
     @media (max-width: 900px) {
+
+      .container {
+        width: calc(100% - 36px);
+      }
+
+      .site-header {
+        height: 72px;
+      }
+
+      .site-header.scrolled {
+        height: 66px;
+      }
+
+      .nav-container {
+        gap: 10px;
+      }
+
+      .brand img {
+        width: 96px;
+      }
+
+
+      /* NAV CTA */
+
+      .nav-cta {
+        min-height: 42px;
+
+        margin-left: auto;
+
+        padding: 0 15px;
+
+        font-size: 11px;
+      }
+
+
+      /* HAMBURGER */
+
       .mobile-menu-toggle {
         display: flex;
-        margin-left: auto;
       }
+
+
+      /* DROPDOWN */
 
       .nav-links {
         position: fixed;
-        top: 88px;
-        left: 0;
-        right: 0;
-        bottom: 0;
+
+        top: 82px;
+        left: 18px;
+        right: 18px;
+
+        display: flex;
         flex-direction: column;
-        justify-content: center;
-        background: rgba(1, 2, 1, 0.98);
-        gap: 32px;
+        align-items: stretch;
+
+        gap: 0;
+
+        padding: 12px;
+
+        margin: 0;
+
+        border:
+          1px solid rgba(57, 255, 20, 0.3);
+
+        border-radius: 20px;
+
+        background:
+          rgba(3, 7, 3, 0.98);
+
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.8);
+
         opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
+
+        visibility: hidden;
+
+        transform: translateY(-12px);
+
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease,
+          visibility 0.25s ease;
       }
 
-      .nav-links.active {
+      .nav-links.open {
         opacity: 1;
-        pointer-events: auto;
+
+        visibility: visible;
+
+        transform: translateY(0);
       }
 
-      .hero-inner,
-      .how-rise-heading-row,
-      .who-rise-heading-row,
-      .business-grid,
-      .footer .container {
+      .nav-links a {
+        width: 100%;
+
+        padding: 14px 12px;
+
+        border-bottom:
+          1px solid rgba(255, 255, 255, 0.06);
+
+        font-size: 14px;
+      }
+
+      .nav-links a:last-child {
+        border-bottom: none;
+
+        color: var(--green);
+      }
+
+
+      /* =======================================================
+         MOBILE HERO
+         ======================================================= */
+
+      .hero {
+        min-height: auto;
+
+        padding-top: 72px;
+      }
+
+      .hero-inner {
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        padding-top: 50px;
+      }
+
+
+      /* COPY */
+
+      .hero-copy-block {
+        width: 100%;
+        max-width: none;
+
+        padding-bottom: 0;
+      }
+
+      .eyebrow-row {
+        gap: 10px;
+
+        margin-bottom: 20px;
+      }
+
+      .eyebrow {
+        font-size: 9px;
+
+        letter-spacing: 0.12em;
+      }
+
+      .eyebrow::before {
+        width: 22px;
+      }
+
+      .tag-chip {
+        min-height: 32px;
+
+        padding: 0 11px;
+
+        font-size: 10px;
+      }
+
+
+      /* MOBILE TITLE */
+
+      .hero-title {
+        width: 100%;
+        max-width: 100%;
+
+        margin-bottom: 22px;
+
+        font-size:
+          clamp(52px, 14vw, 78px);
+
+        line-height: 0.92;
+
+        letter-spacing: -0.06em;
+      }
+
+      .hero-title .trust-line {
+        white-space: nowrap;
+      }
+
+
+      /* DESCRIPTION */
+
+      .hero-description {
+        max-width: 520px;
+
+        margin-bottom: 26px;
+
+        font-size: 16px;
+
+        line-height: 1.55;
+      }
+
+
+      /* BUTTONS */
+
+      .hero-actions {
+        width: 100%;
+
+        display: grid;
+
         grid-template-columns: 1fr;
-        gap: 40px;
+
+        gap: 11px;
+
+        margin-bottom: 28px;
       }
 
-      .rise-steps,
+      .btn {
+        width: 100%;
+
+        min-height: 54px;
+      }
+
+
+      /* PROOF */
+
+      .hero-proof {
+        gap: 11px;
+
+        font-size: 12px;
+      }
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+      }
+
+
+      /* MOBILE IMAGE STAGE */
+
+      .hero-stage {
+        position: relative;
+
+        width: 100%;
+        height: 470px;
+
+        min-height: 0;
+
+        margin-top: -55px;
+      }
+
+      .hero-glow {
+        width: 600px;
+        height: 550px;
+
+        left: 62%;
+        top: 55%;
+      }
+
+      .hero-woman {
+        right: -18%;
+
+        bottom: -10px;
+
+        width: 125%;
+
+        max-width: 570px;
+      }
+
+      .hero-woman img {
+        transform: none;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .hero-ambient::before {
+        width: 500px;
+        height: 500px;
+
+        left: 20%;
+        top: 380px;
+      }
+
+      .hero-ambient::after {
+        width: 360px;
+        height: 360px;
+
+        left: 35%;
+        top: 450px;
+      }
+
+
+      /* =======================================================
+         MOBILE — HOW RISE WORKS
+         ======================================================= */
+
+      .how-rise {
+        padding:
+          95px 0
+          90px;
+      }
+
+      .how-rise-header {
+        margin-bottom: 50px;
+      }
+
+      .section-kicker {
+        margin-bottom: 20px;
+
+        font-size: 9px;
+      }
+
+      .how-rise-heading-row {
+        display: block;
+      }
+
+      .how-rise-title {
+        max-width: 620px;
+
+        margin-bottom: 25px;
+
+        font-size:
+          clamp(45px, 11vw, 68px);
+      }
+
+      .how-rise-intro {
+        max-width: 540px;
+
+        padding: 0;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+      }
+
+      .rise-steps {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+      }
+
+      .rise-step {
+        min-height: 310px;
+
+        padding: 26px;
+
+        border-radius: 22px;
+      }
+
+      .rise-step-content h3 {
+        font-size: 30px;
+      }
+
+      .rise-statement {
+        gap: 14px;
+
+        margin-top: 55px;
+      }
+
+      .rise-statement-line {
+        display: none;
+      }
+
+      .rise-statement p {
+        width: 100%;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+      }
+
+
+      /* =======================================================
+         MOBILE — WHO RISE IS FOR
+         ======================================================= */
+
+      .who-rise {
+        padding:
+          95px 0
+          90px;
+      }
+
+      .who-rise-header {
+        margin-bottom: 50px;
+      }
+
+      .who-rise-heading-row {
+        display: block;
+      }
+
+      .who-rise-title {
+        margin-bottom: 25px;
+
+        font-size:
+          clamp(44px, 11vw, 66px);
+      }
+
+      .who-rise-intro {
+        max-width: 540px;
+
+        padding: 0;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+      }
+
       .persona-grid {
+        display: grid;
+
         grid-template-columns: 1fr;
+
+        gap: 14px;
       }
 
       .persona-card,
       .persona-card-large,
       .persona-card-wide,
       .persona-card-green {
-        grid-column: span 1;
+        grid-column: auto;
+
+        min-height: 310px;
+
+        padding: 26px;
+
+        border-radius: 22px;
+      }
+
+      .persona-card-large
+      .persona-content h3,
+      .persona-content h3 {
+        font-size: 30px;
+      }
+
+      .persona-icon {
+        top: 24px;
+        right: 24px;
+
+        width: 50px;
+        height: 50px;
+      }
+
+      .who-rise-close {
+        margin-top: 50px;
+      }
+
+      .who-rise-close p {
+        font-size: 13px;
+
+        line-height: 1.6;
+      }
+
+
+      /* =======================================================
+         MOBILE — FOR BUSINESSES & FOOTER
+         ======================================================= */
+
+      .business-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+
+      .business-image img{
+        width:100%;
+        transform:none;
+      }
+
+      .business-title{
+        font-size:clamp(44px,11vw,68px);
+      }
+
+      .footer .container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+    }
+
+
+    /* =========================================================
+       11. SMALL MOBILE
+       ========================================================= */
+
+    @media (max-width: 480px) {
+
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .nav-cta {
+        padding: 0 12px;
+
+        font-size: 10px;
+      }
+
+      .nav-cta span {
+        display: none;
+      }
+
+      .nav-cta::before {
+        content: "Join Waitlist";
+      }
+
+      .mobile-menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .hero-inner {
+        padding-top: 40px;
+      }
+
+      .hero-title {
+        font-size:
+          clamp(50px, 14.5vw, 66px);
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .hero-stage {
+        height: 430px;
+
+        margin-top: -40px;
       }
 
       .hero-woman {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: 30px;
+        right: -25%;
+
+        width: 140%;
       }
 
-      .business-image img {
-        width: 100%;
-        transform: none;
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
       }
+
+    }
+
+    /* =========================================================
+       CONTEST & WHY RISE MODALS STYLING
+       ========================================================= */
+
+    .contest-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+      z-index: 9999;
+      padding: 20px;
+    }
+
+    .contest-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .contest-card {
+      position: relative;
+      background: #050705;
+      border: 1px solid rgba(57, 255, 20, 0.25);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), 0 0 40px rgba(57, 255, 20, 0.1);
+    }
+
+    .contest-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .contest-close:hover {
+      color: var(--green);
+    }
+
+    .contest-badge {
+      display: inline-block;
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .contest-title {
+      font-family: var(--heading);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contest-title span {
+      display: block;
+      color: var(--green);
+    }
+
+    .contest-copy {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .contest-card hr {
+      border: none;
+      border-top: 1px solid rgba(57, 255, 20, 0.15);
+      margin: 24px 0;
+    }
+
+    .contest-footer {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(57, 255, 20, 0.15);
+      text-align: center;
+    }
+
+    .contest-footer h3 {
+      font-family: var(--heading);
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .contest-footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .contest-card ul, 
+    .contest-card ol {
+      margin-left: 20px;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .contest-card li {
+      margin-bottom: 8px;
     }
   </style>
 </head>
+
+
 <body>
+
   <div class="site">
-    <!-- NAVIGATION -->
-    <header class="site-header" id="header">
+
+
+    <!-- ======================================================
+         HEADER / NAVIGATION
+         ====================================================== -->
+
+    <header
+      class="site-header"
+      id="siteHeader"
+    >
+
       <div class="container nav-container">
-        <a href="#" class="brand">
-          <img src="logo.png" alt="RISE Logo" />
+
+
+        <!-- LOGO -->
+
+        <a
+          href="#home"
+          class="brand"
+          aria-label="RISE Home"
+        >
+
+          <img
+            src="rise-wordmark.png"
+            alt="RISE"
+          />
+
         </a>
 
-        <nav class="nav-links" id="navLinks">
-          <a href="#how-it-works">How It Works</a>
-          <a href="#who-it-is-for">Who It's For</a>
-          <a href="#for-businesses">For Businesses</a>
+
+        <!-- NAVIGATION LINKS -->
+
+        <nav
+          class="nav-links"
+          id="navLinks"
+          aria-label="Main navigation"
+        >
+
+          <a href="#" id="openWhyRise">
+            Why RISE
+          </a>
+
+          <a href="#how-it-works">
+            How It Works
+          </a>
+
+          <a href="#who-its-for">
+            For Individuals
+          </a>
+
+          <a href="#businesses">
+            For Businesses
+          </a>
+
+          <a href="#" id="openContest" class="contest-pill-link">
+            🎉 August Giveaway
+          </a>
+
         </nav>
 
-        <a href="#get-started" class="nav-cta">
-          Get Started
-          <i data-lucide="arrow-right"></i>
+
+        <!-- WAITLIST CTA -->
+
+        <a
+          href="https://tally.so/r/68py7B" 
+          class="btn btn-primary nav-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <span>
+            Join Waitlist
+          </span>
+
+          <i data-lucide="arrow-up-right"></i>
+
         </a>
 
-        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+
+        <!-- MOBILE MENU -->
+
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+        >
+
           <span></span>
           <span></span>
           <span></span>
+
         </button>
+
+
       </div>
+
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <div class="hero-ambient"></div>
-      <div class="container hero-inner">
-        <div class="hero-copy-block">
-          <div class="eyebrow-row">
-            <span class="eyebrow">Proof of Work Platform</span>
-            <div class="tag-chip">
-              <i data-lucide="sparkles"></i>
-              <span>Built for Nigeria</span>
+
+
+    <!-- ======================================================
+         MAIN CONTENT
+         ====================================================== -->
+
+    <main>
+
+      <!-- ================================================
+           HERO SECTION
+           ================================================ -->
+
+      <section
+        class="hero"
+        id="home"
+      >
+
+
+        <!-- AMBIENT CIRCLES -->
+
+        <div
+          class="hero-ambient"
+          aria-hidden="true"
+        ></div>
+
+
+        <div class="container hero-inner">
+
+
+          <!-- HERO LEFT -->
+
+          <div class="hero-copy-block">
+
+
+            <!-- EYEBROW -->
+
+            <div class="eyebrow-row">
+
+              <div class="eyebrow">
+
+                Made in Nigeria.
+                Designed for Africa.
+
+              </div>
+
+
+              <div class="tag-chip">
+
+                <i data-lucide="sparkles"></i>
+
+                <span>
+                  Built for Africa
+                </span>
+
+              </div>
+
             </div>
-          </div>
 
-          <h1 class="hero-title">
-            <span>Get work.</span>
-            <span>Get paid.</span>
-            <span class="trust-line green">Build Trust.</span>
-          </h1>
 
-          <p class="hero-description">
-            RISE helps everyday Nigerians turn completed work into proof, payments into confidence, and trust into bigger opportunities.
-          </p>
 
-          <div class="hero-actions">
-            <a href="#get-started" class="btn btn-primary">
-              Start Building Trust
-              <i data-lucide="arrow-right"></i>
-            </a>
-            <a href="#how-it-works" class="btn btn-secondary">
-              See How It Works
-            </a>
-          </div>
+            <!-- HEADLINE -->
 
-          <div class="hero-proof">
-            <div class="avatars">
-              <div class="avatar"><img src="https://i.pravatar.cc/100?img=11" alt="User" /></div>
-              <div class="avatar"><img src="https://i.pravatar.cc/100?img=12" alt="User" /></div>
-              <div class="avatar"><img src="https://i.pravatar.cc/100?img=13" alt="User" /></div>
-            </div>
-            <div class="proof-copy">
-              Joined by <strong>10,000+</strong> ambitious creators & workers.
-            </div>
-          </div>
-        </div>
+            <h1 class="hero-title">
 
-        <div class="hero-stage">
-          <div class="hero-glow"></div>
-          <div class="hero-woman">
-            <img src="hero-woman.png" alt="RISE Hero" />
-          </div>
-        </div>
-      </div>
+              <span>
+                Get work.
+              </span>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-      </div>
-    </section>
+              <span>
+                Get paid.
+              </span>
 
-    <!-- SECTION 02: HOW RISE WORKS -->
-    <section class="how-rise" id="how-it-works">
-      <div class="container">
-        <div class="how-rise-header">
-          <div class="section-kicker">
-            <span class="section-kicker-line"></span>
-            <span>The Process</span>
-          </div>
-          <div class="how-rise-heading-row">
-            <h2 class="how-rise-title">
-              How <span>RISE Works</span>
-            </h2>
-            <p class="how-rise-intro">
-              Three simple steps to build your reputation, secure your payments, and unlock better opportunities.
+              <span class="trust-line">
+
+                Build
+
+                <span
+                  class="green"
+                  style="display:inline;"
+                >
+                  Trust.
+                </span>
+
+              </span>
+
+            </h1>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <p class="hero-description">
+
+              RISE helps everyday Nigerians turn
+              completed work into proof, payments
+              into confidence, and trust into bigger
+              opportunities.
+
             </p>
-          </div>
-        </div>
 
-        <div class="rise-steps">
-          <div class="rise-step">
-            <div class="rise-step-glow"></div>
-            <div class="rise-step-top">
-              <span class="rise-step-number">01</span>
-              <div class="rise-step-icon">
-                <i data-lucide="briefcase"></i>
+
+
+            <!-- BUTTONS -->
+
+            <div class="hero-actions">
+
+              <a
+                href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+
+                Join the Waitlist
+
+                <i data-lucide="arrow-up-right"></i>
+
+              </a>
+
+
+              <a
+                href="#how-it-works"
+                class="btn btn-secondary"
+              >
+
+                <i data-lucide="play"></i>
+
+                See how it works
+
+              </a>
+
+            </div>
+
+
+
+            <!-- SOCIAL PROOF -->
+
+            <div class="hero-proof">
+
+
+              <div class="avatars">
+
+                <div class="avatar">
+                  <img
+                    src="Girl1.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="avatar">
+                  <img
+                    src="Man1.jpg"
+                    alt=""
+                  />
+                </div>
+
+                <div class="avatar">
+                  <img
+                    src="Girl2.png"
+                    alt=""
+                  />
+                </div>
+
+                <div class="avatar">
+                  <img
+                    src="Man2.jpg"
+                    alt=""
+                  />
+                </div>
+
               </div>
-            </div>
-            <div class="rise-step-content">
-              <h3>Do the Work</h3>
-              <p>Take on gigs, tasks, or projects from verified clients across the country.</p>
-            </div>
-          </div>
 
-          <div class="rise-step rise-step-featured">
-            <div class="rise-step-glow"></div>
-            <div class="rise-step-top">
-              <span class="rise-step-number">02</span>
-              <div class="rise-step-icon">
-                <i data-lucide="shield-check"></i>
+
+              <div class="proof-copy">
+
+                Join Nigerians
+                <strong>
+                  getting in early.
+                </strong>
+
               </div>
+
+
             </div>
-            <div class="rise-step-content">
-              <h3>Log Proof</h3>
-              <p>Upload proof of completed work to create an immutable record of your track record.</p>
-            </div>
+
           </div>
 
-          <div class="rise-step">
-            <div class="rise-step-glow"></div>
-            <div class="rise-step-top">
-              <span class="rise-step-number">03</span>
-              <div class="rise-step-icon">
-                <i data-lucide="zap"></i>
-              </div>
+
+
+          <!-- HERO RIGHT -->
+
+          <div class="hero-stage">
+
+
+            <!-- GREEN GLOW -->
+
+            <div
+              class="hero-glow"
+              aria-hidden="true"
+            ></div>
+
+
+            <div class="hero-woman">
+
+              <img
+                src="hero-woman.png"
+                alt="RISE community member"
+              />
+
             </div>
-            <div class="rise-step-content">
-              <h3>Get Paid & Grow</h3>
-              <p>Receive fast payments into your wallet and leverage your score for higher paying roles.</p>
-            </div>
+
+
           </div>
+
+
         </div>
 
-        <div class="rise-statement">
-          <div class="rise-statement-line"></div>
-          <p>Simple. Transparent. <strong>Guaranteed.</strong></p>
-          <div class="rise-statement-line"></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SECTION 03: WHO RISE IS FOR -->
-    <section class="who-rise" id="who-it-is-for">
-      <div class="container">
-        <div class="who-rise-header">
-          <div class="section-kicker">
-            <span class="section-kicker-line"></span>
-            <span>Ecosystem</span>
-          </div>
-          <div class="who-rise-heading-row">
-            <h2 class="who-rise-title">
-              Built for <span>everyone</span> who delivers.
-            </h2>
-            <p class="who-rise-intro">
-              Whether you are an independent artisan, digital freelancer, or growing agency, RISE gives you standard credibility.
-            </p>
-          </div>
+
+        <!-- SCROLL -->
+
+        <div class="scroll-indicator">
+
+          Scroll
+
         </div>
 
-        <div class="persona-grid">
-          <div class="persona-card persona-card-large">
-            <div class="persona-glow"></div>
-            <span class="persona-number">01</span>
-            <div class="persona-icon"><i data-lucide="code"></i></div>
-            <div class="persona-content">
-              <div class="persona-label">FREELANCERS & CREATIVES</div>
-              <h3>Showcase work that <span>speaks for itself.</span></h3>
-              <p>Stop losing deals to doubts. Send verifiable proof of your past jobs with guaranteed payment links.</p>
-            </div>
-          </div>
 
-          <div class="persona-card">
-            <div class="persona-glow"></div>
-            <span class="persona-number">02</span>
-            <div class="persona-icon"><i data-lucide="wrench"></i></div>
-            <div class="persona-content">
-              <div class="persona-label">HANDYMEN & TRADE WORKERS</div>
-              <h3>Turn daily jobs into <span>trust score.</span></h3>
-              <p>Build a digital track record that brings high-value clients straight to your doorstep.</p>
-            </div>
-          </div>
+      </section>
 
-          <div class="persona-card persona-card-wide">
-            <div class="persona-glow"></div>
-            <span class="persona-number">03</span>
-            <div class="persona-icon"><i data-lucide="building"></i></div>
-            <div class="persona-content">
-              <div class="persona-label">SMEs & MERCHANTS</div>
-              <h3>Hire fast without <span>the anxiety.</span></h3>
-              <p>Find workers backed by real performance records, not just fancy written resumes.</p>
-            </div>
-          </div>
 
-          <div class="persona-card persona-card-green">
-            <div class="persona-glow"></div>
-            <span class="persona-number">04</span>
-            <div class="persona-icon"><i data-lucide="trending-up"></i></div>
-            <div class="persona-content">
-              <div class="persona-label">EVERYDAY NIGERIANS</div>
-              <h3>Unlock financial <span>opportunities.</span></h3>
-              <p>Your work history is your ultimate asset. Use your verified score for credit and growth.</p>
-            </div>
-          </div>
-        </div>
+      <!-- ======================================================
+           SECTION 02 — HOW RISE WORKS
+           ====================================================== -->
 
-        <div class="who-rise-close">
-          <p>Ready to level up? <strong>Join thousands building proof today.</strong></p>
-        </div>
-      </div>
-    </section>
+      <section
+        class="how-rise"
+        id="how-it-works"
+      >
 
-    <!-- SECTION 04: FOR BUSINESSES -->
-    <section class="business-section" id="for-businesses">
-      <div class="container">
-        <div class="business-grid">
-          <div class="business-info">
+        <div class="container">
+
+
+          <!-- SECTION INTRO -->
+
+          <div class="how-rise-header">
+
             <div class="section-kicker">
               <span class="section-kicker-line"></span>
-              <span>Enterprise Solutions</span>
+              HOW RISE WORKS
             </div>
-            <h2 class="business-title">Scale with <span>confidence.</span></h2>
-            <p class="business-text">
-              Eliminate risk when hiring contractors and talent. Verify work history, automate milestone payouts, and keep projects moving seamlessly.
+
+            <div class="how-rise-heading-row">
+
+              <h2 class="how-rise-title">
+                Your work should
+                <span>build something.</span>
+              </h2>
+
+              <p class="how-rise-intro">
+                Every job you complete, every commitment you keep,
+                and every payment you earn should move you forward.
+                RISE turns the work you're already doing into a
+                reputation you can build on.
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- THREE STEPS -->
+
+          <div class="rise-steps">
+
+
+            <!-- STEP 01 -->
+
+            <article class="rise-step">
+
+              <div class="rise-step-top">
+
+                <span class="rise-step-number">
+                  01
+                </span>
+
+                <div class="rise-step-icon">
+                  <i data-lucide="briefcase-business"></i>
+                </div>
+
+              </div>
+
+              <div class="rise-step-content">
+
+                <h3>
+                  Do the work.
+                </h3>
+
+                <p>
+                  Find opportunities, complete the job,
+                  and build a real record of the work
+                  you've done.
+                </p>
+
+              </div>
+
+              <div
+                class="rise-step-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- STEP 02 -->
+
+            <article class="rise-step rise-step-featured">
+
+              <div class="rise-step-top">
+
+                <span class="rise-step-number">
+                  02
+                </span>
+
+                <div class="rise-step-icon">
+                  <i data-lucide="badge-check"></i>
+                </div>
+
+              </div>
+
+              <div class="rise-step-content">
+
+                <h3>
+                  Build your trust.
+                </h3>
+
+                <p>
+                  Your consistency and completed work
+                  help create a stronger reputation that
+                  follows you wherever you go.
+                </p>
+
+              </div>
+
+              <div
+                class="rise-step-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- STEP 03 -->
+
+            <article class="rise-step">
+
+              <div class="rise-step-top">
+
+                <span class="rise-step-number">
+                  03
+                </span>
+
+                <div class="rise-step-icon">
+                  <i data-lucide="trending-up"></i>
+                </div>
+
+              </div>
+
+              <div class="rise-step-content">
+
+                <h3>
+                  Unlock what's next.
+                </h3>
+
+                <p>
+                  Turn that trust into more opportunities,
+                  stronger relationships, and a financial
+                  future you can grow.
+                </p>
+
+              </div>
+
+              <div
+                class="rise-step-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+          </div>
+
+
+
+          <!-- BOTTOM STATEMENT -->
+
+          <div class="rise-statement">
+
+            <div class="rise-statement-line"></div>
+
+            <p>
+              You already put in the work.
+              <strong>
+                RISE helps make sure it counts.
+              </strong>
             </p>
-            <a href="#get-started" class="btn btn-primary">
-              Partner with RISE
-              <i data-lucide="arrow-right"></i>
-            </a>
-          </div>
-          <div class="business-image">
-            <img src="business-preview.png" alt="RISE for Business" />
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SECTION 05: FINAL CTA -->
-    <section class="cta-section" id="get-started">
-      <div class="container">
-        <div class="cta-content">
-          <span class="section-label">Start Today</span>
-          <h2>Your proof is your ultimate power.</h2>
-          <p class="cta-description">
-            Stop starting from scratch with every client. Start recording your work and build a career that grows on trust.
-          </p>
-          <a href="#" class="btn btn-primary">
-            Create Free Account
-            <i data-lucide="arrow-right"></i>
-          </a>
-          <p class="cta-note">No credit card required. Free setup in 2 minutes.</p>
-        </div>
-      </div>
-    </section>
+            <div class="rise-statement-line"></div>
 
-    <!-- FOOTER -->
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 03 — WHO RISE IS FOR
+           ====================================================== -->
+
+      <section
+        class="who-rise"
+        id="who-its-for"
+      >
+
+        <div class="container">
+
+
+          <!-- SECTION HEADER -->
+
+          <div class="who-rise-header">
+
+            <div class="section-kicker">
+              <span class="section-kicker-line"></span>
+              WHO RISE IS FOR
+            </div>
+
+
+            <div class="who-rise-heading-row">
+
+              <h2 class="who-rise-title">
+                Built for people
+                <span>building something real.</span>
+              </h2>
+
+
+              <p class="who-rise-intro">
+                Whether you're building a business, growing your
+                craft, or turning your skills into income, RISE is
+                designed to help your work build a reputation that
+                opens doors.
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- PERSONA GRID -->
+
+          <div class="persona-grid">
+
+
+            <!-- PERSONA 01 -->
+
+            <article class="persona-card persona-card-large">
+
+              <div class="persona-number">
+                01
+              </div>
+
+              <div class="persona-icon">
+                <i data-lucide="briefcase"></i>
+              </div>
+
+              <div class="persona-content">
+
+                <div class="persona-label">
+                  THE HUSTLER
+                </div>
+
+                <h3>
+                  Your work speaks.
+                  <span>RISE makes it count.</span>
+                </h3>
+
+                <p>
+                  From side gigs to everyday jobs, build a record
+                  of the work you complete and the trust you earn
+                  along the way.
+                </p>
+
+              </div>
+
+              <div
+                class="persona-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- PERSONA 02 -->
+
+            <article class="persona-card">
+
+              <div class="persona-number">
+                02
+              </div>
+
+              <div class="persona-icon">
+                <i data-lucide="palette"></i>
+              </div>
+
+              <div class="persona-content">
+
+                <div class="persona-label">
+                  THE CREATIVE
+                </div>
+
+                <h3>
+                  Build your name.
+                </h3>
+
+                <p>
+                  Designers, photographers, creators, and freelancers:
+                  turn great work into a reputation clients can trust.
+                </p>
+
+              </div>
+
+              <div
+                class="persona-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- PERSONA 03 -->
+
+            <article class="persona-card">
+
+              <div class="persona-number">
+                03
+              </div>
+
+              <div class="persona-icon">
+                <i data-lucide="store"></i>
+              </div>
+
+              <div class="persona-content">
+
+                <div class="persona-label">
+                  THE BUSINESS OWNER
+                </div>
+
+                <h3>
+                  Grow with trust.
+                </h3>
+
+                <p>
+                  Build stronger relationships with the people
+                  you serve and create credibility that grows
+                  alongside your business.
+                </p>
+
+              </div>
+
+              <div
+                class="persona-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- PERSONA 04 -->
+
+            <article class="persona-card persona-card-wide">
+
+              <div class="persona-number">
+                04
+              </div>
+
+              <div class="persona-icon">
+                <i data-lucide="rocket"></i>
+              </div>
+
+              <div class="persona-content">
+
+                <div class="persona-label">
+                  THE ENTREPRENEUR
+                </div>
+
+                <h3>
+                  Start small.
+                  <span>RISE bigger.</span>
+                </h3>
+
+                <p>
+                  Every business starts somewhere. Build credibility
+                  from your earliest wins and create a foundation
+                  for bigger opportunities ahead.
+                </p>
+
+              </div>
+
+              <div
+                class="persona-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+
+            <!-- PERSONA 05 -->
+
+            <article class="persona-card persona-card-green">
+
+              <div class="persona-number">
+                05
+              </div>
+
+              <div class="persona-icon">
+                <i data-lucide="wifi"></i>
+              </div>
+
+              <div class="persona-content">
+
+                <div class="persona-label">
+                  THE REMOTE WORKER
+                </div>
+
+                <h3>
+                  Work anywhere.
+                  <span>Build everywhere.</span>
+                </h3>
+
+                <p>
+                  Your reputation shouldn't disappear when the
+                  job ends. Carry the trust you've earned into
+                  whatever comes next.
+                </p>
+
+              </div>
+
+              <div
+                class="persona-glow"
+                aria-hidden="true"
+              ></div>
+
+            </article>
+
+
+          </div>
+
+
+
+          <!-- SECTION CLOSE -->
+
+          <div class="who-rise-close">
+
+            <p>
+              Different paths.
+              Different goals.
+              <strong>
+                One thing in common: you're building.
+              </strong>
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           SECTION 04 — FOR BUSINESSES
+           ====================================================== -->
+
+      <section class="business-section" id="businesses">
+
+        <div class="container business-grid">
+
+            <div class="business-copy">
+
+                <div class="section-kicker">
+                    <span class="section-kicker-line"></span>
+                    FOR BUSINESSES
+                </div>
+
+                <h2 class="business-title">
+                    Hire with
+                    <span>confidence.</span>
+                    <br>
+                    Not guesswork.
+                </h2>
+
+                <p class="business-text">
+
+                    RISE helps businesses discover dependable people,
+                    build stronger teams, and hire with confidence
+                    using real reputation—not assumptions.
+
+                </p>
+
+                <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Partner With RISE
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+            </div>
+
+            <div class="business-image">
+
+                <img
+                    src="business-market-hero.webp"
+                    alt="Businesses using RISE in Wuse Market"
+                >
+
+            </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================
+           FINAL CTA
+           ====================================================== -->
+
+      <section class="cta-section" id="waitlist">
+          <div class="container">
+              <div class="cta-content">
+
+                  <span class="section-label">Join the Movement</span>
+
+                  <h2>
+                      Build a reputation that opens doors.
+                  </h2>
+
+                  <p class="cta-description">
+                      Be among the first to build a reputation that opens doors across Africa.
+                  </p>
+
+                  <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                      Join the Waitlist
+                      <i data-lucide="arrow-up-right"></i>
+                  </a>
+
+                  <p class="cta-note">
+                      Free to join. Early members will receive first access to the beta.
+                  </p>
+
+              </div>
+          </div>
+      </section>
+
+    </main>
+
+
+    <!-- ======================================================
+         FOOTER
+         ====================================================== -->
+
     <footer class="footer">
-      <div class="container">
-        <div class="footer-brand">
-          <img src="logo.png" alt="RISE" class="footer-logo" />
-          <p class="footer-tagline">Get work. Get paid. Build Trust.</p>
+
+        <div class="container">
+
+            <div class="footer-brand">
+                <img src="rise-logo.png" alt="RISE Logo" class="footer-logo">
+
+                <p class="footer-tagline">
+                    Building trust. Creating opportunity.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="https://www.instagram.com/useriseafrica" target="_blank">Instagram</a>
+                <a href="https://www.linkedin.com/company/useriseafrica" target="_blank">LinkedIn</a>
+                <a href="https://x.com/useriseafrica" target="_blank">X</a>
+                <a href="https://www.tiktok.com/@useriseafrica" target="_blank">TikTok</a>
+            </div>
+
+            <div class="footer-closing">
+
+                <h3>
+                    The future belongs to those others can trust.
+                </h3>
+
+                <p class="footer-philosophy">
+                    We make your reputation inevitable.
+                </p>
+
+                <p class="copyright">
+                    © 2026 RISE Technologies Limited.<br>
+                    Made in Nigeria. Designed for Africa.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="footer-links">
-          <a href="#how-it-works">How It Works</a>
-          <a href="#who-it-is-for">Who It's For</a>
-          <a href="#for-businesses">For Businesses</a>
-        </div>
-
-        <div class="footer-closing">
-          <h3>RISE Platform</h3>
-          <p class="footer-philosophy">Empowering everyday workers across Nigeria.</p>
-          <p class="copyright">&copy; 2026 RISE. All rights reserved.</p>
-        </div>
-      </div>
     </footer>
+
   </div>
 
+
+  <!-- ========================================================
+       MODALS
+       ======================================================== -->
+
+  <!-- WHY RISE MODAL -->
+  <div class="contest-overlay" id="whyRiseModal">
+    <div class="contest-card">
+      <button class="contest-close" id="closeWhyRise">&times;</button>
+
+      <div class="contest-badge">
+        WHY RISE?
+      </div>
+
+      <h2 class="contest-title">
+        Some things
+        <span>shouldn't have to be explained.</span>
+      </h2>
+
+      <p class="contest-copy">
+        Your work.<br>
+        Your consistency.<br>
+        Your reputation.
+      </p>
+
+      <hr>
+
+      <p class="contest-copy">
+        Every day, millions of Nigerians show up.<br>
+        They deliver.<br>
+        They create.<br>
+        They keep their word.<br>
+        They build businesses.<br>
+        They make money.<br>
+        Then tomorrow...<br>
+        they have to prove themselves all over again.
+      </p>
+
+      <p class="contest-copy">
+        We think there's a better way.<br>
+        Not another social platform.<br>
+        Not another payment app.<br>
+        Not another marketplace.<br>
+        Something different.
+      </p>
+
+      <p class="contest-copy">
+        Trust is one of the most valuable things a person can build.<br>
+        Yet it's one of the hardest things to carry from one opportunity to the next.<br>
+        That deserves to change.
+      </p>
+
+      <p class="contest-copy">
+        We're building something that makes trust more visible.<br>
+        Something that rewards consistency.<br>
+        Something designed for people who keep showing up.<br>
+        We're starting in Nigeria.<br>
+        Because if you can build it here...<br>
+        you can build it anywhere.
+      </p>
+
+      <h3 style="margin-top:40px;color:#39ff14;font-family:var(--heading);margin-bottom:12px;">
+        Why Nigeria?
+      </h3>
+
+      <p class="contest-copy">
+        Because Nigeria no be cho cho cho.<br>
+        This country is full of builders.<br>
+        Founders.<br>
+        Freelancers.<br>
+        Students.<br>
+        Business owners.<br>
+        Creators.<br>
+        People doing incredible work every single day.<br>
+        The problem isn't ambition.<br>
+        The problem is that too much of that effort disappears the moment a transaction ends.<br>
+        We think good work should leave a trail.
+      </p>
+
+      <p class="contest-copy">
+        We're intentionally sharing only part of the story.<br>
+        The best products aren't built behind closed doors.<br>
+        They're built alongside the people they're meant to serve.<br>
+        If you're here this early...<br>
+        you're helping shape what comes next.
+      </p>
+
+      <div class="contest-footer">
+        <h3>Trust creates opportunity.</h3>
+        <p>We're just getting started.</p>
+        <a href="https://tally.so/r/68py7B" target="_blank" class="btn btn-primary">
+          Join the Waitlist
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTEST MODAL -->
+  <div class="contest-overlay" id="contestModal">
+    <div class="contest-card">
+      <button class="contest-close" id="closeContest">&times;</button>
+      <h2>🎉 Rise & Refer — ₦150,000 Giveaway</h2>
+      <p style="margin-bottom:20px;color:rgba(255,255,255,0.7);">Help us grow the RISE community and get rewarded.</p>
+      
+      <h3 style="color:var(--green);margin-bottom:10px;">Weekly Prizes</h3>
+      <ul>
+        <li>Weeks 1–3: Top 2 referrers win ₦5,000 each.</li>
+        <li>Week 4: Top 2 referrers win ₦10,000 each.</li>
+        <li>Grand Finale: Top 2 overall win ₦50,000 each.</li>
+      </ul>
+
+      <h3 style="color:var(--green);margin-bottom:10px;">How to Enter</h3>
+      <ol>
+        <li>Join the waitlist.</li>
+        <li>Follow @useriseafrica.</li>
+        <li>Share your referral link.</li>
+        <li>Top the leaderboard.</li>
+      </ol>
+
+      <div style="text-align:center;margin-top:30px;">
+        <a class="btn btn-primary" href="https://tally.so/r/68py7B" target="_blank">Join the Waitlist</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================
+       JAVASCRIPT
+       ======================================================== -->
+
   <script>
-    // Initialize Lucide Icons
+
+    /* LUCIDE ICONS */
+
     lucide.createIcons();
 
-    // Mobile Menu Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
 
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
+    /* ELEMENTS */
+
+    const header =
+      document.getElementById("siteHeader");
+
+    const menuToggle =
+      document.getElementById("mobileMenuToggle");
+
+    const navLinks =
+      document.getElementById("navLinks");
+
+
+    /* HEADER SCROLL EFFECT */
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 20) {
+
+          header.classList.add("scrolled");
+
+        } else {
+
+          header.classList.remove("scrolled");
+
+        }
+
+      }
+    );
+
+
+    /* MOBILE MENU */
+
+    menuToggle.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          navLinks.classList.toggle("open");
+
+        menuToggle.classList.toggle(
+          "active",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          isOpen
+        );
+
+        document.body.classList.toggle(
+          "menu-open",
+          isOpen
+        );
+
+      }
+    );
+
+
+    /* CLOSE MOBILE MENU AFTER LINK CLICK */
+
+    navLinks
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            navLinks.classList.remove("open");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            document.body.classList.remove(
+              "menu-open"
+            );
+
+          }
+        );
+
       });
-    }
 
-    // Header Blur & Scroll Styling
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+
+    /* RESET MENU WHEN RETURNING TO DESKTOP */
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (window.innerWidth > 900) {
+
+          navLinks.classList.remove("open");
+
+          menuToggle.classList.remove("active");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          document.body.classList.remove(
+            "menu-open"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* WHY RISE MODAL JS */
+
+    const whyRiseModal = document.getElementById("whyRiseModal");
+
+    document.getElementById("openWhyRise")?.addEventListener("click", function(e) {
+      e.preventDefault();
+      whyRiseModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    });
+
+    document.getElementById("closeWhyRise")?.addEventListener("click", closeWhyRise);
+
+    whyRiseModal?.addEventListener("click", function(e) {
+      if (e.target === whyRiseModal) {
+        closeWhyRise();
       }
     });
+
+    function closeWhyRise() {
+      whyRiseModal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+
+    /* AUGUST CONTEST MODAL JS */
+
+    const contestModal = document.getElementById("contestModal");
+
+    document.getElementById("openContest")?.addEventListener("click", function(e) {
+      e.preventDefault();
+      contestModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    });
+
+    document.getElementById("closeContest")?.addEventListener("click", closeContest);
+
+    contestModal?.addEventListener("click", function(e) {
+      if (e.target === contestModal) {
+        closeContest();
+      }
+    });
+
+    function closeContest() {
+      contestModal.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+
+    /* GLOBAL ESCAPE KEY LISTENER */
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        closeWhyRise();
+        closeContest();
+      }
+    });
+
   </script>
+
 </body>
 </html>
