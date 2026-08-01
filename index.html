@@ -906,6 +906,133 @@
     }
 
 
+
+    /* =========================================================
+       SECTION 02 — THE PROBLEM
+       ========================================================= */
+    .problem-section {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 150px 0 130px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(57,255,20,.07), transparent 35%),
+        linear-gradient(180deg, #010201 0%, #050805 48%, #010201 100%);
+    }
+
+    .problem-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .16;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(57,255,20,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,.04) 1px, transparent 1px);
+      background-size: 90px 90px;
+    }
+
+    .problem-container { position: relative; z-index: 2; }
+    .problem-header { max-width: 920px; margin: 0 auto 90px; text-align: center; }
+    .problem-kicker { justify-content: center; }
+
+    .problem-title {
+      font-family: var(--heading);
+      font-size: clamp(56px, 5vw, 88px);
+      font-weight: 800;
+      line-height: .98;
+      letter-spacing: -.06em;
+    }
+
+    .problem-title span {
+      display: block;
+      color: var(--green);
+      text-shadow: 0 0 50px rgba(57,255,20,.15);
+    }
+
+    .problem-sequence {
+      width: min(780px, 100%);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .problem-beat {
+      padding: 18px 22px;
+      color: rgba(255,255,255,.86);
+      font-family: var(--heading);
+      font-size: clamp(26px, 2.8vw, 46px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    .problem-quote {
+      border: 1px solid rgba(57,255,20,.2);
+      border-radius: 22px;
+      background: rgba(57,255,20,.045);
+    }
+
+    .problem-reset {
+      color: var(--green);
+      font-size: clamp(34px, 4vw, 58px);
+    }
+
+    .problem-arrow {
+      margin: 2px 0;
+      color: rgba(255,255,255,.3);
+      font-size: 28px;
+    }
+
+    .problem-copy {
+      width: min(820px, 100%);
+      margin: 95px auto 0;
+      text-align: center;
+    }
+
+    .problem-copy p {
+      margin-top: 28px;
+      color: rgba(255,255,255,.72);
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .problem-copy .problem-lingo {
+      margin-top: 0;
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: clamp(30px, 3vw, 46px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.04em;
+    }
+
+    .problem-close {
+      width: min(1000px, 100%);
+      margin: 100px auto 0;
+      padding-top: 60px;
+      border-top: 1px solid rgba(57,255,20,.14);
+      text-align: center;
+    }
+
+    .problem-close h2 {
+      font-family: var(--heading);
+      font-size: clamp(44px, 5vw, 78px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.055em;
+    }
+
+    .problem-close h2 span {
+      display: block;
+      color: var(--green);
+    }
+
+    .problem-next {
+      margin-top: 150px;
+      margin-bottom: 80px;
+    }
+
     /* =========================================================
        SECTION 02 — HOW RISE WORKS
        ========================================================= */
@@ -2264,6 +2391,20 @@
       }
 
 
+
+      /* MOBILE — THE PROBLEM */
+      .problem-section { padding: 95px 0 90px; }
+      .problem-header { margin-bottom: 55px; }
+      .problem-title { font-size: clamp(44px, 11vw, 66px); }
+      .problem-beat { padding: 15px 14px; font-size: clamp(24px, 7vw, 34px); }
+      .problem-arrow { font-size: 22px; }
+      .problem-copy { margin-top: 65px; }
+      .problem-copy p { font-size: 16px; line-height: 1.7; }
+      .problem-copy .problem-lingo { font-size: 32px; }
+      .problem-close { margin-top: 70px; padding-top: 45px; }
+      .problem-close h2 { font-size: clamp(40px, 10.5vw, 60px); }
+      .problem-next { margin-top: 100px; margin-bottom: 55px; }
+
       /* =======================================================
          MOBILE — HOW RISE WORKS
          ======================================================= */
@@ -2980,41 +3121,130 @@
       </section>
 
 
-      <!-- ======================================================
-SECTION 02 — THE PROBLEM
-====================================================== -->
-<section class="how-rise" id="how-it-works">
-<div class="container">
-<div class="how-rise-header" style="text-align:center;max-width:900px;margin:0 auto 90px;">
-<div class="section-kicker" style="justify-content:center;"><span class="section-kicker-line"></span>THE PROBLEM</div>
-<h2 class="how-rise-title">Every day...</h2>
-<div style="margin:70px auto;max-width:700px;font-family:var(--heading);font-size:clamp(30px,3vw,54px);line-height:1.45;">
-<div>You show up.</div><div style="opacity:.3;">↓</div>
-<div>You keep your word.</div><div style="opacity:.3;">↓</div>
-<div>You earn someone's trust.</div><div style="opacity:.3;">↓</div>
-<div>Life moves on.</div><div style="opacity:.3;">↓</div>
-<div>The next opportunity arrives.</div><div style="opacity:.3;">↓</div>
-<div style="color:var(--green)">None of it comes with you.</div>
-</div>
-<h2 class="how-rise-title" style="font-size:clamp(44px,4vw,70px);">What if it did?</h2>
-<p class="how-rise-intro" style="margin:25px auto;text-align:center;">That's the future we're building.</p>
-</div>
+      
+<!-- ======================================================
+     SECTION 02 — THE PROBLEM
+     ====================================================== -->
+<section class="problem-section" id="how-it-works">
+  <div class="container problem-container">
 
-<div class="how-rise-header">
-<div class="section-kicker"><span class="section-kicker-line"></span>HOW IT BEGINS</div>
-<div class="how-rise-heading-row">
-<h2 class="how-rise-title">It starts with <span>the work you're already doing.</span></h2>
-<p class="how-rise-intro">You don't need to become someone new. You simply shouldn't have to start from zero every time a new opportunity comes along.</p>
-</div>
-</div>
+    <div class="problem-header">
+      <div class="section-kicker problem-kicker">
+        <span class="section-kicker-line"></span>
+        THE PROBLEM
+      </div>
 
-<div class="rise-steps">
-<article class="rise-step"><div class="rise-step-top"><span class="rise-step-number">01</span><div class="rise-step-icon"><i data-lucide="briefcase-business"></i></div></div><div class="rise-step-content"><h3>Start with what you already do.</h3><p>Every completed job. Every customer served. Every promise kept.</p></div><div class="rise-step-glow"></div></article>
-<article class="rise-step rise-step-featured"><div class="rise-step-top"><span class="rise-step-number">02</span><div class="rise-step-icon"><i data-lucide="badge-check"></i></div></div><div class="rise-step-content"><h3>Let consistency become your reputation.</h3><p>The small things add up. Over time they become proof that travels with you.</p></div><div class="rise-step-glow"></div></article>
-<article class="rise-step"><div class="rise-step-top"><span class="rise-step-number">03</span><div class="rise-step-icon"><i data-lucide="trending-up"></i></div></div><div class="rise-step-content"><h3>Carry it into what's next.</h3><p>The next client. The next employer. The next opportunity shouldn't start at zero.</p></div><div class="rise-step-glow"></div></article>
-</div>
-</div>
+      <h2 class="problem-title">
+        If you've ever had to
+        <span>start from zero...</span>
+        you already understand.
+      </h2>
+    </div>
+
+    <div class="problem-sequence">
+      <div class="problem-beat"><p>You finish the job.</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat"><p>The client is happy.</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-quote"><p>“No worry, I go tell my people about you.”</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat"><p>You leave smiling.</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat"><p>Then another opportunity comes.</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-quote"><p>“Have you done this before?”</p></div>
+      <div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-reset"><p>Back to square one.</p></div>
+    </div>
+
+    <div class="problem-copy">
+      <p class="problem-lingo">Nigeria no be cho cho cho.</p>
+
+      <p>
+        People are putting in real work every single day.
+        Mechanics. Designers. Tailors. Food vendors.
+        Photographers. Small business owners.
+        Students looking for their first real opportunity.
+      </p>
+
+      <p>
+        The hustle isn't the problem.
+        Starting from zero every single time is.
+      </p>
+
+      <p>
+        New customer. New client. New opportunity.
+        Same question: prove yourself again.
+      </p>
+    </div>
+
+    <div class="problem-close">
+      <h2>
+        The hustle is already there.
+        <span>It should count for something.</span>
+      </h2>
+    </div>
+
+    <div class="problem-next">
+      <div class="section-kicker">
+        <span class="section-kicker-line"></span>
+        HOW IT BEGINS
+      </div>
+
+      <div class="how-rise-heading-row">
+        <h2 class="how-rise-title">
+          It starts with
+          <span>the work you're already doing.</span>
+        </h2>
+
+        <p class="how-rise-intro">
+          You shouldn't need to become someone new.
+          You simply shouldn't have to start from zero every time.
+        </p>
+      </div>
+    </div>
+
+    <div class="rise-steps">
+      <article class="rise-step">
+        <div class="rise-step-top">
+          <span class="rise-step-number">01</span>
+          <div class="rise-step-icon"><i data-lucide="briefcase-business"></i></div>
+        </div>
+        <div class="rise-step-content">
+          <h3>Keep doing the work.</h3>
+          <p>Every job completed. Every customer served. Every promise kept.</p>
+        </div>
+        <div class="rise-step-glow" aria-hidden="true"></div>
+      </article>
+
+      <article class="rise-step rise-step-featured">
+        <div class="rise-step-top">
+          <span class="rise-step-number">02</span>
+          <div class="rise-step-icon"><i data-lucide="badge-check"></i></div>
+        </div>
+        <div class="rise-step-content">
+          <h3>Let the work speak for you.</h3>
+          <p>So the next person doesn't have to take only your word for it.</p>
+        </div>
+        <div class="rise-step-glow" aria-hidden="true"></div>
+      </article>
+
+      <article class="rise-step">
+        <div class="rise-step-top">
+          <span class="rise-step-number">03</span>
+          <div class="rise-step-icon"><i data-lucide="trending-up"></i></div>
+        </div>
+        <div class="rise-step-content">
+          <h3>Move forward without resetting.</h3>
+          <p>The next client. The next customer. The next opportunity. Your effort should come with you.</p>
+        </div>
+        <div class="rise-step-glow" aria-hidden="true"></div>
+      </article>
+    </div>
+
+  </div>
 </section>
+
 
 
       <!-- ======================================================
@@ -3048,7 +3278,10 @@ SECTION 02 — THE PROBLEM
 
 
               <p class="who-rise-intro">
-                Whether you're building a business, growing your craft, or turning your skills into income, RISE is designed for people who keep showing up. Different paths. Same principle: what you build should count.
+                Whether you're building a business, growing your
+                craft, or turning your skills into income, RISE is
+                designed to help your work build a reputation that
+                opens doors.
               </p>
 
             </div>
@@ -3322,7 +3555,7 @@ SECTION 02 — THE PROBLEM
             <div class="business-image">
 
                 <img
-                    src="WuseMarket.png"
+                    src="business-market-hero.webp"
                     alt="Businesses using RISE in Wuse Market"
                 >
 
@@ -3331,24 +3564,6 @@ SECTION 02 — THE PROBLEM
         </div>
 
       </section>
-
-
-      
-<section class="cta-section" style="padding:120px 0;background:linear-gradient(180deg,#020302,#010201);">
-<div class="container">
-<div class="cta-content">
-<span class="section-label">Why We Started</span>
-<h2>RISE didn't begin with software.</h2>
-<p class="cta-description">
-It began with a simple question.
-<br><br>
-Why should someone have to prove themselves again after they've already done the work?
-<br><br>
-We're building RISE alongside the people it's meant to serve—listening first, learning constantly, and creating a future where your reputation can travel with you.
-</p>
-</div>
-</div>
-</section>
 
 
       <!-- ======================================================
@@ -3362,11 +3577,11 @@ We're building RISE alongside the people it's meant to serve—listening first, 
                   <span class="section-label">Join the Movement</span>
 
                   <h2>
-                      The future belongs to people who keep showing up.
+                      Build a reputation that opens doors.
                   </h2>
 
                   <p class="cta-description">
-                      You're already doing the work. Now let it count.
+                      Be among the first to build a reputation that opens doors across Africa.
                   </p>
 
                   <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
