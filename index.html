@@ -1511,6 +1511,79 @@
     }
 
 
+
+    /* =========================================================
+       WHO RISE IS FOR — CLEAN EDITORIAL LIST
+       ========================================================= */
+
+    .who-rise-clean {
+      padding: 135px 0 120px;
+    }
+
+    .who-rise-list {
+      width: 100%;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .who-rise-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 28px;
+      padding: 38px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: padding-left .3s var(--ease), border-color .3s ease;
+    }
+
+    .who-rise-row:hover {
+      padding-left: 10px;
+      border-color: rgba(57,255,20,.3);
+    }
+
+    .who-rise-mark {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(57,255,20,.28);
+      border-radius: 50%;
+      color: var(--green);
+      background: rgba(57,255,20,.05);
+    }
+
+    .who-rise-mark svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2.2;
+    }
+
+    .who-rise-row-content {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(280px, .6fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .who-rise-row-content h3 {
+      font-family: var(--heading);
+      font-size: clamp(27px, 2.7vw, 44px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    .who-rise-row-content p {
+      max-width: 520px;
+      color: rgba(255,255,255,.6);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .who-rise-clean-close {
+      margin-top: 55px;
+    }
+
     /* =========================================================
        SECTION 03 — WHO RISE IS FOR
        ========================================================= */
@@ -2567,6 +2640,41 @@
       }
 
 
+
+      /* MOBILE — WHO RISE IS FOR CLEAN LIST */
+      .who-rise-clean {
+        padding: 90px 0 85px;
+      }
+
+      .who-rise-row {
+        grid-template-columns: 42px 1fr;
+        gap: 15px;
+        padding: 28px 0;
+      }
+
+      .who-rise-row:hover {
+        padding-left: 0;
+      }
+
+      .who-rise-mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .who-rise-row-content {
+        display: block;
+      }
+
+      .who-rise-row-content h3 {
+        margin-bottom: 12px;
+        font-size: 28px;
+      }
+
+      .who-rise-row-content p {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
       /* =======================================================
          MOBILE — WHO RISE IS FOR
          ======================================================= */
@@ -3321,272 +3429,86 @@
 
 
 
-      <!-- ======================================================
-           SECTION 03 — WHO RISE IS FOR
-           ====================================================== -->
-
-      <section
-        class="who-rise"
-        id="who-its-for"
-      >
-
-        <div class="container">
-
-
-          <!-- SECTION HEADER -->
-
-          <div class="who-rise-header">
-
-            <div class="section-kicker">
-              <span class="section-kicker-line"></span>
-              WHO RISE IS FOR
-            </div>
-
-
-            <div class="who-rise-heading-row">
-
-              <h2 class="who-rise-title">
-                Built for people
-                <span>building something real.</span>
-              </h2>
-
-
-              <p class="who-rise-intro">
-                Whether you're building a business, growing your
-                craft, or turning your skills into income, RISE is
-                designed to help your work build a reputation that
-                opens doors.
-              </p>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- PERSONA GRID -->
-
-          <div class="persona-grid">
-
-
-            <!-- PERSONA 01 -->
-
-            <article class="persona-card persona-card-large">
-
-              <div class="persona-number">
-                01
-              </div>
-
-              <div class="persona-icon">
-                <i data-lucide="briefcase"></i>
-              </div>
-
-              <div class="persona-content">
-
-                <div class="persona-label">
-                  THE HUSTLER
-                </div>
-
-                <h3>
-                  Your work speaks.
-                  <span>RISE makes it count.</span>
-                </h3>
-
-                <p>
-                  From side gigs to everyday jobs, build a record
-                  of the work you complete and the trust you earn
-                  along the way.
-                </p>
-
-              </div>
-
-              <div
-                class="persona-glow"
-                aria-hidden="true"
-              ></div>
-
-            </article>
-
-
-
-            <!-- PERSONA 02 -->
-
-            <article class="persona-card">
-
-              <div class="persona-number">
-                02
-              </div>
-
-              <div class="persona-icon">
-                <i data-lucide="palette"></i>
-              </div>
-
-              <div class="persona-content">
-
-                <div class="persona-label">
-                  THE CREATIVE
-                </div>
-
-                <h3>
-                  Build your name.
-                </h3>
-
-                <p>
-                  Designers, photographers, creators, and freelancers:
-                  turn great work into a reputation clients can trust.
-                </p>
-
-              </div>
-
-              <div
-                class="persona-glow"
-                aria-hidden="true"
-              ></div>
-
-            </article>
-
-
-
-            <!-- PERSONA 03 -->
-
-            <article class="persona-card">
-
-              <div class="persona-number">
-                03
-              </div>
-
-              <div class="persona-icon">
-                <i data-lucide="store"></i>
-              </div>
-
-              <div class="persona-content">
-
-                <div class="persona-label">
-                  THE BUSINESS OWNER
-                </div>
-
-                <h3>
-                  Grow with trust.
-                </h3>
-
-                <p>
-                  Build stronger relationships with the people
-                  you serve and create credibility that grows
-                  alongside your business.
-                </p>
-
-              </div>
-
-              <div
-                class="persona-glow"
-                aria-hidden="true"
-              ></div>
-
-            </article>
-
-
-
-            <!-- PERSONA 04 -->
-
-            <article class="persona-card persona-card-wide">
-
-              <div class="persona-number">
-                04
-              </div>
-
-              <div class="persona-icon">
-                <i data-lucide="rocket"></i>
-              </div>
-
-              <div class="persona-content">
-
-                <div class="persona-label">
-                  THE ENTREPRENEUR
-                </div>
-
-                <h3>
-                  Start small.
-                  <span>RISE bigger.</span>
-                </h3>
-
-                <p>
-                  Every business starts somewhere. Build credibility
-                  from your earliest wins and create a foundation
-                  for bigger opportunities ahead.
-                </p>
-
-              </div>
-
-              <div
-                class="persona-glow"
-                aria-hidden="true"
-              ></div>
-
-            </article>
-
-
-
-            <!-- PERSONA 05 -->
-
-            <article class="persona-card persona-card-green">
-
-              <div class="persona-number">
-                05
-              </div>
-
-              <div class="persona-icon">
-                <i data-lucide="wifi"></i>
-              </div>
-
-              <div class="persona-content">
-
-                <div class="persona-label">
-                  THE REMOTE WORKER
-                </div>
-
-                <h3>
-                  Work anywhere.
-                  <span>Build everywhere.</span>
-                </h3>
-
-                <p>
-                  Your reputation shouldn't disappear when the
-                  job ends. Carry the trust you've earned into
-                  whatever comes next.
-                </p>
-
-              </div>
-
-              <div
-                class="persona-glow"
-                aria-hidden="true"
-              ></div>
-
-            </article>
-
-
-          </div>
-
-
-
-          <!-- SECTION CLOSE -->
-
-          <div class="who-rise-close">
-
-            <p>
-              Different paths.
-              Different goals.
-              <strong>
-                One thing in common: you're building.
-              </strong>
-            </p>
-
-          </div>
-
-
+      
+<!-- ======================================================
+     SECTION 03 — WHO RISE IS FOR
+     ====================================================== -->
+<section class="who-rise who-rise-clean" id="who-its-for">
+  <div class="container">
+
+    <div class="who-rise-header">
+      <div class="section-kicker">
+        <span class="section-kicker-line"></span>
+        WHO RISE IS FOR
+      </div>
+
+      <div class="who-rise-heading-row">
+        <h2 class="who-rise-title">
+          If this has happened to you,
+          <span>RISE is being built for you.</span>
+        </h2>
+
+        <p class="who-rise-intro">
+          No labels. No big grammar. Just real people doing real work
+          and tired of proving themselves from scratch every time.
+        </p>
+      </div>
+    </div>
+
+    <div class="who-rise-list">
+
+      <article class="who-rise-row">
+        <div class="who-rise-mark"><i data-lucide="check"></i></div>
+        <div class="who-rise-row-content">
+          <h3>You finished the job, but still had to chase your payment.</h3>
+          <p>You did your part. Getting paid should not become another job.</p>
         </div>
+      </article>
 
-      </section>
+      <article class="who-rise-row">
+        <div class="who-rise-mark"><i data-lucide="check"></i></div>
+        <div class="who-rise-row-content">
+          <h3>You know you're good, but the next person only sees a stranger.</h3>
+          <p>Your last client knows what you can do. The next one should not need a full sermon.</p>
+        </div>
+      </article>
+
+      <article class="who-rise-row">
+        <div class="who-rise-mark"><i data-lucide="check"></i></div>
+        <div class="who-rise-row-content">
+          <h3>You've heard, “I will recommend you,” and nothing followed.</h3>
+          <p>No vex. We have all heard that one before.</p>
+        </div>
+      </article>
+
+      <article class="who-rise-row">
+        <div class="who-rise-mark"><i data-lucide="check"></i></div>
+        <div class="who-rise-row-content">
+          <h3>You've been overlooked because nobody could see your track record.</h3>
+          <p>Hard work should not disappear because you do not have connections.</p>
+        </div>
+      </article>
+
+      <article class="who-rise-row">
+        <div class="who-rise-mark"><i data-lucide="check"></i></div>
+        <div class="who-rise-row-content">
+          <h3>You're trying to build something, one opportunity at a time.</h3>
+          <p>Whether you sell, design, deliver, cook, create, repair, or work remotely—you belong here.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="who-rise-close who-rise-clean-close">
+      <p>
+        Different hustle. Same frustration.
+        <strong>You should not have to start from zero every time.</strong>
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
 
       <!-- ======================================================
