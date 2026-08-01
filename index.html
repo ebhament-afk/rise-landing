@@ -1033,6 +1033,62 @@
       margin-bottom: 80px;
     }
 
+
+    /* =========================================================
+       HOW IT BEGINS — EDITORIAL LIST
+       ========================================================= */
+
+    .how-begins-list {
+      width: 100%;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .how-begins-row {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      gap: 34px;
+      align-items: start;
+      padding: 42px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      transition: padding-left .3s var(--ease), border-color .3s ease;
+    }
+
+    .how-begins-row:hover {
+      padding-left: 12px;
+      border-color: rgba(57,255,20,.28);
+    }
+
+    .how-begins-number {
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .how-begins-content {
+      display: grid;
+      grid-template-columns: minmax(280px, .8fr) minmax(320px, 1fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .how-begins-content h3 {
+      font-family: var(--heading);
+      font-size: clamp(30px, 3vw, 48px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+
+    .how-begins-content p {
+      max-width: 560px;
+      color: rgba(255,255,255,.62);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
     /* =========================================================
        SECTION 02 — HOW RISE WORKS
        ========================================================= */
@@ -2405,6 +2461,32 @@
       .problem-close h2 { font-size: clamp(40px, 10.5vw, 60px); }
       .problem-next { margin-top: 100px; margin-bottom: 55px; }
 
+
+      /* MOBILE — HOW IT BEGINS */
+      .how-begins-row {
+        grid-template-columns: 42px 1fr;
+        gap: 16px;
+        padding: 30px 0;
+      }
+
+      .how-begins-row:hover {
+        padding-left: 0;
+      }
+
+      .how-begins-content {
+        display: block;
+      }
+
+      .how-begins-content h3 {
+        margin-bottom: 12px;
+        font-size: 30px;
+      }
+
+      .how-begins-content p {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
       /* =======================================================
          MOBILE — HOW RISE WORKS
          ======================================================= */
@@ -3136,7 +3218,7 @@
 
       <h2 class="problem-title">
         If you've ever had to
-        <span>start   from   zero...</span>
+        <span>start from zero...</span>
         you already understand.
       </h2>
     </div>
@@ -3204,43 +3286,35 @@
       </div>
     </div>
 
-    <div class="rise-steps">
-      <article class="rise-step">
-        <div class="rise-step-top">
-          <span class="rise-step-number">01</span>
-          <div class="rise-step-icon"><i data-lucide="briefcase-business"></i></div>
-        </div>
-        <div class="rise-step-content">
-          <h3>Keep doing the work.</h3>
-          <p>Every job completed. Every customer served. Every promise kept.</p>
-        </div>
-        <div class="rise-step-glow" aria-hidden="true"></div>
-      </article>
+    
+<div class="how-begins-list">
 
-      <article class="rise-step rise-step-featured">
-        <div class="rise-step-top">
-          <span class="rise-step-number">02</span>
-          <div class="rise-step-icon"><i data-lucide="badge-check"></i></div>
-        </div>
-        <div class="rise-step-content">
-          <h3>Let the work speak for you.</h3>
-          <p>So the next person doesn't have to take only your word for it.</p>
-        </div>
-        <div class="rise-step-glow" aria-hidden="true"></div>
-      </article>
-
-      <article class="rise-step">
-        <div class="rise-step-top">
-          <span class="rise-step-number">03</span>
-          <div class="rise-step-icon"><i data-lucide="trending-up"></i></div>
-        </div>
-        <div class="rise-step-content">
-          <h3>Move forward without resetting.</h3>
-          <p>The next client. The next customer. The next opportunity. Your effort should come with you.</p>
-        </div>
-        <div class="rise-step-glow" aria-hidden="true"></div>
-      </article>
+  <article class="how-begins-row">
+    <div class="how-begins-number">01</div>
+    <div class="how-begins-content">
+      <h3>Keep doing the work.</h3>
+      <p>Every job completed. Every customer served. Every promise kept.</p>
     </div>
+  </article>
+
+  <article class="how-begins-row">
+    <div class="how-begins-number">02</div>
+    <div class="how-begins-content">
+      <h3>Let the work speak for you.</h3>
+      <p>So the next person doesn't have to take only your word for it.</p>
+    </div>
+  </article>
+
+  <article class="how-begins-row">
+    <div class="how-begins-number">03</div>
+    <div class="how-begins-content">
+      <h3>Move forward without resetting.</h3>
+      <p>The next client. The next customer. The next opportunity. Your effort should come with you.</p>
+    </div>
+  </article>
+
+</div>
+
 
   </div>
 </section>
