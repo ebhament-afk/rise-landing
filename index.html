@@ -2756,6 +2756,38 @@
       }
 
 
+
+      .solution-section,
+      .brand-quote-section {
+        padding: 90px 0;
+      }
+
+      .solution-grid {
+        grid-template-columns: 1fr;
+        gap: 65px;
+      }
+
+      .solution-title {
+        font-size: clamp(44px, 11vw, 66px);
+      }
+
+      .solution-text {
+        font-size: 16px;
+      }
+
+      .solution-point {
+        grid-template-columns: 38px 1fr;
+        gap: 14px;
+      }
+
+      .brand-quote-inner blockquote {
+        font-size: clamp(28px, 8vw, 44px);
+      }
+
+      .legal-body {
+        padding: 26px 20px;
+      }
+
       /* =======================================================
          MOBILE — FOR BUSINESSES & FOOTER
          ======================================================= */
@@ -2975,7 +3007,262 @@
     .contest-card li {
       margin-bottom: 8px;
     }
-  </style>
+  
+    /* =========================================================
+       THE RISE SOLUTION
+       ========================================================= */
+
+    .solution-section {
+      position: relative;
+      z-index: 2;
+      padding: 140px 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 45%, rgba(57,255,20,.08), transparent 34%),
+        linear-gradient(180deg, #010201 0%, #040704 52%, #010201 100%);
+      border-top: 1px solid rgba(57,255,20,.08);
+      border-bottom: 1px solid rgba(57,255,20,.08);
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .8fr);
+      gap: 100px;
+      align-items: start;
+    }
+
+    .solution-title {
+      max-width: 820px;
+      margin-bottom: 30px;
+      font-family: var(--heading);
+      font-size: clamp(52px, 5vw, 86px);
+      font-weight: 800;
+      line-height: .96;
+      letter-spacing: -.06em;
+    }
+
+    .solution-title span {
+      display: block;
+      color: var(--green);
+    }
+
+    .solution-text {
+      max-width: 680px;
+      margin-top: 22px;
+      color: rgba(255,255,255,.7);
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    .solution-text strong {
+      color: var(--white);
+    }
+
+    .solution-close {
+      max-width: 680px;
+      margin-top: 42px;
+      font-family: var(--heading);
+      font-size: clamp(24px, 2.3vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    .solution-close span {
+      display: block;
+      color: var(--green);
+    }
+
+    .solution-points {
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    .solution-point {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 22px;
+      padding: 32px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+
+    .solution-point > span {
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .solution-point h3 {
+      margin-bottom: 10px;
+      font-family: var(--heading);
+      font-size: clamp(24px, 2vw, 34px);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .solution-point p {
+      color: rgba(255,255,255,.58);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .brand-quote-section {
+      position: relative;
+      z-index: 2;
+      padding: 130px 0;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(57,255,20,.09), transparent 42%),
+        #010201;
+    }
+
+    .brand-quote-inner {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+    }
+
+    .brand-quote-kicker {
+      margin-bottom: 34px;
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+
+    .brand-quote-inner blockquote {
+      font-family: var(--heading);
+      font-size: clamp(32px, 3.5vw, 58px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.045em;
+    }
+
+    .brand-quote-credit {
+      margin-top: 28px;
+      color: rgba(255,255,255,.55);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .brand-quote-belief {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(57,255,20,.16);
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: clamp(22px, 2vw, 32px);
+      font-weight: 800;
+    }
+
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s var(--ease), visibility .3s var(--ease);
+    }
+
+    .legal-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .legal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.86);
+      backdrop-filter: blur(10px);
+    }
+
+    .legal-shell {
+      position: relative;
+      z-index: 2;
+      width: min(880px, 96vw);
+      max-height: 88vh;
+      overflow: hidden;
+      border: 1px solid rgba(57,255,20,.25);
+      border-radius: 26px;
+      background: #050705;
+      box-shadow: 0 40px 120px rgba(0,0,0,.85);
+    }
+
+    .legal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 26px;
+      border-bottom: 1px solid rgba(57,255,20,.15);
+      background: rgba(57,255,20,.025);
+    }
+
+    .legal-brand {
+      color: var(--white);
+      font-family: var(--heading);
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    .legal-brand span {
+      color: var(--green);
+    }
+
+    .legal-close {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50%;
+      background: rgba(255,255,255,.03);
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    .legal-body {
+      max-height: calc(88vh - 85px);
+      overflow-y: auto;
+      padding: 34px;
+      color: rgba(255,255,255,.72);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .legal-body h2 {
+      margin-bottom: 8px;
+      color: var(--white);
+      font-family: var(--heading);
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+    }
+
+    .legal-body h3 {
+      margin: 28px 0 8px;
+      color: var(--green);
+      font-family: var(--heading);
+      font-size: 18px;
+    }
+
+    .legal-body p {
+      margin-bottom: 14px;
+    }
+
+    .legal-body a {
+      color: var(--green);
+    }
+
+    .legal-date {
+      color: rgba(255,255,255,.5);
+      margin-bottom: 24px !important;
+    }
+
+</style>
 </head>
 
 
@@ -3430,6 +3717,104 @@
 
       
 
+
+      <!-- ======================================================
+           THE RISE SOLUTION
+           ====================================================== -->
+
+      <section class="solution-section" id="the-solution">
+        <div class="container">
+          <div class="solution-grid">
+
+            <div class="solution-copy">
+              <div class="section-kicker">
+                <span class="section-kicker-line"></span>
+                THE RISE SOLUTION
+              </div>
+
+              <h2 class="solution-title">
+                Your work should not disappear
+                <span>when the job ends.</span>
+              </h2>
+
+              <p class="solution-text">
+                RISE helps turn the work you complete, the people you serve,
+                and the trust you earn into a record that can move with you.
+              </p>
+
+              <p class="solution-text">
+                So when the next client, customer, employer, or business asks,
+                <strong>“Have you done this before?”</strong>
+                you are not starting with only your word.
+              </p>
+
+              <p class="solution-close">
+                Your hustle already tells a story.
+                <span>RISE helps people see it.</span>
+              </p>
+            </div>
+
+            <div class="solution-points">
+              <div class="solution-point">
+                <span>01</span>
+                <div>
+                  <h3>Your work leaves a record.</h3>
+                  <p>Completed jobs and real experiences should count beyond one transaction.</p>
+                </div>
+              </div>
+
+              <div class="solution-point">
+                <span>02</span>
+                <div>
+                  <h3>Trust becomes easier to carry.</h3>
+                  <p>The next opportunity can see more than a promise or a CV.</p>
+                </div>
+              </div>
+
+              <div class="solution-point">
+                <span>03</span>
+                <div>
+                  <h3>You move forward with proof.</h3>
+                  <p>New opportunity, yes. Starting from nothing again, no.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           MAKE MONEY. MAKE SENSE.
+           ====================================================== -->
+
+      <section class="brand-quote-section">
+        <div class="container">
+          <div class="brand-quote-inner">
+
+            <div class="brand-quote-kicker">
+              MAKE MONEY. MAKE SENSE.
+            </div>
+
+            <blockquote>
+              “RISE is making money make sense, giving African talents,
+              skills, and businesses the opportunity to rise. Just like rice
+              needs fire and ingredients to rise to jollof or fried rice,
+              we are your fire and ingredients in the corporate space to rise.”
+            </blockquote>
+
+            <div class="brand-quote-credit">
+              — Billionaire Brains
+            </div>
+
+            <p class="brand-quote-belief">
+              Work builds trust. Trust creates opportunity.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
 <!-- ======================================================
      SECTION 03 — WHO RISE IS FOR
      ====================================================== -->
@@ -3604,8 +3989,8 @@
             </div>
 
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="#" data-legal="privacy">Privacy Policy</a>
+                <a href="#" data-legal="terms">Terms of Service</a>
                 <a href="https://www.instagram.com/useriseafrica" target="_blank">Instagram</a>
                 <a href="https://www.linkedin.com/company/useriseafrica" target="_blank">LinkedIn</a>
                 <a href="https://x.com/useriseafrica" target="_blank">X</a>
@@ -3761,7 +4146,27 @@
   </div>
 
 
-  <!-- ========================================================
+  
+  <div class="legal-modal" id="legalModal" aria-hidden="true">
+    <div class="legal-backdrop" data-close-legal></div>
+
+    <div class="legal-shell" role="dialog" aria-modal="true">
+      <div class="legal-header">
+        <div class="legal-brand">RISE <span>LEGAL</span></div>
+
+        <button class="legal-close" data-close-legal aria-label="Close legal information">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <div class="legal-body" id="legalBody"></div>
+    </div>
+  </div>
+
+  <template id="termsTemplate"><h2>RISE Terms of Service</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>Welcome to RISE. These Terms of Service (“Terms”) govern your access to and use of the RISE website, waitlist, surveys, forms, and other pre-launch services and experiences provided by <strong>RISE Africa Technologies Limited</strong> (“RISE,” “we,” “us,” or “our”), collectively referred to as the “Service.” By accessing or using the Service, you agree to these Terms.</p><h3>1. Eligibility</h3><p>You must be at least 18 years old to use the Service or otherwise have the legal capacity and appropriate consent required under applicable law.</p><h3>2. Waitlist, Surveys & Information</h3><p>You may join the waitlist, participate in surveys, submit forms, or register interest. Information you provide must be accurate and not intentionally misleading. Joining does not guarantee platform access, beta participation, or any particular feature.</p><h3>3. Pre-Launch Services</h3><p>RISE is currently under development. Planned features, functionality, pricing, eligibility requirements, launch dates, and availability may change.</p><h3>4. Acceptable Use</h3><p>You agree not to misrepresent your identity; submit fraudulent information; attempt unauthorised access; disrupt the Service; use it for unlawful or harmful activities; introduce malicious technology; or use RISE intellectual property without permission.</p><h3>5. Privacy</h3><p>Our Privacy Policy explains how we collect, use, store, and protect personal information.</p><h3>6. Communications</h3><p>By providing contact information, you may receive waitlist confirmations, company and product updates, launch announcements, research requests, event information, testing opportunities, and important notices. Where required by law, you may unsubscribe from promotional communications.</p><h3>7. Intellectual Property</h3><p>Unless otherwise stated, the RISE name, brand, logos, designs, graphics, website content, written materials, technology concepts, and other materials are owned by or licensed to RISE and may not be commercially exploited without written permission.</p><h3>8. Third-Party Services</h3><p>RISE is not responsible for the content, availability, security, privacy practices, or actions of third-party services linked to or integrated with the Service.</p><h3>9. Modifications</h3><p>RISE may update, modify, suspend, or discontinue any part of the Service or update these Terms from time to time.</p><h3>10. Suspension or Termination</h3><p>We may restrict, suspend, or terminate access where we reasonably believe these Terms have been violated or the Service or community may be harmed.</p><h3>11. Disclaimer</h3><p>The Service is provided on an “as is” and “as available” basis. We do not guarantee uninterrupted, secure, or error-free availability. Future product information may change before launch.</p><h3>12. Limitation of Liability</h3><p>To the maximum extent permitted by applicable law, RISE will not be liable for indirect, incidental, special, or consequential losses arising from use of or inability to use the Service.</p><h3>13. Governing Law</h3><p>These Terms are governed by applicable laws of the Federal Republic of Nigeria.</p><h3>14. Future Platform Terms</h3><p>Additional or updated terms may apply when RISE introduces user accounts, opportunity features, reputation or trust systems, financial tools, savings features, payment services, or third-party partner services.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template>
+  <template id="privacyTemplate"><h2>RISE Privacy Policy</h2><p class="legal-date"><strong>Effective Date: July 17, 2026</strong></p><p>RISE (“RISE,” “we,” “us,” or “our”) respects your privacy. This policy explains how <strong>RISE Africa Technologies Limited</strong> collects, uses, stores, and protects information when you interact with our website and pre-launch services.</p><h3>1. Information We Collect</h3><p>We may collect your name, email, phone number, general location, occupation or business information, survey and research responses, product interests, feedback, event or beta participation information, and basic technical information. Please do not submit sensitive personal information unless specifically requested and necessary.</p><h3>2. Information Collected Automatically</h3><p>Cookies, analytics tools, or similar technologies may collect IP address, browser and device type, operating system, pages visited, access time, referral source, and general interaction information.</p><h3>3. How We Use Your Information</h3><p>We may use information to manage the waitlist, communicate about RISE, send updates, invite users to testing or research, conduct surveys, improve products, analyse engagement, organise events or promotions, respond to requests, protect our services, prevent misuse, and comply with legal requirements.</p><h3>4. Communications</h3><p>We may contact you about registration, product updates, launch announcements, beta testing, research, surveys, events, community activities, relevant opportunities, and important service, privacy, or security notices.</p><h3>5. How We Share Information</h3><p>RISE does not sell your personal information. We may share information with trusted providers supporting hosting, storage, communications, forms, analytics, support, security, and professional services, or where required by law.</p><h3>6. Data Storage and Security</h3><p>We take reasonable administrative, organisational, and technical measures designed to protect personal information. No electronic transmission or storage method is completely secure.</p><h3>7. Cookies and Analytics</h3><p>We may use cookies and analytics tools to understand website traffic and improve user experience. Where required, we will request appropriate consent.</p><h3>8. Your Privacy Rights</h3><p>Depending on applicable law and location, you may have rights to access, correct, delete, object to or restrict uses of your information, withdraw consent, and request information about processing.</p><h3>9. Children's Privacy</h3><p>Current RISE services are not intended for children under 18. We do not knowingly collect their personal information through our waitlist or pre-launch services.</p><h3>10. Third-Party Links</h3><p>RISE is not responsible for the privacy practices, security, or content of third-party services.</p><h3>11. International Data Processing</h3><p>Some providers may process or store information outside Nigeria. We will take reasonable steps to apply appropriate protections as required by applicable law.</p><h3>12. Nigeria Data Protection</h3><p>RISE intends to handle personal information in accordance with applicable Nigerian data protection requirements, including the Nigeria Data Protection Act 2023 and other applicable regulations or guidance.</p><h3>13. Future RISE Platform Features</h3><p>As RISE launches additional functionality, additional information may be collected for user accounts, identity verification, profiles, reputation or trust systems, transactions, payments, savings tools, or authorised third-party services. This policy may be updated accordingly.</p><h3>14. Changes to This Policy</h3><p>We may update this Privacy Policy as RISE develops or legal and regulatory requirements change.</p><h3>15. Contact Us</h3><p>Contact <a href="mailto:hello@useriseafrica.com">hello@useriseafrica.com</a>.</p><p><strong>RISE Africa Technologies Limited</strong><br><strong>Last Updated: July 17, 2026</strong></p></template>
+
+<!-- ========================================================
        JAVASCRIPT
        ======================================================== -->
 
@@ -3945,6 +4350,51 @@
       }
     });
 
+  </script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const legalModal = document.getElementById("legalModal");
+      const legalBody = document.getElementById("legalBody");
+
+      function closeLegalModal() {
+        if (!legalModal) return;
+        legalModal.classList.remove("active");
+        legalModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-legal]").forEach(link => {
+        link.addEventListener("click", event => {
+          event.preventDefault();
+
+          const template = document.getElementById(
+            link.dataset.legal + "Template"
+          );
+
+          if (!template || !legalModal || !legalBody) return;
+
+          legalBody.innerHTML = template.innerHTML;
+          legalBody.scrollTop = 0;
+          legalModal.classList.add("active");
+          legalModal.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      document.querySelectorAll("[data-close-legal]").forEach(element => {
+        element.addEventListener("click", closeLegalModal);
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+          closeLegalModal();
+        }
+      });
+
+      if (window.lucide) lucide.createIcons();
+    });
   </script>
 
 </body>
