@@ -2112,8 +2112,8 @@
 
     .footer-links {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
+      flex-wrap: wrap;
+      gap: 12px 18px;
     }
 
     .footer-links a {
@@ -2125,6 +2125,12 @@
 
     .footer-links a:hover {
       color: var(--green);
+    }
+
+    .footer-links a:not(:last-child)::after {
+      content: "·";
+      margin-left: 18px;
+      color: rgba(255, 255, 255, 0.24);
     }
 
     .footer-closing h3 {
@@ -2788,6 +2794,9 @@
         padding: 26px 20px;
       }
 
+
+      .core-loop-section{padding:90px 0 85px}.core-loop-header{margin-bottom:50px}.core-loop-title{font-size:clamp(44px,11vw,66px)}.core-loop-intro{font-size:16px}.core-loop-row{grid-template-columns:42px 1fr;gap:15px;padding:28px 0}.core-loop-copy{display:block}.core-loop-copy h3{margin-bottom:12px;font-size:30px}.core-loop-copy p{font-size:15px}.core-loop-close{margin-top:55px}
+
       /* =======================================================
          MOBILE — FOR BUSINESSES & FOOTER
          ======================================================= */
@@ -3262,6 +3271,12 @@
       margin-bottom: 24px !important;
     }
 
+
+    .core-loop-section{position:relative;z-index:2;padding:135px 0 120px;background:radial-gradient(circle at 75% 20%,rgba(57,255,20,.07),transparent 34%),linear-gradient(180deg,#010201 0%,#040704 55%,#010201 100%)}
+    .core-loop-header{max-width:900px;margin-bottom:70px}.core-loop-title{font-family:var(--heading);font-size:clamp(58px,5.3vw,94px);font-weight:800;line-height:.96;letter-spacing:-.06em}.core-loop-title span{display:block;color:var(--green)}.core-loop-intro{max-width:720px;margin-top:26px;color:rgba(255,255,255,.68);font-size:18px;line-height:1.7}.core-loop-list{border-top:1px solid rgba(255,255,255,.1)}.core-loop-row{display:grid;grid-template-columns:80px minmax(0,1fr);gap:28px;padding:38px 0;border-bottom:1px solid rgba(255,255,255,.1)}.core-loop-number{color:var(--green);font-family:var(--heading);font-size:13px;font-weight:800;letter-spacing:.14em}.core-loop-copy{display:grid;grid-template-columns:minmax(280px,.7fr) minmax(320px,1fr);gap:70px;align-items:start}.core-loop-copy h3{font-family:var(--heading);font-size:clamp(30px,3vw,48px);line-height:1;letter-spacing:-.045em}.core-loop-copy p{color:rgba(255,255,255,.62);font-size:17px;line-height:1.7}.core-loop-close{margin-top:70px;text-align:center;font-family:var(--heading);font-size:clamp(30px,3vw,46px);font-weight:800;line-height:1.15;letter-spacing:-.04em}.core-loop-close span{display:block;color:var(--green)}
+    .problem-copy-tight{margin-top:70px}.problem-single-line{max-width:900px;margin-inline:auto;font-family:var(--heading);font-size:clamp(24px,2.6vw,40px)!important;font-weight:800;line-height:1.25!important;letter-spacing:-.035em;color:var(--white)!important}
+    .brand-quote-styled{display:flex;flex-direction:column;align-items:center;gap:6px}.quote-line,.quote-emphasis{display:block}.quote-emphasis{color:var(--green);font-size:1.12em}.quote-space{margin-top:30px}.quote-final{max-width:950px;margin-top:30px}
+
 </style>
 </head>
 
@@ -3462,10 +3477,7 @@
 
             <p class="hero-description">
 
-              RISE helps everyday Nigerians turn
-              completed work into proof, payments
-              into confidence, and trust into bigger
-              opportunities.
+              A simple way for everyday hustlers to turn finished work into proof, and proof into the next opportunity.
 
             </p>
 
@@ -3542,9 +3554,9 @@
 
               <div class="proof-copy">
 
-                Be among the first
+                Join the first
                 <strong>
-                  to join RISE.
+                  people building with RISE.
                 </strong>
 
               </div>
@@ -3600,295 +3612,87 @@
 
       
 <!-- ======================================================
-     SECTION 02 — THE PROBLEM
+     SECTION 01 — WHAT RISE IS
      ====================================================== -->
-<section class="problem-section" id="how-it-works">
-  <div class="container problem-container">
-
-    <div class="problem-header">
-      <div class="section-kicker problem-kicker">
-        <span class="section-kicker-line"></span>
-        THE PROBLEM
-      </div>
-
-      <h2 class="problem-title">
-        If you've ever had to
-        <span>start from zero...</span>
-        you already understand.
-      </h2>
+<section class="core-loop-section" id="what-rise-is">
+  <div class="container">
+    <div class="core-loop-header">
+      <div class="section-kicker"><span class="section-kicker-line"></span>WHAT RISE IS</div>
+      <h2 class="core-loop-title">Get work. Get paid.<span>Build trust.</span></h2>
+      <p class="core-loop-intro">That's it. That's the whole idea. Every job you finish should make the next one easier to get—not harder.</p>
     </div>
-
-    <div class="problem-sequence">
-      <div class="problem-beat"><p>You finish the job.</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat"><p>The client is happy.</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat problem-quote"><p>“No worry, I go tell my people about you.”</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat"><p>You leave smiling.</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat"><p>Then another opportunity comes.</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat problem-quote"><p>“Have you done this before?”</p></div>
-      <div class="problem-arrow">↓</div>
-      <div class="problem-beat problem-reset"><p>Back to square one.</p></div>
+    <div class="core-loop-list">
+      <article class="core-loop-row"><div class="core-loop-number">01</div><div class="core-loop-copy"><h3>Get work.</h3><p>Real jobs, real clients, real Naija hustle.</p></div></article>
+      <article class="core-loop-row"><div class="core-loop-number">02</div><div class="core-loop-copy"><h3>Get paid.</h3><p>Let completed work become part of your track record.</p></div></article>
+      <article class="core-loop-row"><div class="core-loop-number">03</div><div class="core-loop-copy"><h3>Build trust.</h3><p>Every job you complete adds to the story behind your name—so the next client sees more than your word.</p></div></article>
     </div>
-
-    <div class="problem-copy">
-      <p class="problem-lingo">Nigeria no be cho cho cho.</p>
-
-      <p>
-        Mechanics. Designers. Tailors. Food vendors.
-        Photographers. Small business owners.
-        Students hunting their first real opportunity.
-        Every day, people dey show up and do the work.
-      </p>
-
-      <p>
-        The hustle was never the problem.
-        Starting from zero every time—that's the problem.
-      </p>
-
-      <p>
-        New customer. New client. New opportunity.
-        Same question: prove yourself, again.
-      </p>
-    </div>
-
-    <div class="problem-close">
-      <h2>
-        The hustle is already there.
-        <span>It should count for something.</span>
-      </h2>
-    </div>
-
-    <div class="problem-next">
-      <div class="section-kicker">
-        <span class="section-kicker-line"></span>
-        HOW IT BEGINS
-      </div>
-
-      <div class="how-rise-heading-row">
-        <h2 class="how-rise-title">
-          It starts with
-          <span>the work you're already doing.</span>
-        </h2>
-
-        <p class="how-rise-intro">
-          The work you've already done should count for something.
-        </p>
-      </div>
-    </div>
-
-    
-<div class="how-begins-list">
-
-  <article class="how-begins-row">
-    <div class="how-begins-number">01</div>
-    <div class="how-begins-content">
-      <h3>Keep doing the work.</h3>
-      <p>Every job completed. Every customer served. Every promise kept. That's where it starts.</p>
-    </div>
-  </article>
-
-  <article class="how-begins-row">
-    <div class="how-begins-number">02</div>
-    <div class="how-begins-content">
-      <h3>Let your work speak.</h3>
-      <p>So the next client doesn't have to rely on your word alone.</p>
-    </div>
-  </article>
-
-  <article class="how-begins-row">
-    <div class="how-begins-number">03</div>
-    <div class="how-begins-content">
-      <h3>Move forward.</h3>
-      <p>New client. New customer. New opportunity. Your work should get there before you do.</p>
-    </div>
-  </article>
-
-</div>
-
-
+    <p class="core-loop-close">Trust no dey enter by luck.<span>E dey built—one job at a time.</span></p>
   </div>
 </section>
-
-
-
-      
-
-
-      <!-- ======================================================
-           THE RISE SOLUTION
-           ====================================================== -->
-
-      <section class="solution-section" id="the-solution">
-        <div class="container">
-          <div class="solution-grid">
-
-            <div class="solution-copy">
-              <div class="section-kicker">
-                <span class="section-kicker-line"></span>
-                THE RISE SOLUTION
-              </div>
-
-              <h2 class="solution-title">
-                Your work should not disappear
-                <span>when the job ends.</span>
-              </h2>
-
-              <p class="solution-text">
-                RISE helps turn the work you complete, the people you serve,
-                and the trust you earn into a record that can move with you.
-              </p>
-
-              <p class="solution-text">
-                So when the next client, customer, employer, or business asks,
-                <strong>“Have you done this before?”</strong>
-                you are not starting with only your word.
-              </p>
-
-              <p class="solution-close">
-                Your hustle already tells a story.
-                <span>RISE helps people see it.</span>
-              </p>
-            </div>
-
-            <div class="solution-points">
-              <div class="solution-point">
-                <span>01</span>
-                <div>
-                  <h3>Your work leaves a record.</h3>
-                  <p>Completed jobs and real experiences should count beyond one transaction.</p>
-                </div>
-              </div>
-
-              <div class="solution-point">
-                <span>02</span>
-                <div>
-                  <h3>Trust becomes easier to carry.</h3>
-                  <p>The next opportunity can see more than a promise or a CV.</p>
-                </div>
-              </div>
-
-              <div class="solution-point">
-                <span>03</span>
-                <div>
-                  <h3>You move forward with proof.</h3>
-                  <p>New opportunity, yes. Starting from nothing again, no.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================================
-           MAKE MONEY. MAKE SENSE.
-           ====================================================== -->
-
-      <section class="brand-quote-section">
-        <div class="container">
-          <div class="brand-quote-inner">
-
-            <div class="brand-quote-kicker">
-              MAKE MONEY. MAKE SENSE.
-            </div>
-
-            <blockquote>
-              “RISE is making money make sense, giving African talents,
-              skills, and businesses the opportunity to rise. Just like rice
-              needs fire and ingredients to rise to jollof or fried rice,
-              we are your fire and ingredients in the corporate space to rise.”
-            </blockquote>
-
-            <div class="brand-quote-credit">
-              — Billionaire Brains
-            </div>
-
-            <p class="brand-quote-belief">
-              Work builds trust. Trust creates opportunity.
-            </p>
-
-          </div>
-        </div>
-      </section>
 
 <!-- ======================================================
-     SECTION 03 — WHO RISE IS FOR
+     SECTION 02 — THE PROBLEM
      ====================================================== -->
-<section class="who-rise who-rise-clean" id="who-its-for">
-  <div class="container">
-
-    <div class="who-rise-header">
-      <div class="section-kicker">
-        <span class="section-kicker-line"></span>
-        WHO RISE IS FOR
-      </div>
-
-      <div class="who-rise-heading-row">
-        <h2 class="who-rise-title">
-          If this has happened to you,
-          <span>RISE is being built for you.</span>
-        </h2>
-
-        <p class="who-rise-intro">
-          Just people doing real work, tired of proving themselves from scratch.
-        </p>
-      </div>
+<section class="problem-section" id="the-problem">
+  <div class="container problem-container">
+    <div class="problem-header"><div class="section-kicker problem-kicker"><span class="section-kicker-line"></span>THE PROBLEM</div></div>
+    <div class="problem-sequence">
+      <div class="problem-beat"><p>You finish the job.</p></div><div class="problem-arrow">↓</div>
+      <div class="problem-beat"><p>The client is happy.</p></div><div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-quote"><p>“No worry, I go tell my people about you.”</p></div><div class="problem-arrow">↓</div>
+      <div class="problem-beat"><p>You apply for another job.</p></div><div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-quote"><p>“Have you done this before? How do we know we can trust you?”</p></div><div class="problem-arrow">↓</div>
+      <div class="problem-beat problem-reset"><p>Back to square one.</p></div>
     </div>
-
-    <div class="who-rise-list">
-
-      <article class="who-rise-row">
-        <div class="who-rise-mark"><i data-lucide="check"></i></div>
-        <div class="who-rise-row-content">
-          <h3>You finish the job. Client still says “tomorrow, tomorrow.”</h3>
-          <p>Getting paid shouldn't be a second job.</p>
-        </div>
-      </article>
-
-      <article class="who-rise-row">
-        <div class="who-rise-mark"><i data-lucide="check"></i></div>
-        <div class="who-rise-row-content">
-          <h3>Your last client knows what you can do. The next one doesn't.</h3>
-          <p>Your work should follow you. Not disappear the moment the job ends.</p>
-        </div>
-      </article>
-
-      <article class="who-rise-row">
-        <div class="who-rise-mark"><i data-lucide="check"></i></div>
-        <div class="who-rise-row-content">
-          <h3>“I will recommend you.” Then nothing.</h3>
-          <p>No vex. We've all heard that one before.</p>
-        </div>
-      </article>
-
-      <article class="who-rise-row">
-        <div class="who-rise-mark"><i data-lucide="check"></i></div>
-        <div class="who-rise-row-content">
-          <h3>You're building something real, one job at a time.</h3>
-          <p>That should count for something.</p>
-        </div>
-      </article>
-
+    <div class="problem-copy problem-copy-tight">
+      <p class="problem-lingo">Nigeria no be cho cho cho.</p>
+      <p class="problem-single-line">Your work already proved itself once. It shouldn't have to keep proving itself from zero.</p>
     </div>
-
-    <div class="who-rise-close who-rise-clean-close">
-      <p>
-        Different hustle. Same story.
-        <strong>You should not have to start from zero every time.</strong>
-      </p>
-    </div>
-
   </div>
 </section>
 
+<!-- ======================================================
+     SECTION 03 — HOW IT WORKS
+     ====================================================== -->
+<section class="how-rise" id="how-it-works">
+  <div class="container">
+    <div class="how-rise-header">
+      <div class="section-kicker"><span class="section-kicker-line"></span>HOW IT WORKS</div>
+      <div class="how-rise-heading-row">
+        <h2 class="how-rise-title">It starts with<span>the work you're already doing.</span></h2>
+        <p class="how-rise-intro">The work you've already done should count for something.</p>
+      </div>
+    </div>
+    <div class="how-begins-list">
+      <article class="how-begins-row"><div class="how-begins-number">01</div><div class="how-begins-content"><h3>Keep doing the work.</h3><p>Every job completed. Every customer served. Every promise kept.</p></div></article>
+      <article class="how-begins-row"><div class="how-begins-number">02</div><div class="how-begins-content"><h3>Let your work speak.</h3><p>So the next client doesn't have to rely on your word alone.</p></div></article>
+      <article class="how-begins-row"><div class="how-begins-number">03</div><div class="how-begins-content"><h3>Move forward.</h3><p>Your work should get there before you do.</p></div></article>
+    </div>
+  </div>
+</section>
 
+<!-- ======================================================
+     MAKE MONEY. MAKE SENSE.
+     ====================================================== -->
+<section class="brand-quote-section">
+  <div class="container">
+    <div class="brand-quote-inner">
+      <div class="brand-quote-kicker">MAKE MONEY. MAKE SENSE.</div>
+      <blockquote class="brand-quote-styled">
+        <span class="quote-line">“RISE is making</span>
+        <span class="quote-emphasis">money make sense.</span>
+        <span class="quote-line quote-space">Giving African talent, skills, and businesses</span>
+        <span class="quote-emphasis">the opportunity to rise.</span>
+        <span class="quote-line quote-space">Just like rice needs fire and ingredients</span>
+        <span class="quote-line">to become jollof or fried rice,</span>
+        <span class="quote-emphasis quote-final">RISE is the fire behind the next opportunity.”</span>
+      </blockquote>
+      <div class="brand-quote-credit">— Billionaire Brains</div>
+    </div>
+  </div>
+</section>
 
-
-      <!-- ======================================================
+<!-- ======================================================
            SECTION 04 — FOR BUSINESSES
            ====================================================== -->
 
@@ -3908,13 +3712,7 @@
                     <span>Start hiring proven.</span>
                 </h2>
 
-                <p class="business-text">
-
-                    A CV tells you what someone says.
-                    RISE adds a layer of trust by helping you see the work behind the person—
-                    so you can hire based on more than what's written on paper.
-
-                </p>
+                <p class="business-text">A CV tells you what someone says about themselves. RISE shows you what they've actually done—verified jobs, verified clients, a real track record. Hire people with a trusted track record, and get the peace of mind that comes with knowing exactly who you're bringing on.</p>
 
                 <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                     Partner With RISE
@@ -3942,32 +3740,7 @@
            FINAL CTA
            ====================================================== -->
 
-      <section class="cta-section" id="waitlist">
-          <div class="container">
-              <div class="cta-content">
-
-                  <span class="section-label">THE MOVEMENT STARTS</span>
-
-                  <h2>
-                      Let your work open doors.
-                  </h2>
-
-                  <p class="cta-description">
-                      Be among the first. Your work already speaks—let it open doors.
-                  </p>
-
-                  <a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                      Join the Waitlist
-                      <i data-lucide="arrow-up-right"></i>
-                  </a>
-
-                  <p class="cta-note">
-                      Free to join. Early members get first access at launch.
-                  </p>
-
-              </div>
-          </div>
-      </section>
+      <section class="cta-section" id="waitlist"><div class="container"><div class="cta-content"><span class="section-label">THE MOVEMENT STARTS</span><h2>Let your work open doors.</h2><p class="cta-description">Be among the first to join.</p><a href="https://tally.so/r/68py7B" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join the Waitlist <i data-lucide="arrow-up-right"></i></a><p class="cta-note">Free to join. Early members get first access at launch.</p></div></div></section>
 
     </main>
 
@@ -3997,26 +3770,7 @@
                 <a href="https://www.tiktok.com/@useriseafrica" target="_blank">TikTok</a>
             </div>
 
-            <div class="footer-closing">
-
-                <h3>
-                    The future belongs to the people others can vouch for.
-                </h3>
-
-                <p class="footer-philosophy">
-                    RISE helps your work carry your name—wherever you go next.
-                </p>
-
-                <p class="copyright">
-                    © 2026 RISE Technologies Limited.<br>
-                    Made in Nigeria. Designed for Africa.
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
+            <div class="footer-closing"><h3>The future belongs to the people others vouch for.</h3><p class="copyright">© 2026 RISE Technologies Limited. Made in Nigeria. Designed for Africa.</p></div></div></footer>
 
   </div>
 
