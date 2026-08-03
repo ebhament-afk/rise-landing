@@ -2528,26 +2528,6 @@
 
 
 
-
-      /* FINAL MOBILE HERO COMPOSITION */
-      .hero-stage {
-        height: 500px;
-        margin-top: -35px;
-        overflow: visible;
-      }
-
-      .hero-woman {
-        right: -12%;
-        bottom: -8px;
-        width: 118%;
-        max-width: 560px;
-      }
-
-      .hero-woman img {
-        transform: none;
-        transform-origin: center bottom;
-      }
-
       /* MOBILE — THE PROBLEM */
       .problem-section { padding: 95px 0 90px; }
       .problem-header { margin-bottom: 55px; }
@@ -2872,18 +2852,6 @@
         width: 42px;
         height: 42px;
       }
-
-
-      .hero-stage {
-        height: 455px;
-        margin-top: -20px;
-      }
-
-      .hero-woman {
-        right: -16%;
-        width: 126%;
-      }
-
 
       .hero-inner {
         padding-top: 40px;
@@ -3312,13 +3280,17 @@
 
 
     /* =========================================================
-       PRODUCT PREVIEW ALERTS — CLEAN PLACEMENT
+       HERO PRODUCT ALERTS — FINAL
        ========================================================= */
+
+    .hero-stage {
+      overflow: visible;
+    }
 
     .hero-alerts {
       position: absolute;
       inset: 0;
-      z-index: 12;
+      z-index: 20;
       pointer-events: none;
     }
 
@@ -3329,38 +3301,35 @@
       align-items: center;
       gap: 12px;
       padding: 13px 15px;
-      border: 1px solid rgba(57,255,20,.22);
+      border: 1px solid rgba(57,255,20,.28);
       border-radius: 17px;
-      background: rgba(4,7,4,.86);
+      background: rgba(4,7,4,.9);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      box-shadow:
-        0 22px 55px rgba(0,0,0,.42),
-        inset 0 1px 0 rgba(255,255,255,.035);
+      box-shadow: 0 22px 55px rgba(0,0,0,.45);
       opacity: 0;
-      transform: translateY(16px) scale(.97);
+      transform: translateY(18px) scale(.96);
       animation:
-        alertReveal .65s var(--ease) forwards,
-        alertFloat 5.5s ease-in-out infinite;
+        riseAlertIn .7s var(--ease) forwards,
+        riseAlertFloat 5.5s ease-in-out infinite;
     }
 
-    /* Keep every alert away from her face */
-    .product-alert:nth-child(1) {
-      top: 24%;
+    .product-alert.alert-job {
+      top: 25%;
       left: 2%;
-      animation-delay: .55s, 1.2s;
+      animation-delay: .5s, 1.2s;
     }
 
-    .product-alert:nth-child(2) {
+    .product-alert.alert-payment {
       top: 55%;
       right: 0;
-      animation-delay: 1.05s, 1.7s;
+      animation-delay: 1.05s, 1.75s;
     }
 
-    .product-alert:nth-child(3) {
-      bottom: 7%;
+    .product-alert.alert-record {
+      bottom: 8%;
       left: 16%;
-      animation-delay: 1.55s, 2.2s;
+      animation-delay: 1.6s, 2.3s;
     }
 
     .alert-icon {
@@ -3372,13 +3341,13 @@
       border-radius: 12px;
       color: #020302;
       background: var(--green);
-      box-shadow: 0 0 20px rgba(57,255,20,.2);
+      box-shadow: 0 0 20px rgba(57,255,20,.18);
     }
 
     .alert-icon svg {
       width: 19px;
       height: 19px;
-      stroke-width: 2.1;
+      stroke-width: 2.2;
     }
 
     .alert-copy {
@@ -3397,18 +3366,16 @@
 
     .alert-copy strong {
       display: block;
-      overflow: hidden;
       color: #fff;
       font-size: 13px;
       line-height: 1.25;
       white-space: nowrap;
-      text-overflow: ellipsis;
     }
 
     .alert-copy span {
       display: block;
       margin-top: 3px;
-      color: rgba(255,255,255,.56);
+      color: rgba(255,255,255,.58);
       font-size: 10px;
       line-height: 1.35;
     }
@@ -3418,63 +3385,49 @@
       font-weight: 800;
     }
 
-    @keyframes alertReveal {
+    @keyframes riseAlertIn {
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
     }
 
-    @keyframes alertFloat {
+    @keyframes riseAlertFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-7px); }
     }
 
-    @media (max-width: 1200px) and (min-width: 901px) {
-      .product-alert {
-        width: 235px;
-      }
-
-      .product-alert:nth-child(1) {
-        top: 25%;
-        left: 0;
-      }
-
-      .product-alert:nth-child(2) {
-        top: 58%;
-        right: -2%;
-      }
-
-      .product-alert:nth-child(3) {
-        bottom: 5%;
-        left: 12%;
-      }
-    }
-
     @media (max-width: 900px) {
-      .hero-alerts {
-        z-index: 14;
+      .hero-stage {
+        height: 500px;
+        margin-top: -35px;
+      }
+
+      .hero-woman {
+        right: -12%;
+        bottom: -8px;
+        width: 118%;
+        max-width: 560px;
       }
 
       .product-alert {
-        width: min(225px, 68vw);
+        width: min(220px, 68vw);
         padding: 10px 12px;
         border-radius: 15px;
       }
 
-      /* Mobile: only show two alerts to avoid clutter */
-      .product-alert:nth-child(1) {
-        top: 24%;
+      .product-alert.alert-job {
+        top: 22%;
         left: 0;
       }
 
-      .product-alert:nth-child(2) {
+      .product-alert.alert-payment {
         top: auto;
         right: 0;
-        bottom: 18%;
+        bottom: 16%;
       }
 
-      .product-alert:nth-child(3) {
+      .product-alert.alert-record {
         display: none;
       }
 
@@ -3494,18 +3447,28 @@
     }
 
     @media (max-width: 480px) {
-      .product-alert {
-        width: min(205px, 64vw);
+      .hero-stage {
+        height: 455px;
+        margin-top: -20px;
       }
 
-      .product-alert:nth-child(1) {
-        top: 22%;
+      .hero-woman {
+        right: -16%;
+        width: 126%;
+      }
+
+      .product-alert {
+        width: min(200px, 64vw);
+      }
+
+      .product-alert.alert-job {
+        top: 20%;
         left: -2px;
       }
 
-      .product-alert:nth-child(2) {
+      .product-alert.alert-payment {
         right: -4px;
-        bottom: 14%;
+        bottom: 13%;
       }
     }
 
@@ -3829,6 +3792,44 @@
               />
 
             </div>
+
+            <div class="hero-alerts" aria-label="RISE product preview notifications">
+
+              <div class="product-alert alert-job">
+                <div class="alert-icon">
+                  <i data-lucide="briefcase-business"></i>
+                </div>
+                <div class="alert-copy">
+                  <div class="alert-label">Product preview</div>
+                  <strong>New job match</strong>
+                  <span>Event support · Abuja</span>
+                </div>
+              </div>
+
+              <div class="product-alert alert-payment">
+                <div class="alert-icon">
+                  <i data-lucide="circle-dollar-sign"></i>
+                </div>
+                <div class="alert-copy">
+                  <div class="alert-label">Product preview</div>
+                  <strong>Payment confirmed</strong>
+                  <span class="alert-amount">₦45,000 received</span>
+                </div>
+              </div>
+
+              <div class="product-alert alert-record">
+                <div class="alert-icon">
+                  <i data-lucide="badge-check"></i>
+                </div>
+                <div class="alert-copy">
+                  <div class="alert-label">Product preview</div>
+                  <strong>Work record updated</strong>
+                  <span>Another completed job added</span>
+                </div>
+              </div>
+
+            </div>
+
 
 
           </div>
