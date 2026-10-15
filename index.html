@@ -22,12 +22,14 @@
 <link rel="preload" as="image" href="hero-man.webp" type="image/webp"[cite: 1]>
 <title>RISE Africa — Your hustle should count</title><link rel="preconnect" href="https://fonts.googleapis.com"[cite: 1]><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin[cite: 1]><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Sora:wght@400;600;800&family=Caveat:wght@600&display=swap" rel="stylesheet"[cite: 1]><style>
 
-:root{--lime:#b8ff45;--bg:#030b06;--muted:#c6cfc6}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:white;font-family:'DM Sans',Arial,sans-serif}a{text-decoration:none;color:inherit}button,select{font:inherit}.shell{max-width:1380px;margin:auto}.nav{height:82px;padding:0 clamp(24px,4.5vw,65px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1b3020;gap:18px}.brand{display:flex;flex-direction:column;align-items:center;width:108px;flex-shrink:0}.brand img{width:100%;height:47px;object-fit:contain}.brand span{font-size:10px;font-weight:800;letter-spacing:.38em;margin-left:.38em}.links{display:flex;gap:clamp(12px,2vw,30px);align-items:center}.links a{font-size:12px;font-weight:700;white-space:nowrap}.links a.active{color:var(--lime);border-bottom:2px solid var(--lime);padding-bottom:9px}.cta{background:var(--lime);color:#091005;border-radius:40px;padding:16px 26px;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}.cta.outline{background:transparent;border:1px solid var(--lime);color:white}.mobile-toggle{display:none;background:transparent;border:1px solid #3c5839;color:white;border-radius:8px;padding:8px 12px}.notice{padding:15px 24px;text-align:center;font-size:11px;color:#89998a;border-top:1px solid #203222}
+:root{--lime:#b8ff45;--bg:#030b06;--muted:#c6cfc6}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:white;font-family:'DM Sans',Arial,sans-serif}a{text-decoration:none;color:inherit}button,select{font:inherit}.shell{max-width:1380px;margin:auto}.nav{height:82px;padding:0 clamp(24px,4.5vw,65px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1b3020;gap:18px}.brand{display:flex;flex-direction:column;align-items:center;width:108px;flex-shrink:0}.brand img{width:100%;height:47px;object-fit:contain}.brand span{font-size:10px;font-weight:800;letter-spacing:.38em;margin-left:.38em}.links{display:flex;gap:clamp(12px,2vw,28px);align-items:center}.links a{font-size:12px;font-weight:700;white-space:nowrap}.links a.active{color:var(--lime);border-bottom:2px solid var(--lime);padding-bottom:9px}.cta{background:var(--lime);color:#091005;border-radius:40px;padding:16px 26px;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}.cta.outline{background:transparent;border:1px solid var(--lime);color:white}.mobile-toggle{display:none;background:transparent;border:1px solid #3c5839;color:white;border-radius:8px;padding:8px 12px}.notice{padding:15px 24px;text-align:center;font-size:11px;color:#89998a;border-top:1px solid #203222}
 
-/* Language selector */
-.lang-select-wrap{display:inline-flex;align-items:center;position:relative}
+/* Language selector with hint badge */
+.lang-select-wrap{display:inline-flex;align-items:center;gap:6px;position:relative}
+.lang-hint-badge{font-size:10px;font-weight:800;color:#06100a;background:var(--lime);padding:3px 8px;border-radius:99px;white-space:nowrap;letter-spacing:.02em}
+.lang-select-box{position:relative;display:inline-flex;align-items:center}
 .lang-select{background:#0b1d11;color:var(--lime);border:1px solid #31533a;border-radius:20px;padding:6px 28px 6px 12px;font-size:11px;font-weight:700;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none}
-.lang-select-wrap::after{content:"▾";font-size:10px;color:var(--lime);position:absolute;right:10px;pointer-events:none}
+.lang-select-box::after{content:"▾";font-size:10px;color:var(--lime);position:absolute;right:10px;pointer-events:none}
 .lang-select:focus-visible{border-color:var(--lime)}
 
 @media(max-width:1050px){.links{gap:12px}}
@@ -63,8 +65,8 @@
 .n2{right:5%;top:-4px;transform:rotate(7deg);animation-delay:1.2s;text-align:left}
 .note svg{position:absolute}
 .phone{position:absolute;display:flex;flex-direction:column;border-radius:40px;background:linear-gradient(160deg,#0a1a10,#050c08);border:3px solid #34463b;padding:12px 13px 10px;box-shadow:0 30px 60px rgba(0,0,0,.65),inset 0 0 0 1px rgba(255,255,255,.08),0 0 60px rgba(182,255,59,.1)}
-.p1{left:40%;top:14px;width:270px;min-height:520px;z-index:2}
-.p2{left:calc(40% + 282px);top:132px;width:230px;min-height:470px;z-index:1}
+.p1{left:36%;top:14px;width:260px;min-height:520px;z-index:2}
+.p2{left:calc(36% + 250px);top:132px;width:215px;min-height:470px;z-index:1}
 .notch{width:84px;height:22px;border-radius:99px;background:#000;margin:0 auto 4px}
 .status{display:flex;justify-content:space-between;font-size:9px;font-weight:600;padding:0 14px 8px}
 .plogo{font-weight:800;color:var(--lime);font-size:16px;letter-spacing:-.5px;margin:0 2px 6px;line-height:1}
@@ -85,7 +87,7 @@
 .i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 10px;min-height:100px}
-.ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:var(--lime);background:linear-gradient(145deg,#2c4a1a,#0f2216);border:1px solid rgba(182,255,59,.45)}
+.ic{width:30px;height:30px;border-radius:99px;display:grid;place-items:center;color:var(--lime);background:linear-gradient(145deg,#2c4a1a,#0f2216);border:1px solid rgba(182,255,59,.45)}
 .tile b{display:block;font-size:12px;margin:9px 0 3px;line-height:1.15}
 .tile span{font-size:8.5px;color:var(--mute);line-height:1.3;display:block}
 .tabs{display:flex;justify-content:space-between;margin:auto 4px 2px;padding-top:14px}
@@ -94,8 +96,8 @@
 .back{font-size:13px;font-weight:700;margin:6px 2px 12px}
 .sus{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;position:relative}
 .amt{font-size:24px;font-weight:800;margin:5px 0 2px;letter-spacing:-.5px}
-.bar{height:6px;border-radius:9px;background:#1c3324;overflow:hidden;margin:10px 0}
-.bar i{display:block;height:100%;background:var(--lime);border-radius:9px;width:0;animation:fill 1.6s .8s ease-out forwards}
+.bar{height:6px;border-radius:99px;background:#1c3324;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:var(--lime);border-radius:99px;width:0;animation:fill 1.6s .8s ease-out forwards}
 .faces{display:flex;align-items:center;font-size:9px;color:var(--mute)}
 .faces u{width:22px;height:22px;border-radius:50%;border:2px solid var(--card);margin-right:-6px;background:radial-gradient(circle at 50% 28%,#1a1a1a 0 32%,transparent 33%),var(--c)}
 .faces em{margin-left:12px;font-style:normal}
@@ -106,6 +108,18 @@
 .goal .ic{width:26px;height:26px;border-radius:8px}
 .goal .gm{flex:1}.goal .bar{height:4px;margin:6px 0 0}
 .goal b{color:var(--lime);font-size:11px}
+
+/* Desktop Hero Phone Containment Fix */
+@media (min-width: 961px) {
+ .rh .stage { max-width: 650px; margin-left: auto; }
+ .rh .p1 { left: 28%; width: 245px; }
+ .rh .p2 { left: calc(28% + 235px); width: 205px; min-height: 440px; top: 120px; }
+ .rh .char { left: -8%; }
+}
+@media (min-width: 1280px) {
+ .rh .p1 { left: 34%; width: 260px; }
+ .rh .p2 { left: calc(34% + 250px); width: 215px; }
+}
 
 /* character */
 .char{position:absolute;left:-5%;bottom:0;height:74%;-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent);z-index:3;filter:drop-shadow(0 18px 24px rgba(0,0,0,.6));}
@@ -119,11 +133,11 @@
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.note{opacity:1}.bar i{width:var(--w)}}
 
-@media(max-width:1180px){.rh .p1{width:240px}.rh .p2{width:205px;left:calc(40% + 252px)}.rh .char{height:68%}}
+@media(max-width:1180px){.rh .p1{width:230px}.rh .p2{width:195px;left:calc(28% + 220px)}.rh .char{height:68%}}
 
 @media(max-width:760px){.rh .stage{height:540px}.rh .p1{top:30px;left:42%;width:195px;min-height:430px}.rh .char{height:52%;left:-8%}.rh .note{font-size:19px}.rh .n1{left:2%;top:4px}.rh .n2{right:0;top:0}}
 
-/* ===== Mobile Hero Overlap & Composition Fixes ===== */
+/* Mobile Hero Overlap & Composition */
 @media (max-width:560px){
  .rh .stage{height:500px;max-width:420px;margin:12px auto 0;transform:none}
  .rh .p1{top:30px;left:calc(50% - 20px);width:182px;min-height:430px}
@@ -312,8 +326,8 @@
 .ss-goal .ic svg{width:1.2em;height:1.2em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ss-goal div{flex:1;min-width:0}
 .ss-goal small{display:block;font-size:.8em;font-weight:500;color:var(--mute)}
-.ss-bar{height:.4em;border-radius:9px;background:#1c3324;margin-top:.6em;overflow:hidden}
-.ss-bar i{display:block;height:100%;background:var(--lime);border-radius:9px;width:var(--w)}
+.ss-bar{height:.4em;border-radius:99px;background:#1c3324;margin-top:.6em;overflow:hidden}
+.ss-bar i{display:block;height:100%;background:var(--lime);border-radius:99px;width:var(--w)}
 .ss-goal b{color:var(--lime);font-size:1em}
 .ss-ttl{font-size:1.45em;font-weight:700;margin:.5em .2em 1em}
 .ss-fld{background:var(--card);border:1px solid var(--line);border-radius:1.2em;padding:.9em 1.1em;margin-bottom:.8em;display:flex;align-items:center;justify-content:space-between;gap:.6em}
@@ -482,11 +496,14 @@ body.legal-open{overflow:hidden}
   <a href="#score" data-i18n="navScore">The RISE Score</a>
   <a href="#susu" data-i18n="navSusu">Susu</a>
   <div class="lang-select-wrap">
-    <select class="lang-select" id="langSelect" aria-label="Select Language">
-      <option value="en">English</option>
-      <option value="se">Simple English</option>
-      <option value="pcm">Naija Pidgin</option>
-    </select>
+    <span class="lang-hint-badge" data-i18n="langBadge">Language / Tok:</span>
+    <div class="lang-select-box">
+      <select class="lang-select" id="langSelect" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="se">Simple English</option>
+        <option value="pcm">Naija Pidgin</option>
+      </select>
+    </div>
   </div>
 </nav>
 <a class="cta" href="https://tally.so/r/68py7B" target="_blank" rel="noopener" data-i18n="joinWaitlistCta">Join Waitlist ↗</a></header>
@@ -554,7 +571,7 @@ body.legal-open{overflow:hidden}
 </div>
 <div class="ri-stage" aria-label="Illustration of a RISE member with example app alerts">
  <div class="note2" data-i18n="indNote"><svg viewBox="0 0 46 46"><rect x="6" y="14" width="34" height="24" rx="4"/><path d="M17 14v-4h12v4M6 24h34M23 20v8"/></svg>Find Work. Get Paid.<br>Save. Build<br>Your Score.</div>
- <div class="woman"><img src="woman.webp" alt="Smiling woman checking the RISE app on her phone" width="800" height="869" loading="lazy" decoding="async"></div>
+ <div class="woman"><img src="woman.webp" alt="Smiling woman checking the RISE app on his phone" width="800" height="869" loading="lazy" decoding="async"></div>
  <div class="fc c-jobs"><div class="fh"><span class="ib"><svg><use href="#i-brief"/></svg></span><b data-i18n="indJobMatches">New job matches</b><em data-i18n="ind3New">3 new</em></div>
   <div class="job"><i>SM</i><div><strong data-i18n="indJob1">Social Media Manager</strong><small data-i18n="indJob1Sub">Small Business · Lagos</small></div><span class="tg" data-i18n="indTagRemote">Remote</span></div>
   <div class="job"><i>DS</i><div><strong data-i18n="indJob2">Delivery Support</strong><small data-i18n="indJob2Sub">Local Store · Abuja</small></div><span class="tg" data-i18n="indTagInPerson">In-person</span></div>
@@ -669,6 +686,7 @@ new IntersectionObserver(function(e,o){if(e[0].isIntersecting){on();o.disconnect
  const translations = {
   en: {
    navHome:"Home",navIndividuals:"For Individuals",navBusinesses:"For Businesses",navScore:"The RISE Score",navSusu:"Susu",joinWaitlistCta:"Join Waitlist ↗",
+   langBadge:"Language:",
    heroTag:"GET WORK. GET PAID. BUILD TRUST.",heroTitle:'Your hustle<br>should count.<br><span>Bank on it. <svg class="flag" viewBox="0 0 44 30" aria-label="Nigeria"><rect width="15" height="30" fill="#008751"/><rect x="15" width="14" height="30" fill="#fff"/><rect x="29" width="15" height="30" fill="#008751"/></svg></span>',
    heroLead:'RISE is being built for everyday Nigerians. Find work, get paid, save together, manage your money and build a <b>RISE Score</b> that reflects your consistency.',joinWaitlistBtn:"Join Waitlist ↗",heroSmall:"Coming soon. Join our pre-launch community.",
    noteN1:'Same<br>Hustle.<br>Bigger<br>Results. <svg style="right:-34px;top:2px" width="26" height="26" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z" fill="#b6ff3b"/></svg>',
@@ -691,6 +709,7 @@ new IntersectionObserver(function(e,o){if(e[0].isIntersecting){on();o.disconnect
   },
   se: {
    navHome:"Home",navIndividuals:"For You",navBusinesses:"For Businesses",navScore:"RISE Score",navSusu:"Susu",joinWaitlistCta:"Join Waitlist ↗",
+   langBadge:"Language:",
    heroTag:"FIND WORK. GET PAID. BUILD TRUST.",heroTitle:'Your hard work<br>must count.<br><span>Bank on it. <svg class="flag" viewBox="0 0 44 30" aria-label="Nigeria"><rect width="15" height="30" fill="#008751"/><rect x="15" width="14" height="30" fill="#fff"/><rect x="29" width="15" height="30" fill="#008751"/></svg></span>',
    heroLead:'RISE is for every Nigerian. Find work, get your money fast, save in group, and build a <b>RISE Score</b> to show your honesty.',joinWaitlistBtn:"Join Waitlist ↗",heroSmall:"Coming soon. Join our early group.",
    noteN1:'Same<br>Work.<br>Better<br>Pay. <svg style="right:-34px;top:2px" width="26" height="26" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z" fill="#b6ff3b"/></svg>',
@@ -713,6 +732,7 @@ new IntersectionObserver(function(e,o){if(e[0].isIntersecting){on();o.disconnect
   },
   pcm: {
    navHome:"Home",navIndividuals:"For People",navBusinesses:"For Business",navScore:"RISE Score",navSusu:"Susu",joinWaitlistCta:"Join Waitlist ↗",
+   langBadge:"Select Tok:",
    heroTag:"FIND WORK. GET PAID. BUILD TRUST.",heroTitle:'Your hustle<br>must pay.<br><span>Put body for inside. <svg class="flag" viewBox="0 0 44 30" aria-label="Nigeria"><rect width="15" height="30" fill="#008751"/><rect x="15" width="14" height="30" fill="#fff"/><rect x="29" width="15" height="30" fill="#008751"/></svg></span>',
    heroLead:'We dey build RISE for everyday Nigerians. Find work, collect your payment, save inside Susu group, and build <b>RISE Score</b> pattern.',joinWaitlistBtn:"Join Waitlist ↗",heroSmall:"E dey come soon. Join early group.",
    noteN1:'Same<br>Hustle.<br>Bigger<br>Level. <svg style="right:-34px;top:2px" width="26" height="26" viewBox="0 0 24 24"><path d="M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z" fill="#b6ff3b"/></svg>',
